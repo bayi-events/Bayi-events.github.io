@@ -637,6 +637,28 @@ link.rel = 'manifest';
 link.href = manifestURL;
 document.head.appendChild(link);
 
+
+ function submitForm() {
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzf1IXWgeZWywFyJ9W68VPfq7fAWKC4B2VIzthFBidhzufSpokFOmiCkZ7wD_W2N9N9jA/exec';
+    
+    const formData = {
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        date: document.getElementById('date').value,
+        data: document.getElementById('data').value
+    };
+
+    fetch(scriptURL, {
+        method: 'POST',
+        body: JSON.stringify(formData)
+    })
+    .then(res => res.json())
+    .then(result => {
+        alert('提交' + result.result);
+    })
+    .catch(error => console.error('Error!', error.message));
+}
+        
 // 註冊 Service Worker (確保 GitHub Pages 可安裝為 App)
 if ('serviceWorker' in navigator) {
     const swCode = "self.addEventListener('fetch', function(event) {});";
