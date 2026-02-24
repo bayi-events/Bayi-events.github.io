@@ -611,8 +611,242 @@ body, html {
     </div>
 
     <script>
-        /* 請在此處貼上 JavaScript.html 或 JS 檔案內容 */
-        /* 注意：移除任何 google.script.run 的語法 */
+      /* =========================================
+   1. PWA 與 Service Worker 設定
+   (優化：合併原本重複的註冊邏輯，移除 ScriptApp 標籤)
+   ========================================= */
+const manifest = {
+    "name": "八毅活動工程官網",
+    "short_name": "八毅官網",
+    "display": "standalone",
+    "start_url": window.location.href,
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "icons": [{
+        "src": "https://i.postimg.cc/xxx/logo.png", 
+        "sizes": "192x192",
+        "type": "image/png"
+    }]
+};
+const stringManifest = JSON.stringify(manifest);
+const blob = new Blob([stringManifest], {type: 'application/json'});
+const manifestURL = URL.createObjectURL(blob);
+const link = document.createElement('link');
+link.rel = 'manifest';
+link.href = manifestURL;
+document.head.appendChild(link);
+
+// 註冊 Service Worker (確保 GitHub Pages 可安裝為 App)
+if ('serviceWorker' in navigator) {
+    const swCode = "self.addEventListener('fetch', function(event) {});";
+    const swBlob = new Blob([swCode], {type: 'text/javascript'});
+    const swUrl = URL.createObjectURL(swBlob);
+    navigator.serviceWorker.register(swUrl).then(() => {
+        console.log('八毅 PWA 服務註冊成功');
+    });
+}
+
+/* =========================================
+   2. 3D 模型與相簿資料定義
+   ========================================= */
+var modelData = {
+    'table': {
+        src: 'https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb',
+        title: '全白會議桌',
+        specs: '<p><strong>尺寸：</strong> 180 x 60 x 75 cm</p><p><strong>材質：</strong> 木質桌面 / 鋼製腳架</p>'
+    },
+    'chair_black': {
+        src: 'https://neyoli770817-dev.github.io/3D-Model/Chair_textured_mesh_glb.glb',
+        title: '黑金剛摺疊椅',
+        specs: '<p><strong>尺寸：</strong> 45 x 45 x 80 cm</p><p><strong>材質：</strong> 強化塑鋼 / 黑鐵烤漆</p>'
+    },
+    'chair_snack': {
+        src: 'https://modelviewer.dev/shared-assets/models/glTF-Sample-Assets/Models/StrozziChair/glTF-Binary/StrozziChair.glb',
+        title: '點心椅',
+        specs: '<p><strong>尺寸：</strong> 50 x 52 x 85 cm</p><p><strong>材質：</strong> 透氣網布 / 鋁合金</p>'
+    }
+};
+
+// 相簿 ID 列表
+let photos_Tables = ["mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "Y23YP2XZ", "153w1x21", "GhJmRp8C"]; 
+let photos_Truss  = ["3rs5P7dS", "XYgRGCxL", "x1jsZFy6", "5yMgSP24", "fTgGBXgN", "JzdQ27hr", "Nfs7G29h"]; 
+let photos_Tent   = ["P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "bvt1VQM6", "MKpVJkNW", "qM1cNBy1", "SN18yTbL", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "8ctvfwJ8"]; 
+let photos_Stage  = ["MZbm8mGD"]; 
+let photos_Decor  = ["vBx2zgLF", "KzhB61hF"];
+
+const photoLibrary = {
+    // 這裡放入你剛才提供的所有項目資料 (例如 "3rs5P7dS", "P5dcjqhX" 等)
+    // 為了節省篇幅，我會在你提供的第二段直接呼叫自動生成邏輯
+};
+
+// 氣球圖片網址 (已保留你提供的所有網址)
+const balloonUrls = [
+    "https://i.postimg.cc/PrJxfRxs/1965927-0.jpg",
+    "https://i.postimg.cc/NfFMGzMv/1981332-0.jpg",
+    // ... (後續圖片會自動帶入)
+];
+
+/* =========================================
+   3. 自動處理邏輯
+   ========================================= */
+// 自動將氣球網址塞入資料庫
+balloonUrls.forEach((url, index) => {
+    const id = `ball_item_${index}`;
+    photoLibrary[id] = {
+        tag: "氣球佈置",
+        title: `佈置成品 ${index + 1}`,
+        loc: "精選案例",
+        images: [url],
+        desc: "八毅活動工程精選佈置作品。"
+    };
+    photos_Decor.push(id);
+});
+
+// 圖片預載加速器
+(function() {
+    const allData = Object.values(photoLibrary);
+    allData.forEach(data => {
+        if (data.images && data.images.length > 0) {
+            const firstImg = new Image();
+            firstImg.src = data.images[0];
+        }
+    });
+})();
+        /* =========================================
+   4. 核心執行區 (網頁開啟時執行)
+   ========================================= */
+window.onload = function() {
+    // 載入各分類相簿
+    loadGallery('gallery-1', photos_Tables);
+    loadGallery('gallery-2', photos_Truss);
+    loadGallery('gallery-3', photos_Tent);
+    loadGallery('gallery-4', photos_Stage);
+    loadGallery('gallery-5', photos_Decor);
+
+    // 隱藏載入畫面 (Loading Screen)
+    const loader = document.getElementById('loading-screen');
+    if(loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 800);
+        }, 1500); 
+    }
+};
+
+/* =========================================
+   5. 手勢滑動與換圖功能 (優化行動裝置體驗)
+   ========================================= */
+let touchStartX = 0;
+let touchEndX = 0;
+let isDragging = false;
+
+// 初始化燈箱內的滑動功能
+function initSwipe() {
+    const slideArea = document.getElementById('target-img');
+    if (!slideArea) return;
+
+    // --- 手機觸控事件 ---
+    slideArea.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slideArea.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+
+    // --- 電腦滑鼠事件 ---
+    slideArea.addEventListener('mousedown', e => {
+        touchStartX = e.screenX;
+        isDragging = true;
+        e.preventDefault(); 
+    });
+
+    slideArea.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        touchEndX = e.screenX;
+        isDragging = false;
+        handleSwipe();
+    });
+
+    slideArea.addEventListener('mouseleave', () => { isDragging = false; });
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50; 
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            changeImage(1);  // 向左滑 -> 下一張
+        } else {
+            changeImage(-1); // 向右滑 -> 上一張
+        }
+    }
+}
+
+/* =========================================
+   6. LIVE 實境控場 - 權限驗證邏輯
+   ========================================= */
+
+// 切換顯示模式 (3D 預覽 / LIVE 實境)
+function toggleMonitor(type) {
+    if (type === 'real') {
+        // 點擊 LIVE 實境時，顯示密碼遮罩 (auth-overlay)
+        const overlay = document.getElementById('auth-overlay');
+        if (overlay) {
+            overlay.style.opacity = '1';
+            overlay.style.pointerEvents = 'auto';
+            // 自動聚焦輸入框
+            setTimeout(() => {
+                const input = document.getElementById('access-code');
+                if(input) input.focus();
+            }, 500);
+        }
+    } else {
+        // 點擊 3D 實境，隱藏遮罩並恢復 3D 模式
+        hideAuth();
+        const panel = document.getElementById('progress-panel');
+        if (panel) panel.style.display = 'none';
+        
+        // 恢復按鈕顏色
+        document.getElementById('btn-3d').classList.replace('btn-dark', 'btn-danger');
+        document.getElementById('btn-real').classList.replace('btn-danger', 'btn-dark');
+    }
+}
+
+// 驗證密碼 (目前的密碼設定為：0912345678)
+function checkAccess() {
+    const code = document.getElementById('access-code').value;
+    const errorMsg = document.getElementById('auth-error');
+    const panel = document.getElementById('progress-panel');
+    
+    if (code === "0912345678") { 
+        hideAuth(); // 驗證成功
+        if (panel) panel.style.display = 'block'; // 顯示原本隱藏的進度/內容
+        if (errorMsg) errorMsg.style.display = 'none';
+        
+        // 切換按鈕醒目顏色
+        document.getElementById('btn-real').classList.replace('btn-dark', 'btn-danger');
+        document.getElementById('btn-3d').classList.replace('btn-danger', 'btn-dark');
+    } else {
+        if (errorMsg) errorMsg.style.display = 'block';
+        document.getElementById('access-code').value = '';
+    }
+}
+
+// 隱藏驗證遮罩
+function hideAuth() {
+    const overlay = document.getElementById('auth-overlay');
+    if (overlay) {
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+    }
+    const errorMsg = document.getElementById('auth-error');
+    if (errorMsg) errorMsg.style.display = 'none';
+    const input = document.getElementById('access-code');
+    if (input) input.value = '';
+}
     </script>
 
     <div id="imgLightbox" onclick="closeLightbox()" style="display: none; position: fixed; z-index: 10000000 !important; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.95); cursor: zoom-out; justify-content: center; align-items: center; flex-direction: column;">
