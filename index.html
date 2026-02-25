@@ -298,7 +298,11 @@ body, html {
 /* =========================================
    11. 粉絲團區塊 (Social Section) - 完全保留
    ========================================= */
-.social-section { background-color: var(--brand-red); color: white !important; padding: 60px 0; text-align: center; margin-top: 80px; }
+/* 1. 確保酒紅色正確套用 */
+.social-section {
+    background-color: #722F37 !important; /* 強制使用你的品牌酒紅 */
+    width: 100%;
+}
 .social-section h3 { font-weight: 900; margin-bottom: 30px; color: white; }
 .social-icons a { font-size: 3rem; margin: 0 20px; color: white; transition: 0.3s; display: inline-block; }
 .social-icons a:hover { transform: scale(1.1); opacity: 0.8; }
@@ -526,18 +530,18 @@ body, html {
 <main class="main-wrapper py-5">
     <div class="container" style="max-width: 1400px;">
         
-        <section class="social-section mb-5" style="background: #1a1a1a; color: white; text-align: center; border-radius: 15px; padding: 40px 20px;">
-            <div class="container">
-                <h3 class="fw-bold mb-4">加入粉絲團</h3>
-                <div class="social-icons d-flex justify-content-center gap-4">
-                    <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #06C755; font-size: 2.5rem;"><i class="bi bi-line"></i></a>
-                    <a href="#" style="color: #1877F2; font-size: 2.5rem;"><i class="bi bi-facebook"></i></a>
-                    <a href="#" style="color: #E4405F; font-size: 2.5rem;"><i class="bi bi-instagram"></i></a>
-                    <a href="#" style="color: #ffc107; font-size: 2.5rem;"><i class="bi bi-chat-dots"></i></a> 
-                </div>
-                <p class="mt-4 mb-0" style="opacity: 0.6; font-size: 0.9rem;">&copy; 2025 八毅活動企劃 版權所有</p>
-            </div>
-        </section>
+        <section class="social-section" style="background: var(--brand-red); color: white; text-align: center; padding: 3rem 0;">
+    <div class="container">
+        <h3 class="fw-bold mb-4">加入粉絲團</h3>
+        <div class="social-icons d-flex justify-content-center gap-4">
+            <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #06C755; font-size: 2.5rem;"><i class="bi bi-line"></i></a>
+            <a href="#" style="color: #1877F2; font-size: 2.5rem;"><i class="bi bi-facebook"></i></a>
+            <a href="#" style="color: #E4405F; font-size: 2.5rem;"><i class="bi bi-instagram"></i></a>
+            <a href="#" style="color: #ffc107; font-size: 2.5rem;"><i class="bi bi-chat-dots"></i></a> 
+        </div>
+        <p class="mt-4 mb-0" style="opacity: 0.8; font-size: 0.9rem;">&copy; 2025 八毅活動企劃 版權所有</p>
+    </div>
+</section>
 
         <div class="d-grid" style="grid-template-columns: 1fr 450px; gap: 80px; align-items: start;">
             <div class="service-section"> ... </div>
