@@ -296,18 +296,6 @@ body, html {
 .img-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); color: white; padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.2); }
 
 /* =========================================
-   11. 粉絲團區塊 (Social Section) - 完全保留
-   ========================================= */
-/* 1. 確保酒紅色正確套用 */
-.social-section {
-    background-color: #722F37 !important; /* 強制使用你的品牌酒紅 */
-    width: 100%;
-}
-.social-section h3 { font-weight: 900; margin-bottom: 30px; color: white; }
-.social-icons a { font-size: 3rem; margin: 0 20px; color: white; transition: 0.3s; display: inline-block; }
-.social-icons a:hover { transform: scale(1.1); opacity: 0.8; }
-
-/* =========================================
    12. RWD 手機版修正 - 完全保留
    ========================================= */
 @media (max-width: 768px) {
@@ -527,19 +515,30 @@ body, html {
     </div>
 </main>
     
-<main class="main-wrapper py-5">
-    <div class="container" style="max-width: 1400px;">
+<section class="social-section" style="background-color: #722F37 !important; color: #ffffff !important; text-align: center; padding: 3.5rem 0; width: 100%; margin-bottom: 50px; display: block;">
+    <div class="container-fluid">
+        <h3 style="color: #ffffff !important; font-size: 2.2rem !important; font-weight: 900 !important; margin-bottom: 30px !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+            加入粉絲團
+        </h3>
         
-        <section class="social-section" style="background: var(--brand-red); color: white; text-align: center; padding: 3rem 0;">
-    <div class="container">
-        <h3 class="fw-bold mb-4">加入粉絲團</h3>
-        <div class="social-icons d-flex justify-content-center gap-4">
-            <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #06C755; font-size: 2.5rem;"><i class="bi bi-line"></i></a>
-            <a href="#" style="color: #1877F2; font-size: 2.5rem;"><i class="bi bi-facebook"></i></a>
-            <a href="#" style="color: #E4405F; font-size: 2.5rem;"><i class="bi bi-instagram"></i></a>
-            <a href="#" style="color: #ffc107; font-size: 2.5rem;"><i class="bi bi-chat-dots"></i></a> 
+        <div class="social-icons d-flex justify-content-center align-items-center" style="gap: 35px;">
+            <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
+                <i class="bi bi-line"></i>
+            </a>
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
+                <i class="bi bi-facebook"></i>
+            </a>
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
+                <i class="bi bi-instagram"></i>
+            </a>
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
+                <i class="bi bi-chat-dots"></i>
+            </a> 
         </div>
-        <p class="mt-4 mb-0" style="opacity: 0.8; font-size: 0.9rem;">&copy; 2025 八毅活動企劃 版權所有</p>
+        
+        <p style="margin-top: 40px; opacity: 0.8; font-size: 1rem; color: #ffffff !important;">
+            &copy; 2025 八毅活動企劃 版權所有
+        </p>
     </div>
 </section>
 
