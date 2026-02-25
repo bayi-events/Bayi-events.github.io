@@ -781,13 +781,6 @@ window.addEventListener('load', function() {
         console.warn("⚠️ 相簿加載異常:", e);
     }
 
-    // 2. 處理 Loading Screen 退場
-   /* =========================================
-   3. 核心載入與解鎖區
-   ========================================= */
-window.addEventListener('load', function() {
-    // ... 前面的載入相簿代碼維持不變 ...
-
     const loader = document.getElementById('loading-screen');
     if (loader) {
         // 第一個 setTimeout 控制「停留多久」才開始消失
