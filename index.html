@@ -9,16 +9,12 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
     <style>
-/* =========================================
-   1. 全域設定 (Global & Variables)
-   ========================================= */
+
 :root { 
-    --brand-red: #722F37; /* 品牌酒紅 */
+    --brand-red: #722F37; 
     --bg-light: #f8f9fa; 
     --text-dark: #333;
 }
-
-/* 👉 這裡就是唯一的修改點：把這行從 :root 裡面搬出來！ */
 body.is-loading { overflow: hidden !important; }
 
 body, html { 
@@ -28,13 +24,11 @@ body, html {
     width: 100%;
 }
 
-/* 通用工具類 */
+
 .object-fit-cover { object-fit: cover; }
 .mb-5 { margin-bottom: 3.5rem !important; }
 
-/* =========================================
-   2. 導覽列 (Navbar)
-   ========================================= */
+
 .navbar { 
     background-color: var(--brand-red) !important; 
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
@@ -50,9 +44,7 @@ body, html {
     font-weight: 500; 
 }
 
-/* =========================================
-   3. Loading 載入畫面 (修正重複定義與補回動畫)
-   ========================================= */
+
 #loading-screen {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: #ffffff; z-index: 9999; display: flex;
@@ -70,7 +62,7 @@ body, html {
 }
 
 .logo-box svg {
-    width: 220px !important; /* 強制寬度 */
+    width: 220px !important;
     height: auto !important;
     max-width: 100%;
     display: block;
@@ -84,7 +76,7 @@ body, html {
     margin-top: 20px; 
     letter-spacing: 4px; 
     opacity: 0; 
-    animation: fadeIn 1s 0.6s forwards; /* 延遲 0.6s 讓文字接在 Logo 後面淡入 */
+    animation: fadeIn 1s 0.6s forwards;
     padding-left: 15px; 
     text-align: center;
     width: 100%;
@@ -99,9 +91,7 @@ body, html {
     to { opacity: 1; } 
 }
 
-/* =========================================
-   4. Hero 輪播區 (Hero Carousel)
-   ========================================= */
+
 #heroCarousel {
     height: 60vh;
     min-height: 400px;
@@ -125,16 +115,14 @@ body, html {
     text-align: center; z-index: 10; width: 80%;
 }
 
-/* =========================================
-   5. 通用容器與版面 (Layout & Main Wrapper)
-   ========================================= */
+
 .main-wrapper {
     width: 100% !important;
     max-width: 100vw;
     margin: 0 auto !important;
     padding-left: 15px; 
     padding-right: 15px;
-    box-sizing: border-box; /* 👈 務必加入這一行，確保 Padding 不會撐開寬度 */
+    box-sizing: border-box; 
 }
 
 .section-title { 
@@ -155,12 +143,10 @@ body, html {
     }
 }
 
-/* =========================================
-   6. 服務卡片 (Service Cards)
-   ========================================= */
+
 .container {
-    display: flex; /* 👈 確保有宣告 display */
-    flex-wrap: wrap; /* 👈 務必加入 wrap，讓卡片在手機版能自動換行 */
+    display: flex; 
+    flex-wrap: wrap; 
     justify-content: center;
     align-items: flex-start;
     gap: 20px;
@@ -188,9 +174,7 @@ body, html {
 .service-card-body h5 { color: var(--brand-red); font-weight: bold; margin-bottom: 12px; font-size: 1.2rem; }
 .service-card-body p { font-size: 0.95rem; color: #666; line-height: 1.6; margin: 0; }
 
-/* =========================================
-   7. 堆疊卡片特效 (Stack Cards)
-   ========================================= */
+
 .stack-container { display: flex; flex-direction: column; width: 100%; }
 
 .stack-card-item { 
@@ -233,7 +217,7 @@ body, html {
         max-width: 100% !important;
     }
 }
-/* 這裡改成 -final 才能對應你的 HTML */
+
 .glow-card-final {
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     border: 1px solid rgba(0,0,0,0.05) !important;
@@ -241,14 +225,12 @@ body, html {
 
 .glow-card-final:hover {
     transform: translateY(-8px);
-    /* 調整透明度從 0.25 -> 0.7，讓紅光更明顯 */
+ 
     box-shadow: 0 0 25px rgba(186, 45, 48, 0.7) !important; 
     border-color: rgba(186, 45, 48, 0.5) !important;
 }
 
-/* =========================================
-   9. 相簿與相片標籤 (Album & Tags)
-   ========================================= */
+
 .album-section { padding: 60px 0; }
 .album-card {
     background: white; border: 1px solid #e0e0e0; transition: all 0.3s ease;
@@ -269,9 +251,7 @@ body, html {
     border-radius: 6px; z-index: 5; backdrop-filter: blur(4px);
 }
 
-/* =========================================
-   10. 燈箱 (Lightbox) - 完全保留原本設定
-   ========================================= */
+
 #imgLightbox {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.95); display: none;
@@ -288,16 +268,14 @@ body, html {
 .lightbox-info-side h2 { font-size: 1.8rem !important; font-weight: 700; color: #ff4d4d; margin-bottom: 15px; }
 .info-body p { font-size: 1.35rem !important; line-height: 1.85 !important; color: #f0f0f0; white-space: pre-wrap; }
 
-/* 燈箱按鈕與計數器 */
+
 .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: white; border: none; width: 60px; height: 60px; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); z-index: 10; }
 .nav-btn:hover { background: rgba(220, 53, 69, 0.8); }
 .nav-btn.prev { left: 20px; }
 .nav-btn.next { right: 20px; }
 .img-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); color: white; padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.2); }
 
-/* =========================================
-   12. RWD 手機版修正 - 完全保留
-   ========================================= */
+
 @media (max-width: 768px) {
     .lightbox-content { flex-direction: column !important; width: 100vw !important; height: 100vh !important; border-radius: 0 !important; overflow-y: auto !important; }
     .lightbox-image-side { height: 50vh !important; width: 100% !important; }
@@ -306,8 +284,8 @@ body, html {
 }
         #main-viewer {
     width: 100%;
-    height: 400px; /* 👈 給它一個明確高度 */
-    background-color: #eee; /* 載入前有個底色比較專業 */
+    height: 400px; 
+    background-color: 
     display: block;
 }
     </style>
@@ -624,9 +602,7 @@ body, html {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-/* =========================================
-   1. 資料定義區 (Abel X Li 的專案資料)
-   ========================================= */
+
 var modelData = {
     'table': { src: 'https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb', title: '全白會議桌', specs: '<p><strong>尺寸：</strong> 180 x 60 x 75 cm</p><p><strong>材質：</strong> 木質桌面 / 鋼製腳架</p>' },
     'chair_black': { src: 'https://neyoli770817-dev.github.io/3D-Model/Chair_textured_mesh_glb.glb', title: '黑金剛摺疊椅', specs: '<p><strong>尺寸：</strong> 45 x 45 x 80 cm</p><p><strong>材質：</strong> 強化塑鋼 / 黑鐵烤漆</p>' },
@@ -681,9 +657,7 @@ balloonUrls.forEach((url, index) => {
     photos_Decor.push(id);
 });
 
-/* =========================================
-   2. 功能函式區
-   ========================================= */
+
 let currentProject = null, currentImgIdx = 0;
 
 function switchModel(type) {
@@ -764,13 +738,11 @@ function closeLightbox() {
     document.body.style.overflow = 'auto'; 
 }
 
-/* =========================================
-   3. 核心載入與解鎖區 (整合動畫與滾動解鎖)
-   ========================================= */
+
 window.addEventListener('load', function() {
-    // 1. 自動載入所有相簿內容
+   
     try {
-        // 確保 photos_Tables 等變數已經在上面定義好了
+        
         loadGallery('gallery-1', photos_Tables);
         loadGallery('gallery-2', photos_Truss);
         loadGallery('gallery-3', photos_Tent);
@@ -783,9 +755,9 @@ window.addEventListener('load', function() {
 
     const loader = document.getElementById('loading-screen');
     if (loader) {
-        // 第一個 setTimeout 控制「停留多久」才開始消失
+      
         setTimeout(() => {
-            loader.style.opacity = '0'; // 開始淡出
+            loader.style.opacity = '0'; 
             
             setTimeout(() => {
                 loader.style.display = 'none'; 
@@ -793,9 +765,9 @@ window.addEventListener('load', function() {
                 document.body.classList.remove('is-loading');
                 document.body.style.overflow = 'auto'; 
                 console.log("🚀 這次 Logo 有跑完才開門！");
-            }, 850); // 這裡是淡出動畫的時間
+            }, 850); 
             
-        }, 2500); // 👈 把這裡的 500 改成 2500 (也就是 2.5 秒)
+        }, 2500); 
     }
 });
 </script>
