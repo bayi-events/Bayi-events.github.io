@@ -311,7 +311,21 @@ body, html {
     .lightbox-content { flex-direction: column !important; width: 100vw !important; height: 100vh !important; border-radius: 0 !important; overflow-y: auto !important; }
     .lightbox-image-side { height: 50vh !important; width: 100% !important; }
     .lightbox-info-side { flex: 1 !important; width: 100% !important; padding: 30px 20px !important; border-left: none !important; }
-    .close-btn { position: fixed !important; top: 15px !important; right: 15px !important; z-index: 99999 !important; background: rgba(0, 0, 0, 0.6) !important; }
+    .close-btn { 
+        position: fixed !important; 
+        top: 15px !important; 
+        right: 15px !important; 
+        z-index: 99999 !important; 
+        background: rgba(0, 0, 0, 0.6) !important;
+        color: #ffffff !important;      /* 加入：白色文字 */
+        font-size: 30px !important;    /* 加入：字體放大 */
+        width: 40px !important;        /* 加入：固定寬度 */
+        height: 40px !important;       /* 加入：固定高度 */
+        display: flex !important;      /* 加入：用彈性盒子排版 */
+        align-items: center;           /* 加入：垂直置中 */
+        justify-content: center;       /* 加入：水平置中 */
+        border-radius: 50%;            /* 加入：變成圓形按鈕 */
+    }
 }
         #main-viewer {
     width: 100%;
