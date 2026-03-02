@@ -562,15 +562,6 @@ body, html {
         </p>
     </div>
 </section>
-
-        <div class="d-grid" style="grid-template-columns: 1fr 450px; gap: 80px; align-items: start;">
-            <div class="service-section"> ... </div>
-            <div class="control-section"> ... </div>
-        </div>
-
-    </div>
-</main>
-    
 <div class="modal fade" id="equipmentModal" tabindex="-1">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content shadow-lg">
@@ -580,7 +571,7 @@ body, html {
             </div>
             <div class="modal-body p-0">
                 <div class="row g-0">
-                    <div class="col-md-3 modal-sidebar">
+                    <div class="col-md-3 modal-sidebar border-end">
                         <div class="list-group list-group-flush" id="model-list">
                             <button class="list-group-item list-group-item-action active" onclick="switchModel('table', this)">全白會議桌</button>
                             <button class="list-group-item list-group-item-action" onclick="switchModel('chair_black', this)">黑金剛摺疊椅</button>
@@ -588,13 +579,29 @@ body, html {
                             <button class="list-group-item list-group-item-action" onclick="switchModel('portfolio', this)">查看實績</button>
                         </div>
                     </div>
-                    <div class="col-md-6 bg-light position-relative">
-                        <model-viewer id="main-viewer" src="https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb" auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 500px; outline: none;">
-                        </model-viewer>
-                        <div class="position-absolute bottom-0 w-100 text-center text-muted small pb-2">
+
+                    <div class="col-md-6 bg-light position-relative" style="height: 500px;">
+                        <model-viewer id="main-viewer" src="https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb" auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 100%; outline: none;"></model-viewer>
+                        
+                        <div id="album-container" style="display: none; height: 100%; overflow-y: auto; padding: 20px;">
+                            <h4 class="mb-3">活動實績展示</h4>
+                            <div class="row row-cols-1 g-3">
+                                <div class="col">
+                                    <div class="card h-100 shadow-sm">
+                                        <div class="card-body">
+                                            <h5 class="card-title">活動名稱</h5>
+                                            <p class="card-text">簡單描述活動內容...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="hint-text" class="position-absolute bottom-0 w-100 text-center text-muted small pb-2">
                             <i class="bi bi-hand-index-thumb"></i> 可拖曳旋轉 / 滾輪縮放
                         </div>
                     </div>
+
                     <div class="col-md-3 p-4 bg-white">
                         <h4 id="model-title" class="fw-bold" style="color: #722F37;">全白會議桌</h4>
                         <hr>
@@ -608,7 +615,6 @@ body, html {
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="albumModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content" style="border-radius: 15px; border: none; overflow: hidden; background-color: #fff;">
@@ -946,51 +952,46 @@ balloonUrls.forEach((url, index) => {
 
 let currentProject = null, currentImgIdx = 0;
 
-function switchModel(type) {
-    // 1. 處理特殊情況：實績展示 (跳過 GLB 邏輯)
-    if (type === 'portfolio') {
-        document.getElementById('model-container').style.display = 'none';
-        document.getElementById('album-container').style.display = 'block';
-        
-        // 同步按鈕樣式
-        document.getElementById('btn-3d').classList.replace('btn-danger', 'btn-dark');
-        document.getElementById('btn-real').classList.replace('btn-dark', 'btn-danger');
-        return; 
-    }
+function switchModel(modelType, element) {
+    // 1. 更新選單 active 狀態
+    document.querySelectorAll('#model-list button').forEach(btn => btn.classList.remove('active'));
+    element.classList.add('active');
 
-    // 2. 原有的 3D 模型邏輯
-    const data = modelData[type];
-    if (!data) return;
-
-    // 確保回到 3D 模式時正確顯示容器
-    document.getElementById('model-container').style.display = 'block';
-    document.getElementById('album-container').style.display = 'none';
-
+    // 2. 獲取 DOM 元素
     const viewer = document.getElementById('main-viewer');
-    if(viewer) viewer.src = data.src;
-    
-    document.getElementById('model-title').innerText = data.title;
-    document.getElementById('model-specs').innerHTML = data.specs; 
-    
-    // 同步按鈕樣式
-    document.getElementById('btn-3d').classList.replace('btn-dark', 'btn-danger');
-    document.getElementById('btn-real').classList.replace('btn-danger', 'btn-dark');
-}
-function loadGallery(containerId, list) {
-    const container = document.getElementById(containerId);
-    if (!container) return;
-    container.innerHTML = list.map(id => {
-        const item = photoLibrary[id];
-        return `
-            <div class="col-md-4 col-lg-3 mb-4" onclick="openProjectGallery('${id}')">
-                <div class="album-card">
-                    <div class="album-img-wrapper">
-                        <span class="photo-tag">${item.tag}</span>
-                        <img src="${item.images[0]}" class="album-img" loading="lazy">
-                    </div>
-                </div>
-            </div>`;
-    }).join('');
+    const album = document.getElementById('album-container');
+    const hint = document.getElementById('hint-text');
+    const title = document.getElementById('model-title');
+    const specs = document.getElementById('model-specs');
+
+    // 3. 根據選項切換顯示
+    if (modelType === 'portfolio') {
+        viewer.style.display = 'none';
+        hint.style.display = 'none';
+        album.style.display = 'block';
+        title.innerText = '活動實績展示';
+        specs.innerHTML = '<p>精選過往案例，歡迎參考我們的佈置風格。</p>';
+    } else {
+        viewer.style.display = 'block';
+        hint.style.display = 'block';
+        album.style.display = 'none';
+
+        // 這裡填入你的模型邏輯
+        if (modelType === 'table') {
+            viewer.src = 'https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb';
+            title.innerText = '全白會議桌';
+            specs.innerHTML = '<p><strong>尺寸：</strong> 180 x 60 x 75 cm</p><p><strong>材質：</strong> 木質桌面 / 鋼製腳架</p>';
+        } else if (modelType === 'chair_black') {
+            // 記得換成你的檔案路徑
+            viewer.src = 'path/to/chair_black.glb';
+            title.innerText = '黑金剛摺疊椅';
+            specs.innerHTML = '<p>高強度鋼材，穩定耐用。</p>';
+        } else if (modelType === 'chair_snack') {
+            viewer.src = 'path/to/chair_snack.glb';
+            title.innerText = '點心椅';
+            specs.innerHTML = '<p>輕便舒適，適合各類茶點區。</p>';
+        }
+    }
 }
 
 function openProjectGallery(projectId) {
