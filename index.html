@@ -585,6 +585,7 @@ body, html {
                             <button class="list-group-item list-group-item-action active" onclick="switchModel('table', this)">全白會議桌</button>
                             <button class="list-group-item list-group-item-action" onclick="switchModel('chair_black', this)">黑金剛摺疊椅</button>
                             <button class="list-group-item list-group-item-action" onclick="switchModel('chair_snack', this)">點心椅</button>
+                            <button class="list-group-item list-group-item-action" onclick="switchModel('portfolio', this)">查看實績</button>
                         </div>
                     </div>
                     <div class="col-md-6 bg-light position-relative">
@@ -946,18 +947,35 @@ balloonUrls.forEach((url, index) => {
 let currentProject = null, currentImgIdx = 0;
 
 function switchModel(type) {
+    // 1. 處理特殊情況：實績展示 (跳過 GLB 邏輯)
+    if (type === 'portfolio') {
+        document.getElementById('model-container').style.display = 'none';
+        document.getElementById('album-container').style.display = 'block';
+        
+        // 同步按鈕樣式
+        document.getElementById('btn-3d').classList.replace('btn-danger', 'btn-dark');
+        document.getElementById('btn-real').classList.replace('btn-dark', 'btn-danger');
+        return; 
+    }
+
+    // 2. 原有的 3D 模型邏輯
     const data = modelData[type];
     if (!data) return;
-    const viewer = document.getElementById('main-viewer');
-    if(viewer) viewer.src = data.src;
-    document.getElementById('model-title').innerText = data.title;
-    document.getElementById('model-specs').innerHTML = data.specs; 
-    document.getElementById('btn-3d').classList.replace('btn-dark', 'btn-danger');
-    document.getElementById('btn-real').classList.replace('btn-danger', 'btn-dark');
+
+    // 確保回到 3D 模式時正確顯示容器
     document.getElementById('model-container').style.display = 'block';
     document.getElementById('album-container').style.display = 'none';
-}
 
+    const viewer = document.getElementById('main-viewer');
+    if(viewer) viewer.src = data.src;
+    
+    document.getElementById('model-title').innerText = data.title;
+    document.getElementById('model-specs').innerHTML = data.specs; 
+    
+    // 同步按鈕樣式
+    document.getElementById('btn-3d').classList.replace('btn-dark', 'btn-danger');
+    document.getElementById('btn-real').classList.replace('btn-danger', 'btn-dark');
+}
 function loadGallery(containerId, list) {
     const container = document.getElementById(containerId);
     if (!container) return;
