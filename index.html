@@ -110,6 +110,13 @@ body, html {
     background-size: cover; background-position: center; background-repeat: no-repeat;
     opacity: 0.7; z-index: 1;
 }
+.hero-subtitle {
+    font-size: 1.5rem !important;      /* 強制放大字體 */
+    font-weight: 700;                  /* 加粗，讓字更有份量 */
+    color: #ffffff !important;         /* 確保是白色 */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8); /* 加上陰影，這是關鍵，讓字在背景上跳出來 */
+    margin-top: 15px;
+}
 
 .carousel-caption { z-index: 10; bottom: 25%; }
 .carousel-caption-custom {
@@ -329,6 +336,7 @@ body, html {
         border-radius: 50%;            /* 加入：變成圓形按鈕 */
     }
 }
+       
         #main-viewer {
     width: 100%;
     height: 400px; 
@@ -436,7 +444,7 @@ body, html {
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/fLFnWQ5b/109915.jpg');"></div>
             <div class="carousel-caption">
                 <h1 class="display-4 fw-bold text-white">專業Truss結構</h1>
-                <p class="lead">造型Truss、背板Truss、牌樓</p>
+                <p class="hero-subtitle">造型Truss、背板Truss、牌樓</p>
             </div>
         </div>
         <div class="carousel-item">
