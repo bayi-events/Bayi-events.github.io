@@ -6,31 +6,35 @@
     <title>企業合作 - 八毅硬體結構</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* 酒紅色主題設定 */
+        /* 統一的深酒紅配色 */
+        :root {
+            --deep-wine-red: #66001a; /* 這是比原本更深、更有質感的酒紅色 */
+        }
+        
+        /* 導覽列與 Header 顏色統一 */
+        .navbar-custom {
+            background-color: var(--deep-wine-red);
+        }
         .wine-header {
-            background-color: #800020; 
+            background-color: var(--deep-wine-red);
             color: #ffffff;
-            padding: 60px 20px; /* 增加左右邊距避免貼邊 */
+            padding: 60px 20px;
         }
-        /* 手機版標題優化 */
-        @media (max-width: 768px) {
-            .wine-header h1 { font-size: 1.8rem; }
-            .wine-header p { font-size: 1rem; }
-        }
-        .content-section { padding: 40px 15px; }
+
+        /* 內容區塊設定 */
+        .content-section { padding: 50px 0; }
         .contact-box {
             background-color: #f8f9fa;
-            border-left: 5px solid #800020;
+            border-left: 5px solid var(--deep-wine-red);
             padding: 20px;
             margin-top: 30px;
-            word-wrap: break-word; /* 強制文字換行 */
         }
     </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <div class="container">
         <a class="navbar-brand" href="index.html">八毅硬體結構</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -55,25 +59,18 @@
     <div class="row justify-content-center">
         <div class="col-lg-8">
             <p class="fs-5 mb-5 text-secondary">
-                專業的活動規劃，需要同樣專業的硬體後盾。八毅（Bayi）深耕展覽活動界，專注於各類商務活動、大型展覽及公關造勢的結構搭建。我們不僅僅是設備供應商，更是您活動現場的技術夥伴。
+                專業的活動規劃，需要同樣專業的硬體後盾。八毅（Bayi）深耕北北基桃地區，專注於各類商務活動、大型展覽及公關造勢的結構搭建。我們不僅僅是設備供應商，更是您活動現場的技術夥伴。
             </p>
-
             <h2 class="mb-4">為什麼選擇與我們長期合作？</h2>
             <ul class="list-unstyled mb-5">
-                <li class="mb-3"><strong>在地化快速響應：</strong> 立足蘆洲，合作廠商遍及全台，確保設備進退場精準到位。</li>
+                <li class="mb-3"><strong>在地化快速響應：</strong> 立足蘆洲，輻射北北基桃，確保設備進退場精準到位。</li>
                 <li class="mb-3"><strong>高規格硬體品質：</strong> 定期維護 Truss、帳篷、舞台等設備，確保結構安全無虞。</li>
                 <li class="mb-3"><strong>整合性執行能力：</strong> 從場地勘查、動線規劃到硬體佈建，大幅降低溝通成本。</li>
-                <li class="mb-3"><strong>專業搭建團隊：</strong> 擁有豐富實務經驗，隨時應對現場挑戰，確保活動落地。</li>
             </ul>
-
-            <h2 class="mb-3">合作模式</h2>
-            <p class="mb-5">我們歡迎各類型的合作機會，包括長期供應商合約、單場次協力配合，以及各類專業硬體設備的調度支援。</p>
-
             <div class="contact-box">
                 <h3 class="h4">立即洽詢合作方案</h3>
-                <p>歡迎各活動單位、公關公司來電或來信討論，讓我們成為您下一次成功活動的最佳助攻。</p>
-                <p class="mb-1"><strong>Email:</strong> <a href="mailto:o0ending0o1592@gmail.com" class="text-decoration-none" style="color: #800020;">o0ending0o1592@gmail.com</a></p>
-                <p><strong>Tel:</strong> <a href="tel:0222882321" class="text-decoration-none" style="color: #800020;">(02)2288-2321</a></p>
+                <p>Email: <a href="mailto:o0ending0o1592@gmail.com" class="text-decoration-none" style="color: #66001a;">o0ending0o1592@gmail.com</a></p>
+                <p>Tel: <a href="tel:0222882321" class="text-decoration-none" style="color: #66001a;">(02)2288-2321</a></p>
             </div>
         </div>
     </div>
@@ -82,11 +79,7 @@
 <footer class="bg-dark text-white py-4 mt-5">
     <div class="container text-center">
         <p class="mb-2">&copy; 2026 八毅硬體結構. All rights reserved.</p>
-        <p class="mb-2">主要服務區域：雙北在地深耕 | 蘆洲總部</p>
-        <p class="mb-0">
-            聯絡電話：<a href="tel:0222882321" class="text-white text-decoration-none">(02)2288-2321</a> | 
-            信箱：<a href="mailto:o0ending0o1592@gmail.com" class="text-white text-decoration-none">o0ending0o1592@gmail.com</a>
-        </p>
+        <p class="mb-2">服務區域：北北基桃在地深耕 | 蘆洲據點</p>
     </div>
 </footer>
 
