@@ -471,12 +471,21 @@ body, html {
                 <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">專業服務項目</h3>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-                        <div class="card h-100 border-0 shadow-sm glow-card-final" data-bs-toggle="modal" data-bs-target="#equipmentModal" style="cursor: pointer;">
-                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
-                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
-                        </div>
-                    </div>
-                    <div class="col">
+    <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="updateDisplay('table')" style="cursor: pointer;">
+        <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
+        <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
+    </div>
+</div>="col">
+                    <div id="display-panel" class="mt-4 p-4 border rounded shadow-sm bg-white" style="display: none;">
+    <div class="row align-items-center">
+        <div class="col-md-5"><img id="display-img" src="" class="img-fluid rounded" style="width:100%; object-fit:cover;"></div>
+        <div class="col-md-7">
+            <h3 id="display-title" class="fw-bold" style="color: #BA2D30;"></h3>
+            <hr>
+            <div id="display-specs" class="text-secondary"></div>
+        </div>
+    </div>
+</div>
                         <div class="card h-100 border-0 shadow-sm glow-card-final" data-bs-toggle="modal" data-bs-target="#albumModal" onclick="setTimeout(()=>{ document.getElementById('tab-2').click(); }, 200)" style="cursor: pointer;">
                             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="card-img-top object-fit-cover"></div>
                             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">Truss 結構</h6></div>
@@ -967,6 +976,27 @@ function switchModel(type) {
     document.getElementById('btn-real').classList.replace('btn-danger', 'btn-dark');
     document.getElementById('model-container').style.display = 'block';
     document.getElementById('album-container').style.display = 'none';
+}
+    const serviceData = {
+    'table': { 
+        title: '桌椅租賃規格', 
+        img: 'https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg', 
+        specs: '<ul><li>會議桌：180x60cm (標準規格)</li><li>折疊椅：專業耐重款</li><li>適用場景：記者會、研討會、活動宴席</li></ul>' 
+    }
+};
+
+// --- 新增：顯示控制函式 ---
+function updateDisplay(type) {
+    const data = serviceData[type];
+    const panel = document.getElementById('display-panel');
+    if (!data || !panel) return;
+
+    document.getElementById('display-img').src = data.img;
+    document.getElementById('display-title').innerText = data.title;
+    document.getElementById('display-specs').innerHTML = data.specs;
+
+    panel.style.display = 'block';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function loadGallery(containerId, list) {
