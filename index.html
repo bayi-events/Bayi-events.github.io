@@ -617,6 +617,80 @@ body, html {
     
 <script>
 
+    // 1. 定義所有產品資料
+const productLibrary = {
+    'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
+        { name: '會議桌', img: 'https://via.placeholder.com/300', specs: '尺寸：180x60x75cm<br>材質：木質桌面/鋼製腳架' },
+        { name: '黑金剛摺疊椅', img: 'https://via.placeholder.com/300', specs: '尺寸：45x45x80cm<br>材質：強化塑鋼/黑鐵烤漆' },
+        { name: '點心椅', img: 'https://via.placeholder.com/300', specs: '尺寸：50x52x85cm<br>材質：透氣網布/鋁合金' }
+    ]},
+    'truss': { title: 'Truss 結構', tab: 'tab-2', items: [
+        { name: '造型Truss', img: 'https://via.placeholder.com/300', specs: '規格說明：客製化造型，結構穩固。' },
+        { name: '牌樓Truss', img: 'https://via.placeholder.com/300', specs: '規格說明：活動入口門面專用。' },
+        { name: '背板Truss', img: 'https://via.placeholder.com/300', specs: '規格說明：拍照背板/舞台背景專用。' }
+    ]},
+    'tents': { title: '帳篷設備', tab: 'tab-3', items: [
+        { name: '圓拱帳', img: 'https://via.placeholder.com/300', specs: '規格：半圓形結構，美觀大方。' },
+        { name: '宮廷帳', img: 'https://via.placeholder.com/300', specs: '規格：尖頂設計，適合戶外婚禮。' },
+        { name: '屋型帳', img: 'https://via.placeholder.com/300', specs: '規格：標準屋型，空間寬敞。' },
+        { name: '阿里山帳', img: 'https://via.placeholder.com/300', specs: '規格：耐候強，適合大面積遮陽。' }
+    ]},
+    'stage': { title: '舞台架設', tab: 'tab-4', items: [
+        { name: '3*6木質舞台板', img: 'https://via.placeholder.com/300', specs: '規格：耐重木質板材。' },
+        { name: '6*6木質舞台板', img: 'https://via.placeholder.com/300', specs: '規格：大型活動首選。' },
+        { name: '一步梯', img: 'https://via.placeholder.com/300', specs: '規格：輕便鋁製。' },
+        { name: '三步梯', img: 'https://via.placeholder.com/300', specs: '規格：安全扶手設計。' }
+    ]},
+    'others': { title: '活動周邊配件', tab: 'tab-5', items: [
+        { name: '紅絨柱', img: 'https://via.placeholder.com/300', specs: '規格：金色/銀色立柱。' },
+        { name: '三角錐', img: 'https://via.placeholder.com/300', specs: '規格：高可見度反光條。' },
+        { name: '指示立牌', img: 'https://via.placeholder.com/300', specs: '規格：A3/A4 規格。' },
+        { name: '垃圾架', img: 'https://via.placeholder.com/300', specs: '規格：工業級支架。' },
+        { name: '工業立扇', img: 'https://via.placeholder.com/300', specs: '規格：大風量，三段風速。' }
+    ]}
+};
+
+// 2. 開啟彈窗的函式
+let currentTabId = ''; // 用來儲存當前要跳轉的相簿 ID
+
+function openProductModal(catKey) {
+    const data = productLibrary[catKey];
+    const listEl = document.getElementById('prod-list');
+    
+    document.getElementById('prod-modal-title').innerText = data.title;
+    currentTabId = data.tab; // 記住相簿 ID
+    listEl.innerHTML = '';
+
+    // 生成選單
+    data.items.forEach((item, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'list-group-item list-group-item-action';
+        btn.innerText = item.name;
+        btn.onclick = () => {
+            document.getElementById('prod-img').src = item.img;
+            document.getElementById('prod-name').innerText = item.name;
+            document.getElementById('prod-specs').innerHTML = item.specs;
+            document.querySelectorAll('#prod-list .list-group-item').forEach(el => el.classList.remove('active'));
+            btn.classList.add('active');
+        };
+        listEl.appendChild(btn);
+        if(index === 0) btn.click(); // 預設點選第一個
+    });
+
+    new bootstrap.Modal(document.getElementById('productModal')).show();
+}
+
+// 3. 點擊「查看相簿」的特殊處理
+function closeProductAndOpenAlbum() {
+    const modalEl = document.getElementById('productModal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide(); // 關閉產品視窗
+    
+    // 呼叫原本相簿的邏輯
+    setTimeout(() => {
+        openAlbumTab(currentTabId);
+    }, 300);
+}
 
 let photos_Tables = [
     "mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "Y23YP2XZ", "153w1x21", "GhJmRp8C"
@@ -1033,5 +1107,32 @@ window.addEventListener('load', function() {
     }
 });
     </script>
+    
+    <div class="modal fade" id="categoryModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-category-title"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group" id="item-list"></div>
+                    </div>
+                    <div class="col-md-8">
+                        <img id="detail-img" src="" class="img-fluid mb-3" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                        <h4 id="detail-name" class="fw-bold"></h4>
+                        <p id="detail-specs" class="text-muted"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="#" id="gallery-btn" class="btn btn-danger" onclick="openAlbumTab(this.dataset.tab); return false;">查看相簿</a>
+            </div>
+        </div>
+    </div>
+</div>
+    
    </body>
 </html>
