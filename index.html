@@ -566,42 +566,6 @@ body, html {
     </div>
 </section>
 
-<div class="modal fade" id="equipmentModal" tabindex="-1">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content shadow-lg">
-            <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title"><i class="bi bi-box-seam me-2"></i>設備規格 3D 預覽</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body p-0">
-                <div class="row g-0">
-                    <div class="col-md-3 modal-sidebar">
-                        <div class="list-group list-group-flush" id="model-list">
-                            <button class="list-group-item list-group-item-action active" onclick="switchModel('table', this)">全白會議桌</button>
-                            <button class="list-group-item list-group-item-action" onclick="switchModel('chair_black', this)">黑金剛摺疊椅</button>
-                            <button class="list-group-item list-group-item-action" onclick="switchModel('chair_snack', this)">點心椅</button>
-                        </div>
-                    </div>
-                    <div class="col-md-6 bg-light position-relative">
-                        <model-viewer id="main-viewer" src="https://neyoli770817-dev.github.io/Bayi-Official-Site/Conference_Table_textured_mesh_glb.glb" auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 500px; outline: none;">
-                        </model-viewer>
-                        <div class="position-absolute bottom-0 w-100 text-center text-muted small pb-2">
-                            <i class="bi bi-hand-index-thumb"></i> 可拖曳旋轉 / 滾輪縮放
-                        </div>
-                    </div>
-                    <div class="col-md-3 p-4 bg-white">
-                        <h4 id="model-title" class="fw-bold" style="color: #722F37;">全白會議桌</h4>
-                        <hr>
-                        <div id="model-specs" style="line-height: 1.8; color: #555;">
-                            <p><strong>尺寸：</strong> 180 x 60 x 75 cm</p>
-                            <p><strong>材質：</strong> 木質桌面 / 鋼製腳架</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="albumModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
