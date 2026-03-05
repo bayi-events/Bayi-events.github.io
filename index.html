@@ -667,15 +667,38 @@ function openProductModal(catKey) {
     new bootstrap.Modal(document.getElementById('productModal')).show();
 }
 
-// 3. 點擊「查看相簿」的特殊處理
+// --- 核心修正函數 ---
 function closeProductAndOpenAlbum() {
-    const modalEl = document.getElementById('productModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide(); // 關閉產品視窗
+    // 1. 關閉產品視窗
+    const productModalEl = document.getElementById('productModal');
+    const productModal = bootstrap.Modal.getInstance(productModalEl);
+    if (productModal) productModal.hide();
     
-    // 呼叫原本相簿的邏輯
+    // 2. 切換到相簿 (延遲確保動畫結束)
     setTimeout(() => {
         openAlbumTab(currentTabId);
+    }, 400);
+}
+
+function openAlbumTab(tabId) {
+    // 1. 找出正確的相簿 Modal (ID 為 ProductAlbum)
+    const albumModalEl = document.getElementById('ProductAlbum');
+    if (!albumModalEl) {
+        console.error("找不到 ProductAlbum 視窗！請檢查 HTML ID");
+        return;
+    }
+
+    // 2. 開啟視窗
+    const albumModal = new bootstrap.Modal(albumModalEl);
+    albumModal.show();
+    
+    // 3. 切換到對應的 Tab
+    setTimeout(() => {
+        const tabEl = document.getElementById(tabId);
+        if (tabEl) {
+            const tab = new bootstrap.Tab(tabEl);
+            tab.show();
+        }
     }, 300);
 }
 
