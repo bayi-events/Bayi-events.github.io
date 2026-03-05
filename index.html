@@ -27,10 +27,8 @@ body, html {
     width: 100%;
 }
 
-
 .object-fit-cover { object-fit: cover; }
 .mb-5 { margin-bottom: 3.5rem !important; }
-
 
 .navbar { 
     background-color: var(--brand-red) !important; 
@@ -46,7 +44,6 @@ body, html {
     color: rgba(255,255,255,0.9) !important; 
     font-weight: 500; 
 }
-
 
 #loading-screen {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -94,7 +91,6 @@ body, html {
     to { opacity: 1; } 
 }
 
-
 #heroCarousel {
     height: 60vh;
     min-height: 400px;
@@ -114,7 +110,7 @@ body, html {
     font-size: 1.5rem !important;      /* 強制放大字體 */
     font-weight: 700;                  /* 加粗，讓字更有份量 */
     color: #ffffff !important;         /* 確保是白色 */
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.8); /* 加上陰影，這是關鍵，讓字在背景上跳出來 */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.8); /* 加上陰影 */
     margin-top: 15px;
 }
 
@@ -124,7 +120,6 @@ body, html {
     transform: translate(-50%, -50%);
     text-align: center; z-index: 10; width: 80%;
 }
-
 
 .main-wrapper {
     width: 100% !important;
@@ -181,7 +176,6 @@ body, html {
 .service-card-body h5 { color: var(--brand-red); font-weight: bold; margin-bottom: 12px; font-size: 1.2rem; }
 .service-card-body p { font-size: 0.95rem; color: #666; line-height: 1.6; margin: 0; }
 
-
 .stack-container { display: flex; flex-direction: column; width: 100%; }
 
 .stack-card-item { 
@@ -214,7 +208,7 @@ body, html {
     100% { opacity: 1; transform: scale(0.95); } 
 }
 
-        /* 讓圖片容器在手機上自動調整 */
+/* 讓圖片容器在手機上自動調整 */
 .gallery-container {
     display: flex;
     flex-wrap: wrap;
@@ -223,7 +217,6 @@ body, html {
 }
 
 .gallery-item {
-    /* 手機版：一行 1 張 (100%) 或 2 張 (calc(50% - 10px)) */
     width: calc(50% - 15px); 
     border-radius: 8px;
     overflow: hidden;
@@ -233,7 +226,7 @@ body, html {
 .gallery-item img {
     width: 100%;    /* 寬度撐滿 */
     height: 200px;  /* 固定高度防止亂跳 */
-    object-fit: cover; /* 自動裁切多餘部分，照片才不會扁掉 */
+    object-fit: cover; /* 自動裁切多餘部分 */
     display: block;
 }
 
@@ -250,7 +243,8 @@ body, html {
         grid-template-columns: 1fr !important;
         gap: 40px !important;
     }
-    .control-section .card {
+    /* 這裡原本是 .card，現在改名為 .my-custom-card 以避開 Bootstrap 衝突 */
+    .control-section .my-custom-card {
         max-width: 100% !important;
     }
 }
@@ -262,11 +256,9 @@ body, html {
 
 .glow-card-final:hover {
     transform: translateY(-8px);
- 
     box-shadow: 0 0 25px rgba(186, 45, 48, 0.7) !important; 
     border-color: rgba(186, 45, 48, 0.5) !important;
 }
-
 
 .album-section { padding: 60px 0; }
 .album-card {
@@ -288,7 +280,6 @@ body, html {
     border-radius: 6px; z-index: 5; backdrop-filter: blur(4px);
 }
 
-
 #imgLightbox {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0, 0, 0, 0.95); display: none;
@@ -305,13 +296,11 @@ body, html {
 .lightbox-info-side h2 { font-size: 1.8rem !important; font-weight: 700; color: #ff4d4d; margin-bottom: 15px; }
 .info-body p { font-size: 1.35rem !important; line-height: 1.85 !important; color: #f0f0f0; white-space: pre-wrap; }
 
-
 .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.1); color: white; border: none; width: 60px; height: 60px; cursor: pointer; border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); z-index: 10; }
 .nav-btn:hover { background: rgba(220, 53, 69, 0.8); }
 .nav-btn.prev { left: 20px; }
 .nav-btn.next { right: 20px; }
 .img-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(10px); color: white; padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.2); }
-
 
 @media (max-width: 768px) {
     .lightbox-content { flex-direction: column !important; width: 100vw !important; height: 100vh !important; border-radius: 0 !important; overflow-y: auto !important; }
@@ -323,21 +312,21 @@ body, html {
         right: 15px !important; 
         z-index: 99999 !important; 
         background: rgba(0, 0, 0, 0.6) !important;
-        color: #ffffff !important;      /* 加入：白色文字 */
-        font-size: 30px !important;    /* 加入：字體放大 */
-        width: 40px !important;        /* 加入：固定寬度 */
-        height: 40px !important;       /* 加入：固定高度 */
-        display: flex !important;      /* 加入：用彈性盒子排版 */
-        align-items: center;           /* 加入：垂直置中 */
-        justify-content: center;       /* 加入：水平置中 */
-        border-radius: 50%;            /* 加入：變成圓形按鈕 */
+        color: #ffffff !important; 
+        font-size: 30px !important; 
+        width: 40px !important; 
+        height: 40px !important; 
+        display: flex !important; 
+        align-items: center; 
+        justify-content: center; 
+        border-radius: 50%; 
     }
 }
-       
-        #main-viewer {
+        
+#main-viewer {
     width: 100%;
     height: 400px; 
-    background-color: 
+    background-color: transparent; /* 已補上顏色屬性 */
     display: block;
 }
     </style>
