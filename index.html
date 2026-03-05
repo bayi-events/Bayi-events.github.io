@@ -458,55 +458,54 @@ body, html {
     </button>
 </header>
             
-         <main class="main-wrapper py-5">
+          <main class="main-wrapper py-5">
     <div class="container" style="max-width: 1400px;">
-        <div class="row g-5">
+        
+        <div class="row g-5"> 
             
-            <div class="col-lg-8">
+            <div class="col-lg-8" id="album-container">
                 <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">專業服務項目</h3>
                 <div class="row row-cols-1 row-cols-md-3 g-4">
                     <div class="col">
-           <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('chairs')">
-                <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
-                <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
-            </div>
+        <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('chairs')" style="cursor: pointer;">
+            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
+            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
+ </div>
+     </div>
         </div>
-
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('truss')" style="cursor: pointer;">
-                <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="card-img-top object-fit-cover"></div>
-                <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">Truss 結構</h6></div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('tents')" style="cursor: pointer;">
-                <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg" class="card-img-top object-fit-cover"></div>
-                <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">帳篷設備</h6></div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('stage')" style="cursor: pointer;">
-                <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="card-img-top object-fit-cover"></div>
-                <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">舞台架設</h6></div>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('others')" style="cursor: pointer;">
-                <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="card-img-top object-fit-cover"></div>
-                <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">活動周邊配件</h6></div>
-            </div>
+    <div class="col">
+        <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('truss')" style="cursor: pointer;">
+            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="card-img-top object-fit-cover"></div>
+            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">Truss 結構</h6></div>
         </div>
     </div>
-         </div> 
-   
+    <div class="col">
+        <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('tents')" style="cursor: pointer;">
+            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg" class="card-img-top object-fit-cover"></div>
+            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">帳篷設備</h6></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('stage')" style="cursor: pointer;">
+            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="card-img-top object-fit-cover"></div>
+            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">舞台架設</h6></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card h-100 border-0 shadow-sm glow-card-final" onclick="openProductModal('others')" style="cursor: pointer;">
+            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="card-img-top object-fit-cover"></div>
+            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">活動周邊配件</h6></div>
+        </div>
+    </div>
+</div>
+                
        <div class="col-lg-4" id="model-container">
     <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">數位控管系統</h3>
     
-    <div class="card shadow-sm border-0 position-relative" id="monitor-card" style="overflow: hidden;">
-        <div id="auth-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition:0.5s;">
+    <div class="card shadow-sm border-0 position-relative" id="monitor-card">
+        
+        <div id="auth-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition:0.5s;">
             <h5 class="text-white mb-3">請輸入管理代碼</h5>
             <input type="password" id="access-code" class="form-control mb-3 w-75 text-center" placeholder="Enter Code">
             <button class="btn btn-danger w-50" onclick="checkAccess()">驗證登入</button>
@@ -518,24 +517,25 @@ body, html {
             <span class="badge rounded-pill bg-danger animate-pulse">LIVE</span>
         </div>
 
-        <div class="ratio ratio-16x9 bg-black position-relative">
+        <div class="ratio ratio-16x9 bg-black">
             <iframe id="iframe-3d" src="https://3dwarehouse.sketchup.com/embed/1b90ef55-f425-497c-a26e-444676dd14dd" allowfullscreen style="border: none;"></iframe>
             
-            <div id="progress-panel" style="position:absolute; top:0; left:0; width:100%; height:100%; background:#fff; display:none; z-index:10;">
+            <div id="progress-panel" style="position:absolute; width:100%; height:100%; background:#fff; display:none; z-index:5;">
                 <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" style="width:100%; height:100%; object-fit:cover;">
                 <div style="position:absolute; bottom:0; background:rgba(0,0,0,0.7); color:#fff; width:100%; padding:10px; font-size:0.8rem;">
-                    📍 目前進度：Truss 結構第一階段完工
+                    📍 目前進度：Truss 結構第一階段完工 (16:45)
                 </div>
             </div>
         </div>
 
-        <div class="card-body p-3">
-            <div class="btn-group w-100 mb-3">
-                <button id="btn-3d" class="btn btn-danger py-2 fw-bold" onclick="toggleMonitor('3d')">3D 實景</button>
-                <button id="btn-real" class="btn btn-dark py-2 fw-bold" onclick="toggleMonitor('real')">LIVE 控場</button>
+        <div class="card-body p-4">
+            <div class="btn-group w-100 mb-4">
+                <button id="btn-3d" class="btn btn-danger py-2 fw-bold" onclick="toggleMonitor('3d')">3D實景範例</button>
+                <button id="btn-real" class="btn btn-dark py-2 fw-bold" onclick="toggleMonitor('real')">LIVE實境控場</button>
             </div>
-            <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
-                <li class="mb-1"><i class="bi bi-check2-circle text-danger me-2"></i>iPad 現場同步中</li>
+            <ul class="list-unstyled mb-0" style="font-size: 0.9rem;">
+                <li class="mb-2"><i class="bi bi-check2-circle text-danger me-2"></i>iPad 現場即時控場中</li>
+                <li><i class="bi bi-check2-circle text-danger me-2"></i>同步更新最新進度圖</li>
             </ul>
         </div>
     </div>
@@ -569,35 +569,31 @@ body, html {
     </div>
 </section>
 
-        <div class="modal fade" id="ProductModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
+    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">活動相簿集</h5>
+                <h5 class="modal-title" id="prod-modal-title">產品詳情</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <ul class="nav nav-tabs mb-3" id="albumTabs" role="tablist">
-                    <li class="nav-item"><button class="nav-link active" id="tab-1" data-bs-toggle="tab" data-bs-target="#gallery-1" type="button">桌椅</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#gallery-2" type="button">Truss</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#gallery-3" type="button">帳篷</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-4" data-bs-toggle="tab" data-bs-target="#gallery-4" type="button">舞台</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-5" data-bs-toggle="tab" data-bs-target="#gallery-5" type="button">周邊</button></li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="gallery-1"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-2"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-3"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-4"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-5"><div class="row"></div></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="list-group" id="prod-list"></div>
+                    </div>
+                    <div class="col-md-8">
+                        <img id="prod-img" src="" class="img-fluid mb-3" style="width:100%; height:250px; object-fit:cover; border-radius:8px;">
+                        <h4 id="prod-name" class="fw-bold"></h4>
+                        <p id="prod-specs" class="text-muted"></p>
+                    </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" onclick="closeProductAndOpenAlbum()">查看相簿</button>
             </div>
         </div>
     </div>
 </div>
-
-<div id="imgLightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:9999; justify-content:center; align-items:center;">
-    </div>
     
 <div id="imgLightbox" class="lightbox-overlay" onclick="closeLightbox()" style="display:none;"></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -667,38 +663,15 @@ function openProductModal(catKey) {
     new bootstrap.Modal(document.getElementById('productModal')).show();
 }
 
-// --- 核心修正函數 ---
+// 3. 點擊「查看相簿」的特殊處理
 function closeProductAndOpenAlbum() {
-    // 1. 關閉產品視窗
-    const productModalEl = document.getElementById('productModal');
-    const productModal = bootstrap.Modal.getInstance(productModalEl);
-    if (productModal) productModal.hide();
+    const modalEl = document.getElementById('productModal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide(); // 關閉產品視窗
     
-    // 2. 切換到相簿 (延遲確保動畫結束)
+    // 呼叫原本相簿的邏輯
     setTimeout(() => {
         openAlbumTab(currentTabId);
-    }, 400);
-}
-
-function openAlbumTab(tabId) {
-    // 1. 找出正確的相簿 Modal (ID 為 ProductModal)
-    const albumModalEl = document.getElementById('ProductModal');
-    if (!albumModalEl) {
-        console.error("找不到 ProductAlbum 視窗！請檢查 HTML ID");
-        return;
-    }
-
-    // 2. 開啟視窗
-    const albumModal = new bootstrap.Modal(albumModalEl);
-    albumModal.show();
-    
-    // 3. 切換到對應的 Tab
-    setTimeout(() => {
-        const tabEl = document.getElementById(tabId);
-        if (tabEl) {
-            const tab = new bootstrap.Tab(tabEl);
-            tab.show();
-        }
     }, 300);
 }
 
