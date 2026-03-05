@@ -569,7 +569,7 @@ body, html {
     </div>
 </section>
 
-        <div class="modal fade" id="ProductAlbum" tabindex="-1" aria-hidden="true">
+        <div class="modal fade" id="ProductModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -681,8 +681,8 @@ function closeProductAndOpenAlbum() {
 }
 
 function openAlbumTab(tabId) {
-    // 1. 找出正確的相簿 Modal (ID 為 ProductAlbum)
-    const albumModalEl = document.getElementById('ProductAlbum');
+    // 1. 找出正確的相簿 Modal (ID 為 ProductModal)
+    const albumModalEl = document.getElementById('ProductModal');
     if (!albumModalEl) {
         console.error("找不到 ProductAlbum 視窗！請檢查 HTML ID");
         return;
