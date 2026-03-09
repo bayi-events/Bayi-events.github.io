@@ -618,7 +618,7 @@ body, html {
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
 <script>
-// 1. 定義所有產品資料 - 修正 tab ID 對應
+// 1. 核心資料定義 (確保 tab 對應正確的 HTML ID)
 const productLibrary = {
     'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
         { name: '會議桌', img: 'https://via.placeholder.com/300', specs: '尺寸：180x60x75cm<br>材質：木質桌面/鋼製腳架' },
@@ -652,15 +652,15 @@ const productLibrary = {
 };
 
 // 2. 開啟彈窗的函式
-let currentTabId = ''; 
-
+let currentTabId = '';
 function openProductModal(catKey) {
     const data = productLibrary[catKey];
-    const listEl = document.getElementById('prod-list');
-    if(!data || !listEl) return;
-
+    if(!data) return;
+    
+    currentTabId = data.tab;
     document.getElementById('prod-modal-title').innerText = data.title;
-    currentTabId = data.tab; 
+    
+    const listEl = document.getElementById('prod-list');
     listEl.innerHTML = '';
 
     data.items.forEach((item, index) => {
@@ -678,20 +678,40 @@ function openProductModal(catKey) {
         if(index === 0) btn.click();
     });
 
-   const pModal = new bootstrap.Modal(document.getElementById('productModal'));
-    pModal.show();
+    const m = new bootstrap.Modal(document.getElementById('productModal'));
+    m.show();
 }
 
 function closeProductAndOpenAlbum() {
-    const modalEl = document.getElementById('productModal');
-    const modal = bootstrap.Modal.getInstance(modalEl);
-    if (modal) modal.hide(); 
-    
-    setTimeout(() => {
-        openAlbumTab(currentTabId);
-    }, 400); // 稍微增加延遲確保動畫順暢
-}
+    const pModalEl = document.getElementById('productModal');
+    const pModal = bootstrap.Modal.getInstance(pModalEl);
 
+    // 關鍵：註冊一次性監聽，等「產品視窗完全消失」後再動作
+    pModalEl.addEventListener('hidden.bs.modal', function onHidden() {
+        pModalEl.removeEventListener('hidden.bs.modal', onHidden);
+        
+        // 開啟相簿 Modal
+        const aModalEl = document.getElementById('albumModal');
+        if (!aModalEl) return;
+        
+        const aModal = new bootstrap.Modal(aModalEl);
+        
+        // 關鍵：等「相簿視窗完全出現」後再切換 Tab
+        aModalEl.addEventListener('shown.bs.modal', function onShown() {
+            aModalEl.removeEventListener('shown.bs.modal', onShown);
+            
+            // 執行切換 Tab
+            const tabBtn = document.querySelector(`[data-bs-target="#${currentTabId}"]`);
+            if (tabBtn) {
+                bootstrap.Tab.getOrCreateInstance(tabBtn).show();
+            }
+        });
+        
+        aModal.show();
+    }, { once: true });
+
+    if (pModal) pModal.hide();
+}
 let photos_Tables = [
     "mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "Y23YP2XZ", "153w1x21", "GhJmRp8C"
 ];
