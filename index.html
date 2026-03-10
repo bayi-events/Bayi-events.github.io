@@ -684,6 +684,20 @@ let currentTabId = ''; // 用來儲存當前要跳轉的相簿 ID
 
 // 確保 HTML 呼叫時是用這個函數
 function openProductModal(catKey) {
+    console.log("正在嘗試開啟產品，catKey 是:", catKey);
+    
+    // 偵探檢查：印出我們抓到的元素，如果是 null，它就會誠實地顯示
+    const modalTitle = document.getElementById('prod-modal-title');
+    const listEl = document.getElementById('prod-list');
+    
+    console.log("偵測到的 modalTitle:", modalTitle);
+    console.log("偵測到的 prod-list:", listEl);
+
+    // 檢查是否有找到
+    if (!modalTitle || !listEl) {
+        console.error("【警報】找不到 ID！請看上面的 log 哪一個是 null");
+        return; 
+    }
     const data = productLibrary[catKey];
     const listEl = document.getElementById('prod-list'); // 對應上面 HTML 的 ID
     
