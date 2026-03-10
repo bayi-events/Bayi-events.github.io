@@ -482,38 +482,39 @@ body, html {
             
             <div class="col-lg-8">
                 <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">專業服務項目</h3>
+                
                <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div class="col" onclick="openAlbumTab('tab-1')" style="cursor: pointer;">
+    <div class="col" onclick="openProductModal('chairs')" style="cursor: pointer;">
         <div class="card h-100 border-0 shadow-sm glow-card-final">
             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
         </div>
     </div>
-    <div class="col" onclick="openAlbumTab('tab-2')" style="cursor: pointer;">
+    <div class="col" onclick="openProductModal('truss')" style="cursor: pointer;">
         <div class="card h-100 border-0 shadow-sm glow-card-final">
             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="card-img-top object-fit-cover"></div>
             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">Truss 結構</h6></div>
         </div>
     </div>
-    <div class="col" onclick="openAlbumTab('tab-3')" style="cursor: pointer;">
+    <div class="col" onclick="openProductModal('tents')" style="cursor: pointer;">
         <div class="card h-100 border-0 shadow-sm glow-card-final">
             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg" class="card-img-top object-fit-cover"></div>
             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">帳篷設備</h6></div>
         </div>
     </div>
-    <div class="col" onclick="openAlbumTab('tab-4')" style="cursor: pointer;">
+    <div class="col" onclick="openProductModal('stage')" style="cursor: pointer;">
         <div class="card h-100 border-0 shadow-sm glow-card-final">
             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="card-img-top object-fit-cover"></div>
             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">舞台架設</h6></div>
         </div>
     </div>
-    <div class="col" onclick="openAlbumTab('tab-5')" style="cursor: pointer;">
+    <div class="col" onclick="openProductModal('others')" style="cursor: pointer;">
         <div class="card h-100 border-0 shadow-sm glow-card-final">
             <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="card-img-top object-fit-cover"></div>
             <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">活動周邊配件</h6></div>
         </div>
     </div>
-</div> 
+</div>
    
        <div class="col-lg-4" id="model-container">
     <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">數位控管系統</h3>
@@ -689,12 +690,14 @@ function openProductModal(catKey) {
 function closeProductAndOpenAlbum() {
     const modalEl = document.getElementById('productModal');
     const modal = bootstrap.Modal.getInstance(modalEl);
-    modal.hide(); // 關閉產品視窗
     
-    // 呼叫原本相簿的邏輯
+    // 隱藏產品視窗
+    if (modal) modal.hide();
+    
+    // 設定一個短延遲，確保產品 Modal 完全關閉後，再呼叫開啟相簿
     setTimeout(() => {
         openAlbumTab(currentTabId);
-    }, 300);
+    }, 400); // 延長到 400ms 以避開動畫衝突
 }
 
 let photos_Tables = [
@@ -992,33 +995,26 @@ balloonUrls.forEach((url, index) => {
 let currentProject = null, currentImgIdx = 0;
 
 // --- 卡片相簿連動系統 ---
-// 點擊卡片時，關閉當前 Modal 並開啟對應的相簿分頁
 function openAlbumTab(tabId) {
-    // 1. 關閉所有開啟中的 Modal (例如規格說明彈窗)
-    const openModals = document.querySelectorAll('.modal.show');
-    openModals.forEach(modalEl => {
-        const modal = bootstrap.Modal.getInstance(modalEl);
-        if (modal) modal.hide();
-    });
+    const albumModalEl = document.getElementById('albumModal');
+    let albumModal = bootstrap.Modal.getInstance(albumModalEl);
+    if (!albumModal) {
+        albumModal = new bootstrap.Modal(albumModalEl);
+    }
+    albumModal.show();
 
-    // 2. 等待 Modal 關閉動畫後，開啟相簿 Modal
-    setTimeout(() => {
-        const albumModalEl = document.getElementById('albumModal');
-        if (albumModalEl) {
-            const albumModal = new bootstrap.Modal(albumModalEl);
-            albumModal.show();
-            
-            // 3. 切換到對應的 Tab
-            const tabEl = document.getElementById(tabId);
-            if (tabEl) {
-                const tab = new bootstrap.Tab(tabEl);
-                tab.show();
-            }
+    // 監聽 Modal 開啟完成後，再切換 Tab
+    albumModalEl.addEventListener('shown.bs.modal', function () {
+        const tabEl = document.getElementById(tabId);
+        if (tabEl) {
+            const tab = new bootstrap.Tab(tabEl);
+            tab.show();
         }
-    }, 350);
+    }, { once: true }); 
 }
-
+// (注意：就是這麼短，不要再留舊的 setTimeout 在下面了)
 // --- 相簿與燈箱功能 ---
+    
 function loadGallery(containerId, list) {
     const container = document.getElementById(containerId);
     if (!container) return;
