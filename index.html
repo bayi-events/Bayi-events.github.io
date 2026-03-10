@@ -362,15 +362,17 @@
                 border-radius: 50%; 
             }
         }
-        /* 將這段放到你的 CSS 最底部，優先級最高 */
-#albumModal .modal-content,
-#albumModal .card,
-#albumModal .card-img-top,
-#albumModal img {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+       /* 強制移除整個彈窗的背景底色與邊框 */
+.modal-content {
     background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* 如果你的 header 或 footer 也有顏色，一併移除 */
+.modal-header, .modal-footer {
+    background-color: transparent !important;
+    border: none !important;
 }
     </style>
 </head>
