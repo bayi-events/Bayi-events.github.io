@@ -61,27 +61,27 @@
 
         /* --- Loading Screen --- */
         #loading-screen {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100vh;
-            background: #ffffff; 
-            z-index: 9999; 
-            display: flex;
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center;
-            transition: opacity 0.8s ease-out;
-        }
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100vh;
+    background: #ffffff; 
+    z-index: 9999; 
+    display: flex;
+    /* 這裡確保內容物垂直置中 */
+    justify-content: center; 
+    align-items: center;
+    transition: opacity 0.8s ease-out;
+}
         .logo-box {
-            width: 220px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* 移除 margin: 0 auto，因為外層 flex 已經置中了 */
+}
         .logo-box svg {
             width: 220px !important;
             height: auto !important;
@@ -90,17 +90,18 @@
             margin: 0 auto;
         }
         .brand-name-loading { 
-            font-size: 24px; 
-            font-weight: 900; 
-            color: #000; 
-            margin-top: 20px; 
-            letter-spacing: 4px; 
-            opacity: 0; 
-            animation: fadeIn 1s 0.6s forwards;
-            padding-left: 15px; 
-            text-align: center;
-            width: 100%;
-        }
+    font-size: 24px; 
+    font-weight: 900; 
+    color: #000; 
+    margin-top: 15px; /* 稍微縮小間距 */
+    letter-spacing: 4px; 
+    opacity: 0; 
+    animation: fadeIn 1s 0.6s forwards;
+    /* 關鍵：移除 padding-left，否則 LOGO 文字會往右偏，視覺上就不在中心 */
+    padding-left: 0; 
+    text-align: center;
+    width: 100%;
+}
 
         /* --- Animations --- */
         @keyframes fadeInUp { 
@@ -668,7 +669,7 @@ const productLibrary = {
         { name: '點心椅', img: 'https://i.postimg.cc/nzfByXft/黎國際_三重水樣啵啵_點心椅進場.jpg', specs: '尺寸：50x52x85cm<br>材質：透氣網布/鋁合金' }
     ]},
     'truss': { title: 'Truss 結構', tab: 'tab-2', items: [
-        { name: 'Truss帳篷', img: 'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg', specs: '規格說明：客製化造型，結構穩固。' },
+        { name: 'Truss帳篷', img: 'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg', specs: '規格說明：。' },
         { name: '造型Truss', img: 'https://i.postimg.cc/fTgGBXgN/兆捷_萬豪酒店8F_Truss進場.jpg', specs: '規格說明：客製化造型，結構穩固。' },
         { name: '牌樓Truss', img: 'https://i.postimg.cc/LXFLcJKW/黎國際_三重水樣啵啵_Trus進場2.jpg', specs: '規格說明：活動入口門面專用。' },
         { name: '背板Truss', img: 'https://i.postimg.cc/nc22qGbp/鑫創土城_Truss_進場.jpg', specs: '規格說明：拍照背板/舞台背景專用。' }
