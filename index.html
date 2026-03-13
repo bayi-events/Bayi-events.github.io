@@ -777,31 +777,37 @@ function openProductModal(catKey) {
         }, 400);
     }
 
+// --- 分類陣列修改 ---
+
 let photos_Tables = [
     "mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "Y23YP2XZ", "153w1x21", "GhJmRp8C", 
-    "853xj94F", "fLFnWQCg" 
+    "853xj94F", "fLFnWQCg",
+    "bvt1VQM6", // 成功移入：水樣啵啵 (原在 Tent)
+    "SN18yTbL", // 成功移入：中和國小 (原在 Tent)
+    "8ctvfwJ8"  // 成功移入：大都會公園 (原在 Tent)
 ];
 
 let photos_Truss = [
     "3rs5P7dS", "XYgRGCxL", "x1jsZFy6", "5yMgSP24", "fTgGBXgN", "JzdQ27hr", "Nfs7G29h", "0jyxYx50", 
-    "fLZJ1qm9" // 黎明科大 Truss 保留在這
+    "fLZJ1qm9" 
 ];
 
 let photos_Tent = [
-    "P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "bvt1VQM6", "MKpVJkNW", "qM1cNBy1", "SN18yTbL", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "8ctvfwJ8", "NMmRQjGX", "0jJD2GYQ", "dtjpqG5F", "3J58dMms", // 3J58dMms 保留在這
+    "P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "MKpVJkNW", "qM1cNBy1", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "NMmRQjGX", "0jJD2GYQ", "dtjpqG5F", "3J58dMms", 
     "nr6Shx0S", "fbfb7Td9", "g0f2PShz" 
+    // 已從此處移出：bvt1VQM6, SN18yTbL, 8ctvfwJ8
 ];
 
 let photos_Stage = [
     "MZbm8mGD", 
     "fLvbNBgy" 
-    // 已刪除重複的 "3J58dMms" 與 "fLZJ1qm9"
 ];
 
 let photos_Decor = [
     "vBx2zgLF", "KzhB61hF"
 ];
 
+// --- 資料庫內容保持不變 (photoLibrary) ---
 const photoLibrary = {
     "3rs5P7dS": {
         tag: "永和國中",
