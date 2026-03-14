@@ -88,7 +88,7 @@
             font-weight: 500; 
         }
 
-        /* --- Loading Screen --- */
+        /* --- Loading Screen (只改這裡：Logo 位置) --- */
         #loading-screen {
             position: fixed; 
             top: 0; 
@@ -98,8 +98,10 @@
             background: #ffffff; 
             z-index: 9999; 
             display: flex;
-            justify-content: center; 
+            flex-direction: column;    /* 改為垂直排列 */
+            justify-content: flex-start; /* 改為靠上 */
             align-items: center;
+            padding-top: 15vh;         /* 距離頂部 15% 螢幕高度 */
             transition: opacity 0.8s ease-out;
         }
         .logo-box {
@@ -374,27 +376,31 @@
                 width: calc(25% - 15px);
             }
         }
-       .modal-content {
-    max-height: 80vh; /* 限制內容最高只佔螢幕 80%，留空間給按鈕 */
-    overflow-y: auto; /* 當內容超過高度時，允許內部滑動 */
-    -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
-}
-       .modal-body {
-    padding-bottom: 80px; /* 預留足夠空間，確保按鈕能滑出來 */
-    padding-bottom: env(safe-area-inset-bottom); /* 針對 iPhone 全螢幕手機的保護 */
-}
-       .btn-close {
-    position: fixed; /* 固定位置，不隨文案滑動 */
-    top: 20px;
-    right: 20px;
-    z-index: 9999; /* 確保在最上層 */
-    background-color: rgba(0,0,0,0.5); /* 加點半透明背景增加辨識度 */
-    color: white;
-    border-radius: 50%;
-    padding: 10px;
-}
 
-        /* --- 手機版燈箱修正：取消固定叉叉，改為向下捲動 --- */
+        /* --- 只修復 X 的辨識度 --- */
+        .modal-content {
+            max-height: 80vh; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; 
+        }
+        .modal-body {
+            padding-bottom: 80px; 
+            padding-bottom: env(safe-area-inset-bottom); 
+        }
+        .btn-close {
+            position: fixed; 
+            top: 20px;
+            right: 20px;
+            z-index: 9999; 
+            background-color: #333 !important; /* 顯眼的深色背景 */
+            opacity: 1 !important;
+            color: white !important;
+            border-radius: 50%;
+            padding: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* --- 手機版燈箱修正：只針對 X 按鈕與捲動 --- */
         @media (max-width: 768px) {
             #imgLightbox {
                 align-items: flex-start !important;
@@ -403,7 +409,7 @@
             .lightbox-content { 
                 flex-direction: column !important; 
                 width: 100vw !important; 
-                height: auto !important; /* 改為自動高度以支援捲動 */
+                height: auto !important; 
                 min-height: 100vh !important;
                 border-radius: 0 !important; 
             }
@@ -416,11 +422,10 @@
                 flex: none !important; 
                 width: 100% !important; 
                 height: auto !important;
-                padding: 30px 20px 100px !important; /* 底部加 100px 確保滑到底能看到按鈕 */
+                padding: 30px 20px 100px !important; 
                 border-left: none !important; 
                 overflow-y: visible !important;
             }
-            /* 讓關閉按鈕排在文字下方，不再固定在右上角 */
             .close-btn { 
                 position: relative !important; 
                 top: 0 !important;
@@ -429,7 +434,7 @@
                 display: flex !important; 
                 width: 90% !important;
                 height: 50px !important;
-                background: #444 !important;
+                background: #333 !important; /* 顯眼顏色 */
                 color: #ffffff !important; 
                 font-size: 18px !important; 
                 border-radius: 8px !important; 
@@ -437,7 +442,6 @@
                 justify-content: center; 
                 z-index: 10 !important;
             }
-            /* 手機版隱藏切換按鈕，避免干擾捲動 */
             .nav-btn { width: 45px; height: 45px; }
         }
 
