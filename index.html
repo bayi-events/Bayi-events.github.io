@@ -469,6 +469,46 @@
             border: none !important; 
             box-shadow: none !important; 
         }
+    /* --- 進場 LOGO 關鍵動畫 --- */
+
+#loading-screen .logo-box svg {
+    /* 初始狀態：放大並將中心對準「八」的左側 */
+    transform: scale(3) translate(30px, 0px); 
+    opacity: 0;
+    animation: masterEntrance 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+/* 帳篷零件（假設你的 SVG 中該零件有 id="tent-part"） */
+#tent-part {
+    opacity: 0;
+    transform: scale(0);
+    /* 延遲 1.2 秒等主體定位後彈出 */
+    animation: tentBounce 0.6s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* 主體動畫：縮小並回到中心 */
+@keyframes masterEntrance {
+    0% {
+        opacity: 0;
+        transform: scale(4) translate(50px, 10px); 
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translate(0, 0);
+    }
+}
+
+/* 帳篷彈跳動畫 */
+@keyframes tentBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-15deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
 </style>
 </head>
     
@@ -1411,6 +1451,19 @@ window.addEventListener('load', function() {
             }, 850); 
         }, 2500); 
     }
+    // 在頁面載入時執行
+window.addEventListener('load', function() {
+    const entranceSound = new Audio('低沉穩重的進場音.mp3'); 
+    const popSound = new Audio('俏皮彈出音.mp3');
+
+    // 播放第一段（進場）
+    entranceSound.play();
+
+    // 延遲播放第二段（帳篷彈出）
+    setTimeout(() => {
+        popSound.play();
+    }, 1200); // 對應 CSS 的延遲時間
+});
 });
     </script>
    </body>
