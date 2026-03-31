@@ -71,7 +71,6 @@
 
     body.is-loading { overflow: hidden !important; }
 
-    /* 通用類別 */
     .object-fit-cover { object-fit: cover; }
     .mb-5 { margin-bottom: 3.5rem !important; }
     .main-wrapper {
@@ -123,51 +122,60 @@
         text-align: center; width: 100%;
     }
 
-    /* --- 4. Hero Carousel (暴力強化版：確保所有標題都有感) --- */
+    /* --- 4. Hero Carousel (暴力強化 & 位置調整版) --- */
     #heroCarousel {
         height: 60vh; min-height: 400px; background-color: #000;
         position: relative; overflow: hidden;
     }
-    .carousel-inner, .carousel-item, .hero-carousel-item { height: 100%; min-height: 400px; }
+    .carousel-inner, .carousel-item { height: 100%; min-height: 400px; }
+    
     .hero-bg-layer {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-        background-size: cover; background-position: center; opacity: 0.7; z-index: 1;
-    }
-    
-    /* 這裡是最強暴力設定：直接鎖定輪播圖內的所有文字 */
-    .carousel-caption-custom h1, 
-    .carousel-caption-custom h2, 
-    .carousel-caption-custom .hero-subtitle,
-    .hero-carousel-item h2 {
-       font-size: 2.8rem !important; 
-        font-weight: 900 !important; 
-        color: #ffffff !important; 
-        /* 增加更厚實的黑邊 */
-        -webkit-text-stroke: 1.8px #000000;
-        /* 五層疊加陰影，確保在任何背景下都清晰 */
-        text-shadow: 
-            3px 3px 0px #000,
-            -1px -1px 0px #000,  
-            1px -1px 0px #000,
-            -1px 1px 0px #000,
-            1px 1px 0px #000,
-            0px 0px 20px rgba(0,0,0,0.8);
-        letter-spacing: 3px;
-    }
-    
-    /* 副標題（造型Truss、背板Truss等文字）同步強化 */
-    .carousel-caption-custom p,
-    .hero-carousel-item p {
-        font-size: 1.2rem !important;
-        color: #ffffff !important;
-        font-weight: 800 !important;
-        -webkit-text-stroke: 0.8px #000000 !important;
-        text-shadow: 1px 1px 5px rgba(0,0,0,1) !important;
+        background-size: cover; background-position: center; z-index: 1;
     }
 
+    /* 關鍵：圖片暗化濾鏡 */
+    .hero-bg-layer::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 50% 黑色遮罩 */
+        z-index: 2;
+    }
+    
+    /* 關鍵：文字定位到中下部 */
     .carousel-caption-custom {
-        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        text-align: center; z-index: 10; width: 80%;
+        position: absolute; 
+        bottom: 15%; /* 距離底部 15% */
+        left: 50%; 
+        transform: translateX(-50%);
+        text-align: center; 
+        z-index: 10; 
+        width: 90%;
+    }
+
+    /* 標題暴力強化 */
+    .carousel-caption-custom h1, 
+    .hero-subtitle {
+        font-size: 3.2rem !important; 
+        font-weight: 900 !important; 
+        color: #ffffff !important; 
+        -webkit-text-stroke: 2px #000000;
+        text-shadow: 
+            4px 4px 0px #000,
+            0px 0px 20px rgba(0,0,0,0.8);
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+    
+    /* 副標題同步強化 */
+    .hero-desc {
+        font-size: 1.4rem !important;
+        color: #ffffff !important;
+        font-weight: 800 !important;
+        -webkit-text-stroke: 1px #000000 !important;
+        text-shadow: 2px 2px 5px rgba(0,0,0,1) !important;
     }
 
     /* --- 5. Cards & Section Layouts --- */
@@ -194,7 +202,6 @@
     .service-card img { width: 100%; height: 220px; object-fit: cover; }
     .service-card-body { padding: 25px; text-align: center; }
 
-    /* Stack Cards (疊加卡片動畫還原) */
     .stack-container { display: flex; flex-direction: column; width: 100%; }
     .stack-card-item { margin-bottom: -15px; transition: 0.3s ease; position: relative; z-index: 1; }
     .stack-card-item:hover { transform: translateY(-25px); z-index: 10; }
@@ -283,12 +290,12 @@
         .lightbox-info-side { flex: none; width: 100%; padding-bottom: 80px; }
         
         .carousel-caption-custom h1, 
-        .carousel-caption-custom h2,
         .hero-subtitle { 
-            font-size: 1.8rem !important; 
-            -webkit-text-stroke: 1px #000 !important;
-            text-shadow: 0 0 10px rgba(0,0,0,1) !important;
+            font-size: 2rem !important; 
+            -webkit-text-stroke: 1.2px #000 !important;
         }
+        .hero-desc { font-size: 1.1rem !important; }
+        .carousel-caption-custom { bottom: 12%; }
 
         .btn-close, .modal-header .btn-close { 
             top: 10px !important; 
@@ -297,7 +304,6 @@
             height: 32px !important; 
         }
         .btn-close::before, .btn-close::after { height: 16px; }
-        
         .gallery-container { grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
     }
 </style>
@@ -402,7 +408,7 @@
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/fLFnWQ5b/109915.jpg');"></div>
             <div class="carousel-caption-custom">
                 <h1 class="hero-subtitle">專業Truss結構</h1>
-                <p class="hero-desc">造型Truss、背板Truss、牌樓</p>
+                <p class="hero-desc">造型Truss、背板Truss、牌樓搭建</p>
             </div>
         </div>
 
@@ -410,7 +416,7 @@
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/bvt1VQM6/黎國際_三重水樣啵啵_3米白進場7.jpg');"></div>
             <div class="carousel-caption-custom">
                 <h1 class="hero-subtitle">舞台搭設 & 活動周邊</h1>
-                <p class="hero-desc">各式舞台、桌椅、紅絨柱及其他周邊</p>
+                <p class="hero-desc">各式舞台、桌椅、紅絨柱及其他設備</p>
             </div>
         </div>
     </div>
