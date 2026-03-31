@@ -188,37 +188,50 @@
         position: fixed;
         bottom: 30px;
         right: 30px;
-        z-index: 9999; /* 確保在最上層 */
+        z-index: 9999;
         
-        /* 質感漸層：酒紅到深紅 */
+        /* 配色與質感 */
         background: linear-gradient(135deg, var(--brand-red) 0%, #4a1e24 100%);
         color: white !important;
         padding: 12px 22px;
-        border-radius: 8px; /* 結構化方角 */
+        border-radius: 8px;
         text-decoration: none !important;
         display: flex;
         align-items: center;
         font-weight: bold;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        transition: all 0.4s ease;
         border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+
+        /* 關鍵：預設隱藏，並設定淡入動畫 */
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-in-out; /* 基礎過渡 */
     }
-
+    /* 關鍵：當 Loading 結束 (body 移除 is-loading) 時，按鈕淡入 */
+    body:not(.is-loading) .floating-line-btn {
+        opacity: 1;
+        visibility: visible;
+        /* 加個微微的上浮動畫，更有進場感 */
+        animation: fadeInUpBtn 0.8s 2s ease forwards; /* 延遲 2 秒，確保在 Loading 後出現 */
+    }
+    /* 按鈕進場動畫定義 */
+    @keyframes fadeInUpBtn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     .floating-line-btn i { font-size: 22px; margin-right: 10px; color: #fff; }
-
-    /* 在線小綠點動畫 */
     .floating-line-btn::before {
         content: ''; width: 8px; height: 8px; background: #00ff00; border-radius: 50%;
         margin-right: 10px; box-shadow: 0 0 10px #00ff00;
         animation: pulse-green 2s infinite;
     }
 
+    /* 懸浮效果保持不變 */
     .floating-line-btn:hover {
-        transform: scale(1.05) translateY(-5px);
+        transform: scale(1.05) translateY(-5px) !important; /* 加上 !important 確保覆蓋進場動畫 */
         box-shadow: 0 15px 30px rgba(114, 47, 55, 0.4);
         background: linear-gradient(135deg, #8b3a44 0%, var(--brand-red) 100%);
     }
-
     /* --- 9. RWD 修正 --- */
     @media (max-width: 992px) {
         .lightbox-content { flex-direction: column; height: 95vh; }
