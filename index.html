@@ -287,12 +287,41 @@
             border-top: 1px solid rgba(255,255,255,0.1); padding: 25px; 
         }
     }
-    @media (max-width: 768px) {
-        #heroCarousel { height: 50vh; } 
-        .carousel-caption-custom h1 { font-size: 1.8rem !important; }
-        .hero-desc { font-size: 0.95rem !important; }
-        .gallery-container { grid-template-columns: 1fr 1fr; gap: 10px; }
-        .col:hover .glow-card-final { transform: translateY(-10px) !important; }
+   /* 修正手機版彈窗滑不到底部的問題 */
+@media (max-width: 768px) {
+    /* 1. 調整燈箱外框：確保不超出螢幕高度，並保留邊距 */
+    .lightbox-content {
+        flex-direction: column !important;
+        height: 90vh !important; /* 限制高度為螢幕的 90% */
+        width: 95vw !important;
+        margin: 5vh auto !important;
+        position: relative !important;
+        display: flex !important;
+    }
+
+    /* 2. 圖片區：固定佔比 */
+    .lightbox-image-side {
+        flex: 0 0 40% !important; /* 縮小圖片佔比，留空間給文字 */
+        width: 100% !important;
+        background: #000;
+    }
+
+    /* 3. 文字與按鈕區：開啟捲軸 (關鍵！) */
+    .lightbox-info-side {
+        flex: 1 !important;
+        width: 100% !important;
+        padding: 20px !important;
+        overflow-y: auto !important; /* 內容過長時開啟垂直捲軸 */
+        -webkit-overflow-scrolling: touch; /* 讓手機滑動更順暢 */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 4. 確保「關閉」按鈕有足夠的底部間距 */
+    .lightbox-info-side .btn-outline-light {
+        margin-top: 20px !important;
+        margin-bottom: 30px !important; /* 增加底部留白，防止被手機系統條遮住 */
+        flex-shrink: 0; /* 防止按鈕被壓扁 */
     }
 </style>
 </head>
