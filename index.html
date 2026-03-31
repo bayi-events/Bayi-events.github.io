@@ -197,6 +197,53 @@
         z-index: 10; 
         width: 85%;
     }
+    /* --- 5. Cards & Section Layouts (強制生效版) --- */
+    .section-title { 
+        color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; 
+        text-align: center; letter-spacing: 2px; 
+    }
+    .section-title::after { 
+        content: ''; display: block; width: 50px; height: 3px; 
+        background: var(--brand-red); margin: 15px auto; 
+    }
+
+    /* 卡片基礎：加入平滑動畫設定 */
+    .service-card, .album-card {
+        background: #ffffff !important; 
+        border-radius: 12px; 
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important; /* 增加流暢感 */
+        border: 1px solid #e0e0e0;
+        text-decoration: none; 
+        color: inherit; 
+        display: block;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* 關鍵：懸浮抽卡 + 品牌紅光暈 (強制執行) */
+    .service-card:hover, .album-card:hover { 
+        transform: translateY(-12px) !important; /* 抽卡往上漂移 */
+        box-shadow: 0 20px 40px rgba(114, 47, 55, 0.3) !important; /* 八毅品牌紅光暈 */
+        border-color: var(--brand-red) !important;
+        z-index: 10 !important;
+    }
+
+    .service-card img { width: 100%; height: 220px; object-fit: cover; }
+    .service-card-body { padding: 25px; text-align: center; }
+
+    /* 疊加卡片 (抽卡互動) */
+    .stack-container { display: flex; flex-direction: column; width: 100%; }
+    .stack-card-item { margin-bottom: -15px; transition: 0.3s ease; position: relative; z-index: 1; }
+    
+    .stack-card-item:hover { 
+        transform: translateY(-30px) !important; /* 疊加卡片抽得更高 */
+        z-index: 100 !important;
+        box-shadow: 0 15px 30px rgba(114, 47, 55, 0.2) !important;
+    }
+    
+    /* 這裡維持你的奶黃色背景，但確保不影響 hover 效果 */
+    .card { background-color: var(--card-bg) !important; border: none !important; }
 
     /* 標題：純淨白字 + 適度陰影 (移除黑色描邊) */
     .carousel-caption-custom h1, 
