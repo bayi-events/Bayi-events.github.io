@@ -122,82 +122,37 @@
         text-align: center; width: 100%;
     }
 
-    /* --- 4. Hero Carousel (現代感精修版：確保手機版清晰) --- */
+    /* --- 4. Hero Carousel (精修遮罩版) --- */
     #heroCarousel {
         height: 65vh; min-height: 400px; background-color: #000;
         position: relative; overflow: hidden;
     }
     .carousel-inner, .carousel-item { height: 100%; }
-    
     .hero-bg-layer {
         position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         background-size: cover; background-position: center; z-index: 1;
     }
-
-    /* 底部漸層遮罩：讓背景由下往上變暗，文字自然浮現 */
     .hero-bg-layer::after {
-        content: '';
-        position: absolute;
-        bottom: 0; left: 0;
+        content: ''; position: absolute; bottom: 0; left: 0;
         width: 100%; height: 65%; 
         background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
         z-index: 2;
     }
-    /* --- 5. Cards & Section Layouts (補回光暈互動版) --- */
-    .section-title { 
-        color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; 
-        text-align: center; letter-spacing: 2px; 
-    }
-    .section-title::after { 
-        content: ''; display: block; width: 50px; height: 3px; 
-        background: var(--brand-red); margin: 15px auto; 
-    }
-
-    /* 基礎卡片設定 */
-    .service-card, .album-card {
-        background: white; 
-        border-radius: 12px; 
-        overflow: hidden;
-        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 平滑過渡 */
-        border: 1px solid #e0e0e0;
-        text-decoration: none; 
-        color: inherit; 
-        display: block;
-        cursor: pointer; /* 確保游標互動 */
-    }
-
-    /* 關鍵：補回懸浮光暈互動 (Hover Effect) */
-    .service-card:hover, .album-card:hover { 
-        transform: translateY(-10px); /* 往上漂移 */
-        box-shadow: 0 15px 30px rgba(114, 47, 55, 0.25); /* 八毅品牌色光暈 */
-        border-color: var(--brand-red); /* 邊框變色 */
-    }
-
-    .service-card img { width: 100%; height: 220px; object-fit: cover; }
-    .service-card-body { padding: 25px; text-align: center; }
-
-    /* 疊加卡片效果 */
-    .stack-container { display: flex; flex-direction: column; width: 100%; }
-    .stack-card-item { margin-bottom: -15px; transition: 0.3s ease; position: relative; z-index: 1; }
-    .stack-card-item:hover { 
-        transform: translateY(-25px); 
-        z-index: 10; 
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    
-    /* 這裡維持你的奶黃色背景 */
-    .card { background-color: var(--card-bg) !important; border: none !important; }
-    
     .carousel-caption-custom {
-        position: absolute; 
-        bottom: 12%; 
-        left: 50%; 
-        transform: translateX(-50%);
-        text-align: center; 
-        z-index: 10; 
-        width: 85%;
+        position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%);
+        text-align: center; z-index: 10; width: 85%;
     }
-    /* --- 5. Cards & Section Layouts (強制生效版) --- */
+    .carousel-caption-custom h1, .hero-subtitle {
+        font-size: 2.8rem !important; font-weight: 800 !important; color: #ffffff !important; 
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.6); letter-spacing: 2px; margin-bottom: 8px;
+    }
+    .hero-desc {
+        display: inline-block; font-size: 1.1rem !important; color: #ffffff !important;
+        background: rgba(0,0,0,0.45); padding: 6px 16px; border-radius: 6px;
+        backdrop-filter: blur(4px);
+    }
+
+    /* --- 5. Cards & Section Layouts (最終光暈強化版) --- */
     .section-title { 
         color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; 
         text-align: center; letter-spacing: 2px; 
@@ -207,24 +162,17 @@
         background: var(--brand-red); margin: 15px auto; 
     }
 
-    /* 卡片基礎：加入平滑動畫設定 */
     .service-card, .album-card {
-        background: #ffffff !important; 
-        border-radius: 12px; 
-        overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important; /* 增加流暢感 */
-        border: 1px solid #e0e0e0;
-        text-decoration: none; 
-        color: inherit; 
-        display: block;
-        position: relative;
-        z-index: 1;
+        background: #ffffff !important; border-radius: 12px; overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+        border: 1px solid #e0e0e0; text-decoration: none; color: inherit; 
+        display: block; position: relative; z-index: 1; cursor: pointer;
     }
 
-    /* 關鍵：懸浮抽卡 + 品牌紅光暈 (強制執行) */
+    /* 強力光暈與抽卡 hover */
     .service-card:hover, .album-card:hover { 
-        transform: translateY(-12px) !important; /* 抽卡往上漂移 */
-        box-shadow: 0 20px 40px rgba(114, 47, 55, 0.3) !important; /* 八毅品牌紅光暈 */
+        transform: translateY(-12px) !important;
+        box-shadow: 0 20px 40px rgba(114, 47, 55, 0.3) !important; 
         border-color: var(--brand-red) !important;
         z-index: 10 !important;
     }
@@ -232,77 +180,12 @@
     .service-card img { width: 100%; height: 220px; object-fit: cover; }
     .service-card-body { padding: 25px; text-align: center; }
 
-    /* 疊加卡片 (抽卡互動) */
     .stack-container { display: flex; flex-direction: column; width: 100%; }
     .stack-card-item { margin-bottom: -15px; transition: 0.3s ease; position: relative; z-index: 1; }
-    
     .stack-card-item:hover { 
-        transform: translateY(-30px) !important; /* 疊加卡片抽得更高 */
+        transform: translateY(-30px) !important; 
         z-index: 100 !important;
         box-shadow: 0 15px 30px rgba(114, 47, 55, 0.2) !important;
-    }
-    
-    /* 這裡維持你的奶黃色背景，但確保不影響 hover 效果 */
-    .card { background-color: var(--card-bg) !important; border: none !important; }
-
-    /* 標題：純淨白字 + 適度陰影 (移除黑色描邊) */
-    .carousel-caption-custom h1, 
-    .hero-subtitle {
-        font-size: 2.8rem !important; 
-        font-weight: 800 !important; 
-        color: #ffffff !important; 
-        text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
-        letter-spacing: 2px;
-        margin-bottom: 8px;
-        -webkit-text-stroke: 0 !important; 
-    }
-    
-    /* 副標題：加上半透明磨砂玻璃背景 */
-    .hero-desc {
-        display: inline-block;
-        font-size: 1.1rem !important;
-        color: #ffffff !important;
-        font-weight: 400 !important;
-        background: rgba(0,0,0,0.45);
-        padding: 6px 16px;
-        border-radius: 6px;
-        letter-spacing: 1px;
-        backdrop-filter: blur(4px); 
-        text-shadow: none !important;
-        -webkit-text-stroke: 0 !important;
-    }
-
-    /* --- 5. Cards & Section Layouts --- */
-    .section-title { 
-        color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; 
-        text-align: center; letter-spacing: 2px; 
-    }
-    .section-title::after { 
-        content: ''; display: block; width: 50px; height: 3px; 
-        background: var(--brand-red); margin: 15px auto; 
-    }
-
-    .service-card, .album-card {
-        background: white; border-radius: 12px; overflow: hidden;
-        transition: all 0.3s ease; border: 1px solid #e0e0e0;
-        text-decoration: none; color: inherit; display: block;
-    }
-    .service-card:hover, .album-card:hover { 
-        transform: translateY(-8px); 
-        box-shadow: 0 10px 25px rgba(114, 47, 55, 0.2); 
-        border-color: var(--brand-red); 
-    }
-
-    .service-card img { width: 100%; height: 220px; object-fit: cover; }
-    .service-card-body { padding: 25px; text-align: center; }
-
-    .stack-container { display: flex; flex-direction: column; width: 100%; }
-    .stack-card-item { margin-bottom: -15px; transition: 0.3s ease; position: relative; z-index: 1; }
-    .stack-card-item:hover { transform: translateY(-25px); z-index: 10; }
-    .custom-stack-card {
-        display: flex; background: white; border-radius: 12px; height: 120px;
-        border: 1px solid #eee; overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
     
     .card { background-color: var(--card-bg) !important; border: none !important; }
@@ -333,28 +216,14 @@
     }
 
     /* --- 7. UI Components --- */
-    .btn-close, .modal-header .btn-close {
-        position: absolute !important; 
-        top: 15px !important; 
-        right: 15px !important;
-        z-index: 1065 !important; 
-        background-color: #000 !important; 
-        border: 2px solid #ffffff !important; 
-        border-radius: 50% !important; 
-        width: 40px !important; 
-        height: 40px !important; 
-        display: flex !important;
-        align-items: center; 
-        justify-content: center; 
-        transition: all 0.2s;
-        background-image: none !important; 
+    .btn-close {
+        position: absolute !important; top: 15px !important; right: 15px !important;
+        z-index: 1065 !important; background-color: #000 !important; 
+        border: 2px solid #ffffff !important; border-radius: 50% !important; 
+        width: 40px !important; height: 40px !important; display: flex !important;
+        align-items: center; justify-content: center; transition: all 0.2s;
         opacity: 1 !important;
-        padding: 0 !important;
-        margin: 0 !important;
     }
-
-    .btn-close:hover { transform: scale(1.1); background-color: var(--brand-red) !important; }
-
     .btn-close::before, .btn-close::after {
         content: ''; position: absolute; width: 2px; height: 20px; background-color: #ffffff !important; 
     }
@@ -373,36 +242,11 @@
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     /* --- 9. RWD 手機版適配 --- */
-    @media (max-width: 991px) { .lightbox-info-side { flex: 0 0 300px; } }
-
     @media (max-width: 768px) {
-        #loading-screen { padding-top: 22vh; }
-        .lightbox-content { flex-direction: column; width: 100vw; height: 100vh; border-radius: 0; }
-        .lightbox-image-side { height: 40vh; }
-        .lightbox-info-side { flex: none; width: 100%; padding-bottom: 80px; }
-        
-        /* 手機版 Hero 文字調整 */
         #heroCarousel { height: 50vh; } 
-        .carousel-caption-custom { bottom: 10%; }
-        .carousel-caption-custom h1, 
-        .hero-subtitle { 
-            font-size: 1.8rem !important; 
-            margin-bottom: 5px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
-        }
-        .hero-desc { 
-            font-size: 0.95rem !important; 
-            padding: 4px 12px;
-        }
-
-        .btn-close, .modal-header .btn-close { 
-            top: 10px !important; 
-            right: 10px !important; 
-            width: 32px !important; 
-            height: 32px !important; 
-        }
-        .btn-close::before, .btn-close::after { height: 16px; }
-        .gallery-container { grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px; }
+        .carousel-caption-custom h1 { font-size: 1.8rem !important; }
+        .hero-desc { font-size: 0.95rem !important; }
+        .gallery-container { grid-template-columns: 1fr 1fr; gap: 10px; }
     }
 </style>
 </head>
