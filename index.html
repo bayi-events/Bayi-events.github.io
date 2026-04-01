@@ -68,6 +68,8 @@
         margin: 0; 
         width: 100%;
         overflow-x: hidden;
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
     }
 
     body.is-loading { overflow: hidden !important; }
@@ -86,6 +88,8 @@
     .navbar { 
         background-color: var(--brand-red) !important; 
         box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+        max-width: 100vw;
+        overflow: hidden;
     }
     .navbar-brand { 
         font-weight: 900; 
@@ -129,14 +133,17 @@
         content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 65%; 
         background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%); z-index: 2;
     }
-    .carousel-caption-custom { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; width: 85%; }
+    .carousel-caption-custom { 
+        position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); 
+        text-align: center; z-index: 10; width: 85%; max-width: 100vw; overflow: hidden;
+    }
     .carousel-caption-custom h1, .hero-subtitle {
         font-size: 2.8rem !important; font-weight: 800 !important; color: #ffffff !important; 
         text-shadow: 2px 2px 15px rgba(0,0,0,0.8); letter-spacing: 2px; margin-bottom: 8px;
     }
     .hero-desc { display: inline-block; font-size: 1.1rem !important; color: #ffffff !important; background: rgba(0,0,0,0.55); padding: 6px 16px; border-radius: 6px; backdrop-filter: blur(4px); }
 
-    /* --- 5. Cards (八毅光暈整合版) --- */
+    /* --- 5. Cards --- */
     .section-title { color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; text-align: center; letter-spacing: 2px; }
     .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--brand-red); margin: 15px auto; }
 
@@ -167,8 +174,30 @@
 
     #imgLightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; z-index: 10000; }
     .lightbox-content { display: flex; width: 95vw; height: 90vh; background: #111; border-radius: 15px; overflow: hidden; position: relative; }
-    .lightbox-image-side { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; }
-    .lightbox-image-side img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    
+    /* 圖片區域與箭頭控制 */
+    .lightbox-image-side { 
+        flex: 1; display: flex; align-items: center; justify-content: center; 
+        background: #000; position: relative; overflow: hidden; 
+    }
+    .lightbox-image-side img { 
+        max-width: 100%; max-height: 100%; object-fit: contain; 
+        cursor: grab; /* 滑鼠按壓前的游標 */
+    }
+    .lightbox-image-side img:active { cursor: grabbing; }
+
+    /* 左右箭頭按鈕 */
+    .prev, .next {
+        cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);
+        width: 50px; height: 50px; display: flex; align-items: center; justify-content: center;
+        background-color: rgba(0, 0, 0, 0.5); color: white !important;
+        font-weight: bold; font-size: 24px; border-radius: 50%; user-select: none;
+        transition: 0.3s ease; z-index: 10001; text-decoration: none !important;
+    }
+    .prev { left: 20px; }
+    .next { right: 20px; }
+    .prev:hover, .next:hover { background-color: var(--brand-red); transform: translateY(-50%) scale(1.1); }
+
     .lightbox-info-side { flex: 0 0 400px; padding: 40px 30px; background: #1a1a1a; color: white; overflow-y: auto; border-left: 1px solid rgba(255,255,255,0.1); }
 
     /* --- 7. UI Components --- */
@@ -183,38 +212,20 @@
     .btn-close::before { transform: rotate(45deg); }
     .btn-close::after { transform: rotate(-45deg); }
 
-    /* --- 8. 修正版：八毅質感紅詢問頁籤 --- */
+    /* --- 8. 詢問頁籤 --- */
     .floating-line-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        z-index: 9999;
-        
-        /* 配色與質感 */
+        position: fixed; bottom: 30px; right: 30px; z-index: 9999;
         background: linear-gradient(135deg, var(--brand-red) 0%, #4a1e24 100%);
-        color: white !important;
-        padding: 12px 22px;
-        border-radius: 8px;
-        text-decoration: none !important;
-        display: flex;
-        align-items: center;
-        font-weight: bold;
-        border: 1px solid rgba(255,255,255,0.1);
+        color: white !important; padding: 12px 22px; border-radius: 8px;
+        text-decoration: none !important; display: flex; align-items: center;
+        font-weight: bold; border: 1px solid rgba(255,255,255,0.1);
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-
-        /* 關鍵：預設隱藏，並設定淡入動畫 */
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.5s ease-in-out; /* 基礎過渡 */
+        opacity: 0; visibility: hidden; transition: all 0.5s ease-in-out;
     }
-    /* 關鍵：當 Loading 結束 (body 移除 is-loading) 時，按鈕淡入 */
     body:not(.is-loading) .floating-line-btn {
-        opacity: 1;
-        visibility: visible;
-        /* 加個微微的上浮動畫，更有進場感 */
-        animation: fadeInUpBtn 0.8s 2s ease forwards; /* 延遲 2 秒，確保在 Loading 後出現 */
+        opacity: 1; visibility: visible;
+        animation: fadeInUpBtn 0.8s 2s ease forwards;
     }
-    /* 按鈕進場動畫定義 */
     @keyframes fadeInUpBtn {
         from { opacity: 0; transform: translateY(20px); }
         to { opacity: 1; transform: translateY(0); }
@@ -225,42 +236,27 @@
         margin-right: 10px; box-shadow: 0 0 10px #00ff00;
         animation: pulse-green 2s infinite;
     }
-
-    /* 懸浮效果保持不變 */
     .floating-line-btn:hover {
-        transform: scale(1.05) translateY(-5px) !important; /* 加上 !important 確保覆蓋進場動畫 */
+        transform: scale(1.05) translateY(-5px) !important;
         box-shadow: 0 15px 30px rgba(114, 47, 55, 0.4);
         background: linear-gradient(135deg, #8b3a44 0%, var(--brand-red) 100%);
     }
-    /* 禁止手機系統自動調整文字大小 */
-html {
-    -webkit-text-size-adjust: 100%;
-    -moz-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    text-size-adjust: 100%;
-}
 
-/* 確保 Flex 容器不會被文字撐破 */
-.flex-container, .navbar, .carousel-caption-custom {
-    max-width: 100vw;
-    overflow: hidden;
-}
     /* --- 9. RWD 修正 --- */
     @media (max-width: 992px) {
         .lightbox-content { flex-direction: column; height: 95vh; }
-        .lightbox-image-side { flex: 0 0 45%; }
+        .lightbox-image-side { flex: 0 0 50%; }
         .lightbox-info-side { flex: 1; width: 100%; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
+        .prev, .next { width: 40px; height: 40px; font-size: 20px; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
     }
 
     @media (max-width: 768px) {
         .carousel-caption-custom h1 { font-size: 2rem !important; }
         .lightbox-content { height: 90vh !important; margin: 5vh auto !important; }
-        .lightbox-info-side { overflow-y: auto !important; }
-        .lightbox-info-side .btn-outline-light { margin-bottom: 40px !important; }
-        
-        /* 手機版按鈕微調 */
         .floating-line-btn { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 14px; }
-        body.modal-open .floating-line-btn { display: none; } /* 彈窗開啟時隱藏 */
+        body.modal-open .floating-line-btn { display: none; }
     }
 
     /* --- 10. 動畫定義 --- */
@@ -1125,14 +1121,23 @@ const photoLibrary = {
     }
 };
     
-// 注入佈置氣球案例
+<script>
+// 1. 注入佈置氣球案例
 const balloonUrls = ["https://i.postimg.cc/PrJxfRxs/1965927-0.jpg", "https://i.postimg.cc/NfFMGzMv/1981332-0.jpg", "https://i.postimg.cc/QxCtNyth/1981333-0.jpg", "https://i.postimg.cc/L68qYsxN/1981334-0.jpg", "https://i.postimg.cc/kXgV65Tw/1981335.jpg", "https://i.postimg.cc/RVZ360gd/1981336.jpg", "https://i.postimg.cc/bNwGDvmm/1981337.jpg", "https://i.postimg.cc/J4zyDhpF/1981338.jpg", "https://i.postimg.cc/J4zyDhpg/1981339.jpg", "https://i.postimg.cc/YqC4GSdZ/1981340.jpg"];
 balloonUrls.forEach((url, index) => {
     const id = `ball_item_${index}`;
-    photoLibrary[id] = { tag: "活動佈置", title: `佈置成品 ${index + 1}`, loc: "精選案例", images: [url], desc: "八毅硬體結構精選佈置作品。" };
-    photos_Decor.push(id);
+    if (typeof photoLibrary !== 'undefined') {
+        photoLibrary[id] = { tag: "活動佈置", title: `佈置成品 ${index + 1}`, loc: "精選案例", images: [url], desc: "八毅硬體結構精選佈置作品。" };
+        if (!photos_Decor.includes(id)) photos_Decor.push(id);
+    }
 });
 
+// 2. 全域變數監控滑動
+let currentProject = null;
+let currentImgIdx = 0;
+let touchstartX = 0;
+let touchendX = 0;
+let isDragging = false;
 
 // --- 卡片相簿連動系統 ---
 function openAlbumTab(tabId) {
@@ -1143,7 +1148,6 @@ function openAlbumTab(tabId) {
     }
     albumModal.show();
 
-    // 監聽 Modal 開啟完成後，再切換 Tab
     albumModalEl.addEventListener('shown.bs.modal', function () {
         const tabEl = document.getElementById(tabId);
         if (tabEl) {
@@ -1152,19 +1156,15 @@ function openAlbumTab(tabId) {
         }
     }, { once: true }); 
 }
-// (注意：就是這麼短，不要再留舊的 setTimeout 在下面了)
-// --- 相簿與燈箱功能 ---
-    
 
+// --- 相簿載入功能 ---
 function loadGallery(containerId, list) {
-    // 找到該 tab 下面的 .row
     const rowContainer = document.querySelector(`#${containerId} .row`);
-    
     if (!rowContainer) return;
 
-    // 只更新 row 裡面的 HTML，保留 row 的排版能力
     rowContainer.innerHTML = list.map(id => {
         const item = photoLibrary[id];
+        if (!item) return ''; // 防呆：如果 ID 沒定義在 photoLibrary 則跳過
         return `
             <div class="col-md-4 col-lg-3 mb-4" onclick="openProjectGallery('${id}')" style="cursor:pointer;">
                 <div class="album-card">
@@ -1177,95 +1177,130 @@ function loadGallery(containerId, list) {
     }).join('');
 }
 
+// --- 燈箱核心功能 ---
 function openProjectGallery(projectId) {
-        currentProject = photoLibrary[projectId];
-        if (!currentProject) return;
-        currentImgIdx = 0;
-        updateLightbox();
-    }
+    currentProject = photoLibrary[projectId];
+    if (!currentProject) return;
+    currentImgIdx = 0;
+    updateLightbox();
+}
 
-    function updateLightbox() {
+function updateLightbox() {
     const lb = document.getElementById('imgLightbox');
-    if(!lb || !currentProject) return; // 加入防呆
+    if(!lb || !currentProject) return;
     const info = currentProject;
     const formattedDesc = info.desc.replace(/\n/g, '<br>');
+    
+    // 重新構建內部 HTML，確保箭頭在 lightbox-image-side 內以便定位
     lb.innerHTML = `
         <div class="lightbox-content" onclick="event.stopPropagation()">
-            <div class="lightbox-image-side">
-                <img src="${info.images[currentImgIdx]}" id="target-img">
+            <div class="lightbox-image-side" id="swipe-area">
+                <img src="${info.images[currentImgIdx]}" id="target-img" draggable="false">
+                
                 ${info.images.length > 1 ? `
-                    <div class="nav-controls">
-                        <button class="nav-btn prev" onclick="changeImage(-1)">❮</button>
-                        <button class="nav-btn next" onclick="changeImage(1)">❯</button>
+                    <a class="prev" onclick="changeImage(-1)">❮</a>
+                    <a class="next" onclick="changeImage(1)">❯</a>
+                    <div class="img-counter" style="position:absolute; bottom:20px; color:white; background:rgba(0,0,0,0.5); padding:2px 10px; border-radius:10px;">
+                        <span class="current">${currentImgIdx + 1}</span> / <span class="total">${info.images.length}</span>
                     </div>
-                    <div class="img-counter"><span class="current">${currentImgIdx + 1}</span> / <span class="total">${info.images.length}</span></div>
                 ` : ''}
             </div>
 
             <div class="lightbox-info-side">
                 <h2 style="color: #BA2D30;">${info.title}</h2>
                 <p><i class="bi bi-geo-alt-fill me-1"></i>${info.loc}</p>
-                <hr>
+                <hr style="border-color:rgba(255,255,255,0.1)">
                 <div class="info-body"><p>${formattedDesc}</p></div>
                 <button class="btn btn-outline-light w-100 mt-4" onclick="closeLightbox()">關閉</button>
             </div>
         </div>`;
+    
     lb.style.display = 'flex';
     document.body.style.overflow = 'hidden';
+    
+    // 綁定滑動事件
+    initSwipeEvents();
 }
 
-    function changeImage(step) {
-        currentImgIdx = (currentImgIdx + step + currentProject.images.length) % currentProject.images.length;
-        document.getElementById('target-img').src = currentProject.images[currentImgIdx];
-        const counter = document.querySelector('.img-counter .current');
-        if(counter) counter.innerText = currentImgIdx + 1;
-    }
-
-    function closeLightbox() {  
-        document.getElementById('imgLightbox').style.display = 'none';  
-        document.body.style.overflow = 'auto';  
-    }
-
-// --- 最終版：頁面初始化與強制導向系統 ---
-window.addEventListener('load', function() {
+function changeImage(step) {
+    if (!currentProject) return;
+    currentImgIdx = (currentImgIdx + step + currentProject.images.length) % currentProject.images.length;
+    const targetImg = document.getElementById('target-img');
+    if (targetImg) targetImg.src = currentProject.images[currentImgIdx];
     
-    // 1. 【核心修正】不管什麼情況，重整就強制回到官網初始狀態
-    // 隱藏所有可能開啟的子頁面區塊（請對應你實際的 ID，例如 #about-page, #collab-page）
-    const subPages = ['about-section', 'cooperation-section']; // 這裡填入你「關於八毅」跟「企業合作」的 ID
+    const counter = document.querySelector('.img-counter .current');
+    if(counter) counter.innerText = currentImgIdx + 1;
+}
+
+function closeLightbox() {  
+    document.getElementById('imgLightbox').style.display = 'none';  
+    document.body.style.overflow = 'auto';  
+}
+
+// --- 手勢與滑鼠滑動偵測 ---
+function initSwipeEvents() {
+    const swipeArea = document.getElementById('swipe-area');
+    if (!swipeArea) return;
+
+    const handleGesture = () => {
+        const threshold = 50;
+        if (touchendX < touchstartX - threshold) changeImage(1);  // 左滑 -> 下一張
+        if (touchendX > touchstartX + threshold) changeImage(-1); // 右滑 -> 前一張
+    };
+
+    // 觸控事件
+    swipeArea.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+    }, {passive: true});
+
+    swipeArea.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        handleGesture();
+    }, {passive: true});
+
+    // 滑鼠拖拽事件
+    swipeArea.addEventListener('mousedown', e => {
+        touchstartX = e.screenX;
+        isDragging = true;
+    });
+
+    window.addEventListener('mouseup', e => {
+        if (!isDragging) return;
+        touchendX = e.screenX;
+        isDragging = false;
+        handleGesture();
+    }, {once: false});
+}
+
+// --- 初始化與強制置頂 ---
+window.addEventListener('load', function() {
+    // 1. 強制導向與顯示隱藏控制
+    const subPages = ['about-section', 'cooperation-section']; 
     subPages.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'none'; 
     });
 
-    // 確保主首頁（Hero, Cards 等）是顯示的
-    const mainSections = ['heroCarousel', 'main-content']; // 這裡填入你首頁內容的 ID
+    const mainSections = ['heroCarousel', 'main-content']; 
     mainSections.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.style.display = 'block';
     });
 
-    // 2. 載入相簿資料庫 (保持原樣)
+    // 2. 載入相簿
     try {
         loadGallery('gallery-1', photos_Tables);
         loadGallery('gallery-2', photos_Truss);
         loadGallery('gallery-3', photos_Tent);
         loadGallery('gallery-4', photos_Stage);
         loadGallery('gallery-5', photos_Decor);
-        console.log("✅ 相簿載入完成");
     } catch (e) {
         console.warn("⚠️ 相簿加載異常:", e);
     }
 
-    // 3. Loading 動畫與聲音控制
+    // 3. Loading 動畫
     const loader = document.getElementById('loading-screen');
     if (loader) {
-        // 音效播放
-        new Audio('低沉穩重的進場音.mp3').play().catch(e => {});
-        setTimeout(() => {
-            new Audio('俏皮彈出音.mp3').play().catch(e => {});
-        }, 1200);
-
-        // 結束 Loading
         setTimeout(() => {
             loader.style.opacity = '0'; 
             setTimeout(() => {
@@ -1273,7 +1308,6 @@ window.addEventListener('load', function() {
                 loader.style.zIndex = '-1';
                 document.body.classList.remove('is-loading');
                 document.body.style.overflow = 'auto'; 
-                // 重整後強制置頂
                 window.scrollTo(0, 0);
             }, 850); 
         }, 2500); 
@@ -1284,7 +1318,12 @@ window.addEventListener('load', function() {
 if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
-    </script>
+</script>
+
+function openProjectGallery(projectId) {
+        currentProject = photoLibrary[projectId];
+        if (!currentProject) return;
+        currentIm
    </body>
             <a href="https://line.me/R/ti/p/@998cnhao" class="floating-line-btn" target="_blank">
     <i class="bi bi-line"></i>
