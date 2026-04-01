@@ -1,6 +1,6 @@
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="7o8o6r3uEbED_5QpoN-259MRNZC_HPPmaunm7xorudo" />
     
     <title>蘆洲帳篷租賃、Truss搭建｜八毅硬體結構 - 在地專業活動設備與舞台工程</title>
@@ -232,6 +232,19 @@
         box-shadow: 0 15px 30px rgba(114, 47, 55, 0.4);
         background: linear-gradient(135deg, #8b3a44 0%, var(--brand-red) 100%);
     }
+    /* 禁止手機系統自動調整文字大小 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* 確保 Flex 容器不會被文字撐破 */
+.flex-container, .navbar, .carousel-caption-custom {
+    max-width: 100vw;
+    overflow: hidden;
+}
     /* --- 9. RWD 修正 --- */
     @media (max-width: 992px) {
         .lightbox-content { flex-direction: column; height: 95vh; }
