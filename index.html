@@ -4,487 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="google-site-verification" content="7o8o6r3uEbED_5QpoN-259MRNZC_HPPmaunm7xorudo" />
-    
     <title>蘆洲帳篷租賃、Truss搭建｜八毅硬體結構 - 在地專業活動設備與舞台工程</title>
-    
-    <meta name="description" content="八毅硬體結構深耕蘆洲、五股地區，提供專業阿里山帳篷、宮廷帳、圓拱帳、Truss結構搭建及舞台桌椅租賃。在地專業服務。">
-    
-    <link rel="icon" href="favicon.png" type="image/png">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="description" content="八毅硬體結構深耕蘆洲、五股地區，提供專業阿里山帳篷、宮廷帳、圓拱帳、Truss結構搭建及舞台桌椅租賃。">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
 <style>
-    /* --- 頂級公關留白美學底層設定 --- */
-    :root { 
-        --brand-red: #8B1E2B; /* 專屬品牌酒紅色 */
-        --brand-red-dark: #5a111b; /* 深酒紅，用於漸層 */
-        --brand-gold: #c5a059;
-        --bg-light: #FAFAFA; 
-        --text-main: #111111;
-        --text-muted: #666666;
-    }
-
-    body, html { 
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Microsoft JhengHei";
-        background-color: var(--bg-light); 
-        margin: 0; 
-        width: 100%;
-        overflow-x: hidden;
-        color: var(--text-main);
-        -webkit-font-smoothing: antialiased;
-    }
-
-    body.is-loading { overflow: hidden !important; }
-
-    /* --- 1. 導覽列：極簡明亮風格 + 酒紅點綴 --- */
-    .navbar { 
-        background-color: rgba(250, 250, 250, 0.95) !important; 
-        backdrop-filter: blur(15px);
-        -webkit-backdrop-filter: blur(15px);
-        border-bottom: 1px solid rgba(0,0,0,0.05);
-        padding: 18px 0;
-        position: fixed;
-        width: 100%;
-        top: 0;
-        z-index: 1000;
-        transition: all 0.4s ease;
-    }
-    .navbar-brand { 
-        font-weight: 800; 
-        color: var(--brand-red) !important; /* Logo 文字改為品牌色 */
-        font-size: 1.5rem; 
-        letter-spacing: 2px; 
-    }
-    .nav-link { 
-        color: #444444 !important; 
-        font-weight: 500; 
-        letter-spacing: 1px;
-        margin-left: 20px;
-        transition: color 0.3s ease;
-    }
-    .nav-link:hover { color: var(--brand-red) !important; } /* 滑鼠懸停顯示品牌色 */
-
-    /* --- 2. 開場 Loading 動畫 (修復：改回實際圖片 Logo) --- */
-    #loading-screen {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-        background: #ffffff; z-index: 9999; display: flex;
-        flex-direction: column; justify-content: center; align-items: center;        
-        transition: opacity 0.8s ease-out;
-    }
-    .logo-box { 
-        display: flex; flex-direction: column; align-items: center; 
-        animation: masterEntrance 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-    }
-    .logo-box img {
-        width: 180px; /* Logo 大小 */
-        height: auto;
-        margin-bottom: 20px;
-    }
-    .brand-name-loading { 
-        font-size: 26px; font-weight: 900; color: var(--brand-red);
-        letter-spacing: 4px; opacity: 0; animation: fadeIn 1s 1s forwards; 
-        text-align: center;
-    }
-
-    @keyframes masterEntrance { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-    /* --- 3. Light 標題與大量留白 --- */
-    .hero-title-section {
-        max-width: 1100px;
-        margin: 180px auto 70px;
-        padding: 0 25px;
-        text-align: left;
-    }
-    .hero-title-section h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        letter-spacing: 2px;
-        color: #000000;
-        margin-bottom: 20px;
-        line-height: 1.2;
-    }
-    .hero-title-section h1 span {
-        color: var(--brand-red); /* 突顯品牌色的標題 */
-    }
-    .hero-title-section p {
-        font-size: 1.3rem;
-        color: var(--text-muted);
-        letter-spacing: 1px;
-        max-width: 700px;
-    }
-
-    /* --- 4. 藝廊級 Bento Box 網格區塊 --- */
-    .bento-grid-gallery {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: 290px;
-        gap: 25px;
-        max-width: 1200px;
-        margin: 0 auto 80px; /* 縮小一點底部邊距，接續 FB 區塊 */
-        padding: 0 25px;
-    }
-
-    .bento-item {
-        border-radius: 20px;
-        overflow: hidden;
-        position: relative;
-        background: #ffffff;
-        cursor: pointer;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
-        border: 1px solid rgba(0,0,0,0.02);
-    }
-    
-    .bento-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(139, 30, 43, 0.2); /* 酒紅色光影 */
-    }
-
-    .bento-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.8s ease;
-    }
-    .bento-item:hover .bento-img { transform: scale(1.06); }
-
-    .bento-overlay {
-        position: absolute;
-        bottom: 0; left: 0; right: 0;
-        padding: 50px 35px 30px;
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
-        color: #fff;
-        z-index: 2;
-    }
-    .bento-overlay h3 { font-size: 1.9rem; font-weight: 800; margin: 0 0 5px; letter-spacing: 1px; }
-    .bento-overlay p { font-size: 0.95rem; margin: 0; opacity: 0.85; letter-spacing: 1px; }
-
-    /* 網格大小分配 */
-    .grid-large { grid-column: span 2; grid-row: span 2; }
-    
-    /* 品牌色漸層卡片 */
-    .grid-text-card { 
-        grid-column: span 1; grid-row: span 1; 
-        padding: 45px 35px; 
-        display: flex; flex-direction: column; justify-content: center;
-        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); /* 酒紅漸層底 */
-        color: #fff;
-        cursor: default;
-    }
-    .grid-text-card:hover { transform: none; box-shadow: 0 4px 20px rgba(139, 30, 43, 0.3); }
-    .grid-tall { grid-column: span 1; grid-row: span 1; }
-    .grid-small { grid-column: span 1; grid-row: span 1; }
-
-    /* --- 5. FB 粉絲專頁區塊 --- */
-    .fb-plugin-section {
-        max-width: 1200px;
-        margin: 0 auto 120px;
-        padding: 0 25px;
-        text-align: center;
-    }
-    .fb-plugin-section h3 {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--text-main);
-        margin-bottom: 30px;
-        letter-spacing: 2px;
-    }
-    .fb-plugin-container {
-        display: inline-block;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        background: #fff;
-        border: 1px solid rgba(0,0,0,0.05);
-    }
-
-    /* --- RWD 響應式調整 --- */
-    @media (max-width: 992px) {
-        .hero-title-section { margin-top: 150px; }
-        .hero-title-section h1 { font-size: 2.8rem; }
-        .bento-grid-gallery { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 260px; }
-        .grid-text-card { grid-column: span 2; }
-    }
-    @media (max-width: 768px) {
-        .navbar { padding: 12px 0; }
-        .hero-title-section { margin-top: 130px; }
-        .hero-title-section h1 { font-size: 2.2rem; }
-        .hero-title-section p { font-size: 1.1rem; }
-        .bento-grid-gallery { grid-template-columns: 1fr; grid-auto-rows: 250px; gap: 20px; }
-        .grid-large { grid-column: span 1; grid-row: span 2; }
-        .grid-text-card { grid-column: span 1; padding: 35px 25px; }
-        .fb-plugin-container iframe { width: 100% !important; max-width: 340px; } /* 手機版 FB 適應 */
-    }
-
-    /* --- 6. 懸浮 LINE 按鈕 --- */
-    .floating-line-btn {
-        position: fixed; bottom: 40px; right: 40px; z-index: 9999;
-        background: #06C755; color: white !important;
-        padding: 15px 28px; border-radius: 50px; text-decoration: none !important;
-        display: flex; align-items: center; font-weight: 700; letter-spacing: 1px;
-        box-shadow: 0 15px 35px rgba(6, 199, 85, 0.35);
-        transition: all 0.3s ease;
-        border: none;
-    }
-    .floating-line-btn i { font-size: 24px; margin-right: 12px; }
-    .floating-line-btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(6, 199, 85, 0.5); }
+    :root { --brand-red: #8B1E2B; --brand-red-dark: #5a111b; --bg-light: #FAFAFA; --text-main: #111111; --text-muted: #666666; }
+    body { background-color: var(--bg-light); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    #loading-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #fff; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+    .navbar { background: rgba(250,250,250,0.95); backdrop-filter: blur(15px); padding: 18px 0; position: fixed; width: 100%; top: 0; z-index: 1000; }
+    .navbar-brand { font-weight: 800; color: var(--brand-red) !important; letter-spacing: 2px; }
+    .hero-title-section { max-width: 1100px; margin: 150px auto 70px; padding: 0 25px; }
+    .bento-grid-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1200px; margin: 0 auto 80px; padding: 0 25px; }
+    .bento-item { border-radius: 20px; overflow: hidden; position: relative; height: 290px; cursor: pointer; transition: 0.4s; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .bento-item:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(139,30,43,0.2); }
+    .bento-img { width: 100%; height: 100%; object-fit: cover; }
+    .bento-overlay { position: absolute; bottom: 0; padding: 30px; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; width: 100%; }
+    .grid-large { grid-column: span 2; grid-row: span 2; height: 605px; }
+    .grid-text-card { background: linear-gradient(135deg, var(--brand-red), var(--brand-red-dark)); color: #fff; padding: 40px; cursor: default; }
+    .fb-plugin-section { text-align: center; margin-bottom: 100px; }
+    .floating-line-btn { position: fixed; bottom: 40px; right: 40px; z-index: 9999; background: #06C755; color: white !important; padding: 15px 28px; border-radius: 50px; text-decoration: none !important; display: flex; align-items: center; box-shadow: 0 15px 35px rgba(6, 199, 85, 0.35); }
+    /* 相簿圖片樣式 */
+    .album-thumb { width: 100%; height: 160px; object-fit: cover; border-radius: 10px; }
 </style>
 </head>
-    
-<body class="is-loading">
+<body>
 
-    <!-- 修復版：改用圖片標籤的進場動畫 -->
-    <div id="loading-screen">
-        <div class="logo-box">
-            <!-- 請確保你的目錄下有 logo.png，如果檔名不同請更改 src -->
-            <img src="logo.png" alt="八毅硬體結構 Logo" onerror="this.style.display='none'">
-            <div class="brand-name-loading">八毅硬體結構</div>
-        </div>
-    </div>
+    <div id="loading-screen"><div class="logo-box"><img src="logo.png" width="180"><h3>八毅硬體結構</h3></div></div>
     
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">八毅硬體結構</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-                    <li class="nav-item"><a class="nav-link" href="cooperation.html">企業合作</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">關於八毅</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-expand-lg"><div class="container"><a class="navbar-brand" href="#">八毅硬體結構</a></div></nav>
 
-    <!-- 首圖區 (加入品牌色點綴) -->
     <div class="hero-title-section">
         <h1>為您打造<span>完美活動現場</span></h1>
-        <p>專業活動硬體服務，包含帳篷搭建、Truss結構、舞台出租，深耕蘆洲、五股在地服務。</p>
+        <p>專業活動硬體服務，深耕蘆洲、五股在地服務。</p>
     </div>
 
-    <!-- 網格區塊 -->
     <div class="bento-grid-gallery">
-        
-        <!-- 卡片 1 -->
-        <div class="bento-item grid-large" onclick="openProductModal('tents')">
-            <img src="https://i.postimg.cc/pdsM7FFj/109898_0.jpg" class="bento-img" alt="帳篷設備">
-            <div class="bento-overlay">
-                <h3>帳篷設備</h3>
-                <p>圓拱帳、宮廷帳、阿里山帳租賃搭建</p>
-            </div>
-        </div>
-
-        <!-- 卡片 2: 品牌酒紅色漸層宣言卡 -->
-        <div class="bento-item grid-text-card">
-            <h6 style="color: rgba(255,255,255,0.7); font-weight:700; letter-spacing:2px; margin-bottom:10px;">PROFESSIONAL</h6>
-            <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:15px; letter-spacing:1px;">極致的<br>硬體工藝</h2>
-            <p style="opacity:0.9; font-size:0.9rem; line-height:1.6; margin:0;">
-                從結構安全到視覺美感，我們致力於提供最乾淨、安全的活動硬體，專為高端活動與企業量身打造。
-            </p>
-        </div>
-
-        <!-- 卡片 3 -->
-        <div class="bento-item grid-tall" onclick="openProductModal('truss')">
-            <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="bento-img" alt="Truss 結構">
-            <div class="bento-overlay">
-                <h3>Truss 結構</h3>
-                <p>客製化桁架、背板、牌樓搭建</p>
-            </div>
-        </div>
-
-        <!-- 卡片 4 -->
-        <div class="bento-item grid-small" onclick="openProductModal('stage')">
-            <img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="bento-img" alt="舞台架設">
-            <div class="bento-overlay">
-                <h3>舞台架設</h3>
-                <p>各尺寸舞台板與地毯搭建</p>
-            </div>
-        </div>
-
-        <!-- 卡片 5 -->
-        <div class="bento-item grid-small" onclick="openProductModal('chairs')">
-            <img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="bento-img" alt="桌椅租賃">
-            <div class="bento-overlay">
-                <h3>桌椅租賃</h3>
-                <p>高級會議桌與各式座椅組</p>
-            </div>
-        </div>
-
-        <!-- 卡片 6 -->
-        <div class="bento-item grid-small" onclick="openProductModal('others')">
-            <img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="bento-img" alt="活動周邊">
-            <div class="bento-overlay">
-                <h3>活動周邊</h3>
-                <p>紅龍、伸縮圍欄、垃圾架配件</p>
-            </div>
-        </div>
-
+        <div class="bento-item grid-large" onclick="openProductModal('tents')"><img src="https://i.postimg.cc/pdsM7FFj/109898_0.jpg" class="bento-img"><div class="bento-overlay"><h3>帳篷設備</h3></div></div>
+        <div class="bento-item grid-text-card"><h2>極致的<br>硬體工藝</h2><p>從結構安全到視覺美感，我們致力於提供最乾淨、安全的活動硬體。</p></div>
+        <div class="bento-item" onclick="openProductModal('truss')"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="bento-img"><div class="bento-overlay"><h3>Truss 結構</h3></div></div>
+        <div class="bento-item" onclick="openProductModal('stage')"><img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="bento-img"><div class="bento-overlay"><h3>舞台架設</h3></div></div>
+        <div class="bento-item" onclick="openProductModal('chairs')"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="bento-img"><div class="bento-overlay"><h3>桌椅租賃</h3></div></div>
+        <div class="bento-item" onclick="openProductModal('others')"><img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="bento-img"><div class="bento-overlay"><h3>活動周邊</h3></div></div>
     </div>
 
-    <!-- 加回：FB 粉絲專頁區塊，套用圓角與陰影融入設計 -->
     <div class="fb-plugin-section">
         <h3>關注最新動態</h3>
-        <div class="fb-plugin-container">
-            <!-- 這裡放入你的 Facebook iframe 程式碼 -->
-            <!-- 備註：請將下方 src 連結內的網址換成你們實際的粉絲團網址 -->
-            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBayiEventHardware&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-        </div>
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBayiEventHardware&tabs=timeline&width=340&height=500" width="340" height="500" style="border:none;overflow:hidden"></iframe>
     </div>
 
-    <!-- 底部版權 -->
-    <div style="text-align: center; margin-bottom: 80px; color: var(--text-muted); font-size: 0.9rem;">
-        &copy; 2026 八毅硬體結構 版權所有
-    </div>
+    <a href="https://line.me/R/ti/p/@998cnhao" class="floating-line-btn" target="_blank"><i class="bi bi-line"></i><span>LINE 預約諮詢</span></a>
 
-    <!-- 懸浮 LINE 按鈕 -->
-    <a href="https://line.me/R/ti/p/@998cnhao" class="floating-line-btn" target="_blank">
-        <i class="bi bi-line"></i>
-        <span>LINE 預約諮詢</span>
-    </a>
-
-
-<!-- === 產品彈窗與相簿邏輯區塊 === -->
-<div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content" style="border-radius:15px; border:none; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
-           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute; top:20px; right:20px; z-index:10;"></button>
-            <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title fw-bold" id="prod-modal-title">產品名稱</h5>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="list-group list-group-flush" id="prod-list"></div>
-                    </div>
-                    <div class="col-md-8 text-center">
-                        <img id="prod-img" src="" class="img-fluid mb-3 rounded" style="max-height: 300px; object-fit: contain;" alt="產品圖">
-                        <h5 id="prod-name" class="fw-bold mt-2"></h5>
-                        <p id="prod-specs" class="text-muted text-start mt-3" style="font-size: 0.95rem; line-height: 1.6;"></p>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer border-0">
-                <button type="button" class="btn btn-dark py-2 px-4 fw-bold rounded-pill" onclick="closeProductAndOpenAlbum()">查看精選案例相簿</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="albumModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content" style="border-radius:15px; border:none;">
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="position:absolute; top:20px; right:20px; z-index:10;"></button>
-            <div class="modal-header border-0">
-                <h5 class="modal-title fw-bold">產品相簿</h5>
-            </div>
-            <div class="modal-body pt-0">
-                <ul class="nav nav-tabs d-none" id="albumTabs" role="tablist">
-                    <li class="nav-item"><button class="nav-link active" id="tab-1" data-bs-toggle="tab" data-bs-target="#gallery-1" type="button" role="tab">桌椅</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#gallery-2" type="button" role="tab">Truss</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#gallery-3" type="button" role="tab">帳篷</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-4" data-bs-toggle="tab" data-bs-target="#gallery-4" type="button" role="tab">舞台</button></li>
-                    <li class="nav-item"><button class="nav-link" id="tab-5" data-bs-toggle="tab" data-bs-target="#gallery-5" type="button" role="tab">其他</button></li>
-                </ul>
-                <div class="tab-content pt-4" id="albumTabContent">
-                    <div class="tab-pane fade show active" id="gallery-1" role="tabpanel"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-2" role="tabpanel"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-3" role="tabpanel"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-4" role="tabpanel"><div class="row"></div></div>
-                    <div class="tab-pane fade" id="gallery-5" role="tabpanel"><div class="row"></div></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <!-- Modals -->
+    <div class="modal fade" id="productModal" tabindex="-1"><div class="modal-dialog modal-lg"><div class="modal-content"><div class="modal-body"><div class="row"><div class="col-4" id="prod-list"></div><div class="col-8"><img id="prod-img" class="img-fluid rounded mb-2"><h5 id="prod-name"></h5><p id="prod-specs" class="small text-muted"></p></div></div></div><div class="modal-footer"><button class="btn btn-dark" onclick="closeProductAndOpenAlbum()">查看相簿</button></div></div></div></div>
+    <div class="modal fade" id="albumModal" tabindex="-1"><div class="modal-dialog modal-xl"><div class="modal-content"><div class="modal-body"><div class="tab-content" id="albumTabContent"></div></div></div></div></div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    
 <script>
 const productLibrary = {
-    'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
-        { name: '會議桌', img: 'https://i.postimg.cc/fLFnWQCg/109909_0.jpg', specs: '尺寸：W185xD60xH76.5cm<br>材質：PE桌面/鋼製腳架' },
-        { name: '黑金剛摺疊椅', img: 'https://i.postimg.cc/kGFc1xVC/日坊_林口竹林寺_黑金剛_進場.jpg', specs: '尺寸：W43.8xD50xH80cm<br>材質：PE/鋼製腳架' },
-        { name: '點心椅', img: 'https://i.postimg.cc/nzfByXft/黎國際_三重水樣啵啵_點心椅進場.jpg', specs: '尺寸：W33.3x33.3xH46.5cm<br>材質：PE' }
-    ]},
-    'truss': { title: 'Truss 結構', tab: 'tab-2', items: [
-        { name: 'Truss帳篷', img: 'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg', specs: '規格說明：客製化規格，結構穩固。' },
-        { name: '造型Truss', img: 'https://i.postimg.cc/yN9zD1bQ/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang2.jpg', specs: '規格說明：客製化造型，可包含設計圖。' },
-        { name: '牌樓Truss', img: 'https://i.postimg.cc/LXFLcJKW/黎國際_三重水樣啵啵_Trus進場2.jpg', specs: '規格說明：活動入口門面專用。' },
-        { name: '背板Truss', img: 'https://i.postimg.cc/nc22qGbp/鑫創土城_Truss_進場.jpg', specs: '規格說明：拍照背板/舞台背景專用。' }
-    ]},
-    'tents': { title: '帳篷設備', tab: 'tab-3', items: [
-        { name: '圓拱帳', img: 'https://i.postimg.cc/pdsM7FFj/109898_0.jpg', specs: '規格：依現場調整。頂棚顏色:紅白、白。' },
-        { name: '宮廷帳', img: 'https://i.postimg.cc/TwbQm8f5/永昌_新竹中油_3米白_進場2.jpg', specs: '規格：W600cm*D600cm 高度可調。' },
-        { name: '屋型帳', img: 'https://i.postimg.cc/76r0F5rH/賢哥_萬華金義宮_3米6紅進場.jpg', specs: '規格：W600cm*D300cm 高度可調。' },
-        { name: '阿里山帳', img: 'https://i.postimg.cc/zfX9nGPQ/賢哥南港高中_3米紅白_進場4.jpg', specs: '規格：W300cm*D300cm 高度可調。' }
-    ]},
-    'stage': { title: '舞台架設', tab: 'tab-4', items: [
-        { name: '3*6木質舞台板', img: 'https://i.postimg.cc/fLvbNBgy/傳動_考試院_舞台進場.jpg', specs: '規格：W180cm*D90cm*H10cm。' },
-        { name: '6*6木質舞台板', img: 'https://i.postimg.cc/fLFnWQ5b/109915.jpg', specs: '規格：W180cm*D180cm*H10cm。' }
-    ]},
-    'others': { title: '活動周邊配件', tab: 'tab-5', items: [
-        { name: '伸縮圍欄', img: 'https://i.postimg.cc/5t6s4Yr5/法克市府轉運站_紅龍進場.jpg', specs: '規格：銀色立柱。' },
-        { name: '垃圾架', img: 'https://i.postimg.cc/d1rGJVsb/汎馬_中和國小_垃圾架_進場.jpg', specs: '規格：鐵料支架。' }
-    ]}
+    'chairs': { title: '桌椅租賃', tab: 'gallery-1', items: [{name:'會議桌', img:'https://i.postimg.cc/fLFnWQCg/109909_0.jpg'}, {name:'黑金剛椅', img:'https://i.postimg.cc/kGFc1xVC/日坊_林口竹林寺_黑金剛_進場.jpg'}, {name:'點心椅', img:'https://i.postimg.cc/nzfByXft/黎國際_三重水樣啵啵_點心椅進場.jpg'}]},
+    'truss': { title: 'Truss 結構', tab: 'gallery-2', items: [{name:'Truss帳', img:'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg'}, {name:'造型Truss', img:'https://i.postimg.cc/yN9zD1bQ/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang2.jpg'}, {name:'牌樓', img:'https://i.postimg.cc/LXFLcJKW/黎國際_三重水樣啵啵_Trus進場2.jpg'}, {name:'背板', img:'https://i.postimg.cc/nc22qGbp/鑫創土城_Truss_進場.jpg'}]},
+    'tents': { title: '帳篷設備', tab: 'gallery-3', items: [{name:'圓拱帳', img:'https://i.postimg.cc/pdsM7FFj/109898_0.jpg'}, {name:'宮廷帳', img:'https://i.postimg.cc/TwbQm8f5/永昌_新竹中油_3米白_進場2.jpg'}, {name:'屋型帳', img:'https://i.postimg.cc/76r0F5rH/賢哥_萬華金義宮_3米6紅進場.jpg'}, {name:'阿里山帳', img:'https://i.postimg.cc/zfX9nGPQ/賢哥南港高中_3米紅白_進場4.jpg'}]},
+    'stage': { title: '舞台架設', tab: 'gallery-4', items: [{name:'3*6舞台', img:'https://i.postimg.cc/fLvbNBgy/傳動_考試院_舞台進場.jpg'}, {name:'6*6舞台', img:'https://i.postimg.cc/fLFnWQ5b/109915.jpg'}]},
+    'others': { title: '活動周邊', tab: 'gallery-5', items: [{name:'伸縮圍欄', img:'https://i.postimg.cc/5t6s4Yr5/法克市府轉運站_紅龍進場.jpg'}, {name:'垃圾架', img:'https://i.postimg.cc/d1rGJVsb/汎馬_中和國小_垃圾架_進場.jpg'}]}
 };
 
-let currentTabId = '';
-function openProductModal(catKey) {
-    const data = productLibrary[catKey];
-    if (!data) return;
-    const listEl = document.getElementById('prod-list');
-    document.getElementById('prod-modal-title').innerText = data.title;
-    currentTabId = data.tab;
-    listEl.innerHTML = '';
-    
-    data.items.forEach((item, index) => {
+// 【關鍵修正】自動注入相簿圖片的函數
+function renderAlbum() {
+    const tabContent = document.getElementById('albumTabContent');
+    tabContent.innerHTML = ''; 
+    for(const key in productLibrary) {
+        const cat = productLibrary[key];
+        const pane = document.createElement('div');
+        pane.className = `tab-pane fade ${key==='chairs'?'show active':''}`;
+        pane.id = cat.tab;
+        pane.innerHTML = `<h4>${cat.title}</h4><div class="row"></div>`;
+        const row = pane.querySelector('.row');
+        cat.items.forEach(item => {
+            row.innerHTML += `<div class="col-md-3 col-6 mb-3"><img src="${item.img}" class="album-thumb"><p class="small text-center">${item.name}</p></div>`;
+        });
+        tabContent.appendChild(pane);
+    }
+}
+
+function openProductModal(key) {
+    const data = productLibrary[key];
+    const list = document.getElementById('prod-list');
+    list.innerHTML = '';
+    data.items.forEach((item, idx) => {
         const btn = document.createElement('button');
-        btn.className = 'list-group-item list-group-item-action border-0';
+        btn.className = 'list-group-item';
         btn.innerText = item.name;
-        btn.onclick = () => {
-            document.getElementById('prod-img').src = item.img;
-            document.getElementById('prod-name').innerText = item.name;
-            document.getElementById('prod-specs').innerHTML = item.specs;
-            document.querySelectorAll('#prod-list .list-group-item').forEach(el => el.classList.remove('active', 'fw-bold'));
-            btn.classList.add('active', 'fw-bold');
-        };
-        listEl.appendChild(btn);
-        if(index === 0) btn.click();
+        btn.onclick = () => { document.getElementById('prod-img').src = item.img; document.getElementById('prod-name').innerText = item.name; };
+        list.appendChild(btn);
+        if(idx===0) btn.click();
     });
     new bootstrap.Modal(document.getElementById('productModal')).show();
 }
 
 function closeProductAndOpenAlbum() {
-    const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
-    if (modal) modal.hide();
-    setTimeout(() => {
-        const albumModal = new bootstrap.Modal(document.getElementById('albumModal'));
-        albumModal.show();
-        const tabTrigger = document.getElementById(currentTabId);
-        if (tabTrigger) new bootstrap.Tab(tabTrigger).show();
-    }, 400);
+    bootstrap.Modal.getInstance(document.getElementById('productModal')).hide();
+    new bootstrap.Modal(document.getElementById('albumModal')).show();
 }
 
-// 動畫控制腳本
-window.addEventListener('load', function() {
-    const loader = document.getElementById('loading-screen');
-    if (loader) {
-        setTimeout(() => {
-            loader.style.opacity = '0'; 
-            setTimeout(() => {
-                loader.style.display = 'none'; 
-                document.body.classList.remove('is-loading');
-                document.body.style.overflow = 'auto'; 
-            }, 850); 
-        }, 1500); // 縮短一點等待時間，讓體驗更順暢
-    }
-});
+window.onload = () => {
+    renderAlbum(); // 執行注入
+    setTimeout(() => document.getElementById('loading-screen').style.display = 'none', 1500);
+};
 </script>
 </body>
 </html>
