@@ -1,1497 +1,1388 @@
-<!DOCTYPE html>
-
-<html lang="zh-TW">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
     <meta name="google-site-verification" content="7o8o6r3uEbED_5QpoN-259MRNZC_HPPmaunm7xorudo" />
-
     
-
     <title>蘆洲帳篷租賃、Truss搭建｜八毅硬體結構 - 在地專業活動設備與舞台工程</title>
-
     
-
     <meta name="description" content="八毅硬體結構深耕蘆洲、五股地區，提供專業阿里山帳篷、宮廷帳、圓拱帳、Truss結構搭建及舞台桌椅租賃。不論是預售屋案場、市集活動 or 企業年會，我們提供最乾淨、維護最精良的硬體設備。">
-
     
-
     <meta name="geo.region" content="TW-NWT" />
-
     <meta name="geo.placename" content="Luzhou District" />
-
     <meta name="geo.position" content="25.0847;121.4727" />
-
     <meta name="ICBM" content="25.0847, 121.4727" />
 
-
-
     <script type="application/ld+json">
-
     {
-
       "@context": "https://schema.org",
-
       "@type": "LocalBusiness",
-
       "name": "八毅硬體結構",
-
       "image": "https://neyoli770817-dev.github.io/favicon.png",
-
       "url": "https://neyoli770817-dev.github.io/index.html",
-
       "telephone": "", 
-
       "address": {
-
         "@type": "PostalAddress",
-
         "streetAddress": "",
-
         "addressLocality": "蘆洲區",
-
         "addressRegion": "新北市",
-
         "postalCode": "247",
-
         "addressCountry": "TW"
-
       },
-
       "geo": {
-
         "@type": "GeoCoordinates",
-
         "latitude": 25.0847,
-
         "longitude": 121.4727
-
       },
-
       "openingHoursSpecification": {
-
         "@type": "OpeningHoursSpecification",
-
         "dayOfWeek": [
-
           "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
-
         ],
-
         "opens": "00:00",
-
         "closes": "23:59"
-
       },
-
       "description": "專業活動硬體服務，包含帳篷搭建、Truss結構、舞台出租，專注於蘆洲在地服務。"
-
     }
-
     </script>
 
-
-
     <link rel="icon" href="favicon.png" type="image/png">
-
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-
     <link rel="apple-touch-icon" href="favicon.png">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
 
-
-
 <style>
-
     /* --- 1. 變數與基礎設定 --- */
-
     :root { 
-
         --brand-red: #722F37; 
-
         --brand-gold: #c5a059;
-
-        --bg-light: #faf9f6; /* 更現代的米白底色 */
-
-        --text-dark: #222;
-
-        --card-bg: #fff;
-
+        --bg-light: #f5f3ef;
+        --text-dark: #333;
+        --card-bg: #F5F5DC;
     }
-
-
 
     body, html { 
-
-        font-family: "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-
+        font-family: "Microsoft JhengHei", sans-serif; 
         background-color: var(--bg-light); 
-
         margin: 0; 
-
         width: 100%;
-
         overflow-x: hidden;
-
-        -webkit-text-size-adjust: 100%;
-
     }
-
-
 
     body.is-loading { overflow: hidden !important; }
-
     .object-fit-cover { object-fit: cover; }
-
+    .mb-5 { margin-bottom: 3.5rem !important; }
     
-
     .main-wrapper {
-
         width: 100%;
-
-        max-width: 1300px; /* 拉大主視覺寬度 */
-
+        max-width: 1200px;
         margin: 0 auto;
-
-        padding: 80px 20px; /* 拉大上下呼吸空間 */
-
+        padding: 0 15px;
         box-sizing: border-box; 
-
     }
-
-
 
     /* --- 2. Navbar --- */
-
     .navbar { 
-
         background-color: var(--brand-red) !important; 
-
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
-
-        padding: 15px 0;
-
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
     }
-
     .navbar-brand { 
-
         font-weight: 900; 
-
         color: white !important; 
-
-        font-size: 1.6rem; 
-
-        letter-spacing: 2px; 
-
+        font-size: 1.5rem; 
+        letter-spacing: 1px; 
     }
-
     .nav-link { 
-
-        color: rgba(255,255,255,0.85) !important; 
-
+        color: rgba(255,255,255,0.9) !important; 
         font-weight: 500; 
-
-        letter-spacing: 1px;
-
-        transition: color 0.3s;
-
     }
-
-    .nav-link:hover { color: #fff !important; }
-
-
 
     /* --- 3. Loading Screen & Animation --- */
-
     #loading-screen {
-
         position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-
         background: #ffffff; z-index: 9999; display: flex;
-
         flex-direction: column; justify-content: flex-start; align-items: center;        
-
         padding-top: 30vh; transition: opacity 0.8s ease-out;
-
     }
-
     .logo-box { width: 220px; display: flex; flex-direction: column; align-items: center; }
-
     #loading-screen .logo-box svg {
-
         width: 220px !important; height: auto !important;
-
         transform-origin: 30% 40%; 
-
         animation: masterEntrance 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-
     }
-
+    #tent-part {
+        opacity: 0; transform: scale(0);
+        animation: tentBounce 0.6s 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
     .brand-name-loading { 
-
         font-size: 24px; font-weight: 900; color: #000; margin-top: 15px;
-
         letter-spacing: 4px; opacity: 0; animation: fadeIn 1s 1.5s forwards; 
-
         text-align: center; width: 100%;
-
     }
-
-
 
     /* --- 4. Hero Carousel --- */
-
-    #heroCarousel { height: 75vh; min-height: 500px; background-color: #000; position: relative; overflow: hidden; }
-
+    #heroCarousel { height: 65vh; min-height: 400px; background-color: #000; position: relative; overflow: hidden; }
     .carousel-inner, .carousel-item { height: 100%; }
-
-    .hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; transition: transform 6s ease-out;}
-
-    .carousel-item.active .hero-bg-layer { transform: scale(1.05); } /* 微進場特效 */
-
+    .hero-bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; z-index: 1; }
     .hero-bg-layer::after {
-
-        content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 70%; 
-
+        content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 65%; 
         background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%); z-index: 2;
-
     }
-
-    .carousel-caption-custom { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; width: 85%; }
-
+    .carousel-caption-custom { position: absolute; bottom: 12%; left: 50%; transform: translateX(-50%); text-align: center; z-index: 10; width: 85%; }
     .carousel-caption-custom h1, .hero-subtitle {
+        font-size: 2.8rem !important; font-weight: 800 !important; color: #ffffff !important; 
+        text-shadow: 2px 2px 15px rgba(0,0,0,0.8); letter-spacing: 2px; margin-bottom: 8px;
+    }
+    .hero-desc { display: inline-block; font-size: 1.1rem !important; color: #ffffff !important; background: rgba(0,0,0,0.55); padding: 6px 16px; border-radius: 6px; backdrop-filter: blur(4px); }
 
-        font-size: 3.5rem !important; font-weight: 900 !important; color: #ffffff !important; 
+    /* --- 5. Cards (八毅光暈整合版) --- */
+    .section-title { color: var(--brand-red); font-weight: 900; margin: 60px 0 40px; text-align: center; letter-spacing: 2px; }
+    .section-title::after { content: ''; display: block; width: 50px; height: 3px; background: var(--brand-red); margin: 15px auto; }
 
-        letter-spacing: 3px; margin-bottom: 12px;
-
+    .glow-card-final, .service-card, .album-card {
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+        position: relative; z-index: 1; border-radius: 12px; overflow: hidden;
+        border: 1px solid #eee !important; background: #fff !important;
+        text-decoration: none; color: inherit; display: block; cursor: pointer;
     }
 
-    .hero-desc { display: inline-block; font-size: 1.15rem !important; color: #fff !important; background: rgba(255,255,255,0.15); padding: 8px 20px; border-radius: 30px; backdrop-filter: blur(8px); letter-spacing: 1px;}
-
-
-
-    /* --- 5. 現代公關/設計風格 Bento 網格 --- */
-
-    .section-title-wrapper { text-align: center; margin-bottom: 60px; }
-
-    .section-subtitle { color: var(--brand-gold); font-weight: 800; letter-spacing: 3px; font-size: 0.9rem; text-transform: uppercase; margin-bottom: 10px; display: block;}
-
-    .section-title { color: var(--text-dark); font-weight: 900; font-size: 2.5rem; margin: 0; letter-spacing: 2px; }
-
-    .section-title-line { width: 50px; height: 4px; background: var(--brand-red); margin: 20px auto 0; border-radius: 2px;}
-
-
-
-    .modern-bento {
-
-        display: grid;
-
-        grid-template-columns: repeat(12, 1fr);
-
-        grid-auto-rows: minmax(220px, auto);
-
-        gap: 25px;
-
-        margin-bottom: 80px;
-
+    .col:hover .glow-card-final, .service-card:hover, .album-card:hover {
+        transform: translateY(-15px) !important; z-index: 10 !important;
+        box-shadow: 0 20px 40px rgba(114, 47, 55, 0.35) !important;
+        border-color: var(--brand-red) !important;
     }
 
+    .glow-card-final img, .service-card img { width: 100%; transition: transform 0.5s ease; object-fit: cover; }
+    .service-card img { height: 220px; }
+    .col:hover img { transform: scale(1.08); }
+    .service-card-body { padding: 25px; text-align: center; }
+    .card { background-color: var(--card-bg) !important; border: none !important; }
+    #monitor-card { transform: none !important; box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important; }
 
+    /* --- 6. Gallery & Lightbox --- */
+    .gallery-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px; width: 100%; }
+    .album-img-wrapper { position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; }
+    .album-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
 
-    .bento-box {
+    #imgLightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; z-index: 10000; }
+    .lightbox-content { display: flex; width: 95vw; height: 90vh; background: #111; border-radius: 15px; overflow: hidden; position: relative; }
+    .lightbox-image-side { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; }
+    .lightbox-image-side img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .lightbox-info-side { flex: 0 0 400px; padding: 40px 30px; background: #1a1a1a; color: white; overflow-y: auto; border-left: 1px solid rgba(255,255,255,0.1); }
 
-        position: relative;
-
-        border-radius: 20px;
-
-        overflow: hidden;
-
-        background: #000;
-
-        box-shadow: 0 15px 35px rgba(0,0,0,0.06);
-
-        transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-
-        cursor: pointer;
-
+    /* --- 7. UI Components --- */
+    .btn-close {
+        position: absolute !important; top: 15px !important; right: 15px !important;
+        z-index: 1065 !important; background-color: #000 !important; 
+        border: 2px solid #ffffff !important; border-radius: 50% !important; 
+        width: 40px !important; height: 40px !important; display: flex !important;
+        align-items: center; justify-content: center; opacity: 1 !important;
     }
+    .btn-close::before, .btn-close::after { content: ''; position: absolute; width: 2px; height: 20px; background-color: #ffffff !important; }
+    .btn-close::before { transform: rotate(45deg); }
+    .btn-close::after { transform: rotate(-45deg); }
 
-
-
-    .bento-box:hover {
-
-        transform: translateY(-8px);
-
-        box-shadow: 0 25px 50px rgba(114, 47, 55, 0.2);
-
-    }
-
-
-
-    .bento-img {
-
-        width: 100%;
-
-        height: 100%;
-
-        object-fit: cover;
-
-        transition: transform 0.8s ease, opacity 0.5s ease;
-
-        opacity: 0.85;
-
-    }
-
-    .bento-box:hover .bento-img {
-
-        transform: scale(1.08);
-
-        opacity: 1;
-
-    }
-
-
-
-    .bento-content {
-
-        position: absolute;
-
-        bottom: 0; left: 0; width: 100%;
-
-        padding: 40px 30px 25px;
-
-        background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-
-        color: #fff;
-
+    /* --- 8. 修正版：八毅質感紅詢問頁籤 --- */
+    .floating-line-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        
+        /* 配色與質感 */
+        background: linear-gradient(135deg, var(--brand-red) 0%, #4a1e24 100%);
+        color: white !important;
+        padding: 12px 22px;
+        border-radius: 8px;
+        text-decoration: none !important;
         display: flex;
+        align-items: center;
+        font-weight: bold;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 
-        flex-direction: column;
-
-        justify-content: flex-end;
-
-        z-index: 2;
-
+        /* 關鍵：預設隱藏，並設定淡入動畫 */
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease-in-out; /* 基礎過渡 */
+    }
+    /* 關鍵：當 Loading 結束 (body 移除 is-loading) 時，按鈕淡入 */
+    body:not(.is-loading) .floating-line-btn {
+        opacity: 1;
+        visibility: visible;
+        /* 加個微微的上浮動畫，更有進場感 */
+        animation: fadeInUpBtn 0.8s 2s ease forwards; /* 延遲 2 秒，確保在 Loading 後出現 */
+    }
+    /* 按鈕進場動畫定義 */
+    @keyframes fadeInUpBtn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .floating-line-btn i { font-size: 22px; margin-right: 10px; color: #fff; }
+    .floating-line-btn::before {
+        content: ''; width: 8px; height: 8px; background: #00ff00; border-radius: 50%;
+        margin-right: 10px; box-shadow: 0 0 10px #00ff00;
+        animation: pulse-green 2s infinite;
     }
 
-    
+    /* 懸浮效果保持不變 */
+    .floating-line-btn:hover {
+        transform: scale(1.05) translateY(-5px) !important; /* 加上 !important 確保覆蓋進場動畫 */
+        box-shadow: 0 15px 30px rgba(114, 47, 55, 0.4);
+        background: linear-gradient(135deg, #8b3a44 0%, var(--brand-red) 100%);
+    }
+    /* 禁止手機系統自動調整文字大小 */
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
 
-    .bento-content h4 { font-weight: 800; margin: 0; letter-spacing: 1px; font-size: 1.5rem; transition: transform 0.3s ease; }
-
-    .bento-content p { color: rgba(255,255,255,0.7); margin: 5px 0 0; font-size: 0.9rem; letter-spacing: 1px; font-weight: 300;}
-
-    .bento-box:hover .bento-content h4 { transform: translateY(-3px); color: var(--brand-gold);}
-
-
-
-    /* 網格區塊配置 */
-
-    .box-tents  { grid-column: span 6; grid-row: span 2; } /* 大正方 左上 */
-
-    .box-truss  { grid-column: span 6; grid-row: span 1; } /* 寬矩形 右上 */
-
-    .box-stage  { grid-column: span 3; grid-row: span 1; } /* 小正方 右中左 */
-
-    .box-chairs { grid-column: span 3; grid-row: span 1; } /* 小正方 右中右 */
-
-    
-
-    /* 3D 監控系統，融入網格中，佔據大版面 */
-
-    .box-monitor { grid-column: span 8; grid-row: span 2; cursor: default; background: #fff; display: flex; flex-direction: column;}
-
-    .box-monitor:hover { transform: none; box-shadow: 0 15px 35px rgba(0,0,0,0.06); } /* 移除 hover 特效 */
-
-    
-
-    .box-others { grid-column: span 4; grid-row: span 2; } /* 高矩形 右下 */
-
-
-
-    /* Monitor 專屬調整 */
-
-    .monitor-header { background: #111; color: #fff; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;}
-
-    .monitor-body { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;}
-
-
-
+/* 確保 Flex 容器不會被文字撐破 */
+.flex-container, .navbar, .carousel-caption-custom {
+    max-width: 100vw;
+    overflow: hidden;
+}
+    /* --- 9. RWD 修正 --- */
     @media (max-width: 992px) {
-
-        .box-tents  { grid-column: span 12; grid-row: span 2; }
-
-        .box-truss  { grid-column: span 6; grid-row: span 1; }
-
-        .box-others { grid-column: span 6; grid-row: span 1; }
-
-        .box-stage  { grid-column: span 6; grid-row: span 1; }
-
-        .box-chairs { grid-column: span 6; grid-row: span 1; }
-
-        .box-monitor{ grid-column: span 12; grid-row: span 2; }
-
+        .lightbox-content { flex-direction: column; height: 95vh; }
+        .lightbox-image-side { flex: 0 0 45%; }
+        .lightbox-info-side { flex: 1; width: 100%; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
     }
 
     @media (max-width: 768px) {
-
-        .carousel-caption-custom h1 { font-size: 2.2rem !important; }
-
-        .bento-content { padding: 30px 20px 20px; }
-
-        .box-tents, .box-truss, .box-stage, .box-chairs, .box-others, .box-monitor {
-
-            grid-column: span 12;
-
-            grid-row: span 1;
-
-            min-height: 250px;
-
-        }
-
-        .box-monitor { min-height: 450px; }
-
+        .carousel-caption-custom h1 { font-size: 2rem !important; }
+        .lightbox-content { height: 90vh !important; margin: 5vh auto !important; }
+        .lightbox-info-side { overflow-y: auto !important; }
+        .lightbox-info-side .btn-outline-light { margin-bottom: 40px !important; }
+        
+        /* 手機版按鈕微調 */
+        .floating-line-btn { bottom: 20px; right: 20px; padding: 10px 18px; font-size: 14px; }
+        body.modal-open .floating-line-btn { display: none; } /* 彈窗開啟時隱藏 */
     }
 
-
-
-    /* --- 6. Gallery & Lightbox --- */
-
-    .album-card {
-
-        transition: all 0.4s ease;
-
-        position: relative; border-radius: 12px; overflow: hidden;
-
-        background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-
-        cursor: pointer;
-
+    /* --- 10. 動畫定義 --- */
+    @keyframes pulse-green {
+        0% { transform: scale(0.9); opacity: 0.7; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.9); opacity: 0.7; }
     }
-
-    .album-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(114, 47, 55, 0.15); }
-
-    .album-img-wrapper { position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; }
-
-    .album-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-
-    .album-card:hover .album-img { transform: scale(1.08); }
-
-    .photo-tag { position: absolute; top: 10px; left: 10px; background: rgba(0,0,0,0.6); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; z-index: 2; backdrop-filter: blur(4px); }
-
-
-
-    #imgLightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.95); display: none; align-items: center; justify-content: center; z-index: 10000; }
-
-    .lightbox-content { display: flex; width: 95vw; height: 90vh; background: #111; border-radius: 15px; overflow: hidden; position: relative; }
-
-    .lightbox-image-side { flex: 1; display: flex; align-items: center; justify-content: center; background: #000; }
-
-    .lightbox-image-side img { max-width: 100%; max-height: 100%; object-fit: contain; }
-
-    .lightbox-info-side { flex: 0 0 400px; padding: 40px 30px; background: #1a1a1a; color: white; overflow-y: auto; border-left: 1px solid rgba(255,255,255,0.1); }
-
-    
-
-    @media (max-width: 992px) {
-
-        .lightbox-content { flex-direction: column; height: 95vh; }
-
-        .lightbox-image-side { flex: 0 0 45%; }
-
-        .lightbox-info-side { flex: 1; width: 100%; border-left: none; border-top: 1px solid rgba(255,255,255,0.1); }
-
-    }
-
-
-
-    /* --- 7. UI Components --- */
-
-    .btn-close.custom-modal-close {
-
-        position: absolute !important; top: 15px !important; right: 15px !important;
-
-        z-index: 1065 !important; background-color: #000 !important; 
-
-        border: 2px solid #ffffff !important; border-radius: 50% !important; 
-
-        width: 40px !important; height: 40px !important; display: flex !important;
-
-        align-items: center; justify-content: center; opacity: 1 !important; margin: 0; padding: 0;
-
-    }
-
-    .btn-close.custom-modal-close::before, .btn-close.custom-modal-close::after { content: ''; position: absolute; width: 2px; height: 20px; background-color: #ffffff !important; }
-
-    .btn-close.custom-modal-close::before { transform: rotate(45deg); }
-
-    .btn-close.custom-modal-close::after { transform: rotate(-45deg); }
-
-
-
-    /* --- 8. LINE 按鈕 --- */
-
-    .floating-line-btn {
-
-        position: fixed; bottom: 30px; right: 30px; z-index: 9999;
-
-        background: linear-gradient(135deg, var(--brand-red) 0%, #4a1e24 100%);
-
-        color: white !important; padding: 12px 22px; border-radius: 30px;
-
-        text-decoration: none !important; display: flex; align-items: center;
-
-        font-weight: bold; border: 1px solid rgba(255,255,255,0.1);
-
-        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-
-        opacity: 0; visibility: hidden; transition: all 0.5s ease-in-out;
-
-    }
-
-    body:not(.is-loading) .floating-line-btn {
-
-        opacity: 1; visibility: visible; animation: fadeInUpBtn 0.8s 2s ease forwards;
-
-    }
-
-    @keyframes fadeInUpBtn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-    .floating-line-btn i { font-size: 22px; margin-right: 10px; color: #fff; }
-
-    .floating-line-btn::before {
-
-        content: ''; width: 8px; height: 8px; background: #00ff00; border-radius: 50%;
-
-        margin-right: 10px; box-shadow: 0 0 10px #00ff00; animation: pulse-green 2s infinite;
-
-    }
-
-    .floating-line-btn:hover {
-
-        transform: scale(1.05) translateY(-5px) !important;
-
-        box-shadow: 0 15px 30px rgba(114, 47, 55, 0.4);
-
-        background: linear-gradient(135deg, #8b3a44 0%, var(--brand-red) 100%);
-
-    }
-
-
-
-    /* --- 9. 動畫定義 --- */
-
-    @keyframes pulse-green { 0% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.2); opacity: 1; } 100% { transform: scale(0.9); opacity: 0.7; } }
-
     @keyframes masterEntrance { 0% { opacity: 0; transform: scale(5); } 100% { opacity: 1; transform: scale(1); } }
-
+    @keyframes tentBounce { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-
-
-    /* 防止排版撐破 */
-
-    .flex-container, .navbar, .carousel-caption-custom { max-width: 100vw; overflow: hidden; }
-
 </style>
-
 </head>
-
     
-
 <body class="is-loading">
-
     <div id="loading-screen">
-
     <div class="logo-box">
-
             <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1197">
-
             <g fill="#9b4541">
-
   <path d="M1201 598.5 c0 -530.1 0.2 -598.5 1.5 -598.5 2 0 2.1 20.5 1.7 667.3 -0.2 469.8 -0.4 529.7 -1.7 529.7 -1.3 0 -1.5 -67.5 -1.5 -598.5z"/>
-
   <path d="M272.7 1076.3 c-3.4 -3.3 -3.8 -3.3 144.3 -3.3 144.3 0 145 0 145 2 0 2 -0.7 2 -144.3 2 -79.4 0 -144.7 -0.3 -145 -0.7z"/>
-
   <path d="M589 1058.1 c0 -1.2 10 -11.3 12.5 -12.6 1.1 -0.6 2.4 -2 3 -3.3 0.5 -1.2 1.5 -2.2 2.1 -2.2 0.7 0 2.4 -1.3 3.7 -3 1.4 -1.6 2.9 -3 3.3 -3 0.4 0 2.1 -1.2 3.6 -2.7 l2.8 -2.7 0 4.2 c0 3.6 -0.6 4.8 -4.8 9 -2.7 2.7 -5.6 5.1 -6.5 5.5 -1 0.4 -2.2 1.8 -2.7 3.2 -0.5 1.4 -1.6 2.5 -2.4 2.5 -0.8 0 -2.6 1.4 -3.9 3 -2.1 2.4 -3.3 3 -6.6 3 -2.3 0 -4.1 -0.4 -4.1 -0.9z"/>
-
   <path d="M654 1032.5 c0 -2.8 1.1 -4.4 6 -8.8 1.3 -1.2 3.8 -3.7 5.4 -5.4 1.6 -1.8 3.4 -3.3 3.9 -3.3 0.6 0 3.6 -2.7 6.7 -6 3.1 -3.3 6.1 -6 6.6 -6 0.4 0 3.6 -2.9 7.1 -6.5 3.4 -3.6 6.6 -6.5 6.9 -6.5 0.4 0 3.3 -2.6 6.4 -5.7 7.9 -8.1 11.3 -10.3 15.5 -10.3 1.9 0 3.5 0.2 3.5 0.5 0 0.8 -5.3 6.6 -10.4 11.4 -2.7 2.5 -6.4 6.1 -8.2 7.9 -1.8 1.7 -3.6 3.2 -3.9 3.2 -0.4 0 -2.9 2.3 -5.7 5 -2.8 2.8 -5.4 5 -5.9 5 -0.5 0 -2.3 1.6 -4 3.5 -1.8 1.9 -3.5 3.5 -3.9 3.5 -0.7 0 -8.1 6.8 -16.5 15 -2.2 2.2 -4.7 4 -5.6 4 -0.8 0 -2 0.5 -2.7 1.2 -0.9 0.9 -1.2 0.6 -1.2 -1.7z"/>
-
   <path d="M395.1 1006.3 c0 -0.7 -0.9 -1.3 -2 -1.3 -1.9 0 -9.1 -7.7 -10.3 -11.1 -0.4 -1 -1.2 -1.9 -1.8 -1.9 -0.5 0 -1 -1 -1 -2.2 0.1 -2.4 5.7 -6.8 8.6 -6.8 0.8 0 1.4 -0.4 1.4 -1 0 -0.5 0.5 -1 1 -1 1.8 0 1 5.2 -1.1 6.9 -1.7 1.4 -1.9 2.1 -1 4.4 0.6 1.5 1.5 2.7 2 2.7 1.7 0 5.2 7.2 4.8 9.9 -0.2 1.4 -0.5 2 -0.6 1.4z"/>
-
   <path d="M652 1001 c0 -0.5 0.3 -1 0.8 -1 0.4 0 1.8 -1.6 3.1 -3.5 1.3 -1.9 2.8 -3.5 3.4 -3.5 0.6 0 3.9 -2.9 7.4 -6.5 3.4 -3.6 6.6 -6.5 7 -6.5 0.4 0 3.1 -2.1 6 -4.8 8.7 -8 8.3 -7.8 8.3 -3.2 0 3.9 -3 9 -5.4 9 -0.5 0 -4 3 -7.7 6.8 -12.2 12.2 -14.9 14.2 -19.1 14.2 -2.1 0 -3.8 -0.4 -3.8 -1z"/>
-
   <path d="M516.7 980.1 c-1 -1.7 -1.7 -5 -1.7 -7.9 0 -2.8 -0.4 -5.2 -1 -5.4 -0.9 -0.3 -6 -27.9 -6 -32.5 0 -1.3 -0.8 -3.1 -1.8 -4.1 -1.7 -1.7 -1.9 -1.7 -3.6 0.5 -0.9 1.3 -2.3 2.3 -3.1 2.3 -0.8 0 -2.2 1.1 -3.1 2.5 -0.9 1.3 -2.3 2.7 -3.2 3 -1 0.2 -3.5 2 -5.7 3.9 -2.2 2 -5.1 4.1 -6.5 4.8 -1.4 0.7 -2.8 1.7 -3.2 2.3 -0.4 0.5 -1.9 1 -3.3 1 -2.1 0.1 -2.5 -0.4 -2.5 -2.7 0 -2.1 0.9 -3.2 4.3 -5.2 2.3 -1.4 4.8 -3.4 5.5 -4.6 0.7 -1.1 1.9 -2 2.7 -2 0.8 0 2 -0.9 2.7 -2.1 0.7 -1.1 2.7 -2.7 4.3 -3.5 1.7 -0.8 4.6 -2.8 6.4 -4.4 5.6 -5.1 14.1 -3.8 14.1 2.3 0.1 1.8 0.8 7.3 1.6 12.2 0.8 5 1.8 10.6 2.1 12.5 0.3 1.9 0.9 3.7 1.4 4.1 0.5 0.3 1.3 4.8 1.9 10 1.7 16.2 1.2 18.9 -2.3 13z"/>
-
   <path d="M423 955.9 c0.6 -1.1 2.5 -2.8 4.1 -3.8 1.7 -1 3.7 -2.8 4.5 -4 0.8 -1.1 2.1 -2.1 2.9 -2.1 0.7 0 2.2 -1.1 3.3 -2.5 1.1 -1.4 2.3 -2.5 2.6 -2.5 0.9 0 6.5 -4 10.1 -7.2 1.6 -1.6 3.5 -2.8 4.1 -2.8 0.5 0 2 -1.3 3.2 -3 1.3 -1.6 2.9 -3 3.7 -3 0.8 0 1.8 -0.6 2.2 -1.3 0.4 -0.6 2.7 -2.5 5.1 -4.1 2.3 -1.6 4.2 -3.2 4.2 -3.6 0 -0.5 2 -1.8 4.5 -3 2.5 -1.2 4.8 -2.7 5.3 -3.4 0.4 -0.7 2.3 -2.3 4.2 -3.6 1.9 -1.3 4.1 -3.2 4.8 -4.2 0.7 -1 1.9 -1.8 2.6 -1.8 0.7 0 2.1 -0.9 3.1 -2 2 -2.2 1.8 -7.6 -0.9 -19.5 -0.9 -3.8 -1.6 -8.5 -1.6 -10.2 0 -1.8 -0.4 -3.3 -0.9 -3.3 -0.5 0 -1.2 -2.4 -1.6 -5.2 -0.6 -5.7 -1.6 -10.9 -3.6 -20 -1.3 -6 -2.8 -7.2 -5.1 -4 -2.1 2.7 -7.5 6.2 -9.8 6.2 -1.1 0 -2 0.5 -2 1 0 0.6 -0.4 1 -1 1 -1.1 0 -1.4 -6 -0.2 -6 0.4 0 2.7 -1.8 5.2 -4 5.1 -4.5 7 -5.3 12.6 -4.8 l3.9 0.3 1.3 8 c0.7 4.4 1.6 9.8 1.9 12 0.3 2.2 1 4.3 1.5 4.6 0.5 0.3 1.3 3.9 1.9 8 1.8 14.4 3.2 22.4 4.2 23 0.5 0.4 1.2 3.7 1.4 7.3 0.6 6.7 0.6 6.7 -2.8 9.6 -1.9 1.6 -3.7 2.9 -4.1 3 -0.4 0 -1.8 1 -3 2.3 -3.6 3.4 -9.9 8.1 -11.9 8.9 -1 0.4 -2.3 1.6 -2.9 2.7 -0.6 1.2 -2.9 3 -5 4.1 -2.2 1.1 -4 2.4 -4 2.8 0 0.4 -1.2 1.5 -2.7 2.4 -1.6 0.9 -4.5 3.3 -6.7 5.2 -2.1 2 -4.5 3.6 -5.3 3.6 -0.7 0 -1.6 0.7 -2 1.5 -0.3 0.9 -1.7 2.2 -3.2 3 -1.4 0.7 -4.4 3 -6.6 4.9 -2.2 2 -5 3.9 -6.2 4.2 -1.3 0.4 -2.3 1 -2.3 1.5 0 1.7 -7.6 5.9 -10.8 5.9 -3 0 -3.2 -0.2 -2.2 -2.1z"/>
-
   <path d="M584.5 941.3 c-2.2 -2.4 -2.3 -2.9 -0.8 -3.2 0.9 -0.2 2.2 -0.8 2.9 -1.5 3.8 -3.6 5.8 -4.6 8.9 -4.6 3.3 0 3.3 0.1 2.1 2.5 -1.6 3 -8.1 9.5 -9.5 9.5 -0.6 0 -2.2 -1.2 -3.6 -2.7z"/>
-
   <path d="M735.5 921.7 c-3.7 -2.7 -9.5 -8.8 -9.5 -9.9 0 -0.5 -1.1 -1.3 -2.5 -1.8 -1.4 -0.5 -2.8 -1.8 -3.2 -2.7 -0.4 -1 -6.9 -8 -14.5 -15.5 -7.6 -7.6 -13.8 -14.1 -13.8 -14.6 0 -0.5 -1.1 -1.4 -2.5 -2 -1.4 -0.6 -2.5 -1.6 -2.5 -2.2 0 -1.4 -2 -3.4 -4.2 -4.3 -1.4 -0.5 -1.8 -1.8 -1.8 -5.4 l0.1 -4.8 2.4 2.8 c1.3 1.5 2.7 2.7 3.1 2.7 0.9 0 -0.8 -1.7 29.4 28.5 20.6 20.6 25.9 25.4 27.6 25 1.2 -0.2 4.9 -3.1 8.2 -6.2 11.2 -10.7 15.3 -14.3 16.2 -14.3 0.6 0 1 -0.7 1 -1.5 0 -0.8 0.5 -1.5 1.1 -1.5 0.6 0 3 -1.9 5.4 -4.2 2.4 -2.4 6.2 -5.9 8.6 -7.8 2.3 -1.9 6.4 -5.6 9.1 -8.2 2.7 -2.6 6.5 -5.9 8.4 -7.3 1.9 -1.5 4.5 -3.6 5.8 -4.8 1.3 -1.2 4.5 -4 7 -6.2 2.5 -2.2 5.8 -5.2 7.2 -6.7 1.5 -1.6 3.3 -2.8 4.1 -2.8 0.7 0 1.6 -0.7 1.9 -1.5 1 -2.6 2.4 -1.6 2.4 1.8 0 2.5 -0.9 4 -4.1 6.7 -2.2 1.9 -6.1 5.4 -8.5 7.8 -2.5 2.3 -4.9 4.2 -5.4 4.2 -0.6 0 -1 0.7 -1 1.5 0 0.9 -1.1 2 -2.4 2.5 -1.3 0.5 -3.3 2.2 -4.5 3.9 -1.2 1.6 -3.1 3.3 -4.2 3.6 -1.1 0.4 -2.4 1.8 -2.9 3.1 -0.5 1.3 -1.6 2.4 -2.3 2.4 -0.7 0 -2.7 1.5 -4.4 3.3 -1.8 1.7 -5 4.8 -7.4 6.7 -2.3 1.9 -4.7 4.1 -5.4 4.8 -0.8 0.6 -1.5 1.2 -1.8 1.2 -0.4 0 -5.3 4.6 -17.6 16.3 -3.6 3.4 -7.6 7 -9 7.9 -3.6 2.5 -9.9 2.2 -13.6 -0.5z"/>
-
   <path d="M574.6 899.8 c-0.9 -1.2 -1.6 -4 -1.6 -6.1 l0 -3.9 3 2.5 c1.6 1.4 3.3 2.7 3.7 2.9 0.4 0.1 1.8 1.8 3.1 3.6 l2.3 3.2 -4.5 0 c-3.5 0 -4.8 -0.5 -6 -2.2z"/>
-
   <path d="M365.7 890.6 c1 -1.3 2.9 -3.1 4.3 -3.9 1.4 -0.9 4.3 -3.2 6.5 -5.1 2.2 -2 4.5 -3.6 5.1 -3.6 0.5 0 2 -1.3 3.2 -3 1.3 -1.6 2.8 -3 3.5 -3 0.8 0 2.8 -1.3 4.5 -2.8 1.7 -1.6 4.4 -3.5 5.9 -4.3 1.5 -0.8 3.8 -2.6 5.1 -4.1 1.3 -1.6 2.9 -2.8 3.6 -2.8 0.7 0 2.8 -1.4 4.7 -3.1 1.9 -1.7 4.5 -4.1 5.9 -5.3 1.4 -1.3 4 -3.1 5.9 -4.2 3.2 -1.9 4.3 -2.7 12.6 -9.9 2.2 -1.9 4.5 -3.5 5.1 -3.5 0.7 0 1.9 -1.1 2.8 -2.5 0.9 -1.4 2.2 -2.5 2.9 -2.5 1.2 0 5.8 -3.5 11.2 -8.5 2.8 -2.5 5.4 -4.2 8.2 -5.4 1.2 -0.6 2.5 -1.6 3 -2.3 1.3 -2.3 7 -5.8 9.1 -5.8 1.1 0 2.3 -0.6 2.5 -1.2 0.3 -0.7 0.6 0.2 0.6 1.9 0.1 2.5 -0.5 3.7 -2.6 5 -1.5 1 -3.8 2.8 -5.2 4.1 -1.3 1.2 -3 2.2 -3.7 2.2 -0.8 0 -2.1 1.1 -3 2.5 -0.9 1.4 -2.2 2.5 -2.8 2.5 -0.7 0 -2.5 1.3 -4.2 2.8 -1.6 1.6 -4.1 3.7 -5.6 4.7 -1.6 0.9 -2.8 2.3 -2.8 2.9 0 0.6 -1.2 1.7 -2.7 2.4 -5.1 2.3 -8.3 4.3 -8.3 5.2 0 0.5 -1.7 1.8 -3.7 2.9 -2.1 1.1 -4.4 2.9 -5.1 4 -0.7 1.2 -1.9 2.1 -2.6 2.1 -0.8 0 -2.3 1.1 -3.4 2.5 -1.1 1.4 -2.3 2.5 -2.6 2.5 -1.1 0 -7 4.4 -8.3 6.1 -0.7 0.9 -2.6 2.2 -4.3 2.9 -1.6 0.7 -3 1.8 -3 2.5 0 0.7 -1.5 2 -3.2 2.8 -1.8 0.9 -4.2 2.4 -5.3 3.4 -1.1 1 -3.6 3 -5.5 4.3 -1.9 1.3 -4.8 3.7 -6.5 5.2 -1.6 1.5 -3.5 2.8 -4.2 2.8 -0.7 0 -1.6 0.6 -2 1.4 -0.4 0.8 -2.5 2.4 -4.5 3.6 -2.1 1.2 -3.8 2.6 -3.8 3.1 0 0.5 -2 0.9 -4.5 0.9 l-4.6 0 1.8 -2.4z"/>
-
   <path d="M844 862.4 c0 -3.8 2.2 -6.4 13.1 -15.4 2.3 -1.9 5.8 -5.1 7.8 -7 2.1 -1.9 5.9 -5.3 8.5 -7.5 2.6 -2.2 6.6 -5.7 8.9 -7.7 2.3 -2.1 4.6 -3.8 5 -3.8 0.5 0 2 -1.3 3.4 -3 1.7 -2.1 3.4 -3 5.4 -3 4.1 0 3.7 2.1 -1.3 6.9 -13.4 12.8 -20.3 19.1 -21 19.1 -0.4 0 -0.8 0.7 -0.8 1.5 0 0.9 -1 2 -2.2 2.5 -1.3 0.5 -3.7 2.2 -5.4 3.7 -1.7 1.5 -5.5 4.8 -8.4 7.3 -3 2.5 -6.7 5.7 -8.4 7.3 -4 3.5 -4.6 3.4 -4.6 -0.9z"/>
-
   <path d="M347 825.7 c0 -2.6 7.7 -11.2 12 -13.5 6.6 -3.5 8 -4.4 8 -5.3 0 -0.5 1.8 -0.9 4 -0.9 2.2 0 4 0.2 4 0.4 0 1.1 -5.6 6.6 -6.7 6.6 -0.7 0 -2.2 1.4 -3.5 3 -1.2 1.7 -2.7 3 -3.2 3 -0.6 0 -2.3 1 -3.6 2.3 -5.1 4.5 -6.5 5.5 -8.7 6.1 -1.9 0.6 -2.3 0.4 -2.3 -1.7z"/>
-
   <path d="M509 820.2 c0 -1.5 -0.4 -3.2 -0.9 -3.7 -0.9 -1 -1.4 -3.8 -2.7 -15.5 -0.4 -3 -1.1 -5.7 -1.5 -6.1 -0.5 -0.3 -1.4 -3.4 -1.9 -7 -0.6 -3.5 -1.5 -8.6 -1.9 -11.4 -0.5 -2.7 -1.2 -7.1 -1.6 -9.7 -0.4 -2.7 -1.1 -4.8 -1.5 -4.8 -1.2 0 -2.1 -8.3 -1.4 -12.8 0.4 -2.6 1.2 -4.2 2 -4.2 0.8 0 1.4 0.6 1.4 1.4 0 0.8 0.4 1.6 0.9 1.8 0.8 0.2 4.1 18.2 5.8 31.1 0.3 2 0.9 3.7 1.3 3.7 0.8 0 1 1.1 3.1 15.5 1.4 9.8 3 16.7 4.2 18 0.7 0.8 1.9 0.1 4.1 -2.3 1.7 -1.9 4.2 -4.4 5.5 -5.5 5 -4.6 24.1 -23.8 24.1 -24.4 0 -0.3 6.5 -7.1 14.4 -15 15 -14.9 18.2 -16.8 20.6 -12.4 0.5 1.1 2.6 2.9 4.5 4.1 1.9 1.2 3.5 2.6 3.5 3.1 0 0.5 1.6 2.5 3.5 4.5 1.9 1.9 3.5 4.1 3.5 4.9 0 1.9 -9.3 11.1 -11.9 11.8 -1.8 0.4 -2.1 0.1 -2.1 -2.3 0 -1.9 1.1 -3.7 3.5 -5.9 1.9 -1.7 3.5 -3.2 3.5 -3.4 0 -0.5 -6.9 -7.6 -9.7 -10 -2 -1.8 -2.4 -1.5 -27.9 24.2 -14.3 14.3 -27.8 28.1 -30 30.6 -3.9 4.2 -4.5 4.5 -9.3 4.5 -4.9 0 -5.1 -0.1 -5.1 -2.8z"/>
-
   <path d="M794.4 795 c-1.2 -0.5 -7.3 -1.6 -13.5 -2.5 -6.3 -0.9 -11.6 -2 -11.9 -2.5 -0.3 -0.4 -2.1 -1 -4 -1.2 -11.1 -1.6 -25 -4.3 -25 -4.9 0 -0.4 -2.4 -1 -5.2 -1.4 -7.1 -0.8 -14.8 -3.6 -14.8 -5.2 0 -1.8 5.7 -1.7 14.5 0.2 3.9 0.8 8.1 1.5 9.5 1.5 5.3 -0.1 -0.8 -2 -11.7 -3.7 -5.9 -0.9 -11 -2 -11.3 -2.4 -0.3 -0.4 -2.3 -0.9 -4.5 -1.2 -8 -1 -24 -4.2 -24.5 -4.8 -0.3 -0.4 -3.2 -1.2 -6.5 -1.7 -10.2 -1.8 -21 -4.4 -21.5 -5.2 -0.3 -0.4 -4.4 -1.3 -9.2 -1.9 -4.9 -0.6 -12.7 -1.6 -17.5 -2.2 -4.9 -0.6 -9 -1.5 -9.3 -1.8 -0.3 -0.4 -3.2 -1.2 -6.5 -1.8 -11.5 -2 -22 -4.7 -22.7 -5.7 -0.4 -0.6 -0.8 -3 -0.8 -5.2 0 -3.5 0.6 -4.8 4 -8.2 2.2 -2.2 4 -4.2 4 -4.6 0 -0.3 -1.6 -0.6 -3.5 -0.6 -1.9 0 -3.5 -0.4 -3.5 -1 0 -0.5 0.5 -1 1 -1 0.6 0 1 -0.6 1 -1.3 0 -0.8 0.9 -2.2 2 -3.2 1.1 -1 2 -2.6 2 -3.7 0 -1 0.6 -1.8 1.3 -1.8 0.6 0 2.1 -1.4 3.2 -3.1 1.1 -1.7 2.8 -3.5 3.8 -4 1.5 -0.9 1.7 -0.5 1.7 3.2 l0 4.2 3 -3.1 c1.7 -1.8 3 -3.8 3 -4.5 0 -0.7 1.4 -2.3 3 -3.5 1.7 -1.3 3 -2.9 3 -3.7 0 -0.7 1.4 -2.3 3 -3.5 1.7 -1.2 3 -2.7 3 -3.3 0 -0.7 1.4 -2.8 3 -4.7 1.7 -1.9 4.2 -4.8 5.7 -6.5 1.4 -1.6 3.7 -4.8 5.2 -7 1.4 -2.2 3.6 -4.8 4.9 -5.8 1.2 -1 2.2 -2.3 2.2 -2.9 0 -0.5 1.2 -2.2 2.8 -3.7 1.5 -1.5 4 -4.2 5.5 -5.9 l2.9 -3.2 -2.6 0 c-2.8 0 -2.7 -0.2 0.6 -6 0.4 -0.8 1.1 -2.1 1.4 -2.7 0.9 -1.8 5.4 -7 9.2 -10.6 1.7 -1.7 3.2 -3.6 3.2 -4.2 0 -0.6 1.4 -2.1 3 -3.3 1.7 -1.3 3 -2.8 3 -3.4 0 -0.7 1.4 -2.6 3 -4.2 1.7 -1.7 5.2 -5.3 7.8 -8 l4.7 -4.9 0.3 3.2 0.3 3.3 2.7 -3 c6.6 -7.4 7.9 -8.9 10.7 -12.7 6.2 -8.2 6.5 -8.6 15.5 -16.6 3.9 -3.4 5.1 -3.9 8.5 -3.7 3.3 0.2 4.1 0.7 4.3 2.6 0.2 1.2 0.8 2.2 1.3 2.2 0.5 0 0.9 1.3 0.9 2.9 0 1.6 0.7 4.2 1.5 5.7 0.8 1.6 1.8 5 2.1 7.7 0.4 2.6 1 4.7 1.4 4.7 0.5 0 1.1 1.5 1.5 3.3 1.9 9.7 4.9 20.7 5.6 20.7 0.4 0 1 1.8 1.4 4 0.4 2.2 1.5 6.4 2.6 9.2 1 2.9 1.9 6.5 1.9 8 0 1.6 0.4 2.8 0.9 2.8 0.8 0 2.3 5.4 4 14.9 0.5 2.3 1.3 4.6 1.8 5 0.5 0.3 1.9 4 2.9 8.1 l1.9 7.5 0.3 -5.7 c0.2 -4.1 0.7 -5.8 1.7 -5.8 0.8 0 1.8 2.1 2.6 5.8 0.7 3.1 1.5 5.9 1.9 6.2 0.3 0.3 1.6 4.8 2.9 10 1.3 5.2 2.6 9.7 3 10 0.4 0.3 1.5 3.7 2.5 7.5 0.9 3.9 2.1 8.5 2.6 10.4 0.5 1.9 1.3 3.7 1.8 4 0.5 0.3 1.2 2.4 1.6 4.6 0.4 2.2 1.2 6 1.7 8.5 0.6 2.5 1.3 6 1.6 7.8 0.3 1.7 0.9 3.2 1.4 3.2 0.5 0 0.9 2 0.9 4.5 0 4.1 -0.2 4.5 -2.5 4.5 -2.4 0 -3.5 1.5 -1.6 2.2 1.4 0.4 3.6 16.8 2.7 20.1 -0.5 2.3 -1.1 2.7 -4.3 2.7 -4.8 0 -3.5 1.1 2.4 2 5 0.8 8 0.1 10.4 -2.2 0.8 -0.7 2.5 -1.9 3.9 -2.6 3.4 -1.6 5.8 -3.3 8.8 -5.9 1.4 -1.3 3.1 -2.3 3.8 -2.3 0.8 0 1.9 -0.9 2.6 -2 0.7 -1.1 1.9 -2 2.6 -2 0.8 0 2.5 -0.9 3.9 -2 1.4 -1.1 3.2 -2 3.9 -2 0.7 0 1.8 -0.9 2.4 -2 0.6 -1.1 1.8 -2 2.8 -2 0.9 0 2.9 -1 4.3 -2.2 4 -3.6 6.6 -4.8 10.4 -4.8 1.9 0 3.5 0.3 3.5 0.6 0 1.1 -7.3 7.4 -8.6 7.4 -0.7 0 -2.1 1 -3.1 2.3 -1 1.2 -4.4 3.5 -7.6 5.1 -3.1 1.6 -5.7 3.3 -5.7 3.8 0 0.4 -1.5 1.4 -3.2 2.3 -3.6 1.6 -7 3.6 -7.8 4.6 -0.3 0.4 -2.4 1.6 -4.6 2.7 -2.3 1.2 -4.4 2.8 -4.7 3.7 -0.4 0.8 -1.2 1.5 -1.9 1.5 -0.7 0 -2.4 0.9 -3.8 2 -2.7 2.1 -9.7 2.6 -13.6 1z m-11.4 -8 c0 -0.5 -0.4 -1 -1 -1 -0.5 0 -1 0.5 -1 1 0 0.6 0.5 1 1 1 0.6 0 1 -0.4 1 -1z m-10.1 -2.4 c-0.2 -0.2 -2.2 -0.6 -4.4 -0.9 -2.7 -0.4 -3.5 -0.3 -2.5 0.3 1.4 0.9 7.9 1.5 6.9 0.6z m-14.6 -2.9 c-2.9 -0.5 -5.3 -1.4 -5.3 -1.8 0 -0.5 -1.5 -0.8 -3.2 -0.8 -3.1 0.2 -3.1 0.2 -0.5 0.6 1.5 0.2 2.7 0.8 2.7 1.3 0 0.9 4.2 1.7 9 1.7 1.4 0 0.1 -0.4 -2.7 -1z m35.4 -21.9 c-0.3 -0.8 -0.6 -0.5 -0.6 0.6 -0.1 1.1 0.2 1.7 0.5 1.3 0.3 -0.3 0.4 -1.2 0.1 -1.9z m-1.7 -8.2 c-2.8 -9.2 -2.8 -9.3 -2.9 -6.9 -0.1 2.9 3.2 13.8 3.7 12.3 0.3 -0.7 -0.1 -3.1 -0.8 -5.4z m-4.9 -15.8 c-1.6 -8.3 -4 -15.8 -5.2 -15.8 -1.2 0 -1.2 1.7 0.1 2.2 0.5 0.2 1.4 2.8 1.9 5.8 1.4 7.8 3.4 15.1 3.9 14.5 0.3 -0.2 -0.1 -3.3 -0.7 -6.7z m-179 -10.5 c1.3 -1.6 1.2 -1.7 -0.3 -0.4 -1 0.7 -1.8 1.5 -1.8 1.7 0 0.8 0.8 0.3 2.1 -1.3z m2.9 -1.8 c0 -0.3 -0.2 -0.5 -0.5 -0.5 -0.3 0 -0.5 0.2 -0.5 0.5 0 0.3 0.2 0.5 0.5 0.5 0.3 0 0.5 -0.2 0.5 -0.5z m170 -8 c0 -0.3 -0.2 -0.5 -0.5 -0.5 -0.3 0 -0.5 0.2 -0.5 0.5 0 0.3 0.2 0.5 0.5 0.5 0.3 0 0.5 -0.2 0.5 -0.5z m-1.3 -4.2 c-0.4 -0.3 -0.7 0 -0.7 0.7 0 0.7 0.3 1 0.7 0.7 0.3 -0.4 0.3 -1 0 -1.4z m-1.7 -7 c-1 -1.6 -1.1 -1.5 -0.6 0.7 0.3 1.4 0.6 3.2 0.7 4 0.1 0.8 0.4 0.5 0.6 -0.7 0.2 -1.2 -0.1 -3 -0.7 -4z m-1.3 -4.5 c-0.3 -0.8 -0.6 -0.5 -0.6 0.6 -0.1 1.1 0.2 1.7 0.5 1.3 0.3 -0.3 0.4 -1.2 0.1 -1.9z m-2 -4.5 c-0.4 -0.3 -0.7 0 -0.7 0.7 0 0.7 0.3 1 0.7 0.7 0.3 -0.4 0.3 -1 0 -1.4z m-1 -5 c-0.4 -0.3 -0.7 0 -0.7 0.7 0 0.7 0.3 1 0.7 0.7 0.3 -0.4 0.3 -1 0 -1.4z m-101.9 -42.8 c-0.3 -0.3 -0.9 0.2 -1.2 1.2 -0.6 1.4 -0.5 1.5 0.5 0.6 0.7 -0.7 1 -1.5 0.7 -1.8z m2.2 -2 c0 -0.3 -0.2 -0.5 -0.5 -0.5 -0.3 0 -0.5 0.2 -0.5 0.5 0 0.3 0.2 0.5 0.5 0.5 0.3 0 0.5 -0.2 0.5 -0.5z m5.5 -6.5 c0.3 -0.5 0.4 -1 0.1 -1 -0.3 0 -0.8 0.5 -1.1 1 -0.3 0.6 -0.4 1 -0.1 1 0.3 0 0.8 -0.4 1.1 -1z m15.5 -19.5 c0 -0.3 -0.2 -0.5 -0.5 -0.5 -0.3 0 -0.5 0.2 -0.5 0.5 0 0.3 0.2 0.5 0.5 0.5 0.3 0 0.5 -0.2 0.5 -0.5z m2 -1 c0 -0.3 -0.2 -0.5 -0.5 -0.5 -0.3 0 -0.5 0.2 -0.5 0.5 0 0.3 0.2 0.5 0.5 0.5 0.3 0 0.5 -0.2 0.5 -0.5z"/>
-
   <path d="M651.5 765.9 c-2.2 -0.4 -5.6 -0.8 -7.7 -0.8 -2 -0.1 -3.8 -0.5 -4 -1.1 -0.3 -1 -7.6 -2.9 -18 -4.5 -2.5 -0.4 -3.8 -1.1 -3.8 -2.1 0 -1.4 1.3 -1.5 8.8 -1 4.8 0.3 11.4 0.9 14.7 1.4 3.3 0.6 8.5 1.3 11.5 1.8 3 0.4 6.1 1.3 6.8 2.1 0.7 0.7 2.7 1.3 4.3 1.3 2.2 0 2.9 0.5 2.9 2 0 1.8 -0.6 2 -5.7 1.9 -3.2 -0.1 -7.6 -0.5 -9.8 -1z"/>
-
   <path d="M432 730 c0 -0.6 0.7 -1.3 1.5 -1.6 5 -2 -2.4 -2.4 -39.5 -2.4 -39.4 0 -41 -0.1 -42 -1.9 -1.2 -2.3 -1.4 -24 -0.2 -25.8 0.6 -0.9 6.8 -1.3 23.2 -1.5 l22.5 -0.3 0.3 -29.7 c0.2 -29 0.3 -29.8 2.2 -29.8 2 0 2 0.7 2 31.3 0 17.1 -0.4 31.8 -0.8 32.4 -0.6 0.9 -6.7 1.3 -22.7 1.5 l-22 0.3 -0.3 8.8 -0.3 8.7 31.1 0 c20 0 31 0.4 31 1 0 0.6 4.2 1 10.5 1 l10.5 0 0 4.5 c0 4.5 0 4.5 -3.5 4.5 -1.9 0 -3.5 -0.5 -3.5 -1z"/>
-
   <path d="M492 726.4 c0 -6.7 -2.4 -6.4 52.4 -6.4 l49.6 0 0 -9 0 -9 -22.9 0 c-19.9 0 -23 -0.2 -23.5 -1.6 -0.3 -0.9 -0.6 -16.4 -0.6 -34.5 l0 -32.9 4 0 c2.9 0 4 0.4 4 1.5 0 0.8 -0.6 1.5 -1.4 1.5 -0.7 0 -1.6 1 -2 2.3 -0.8 2.9 -0.8 55.1 0 57.1 0.5 1.4 3.4 1.6 22.1 1.6 17.5 0 21.7 0.3 22.9 1.5 1.2 1.1 1.4 4.1 1.2 14.2 l-0.3 12.8 -50.8 0.3 c-49.9 0.2 -50.9 0.3 -51.4 2.2 -0.9 3.5 -3.3 2.4 -3.3 -1.6z"/>
-
   <path d="M422.5 699.8 c-0.3 -1.3 -0.4 -16.9 -0.3 -34.8 l0.3 -32.5 51.8 -0.3 51.7 -0.2 0 3.5 c0 3.6 -1.3 4.7 -2.4 2 -0.5 -1.3 -6.9 -1.5 -49.1 -1.5 l-48.5 0 0 29.9 c0 26.3 0.2 30 1.6 30.5 0.9 0.3 22.7 0.6 48.5 0.6 40.8 0 47 -0.2 47.5 -1.5 1.1 -2.8 2.4 -1.5 2.4 2.5 l0 4 -51.5 0 -51.5 0 -0.5 -2.2z"/>
-
   <path d="M874.6 692.6 c-1.1 -0.6 -2.9 -1.9 -4 -2.9 -1.2 -1 -3.3 -2.5 -4.8 -3.3 -1.5 -0.7 -2.9 -2.3 -3.3 -3.4 -0.3 -1.1 -1.1 -2 -1.6 -2 -0.5 0 -0.9 -0.5 -0.9 -1.1 0 -0.8 1.5 -1 4.3 -0.7 5.9 0.7 13 7.3 12.5 11.6 -0.3 2.6 -0.5 2.8 -2.2 1.8z"/>
-
   <path d="M832.6 656.7 c-12.9 -11 -14.3 -13.3 -7.6 -12.4 5.4 0.7 14 9 14 13.6 0 1.7 -0.3 3.1 -0.7 3.1 -0.5 0 -3 -1.9 -5.7 -4.3z"/>
-
   <path d="M486.3 612.3 c-1 -0.3 -1.3 -5.4 -1.3 -20.4 l0 -19.9 -2.6 -0.6 c-1.4 -0.4 -6.6 -0.4 -11.5 -0.2 -8.9 0.5 -8.9 0.5 -8.9 -1.9 l0 -2.4 13.3 0.3 13.2 0.3 0.3 19.5 c0.2 21.4 0.4 22 6.4 22 2.1 0 2.8 0.5 2.8 2 0 1.8 -0.6 2 -5.2 1.9 -2.9 0 -5.9 -0.3 -6.5 -0.6z"/>
-
   <path d="M264 577.6 c0 -1.3 1.4 -3.9 3.3 -5.8 1.7 -1.9 4.8 -5.3 6.7 -7.6 1.9 -2.3 4 -4.1 4.5 -4.2 0.6 0 2 -1.6 3.3 -3.5 1.2 -1.9 2.7 -3.5 3.3 -3.5 1.2 0 3.9 -2.5 3.9 -3.7 0 -0.7 5.2 -5.7 16 -15.3 3.4 -3 5.3 -4 8 -4 1.9 0 3 0.4 2.4 0.8 -0.6 0.4 -1.6 1.6 -2.2 2.7 -2.1 3.8 -43.6 44.5 -45.4 44.5 -1 0 -1.8 0.5 -1.8 1 0 0.6 -0.4 1 -1 1 -0.5 0 -1 -1.1 -1 -2.4z"/>
-
   <path d="M939.3 549.4 c-18.5 -18.7 -20.3 -20.8 -20.3 -23.9 0 -2.8 0.4 -3.5 2 -3.5 1.3 0 1.8 0.5 1.4 1.5 -0.4 0.8 -0.2 1.5 0.4 1.5 1.3 0 2.9 1.5 21.4 19.7 8 7.9 15.6 15.9 16.9 17.8 2.5 3.6 4.9 4.6 4.9 2 0 -0.8 0.7 -1.5 1.5 -1.5 1 0 1.5 1.1 1.5 3.5 l0 3.5 -4.7 -0.1 -4.8 -0.1 -20.2 -20.4z"/>
-
   <path d="M906.6 538.6 c-9 -8.9 -16.7 -17.3 -17.1 -18.5 -0.6 -1.8 -0.3 -2.1 2.6 -2.1 2.7 0 5.1 1.9 18 14.8 13.9 13.7 14.9 15 14.9 18.5 0 2 -0.5 3.7 -1 3.7 -0.6 0 -8.4 -7.4 -17.4 -16.4z"/>
-
   <path d="M267 550.5 c0 -0.3 2.2 -2.7 4.8 -5.3 2.7 -2.7 4.7 -5.3 4.4 -6 -0.4 -1.4 -3.9 -1.6 -4.4 -0.3 -0.1 0.5 -7.4 1.3 -16 1.7 -15.7 0.7 -15.8 0.7 -15.8 -1.5 0 -1.7 0.6 -2.1 3 -2.1 1.7 0 3 -0.4 3 -1 0 -0.6 3.3 -1 7.8 -1 4.2 0 10.6 -0.5 14.2 -1.1 3.6 -0.6 8.5 -0.7 10.9 -0.4 l4.3 0.7 -0.5 4.5 c-0.7 6.1 -6.8 12.3 -12.2 12.3 -1.9 0 -3.5 -0.2 -3.5 -0.5z"/>
-
   <path d="M969.5 535.7 c-0.4 -2.3 -0.5 -5.8 -0.3 -7.7 l0.3 -3.5 7 -0.3 c3.9 -0.2 14.1 0.2 22.8 0.9 14.3 1.1 15.7 1.3 15.7 3.1 0 1.8 -0.7 1.8 -13.7 1.4 -7.6 -0.3 -16.8 -0.8 -20.5 -1.2 l-6.8 -0.7 0 6.2 c0 5.4 -0.2 6.1 -1.9 6.1 -1.6 0 -2.1 -0.9 -2.6 -4.3z"/>
-
   <path d="M187 533.2 c0 -4.5 0.3 -5 6.8 -11.3 3.7 -3.7 8.1 -8.2 9.8 -10 1.8 -1.9 6.3 -6.4 10 -10 3.8 -3.7 8.4 -8.3 10.2 -10.3 2.9 -3.2 3.8 -3.6 8.2 -3.6 l5 0 0 3.8 c0 5.6 -1.9 32.1 -2.6 37 -0.6 4 -0.8 4.2 -4 4.2 -2.4 0 -3.4 -0.5 -3.4 -1.5 0 -0.8 0.6 -1.5 1.4 -1.5 1.6 0 2.3 -4.7 3.2 -23.2 0.4 -9.2 0.3 -12.8 -0.5 -12.8 -1.5 0 -12.1 10.4 -12.1 11.9 0 0.6 -0.5 1.1 -1 1.1 -1.4 0 -25 23.6 -25 24.9 0 0.7 3.7 1.1 10 1.1 9.1 0 10 0.2 10 1.9 0 2.4 -3.5 3.1 -16.1 3.1 l-9.9 0 0 -4.8z"/>
-
   <path d="M192.6 502.1 c2.1 -4.3 72.3 -74.1 74.4 -74.1 1 0 2.1 -0.6 2.3 -1.2 0.3 -0.7 0.6 0.1 0.6 1.9 0.1 1.7 -0.4 3.5 -1 3.8 -0.5 0.4 -1.4 1.8 -1.9 3.1 -0.5 1.3 -1.5 2.4 -2.3 2.4 -1.4 0 -4 2.7 -5 5.3 -0.3 0.9 -1.2 1.7 -1.9 1.7 -1.6 0.1 -10.8 9.3 -10.8 10.9 0 0.6 -1.1 1.7 -2.5 2.3 -1.4 0.6 -2.5 1.4 -2.5 1.9 0 0.4 -2.6 3.2 -5.8 6.3 -3.1 3.1 -6.4 6.4 -7.2 7.3 -0.8 0.9 -2.8 2.8 -4.4 4.2 -1.6 1.4 -8.6 8.1 -15.4 14.9 -9.9 9.7 -13.1 12.2 -15.3 12.2 -2.7 0 -2.7 0 -1.3 -2.9z"/>
-
   <path d="M862.1 491.7 c-0.7 -0.9 -2 -1.7 -2.8 -1.7 -1.6 0 -95.4 -93.4 -97.2 -96.9 -1.1 -1.9 -0.9 -2.1 2 -2.1 2.5 0 4.4 1.3 10.1 7 3.9 3.9 7.2 7 7.5 7 0.3 0 4.5 4.1 9.4 9 4.8 5 9.1 9 9.4 9 1 0 5.4 5.4 5.5 6.8 0 0.6 0.5 1.2 1.1 1.2 0.6 0 13.7 12.5 29.1 27.9 26.5 26.3 27.9 28 27.6 31.1 -0.3 3 -0.4 3.2 -1.7 1.7z"/>
-
   <path d="M988.8 475 c-9.8 -9.8 -17.8 -18.4 -17.8 -18.9 0 -0.6 -1.1 -1.8 -2.5 -2.7 -1.8 -1.2 -2.5 -2.5 -2.5 -4.7 0 -2.4 0.3 -2.8 1.2 -1.9 0.7 0.7 1.9 1.2 2.8 1.2 1.6 0 35.4 34.2 43.9 44.5 0.2 0.3 -1.3 0.5 -3.5 0.5 -3.7 -0.1 -4.7 -0.9 -21.6 -18z"/>
-
   <path d="M880 489.5 c-0.8 -0.8 -6.6 -6.5 -12.7 -12.6 -10.5 -10.2 -11.3 -11.3 -11.2 -14.7 0 -2 0.3 -3.1 0.6 -2.4 0.2 0.6 1 1.2 1.7 1.2 0.7 0 2.6 1.5 4.2 3.3 1.7 1.7 5.7 5.5 8.9 8.2 3.2 2.8 7 6.2 8.3 7.8 1.4 1.5 3 2.7 3.5 2.7 0.5 0 0.8 -4.8 0.7 -11.7 -0.4 -15.7 -0.5 -15.3 2.5 -15.3 2.3 0 2.5 0.4 2.5 4.3 0 2.3 0.5 7.4 1.1 11.2 0.6 3.9 0.7 9.8 0.4 13.3 l-0.7 6.2 -4.2 0 c-2.4 0 -4.8 -0.6 -5.6 -1.5z"/>
-
   <path d="M270.5 459.5 c-0.5 -0.2 -2.2 -0.6 -3.7 -0.9 -2.3 -0.5 -2.8 -1.2 -2.8 -3.7 0 -2.5 1.3 -4.5 6.3 -9.5 4.1 -4.2 7 -6.4 8.5 -6.4 2 0 2.2 0.4 1.6 2.3 -1.5 5 -2.4 6.7 -3.4 6.7 -1.3 0 -5 3.7 -5 5 0 0.6 6.3 1 17 1 16.3 0 17 0.1 17 2 0 1.8 -0.7 2 -8.4 2 -4.7 0 -8.8 0.5 -9.1 1 -0.6 0.9 -15.6 1.3 -18 0.5z"/>
-
   <path d="M346.3 451.5 c-0.3 -0.9 -0.3 -1.8 0 -2.2 0.8 -0.7 13.9 -2.2 20.4 -2.3 4.1 0 5.3 -0.4 5.8 -1.8 0.3 -1.1 1.7 -2.4 3 -3 1.4 -0.6 2.5 -1.6 2.5 -2.2 0 -0.5 0.5 -1 1 -1 1.4 0 1.2 5.6 -0.2 8.3 -0.7 1.2 -1.4 2.4 -1.5 2.6 -0.5 1 -15.8 3.1 -22.6 3.1 -6.1 0 -7.9 -0.3 -8.4 -1.5z"/>
-
   <path d="M931.4 438.7 c-0.6 -0.7 -3.5 -3.2 -6.3 -5.6 -2.8 -2.4 -5.1 -4.9 -5.1 -5.5 0 -0.7 -1.4 -2.2 -3.1 -3.5 -1.6 -1.2 -3.4 -3.3 -3.9 -4.7 -0.5 -1.3 -1.4 -2.4 -2 -2.4 -0.5 0 -1 -0.4 -1 -1 0 -0.5 1.4 -1 3 -1 2.4 0 4.2 1.1 8 5.1 5 5.3 5.6 5.9 9.6 9.8 1.7 1.7 2.4 3.5 2.4 6.2 0 4.3 0 4.3 -1.6 2.6z"/>
-
   <path d="M819.2 428.8 c-1.4 -2.3 -2.2 -6.1 -2.7 -12.8 -0.4 -5.2 -1.1 -9.8 -1.6 -10.1 -0.6 -0.3 -1.1 -9 -1.2 -19.5 l-0.2 -18.9 6.5 -0.3 c9.1 -0.4 13 0.4 13 2.8 0 1.8 -0.7 2 -8 2 l-8 0 0 3.4 c0 1.9 0.5 3.6 1 3.8 0.6 0.2 1.5 9.3 2.2 21.3 1.1 18.9 1.4 21.2 3.3 23.1 1.1 1.1 2.5 3.5 3.2 5.2 1.1 3.2 1.1 3.2 -2.2 3.2 -2.7 0 -3.7 -0.6 -5.3 -3.2z"/>
-
   <path d="M392.6 390.5 c-0.4 -4.7 -0.4 -9 -0.1 -9.5 0.3 -0.6 4.9 -1 10.1 -1 14.1 0 12.3 3.2 -3.1 5.2 -1.5 0.3 -2.1 1.2 -2.3 3.8 -0.5 6.8 -1.3 10 -2.6 10 -0.9 0 -1.5 -2.5 -2 -8.5z"/>
-
   <path d="M343 376.6 c0 -4.5 0.8 -5.5 15.6 -19.4 0.7 -0.7 2.1 -2.6 3.1 -4.2 0.9 -1.6 3.6 -4.2 6 -5.7 2.4 -1.5 4.3 -3.1 4.3 -3.5 0 -0.5 2.9 -3.8 6.5 -7.3 5.5 -5.5 7 -6.5 10 -6.5 4.3 0 4.4 0.6 4.7 15.5 0.3 14.9 -1.1 29.6 -3 31.5 -1.5 1.5 -25.3 3.8 -40.9 3.9 l-6.3 0.1 0 -4.4z m28.3 -1.3 c4.8 -0.3 8.7 -1 8.7 -1.4 0 -0.5 1.1 -0.9 2.4 -0.9 3.1 0 3.3 -0.8 4.2 -14.2 0.3 -6 1 -10.8 1.5 -10.8 0.5 0 0.9 -2.2 0.9 -5 0 -3.9 -0.4 -5 -1.6 -5 -1.8 0 -38.4 36.3 -38.4 38.1 0 0.9 1.8 1 6.8 0.5 3.7 -0.3 10.6 -0.9 15.5 -1.3z"/>
-
   <path d="M817.7 364.7 c-6.6 -1.2 -6.2 -0.6 -7.2 -13.7 -0.3 -4.6 -0.9 -8.7 -1.4 -9 -1.1 -0.7 -2.3 -18.9 -1.5 -22.8 0.6 -3.1 0.9 -3.2 5.5 -3.2 3.7 0 4.9 0.4 4.9 1.5 0 0.8 1 1.7 2.3 2 1.3 0.4 3.1 1.9 4.1 3.6 0.9 1.6 2.4 2.9 3.2 2.9 0.8 0 1.4 0.4 1.4 0.9 0 0.5 1.8 2.7 4.1 5 3.4 3.6 4 4.7 3.7 7.9 l-0.3 3.7 -10.4 -10.2 c-5.7 -5.7 -11.1 -10.3 -11.9 -10.3 -1.2 0 -1.3 0.9 -0.8 4.3 0.3 2.3 0.9 9.8 1.2 16.7 0.4 6.9 1.1 13.1 1.7 13.8 0.5 0.7 3.2 1.2 6.3 1.2 3 0 5.4 0.5 5.4 1 0 0.6 2.1 1 4.8 1 2.6 0 5.7 0.3 7 0.6 3.2 0.9 2.8 3.4 -0.5 3.4 -1.6 0 -5.7 0.2 -9.3 0.4 -3.6 0.2 -9.1 -0.1 -12.3 -0.7z"/>
-
   <path d="M784.5 360.9 c-5.5 -0.4 -13.7 -1.1 -18.2 -1.4 -7.5 -0.6 -8.3 -0.9 -8.3 -2.7 0 -2.3 0.6 -2.3 34.9 -0.1 l10.4 0.6 -0.7 -10.4 c-0.8 -12.1 -1.2 -16.8 -2.7 -30.4 -1.1 -9 -1.5 -10.2 -4 -12.4 -1.6 -1.4 -2.9 -3 -2.9 -3.6 0 -1.4 -2.9 -3.1 -6.8 -4 -5.5 -1.2 -4 -3.5 2.3 -3.5 5.3 0 5.9 0.3 10.2 4.5 2.5 2.5 4.9 4.5 5.3 4.5 0.9 0 2.2 25.1 2.4 45 l0.1 14.5 -6 0.1 c-3.3 0.1 -10.5 -0.2 -16 -0.7z"/>
-
   <path d="M486 356 c0 -2.5 3.1 -6 20.5 -23.4 11.3 -11.3 20.5 -20.8 20.5 -21.1 0 -1 7 -7.7 10.2 -9.7 2.8 -1.9 7.8 -2.4 7.8 -0.9 0 1.1 -10.2 12.3 -16.1 17.7 -1.9 1.7 -4.8 4.6 -6.5 6.5 -1.8 1.9 -6.3 6.4 -10 10 -3.8 3.7 -8.3 8.2 -10 10 -5.4 5.8 -14.3 13.9 -15.4 13.9 -0.5 0 -1 -1.3 -1 -3z"/>
-
   <path d="M460 334 c0 -9.3 0.4 -15 1 -15 0.6 0 1 -2.3 1 -5 l0 -5.1 -16 0.6 c-15.6 0.6 -16 0.5 -16 -1.5 0 -1.8 0.6 -2 5.9 -2 3.3 0 6.1 -0.4 6.3 -0.9 0.2 -0.5 5.7 -1.1 12.3 -1.3 l12 -0.3 -0.1 11 c0 6.1 -0.4 16.3 -0.9 22.8 -0.8 11.4 -0.9 11.7 -3.1 11.7 l-2.4 0 0 -15z"/>
-
   <path d="M473 344.4 c0 -0.4 2.3 -2.8 5 -5.4 2.8 -2.6 5 -5.2 5 -5.7 0 -0.5 1.4 -1.7 3 -2.6 1.7 -1 3 -2.5 3 -3.3 0 -0.8 0.4 -1.4 0.9 -1.4 1.2 0 21.1 -19.8 21.1 -21 0 -0.9 -6 -0.7 -25.8 0.6 -9.6 0.7 -10.2 1.3 -10.2 11 0 3 -0.4 5.4 -1 5.4 -0.5 0 -1 1.7 -1 3.8 0 5.1 -1 8.2 -2.5 8.2 -1.8 0 -3.1 -16.5 -1.6 -20.3 0.6 -1.6 1.1 -4.2 1.1 -5.9 0 -5.7 2 -6.4 20.6 -7.1 9.2 -0.4 19.1 -0.7 22.1 -0.7 l5.3 0 0 3.4 c0 2.2 -0.9 4.4 -2.7 6.5 -6.1 7 -10.9 11.8 -12.5 12.4 -1 0.3 -1.8 1.3 -1.8 2.2 0 0.8 -0.4 1.5 -0.9 1.5 -0.5 0 -5.2 4.3 -10.4 9.5 -8.5 8.4 -10 9.5 -13.1 9.5 -2 0 -3.6 -0.3 -3.6 -0.6z"/>
-
   <path d="M701.5 331.6 c-1.6 -1.2 -10 -9.2 -18.7 -17.8 -8.6 -8.7 -15.9 -15.8 -16.3 -15.8 -1 0 -70.2 -69.6 -71.4 -71.8 -0.7 -1.2 -1.6 -2.2 -2.1 -2.2 -1.2 0 -22 -20.6 -22 -21.8 0 -0.6 -1.6 -1.7 -3.5 -2.6 -1.9 -0.9 -3.5 -2.4 -3.5 -3.2 0 -1.8 14.8 -16.4 16.6 -16.4 0.7 0 2.1 1.6 3 3.5 0.9 1.9 2.2 3.5 2.9 3.5 0.7 0 1.5 0.5 1.7 1.1 0.2 0.7 5.1 -3.5 10.8 -9.2 l10.5 -10.3 0.3 4.7 c0.3 4.1 -0.1 5 -2.5 7.2 -1.5 1.3 -3.4 2.5 -4 2.5 -0.7 0 -1.3 0.6 -1.3 1.3 0 0.7 -1.9 3.2 -4.2 5.6 -4.2 4.3 -4.3 4.3 -10.2 3.9 -4 -0.3 -6.3 -1 -7.1 -2.2 -1.1 -1.4 -1.3 -1.5 -1.9 -0.1 -0.3 0.8 -1.2 1.5 -1.9 1.5 -0.8 0 -2 0.7 -2.7 1.6 -1.1 1.3 -1 1.6 0.8 2.1 1.2 0.3 2.2 1.1 2.2 1.7 0 0.6 1.7 2.8 3.8 4.8 14.1 14 20.2 20.4 20.2 21.6 0 0.7 0.8 1.6 1.7 1.9 2.2 0.9 4.8 3 8.7 7.2 1.7 1.8 6.2 6.3 10 10 3.7 3.6 8.2 8.1 10 10 1.7 1.9 4.6 4.8 6.5 6.5 1.9 1.7 4.8 4.6 6.5 6.5 3.5 3.8 10.6 11 15.7 15.7 1.9 1.8 6.4 6.3 10 10 3.7 3.8 8.2 8.3 10 10 1.9 1.7 4.8 4.6 6.5 6.5 1.7 1.9 4.6 4.8 6.5 6.5 9 8.3 12 12.2 11.7 15.1 l-0.3 2.9 -3 -2z"/>
-
   <path d="M472.5 297.9 c-0.4 -0.5 -0.4 -6.2 0 -12.5 0.7 -10.2 0.9 -11.4 2.6 -11.4 1.7 0 1.9 0.9 1.9 9.7 l0 9.6 10.3 -0.8 c5.6 -0.4 15.8 -1 22.7 -1.4 11.3 -0.5 12.5 -0.8 12.2 -2.4 -0.2 -1 -4.3 -5.7 -9.1 -10.5 -10.2 -10.1 -11.4 -12.2 -7.1 -12.2 2.4 0 4.8 1.8 12.6 9.4 l9.5 9.4 -0.3 4.8 -0.3 4.9 -10.4 0.6 c-5.7 0.4 -10.6 1.1 -11 1.6 -0.9 1.4 -32.8 2.6 -33.6 1.2z"/>
-
   <path d="M426 293.7 c0 -4.1 0.4 -4.8 8.7 -13 4.8 -4.8 9.1 -8.7 9.5 -8.7 0.4 0 0.8 -0.4 0.8 -0.9 0 -0.5 3.9 -4.8 8.7 -9.5 8.5 -8.3 8.9 -8.6 13.5 -8.6 3.8 0 4.8 0.4 5.3 2 0.9 2.7 -1.4 24.4 -2.6 24.8 -0.5 0.2 -0.9 3.5 -0.9 7.3 0 6.4 -0.2 6.9 -2.2 6.9 -2.1 0 -2.1 -0.1 -1.4 -14.7 0.4 -8.2 1.1 -14.9 1.6 -15.1 1.4 -0.5 1.2 -5 -0.2 -5.5 -1.4 -0.4 -38.8 36.5 -38.8 38.3 0 0.5 -0.4 1 -1 1 -0.5 0 -1 -1.9 -1 -4.3z"/>
-
   <path d="M805.5 290.9 c-0.5 -0.5 -2.1 -2 -3.5 -3.3 -1.4 -1.4 -3.1 -3.1 -3.7 -3.8 -3 -3.2 -5.9 -6 -7.1 -7.1 -6.1 -5.3 -18 -17.5 -18.5 -19 -0.4 -0.9 -1.8 -2.2 -3.3 -2.7 -1.4 -0.6 -2.8 -1.9 -3.1 -2.9 -0.2 -1 -1.6 -2.5 -3 -3.2 -1.3 -0.7 -3.1 -2.6 -3.9 -4.1 -0.8 -1.5 -2.1 -2.8 -2.9 -2.8 -1.1 0 -1.5 -1.1 -1.5 -4 0 -4 1.3 -5.3 2.4 -2.5 0.3 0.8 1.1 1.5 1.7 1.5 1.4 0 11.9 10.6 11.9 12 0 0.6 0.5 1 1.1 1 1.8 0 37.9 36.3 37.9 38.1 0 0.8 0.5 2 1.2 2.7 0.9 0.9 0.5 1.2 -1.7 1.2 -1.7 -0.1 -3.4 -0.5 -4 -1.1z"/>
-
   <path d="M733.3 284.8 c-0.4 -0.7 -1.1 -7.4 -1.6 -14.8 -0.4 -7.4 -1 -16.8 -1.3 -20.9 -0.8 -10.3 -0.2 -12.1 4.1 -12.1 2.8 0 4.6 1.1 10.9 7.3 7.1 6.8 7.6 7.5 7.6 11.5 0 2.3 -0.3 4.2 -0.6 4.2 -0.3 0 -3.9 -3.4 -8.1 -7.5 -4.2 -4.1 -8 -7.5 -8.6 -7.5 -0.9 0 -0.7 2.7 1.5 23.3 1.2 10.7 1.2 10.8 4 11.4 1.5 0.3 2.8 0.9 2.8 1.3 0 0.4 1.8 1 4 1.4 2.6 0.4 4 1.1 4 2.1 0 1.2 -1.7 1.5 -8.9 1.5 -6.1 0 -9.2 -0.4 -9.8 -1.2z"/>
-
   <path d="M713.8 283.9 c-0.2 -0.7 -4.7 -1.3 -11.6 -1.7 -10.4 -0.4 -11.2 -0.6 -11.2 -2.5 0 -1.9 0.5 -2 16.5 -1.5 l16.5 0.5 -0.1 -9.6 c0 -10.9 -2.2 -36.7 -3.3 -39.3 -0.4 -0.9 -2.5 -3.5 -4.7 -5.8 l-4 -4.2 -10.2 -0.8 c-30.7 -2.6 -38.7 -3.1 -39.4 -2.7 -1.4 0.9 2.1 49 3.7 49.5 0.5 0.2 1 0.9 1 1.5 0 0.6 0.7 1.9 1.7 2.9 1.5 1.7 1.4 1.8 -2.2 1.8 -4.9 0 -6.4 -2.1 -6.5 -9 -0.1 -3 -0.6 -7.5 -1.1 -10 -0.6 -2.5 -1.2 -12.9 -1.3 -23.2 l-0.3 -18.8 15.3 0 c11.1 0 15.3 0.3 15.6 1.2 0.3 0.9 4.5 1.4 13.4 1.8 12.9 0.6 17.4 1.8 17.4 4.6 0 0.8 1.1 1.9 2.4 2.4 1.7 0.6 2.8 2.1 3.5 4.7 1.2 4.7 3.1 24 3.1 31.5 0 3.2 0.5 5.8 1.1 6 0.7 0.2 1.2 4 1.3 9.8 l0.1 9.5 -4.7 0.3 c-2.7 0.2 -4.8 0.7 -4.8 1.3 0 1.3 -6.8 1.1 -7.2 -0.2z"/>
-
   <path d="M672.5 209.1 c-1.1 -0.5 -4.1 -1 -6.7 -1 -4.3 -0.1 -4.8 -0.3 -4.8 -2.3 l0 -2.3 16.2 0.8 c9 0.4 16.9 0.6 17.7 0.5 0.9 -0.2 -0.8 -2.6 -4.5 -6.3 -9.4 -9.4 -9.4 -9.5 -4.5 -9.5 3.2 0 4.8 0.6 6.5 2.5 1.3 1.4 2.7 2.5 3.1 2.5 1.1 0 5.5 4.9 5.5 6.1 0 0.5 0.5 0.9 1 0.9 0.6 0 1 1.8 1 4 0 4 0 4 -3.8 4 -2.2 0 -8.6 0.2 -14.3 0.5 -5.7 0.3 -11.3 0.1 -12.4 -0.4z"/>
-
  </g>
-
  <g fill="#151212">
-
   <path d="M1202 993.5 c0 -80.3 0.3 -121.5 1 -121.5 0.7 0 1 41.2 1 121.5 0 80.3 -0.3 121.5 -1 121.5 -0.7 0 -1 -41.2 -1 -121.5z"/>
-
   <path d="M866 1081 c0 -0.5 -0.5 -1 -1.2 -1 -1.2 0 -12.8 -11 -12.8 -12.1 0 -0.8 -71.9 -72.7 -79.9 -79.9 -3.3 -3 -6.1 -6.1 -6.1 -6.7 0 -0.7 -0.6 -1.3 -1.2 -1.3 -1.8 0 -10.8 -9.2 -10.8 -11 0 -0.5 -1.3 -1.6 -2.8 -2.4 -1.5 -0.8 -4 -2.9 -5.4 -4.6 -2.2 -2.7 -3.1 -3.1 -5.4 -2.6 -1.5 0.4 -4.1 2.1 -5.8 3.7 -7.5 7.3 -15 13.9 -15.8 13.9 -1.5 0 -6.9 4.3 -12.8 10.3 -3.1 3.1 -6 5.7 -6.4 5.7 -0.3 0 -3.5 2.9 -6.9 6.5 -3.5 3.6 -6.7 6.5 -7.1 6.5 -0.5 0 -3.5 2.7 -6.6 6 -3.1 3.3 -6.1 6 -6.7 6 -0.5 0 -2.3 1.5 -3.9 3.3 -1.6 1.7 -4.1 4.2 -5.4 5.4 -1.4 1.1 -3.9 3.6 -5.6 5.5 -3 3.2 -4.1 4 -9.4 7.5 -1.4 0.9 -3.8 3.3 -5.5 5.4 -1.6 2.1 -3.7 4.1 -4.5 4.4 -0.9 0.3 -3.6 2.3 -6 4.5 -2.5 2.3 -6.7 6 -9.3 8.3 -2.6 2.3 -5.6 5.1 -6.5 6.1 -0.9 1 -2.7 2.8 -3.9 3.9 -1.3 1.1 -2.3 2.6 -2.3 3.3 0 0.7 -0.9 1.6 -2 1.9 -1.5 0.5 -3.1 -0.5 -6.5 -3.9 -2.5 -2.4 -4.5 -4.8 -4.5 -5.2 0 -0.5 -1.8 -2.5 -4.1 -4.6 -4.5 -4.1 -4.9 -7.1 -1 -7.6 1.3 -0.2 3.5 -1.7 4.8 -3.3 1.4 -1.6 3.1 -2.9 3.9 -2.9 0.8 0 1.9 -1.1 2.4 -2.5 0.5 -1.4 1.7 -2.8 2.7 -3.2 2.4 -1 11.3 -10.1 11.3 -11.7 0 -0.7 1.8 -2.8 4.1 -4.7 2.2 -1.9 5.7 -4.7 7.7 -6.4 2 -1.6 5 -4.5 6.7 -6.2 1.7 -1.8 3.6 -3.3 4.2 -3.3 0.6 0 4.1 -2.9 7.8 -6.5 3.7 -3.6 7.3 -6.5 7.9 -6.5 1.5 0 7.5 -5.2 16.5 -14.2 3.7 -3.8 7.2 -6.8 7.7 -6.8 1.3 0 5.4 -4.6 5.4 -6 0 -1.4 5.1 -7 6.4 -7 1 0 2.6 -1.4 10.1 -9 2.2 -2.2 4.4 -4 4.9 -4 1.7 0 14.2 -13.5 13.8 -15 -0.1 -0.8 -1.8 -2.6 -3.7 -4 -1.9 -1.4 -3.5 -3.3 -3.5 -4.2 0 -0.9 -0.9 -1.9 -1.9 -2.3 -1.1 -0.3 -2.3 -1.5 -2.6 -2.6 -0.4 -1 -1.2 -1.9 -1.8 -1.9 -1 0 -8.1 -7 -33.5 -33.2 -8.5 -8.8 -33 -31.8 -33.9 -31.8 -0.6 0 -1.4 -0.8 -1.8 -1.9 -0.3 -1 -8.4 -9.7 -18 -19.2 -9.6 -9.6 -17.5 -18.2 -17.5 -19.1 0 -1.7 7.7 -1.8 147.5 -1.8 142 0 147.4 0.1 146.7 1.8 -1 2.5 -4.8 7.2 -5.8 7.2 -0.5 0 -2.8 1.7 -5.1 3.8 -2.3 2 -6.3 5.5 -8.9 7.7 -2.6 2.2 -6.4 5.6 -8.5 7.5 -2 1.9 -5.5 5.1 -7.8 7 -7.3 6 -13.1 11.7 -13.1 12.8 0 1.3 -8.4 10.2 -9.6 10.2 -0.4 0 -3.7 2.9 -7.3 6.4 -10.4 10.2 -11.4 11.1 -15.1 13.7 -1.9 1.3 -4.5 3.6 -5.8 5.2 -1.3 1.5 -2.8 2.7 -3.3 2.7 -0.5 0 -3.7 2.7 -7.1 6 -3.5 3.4 -8.1 7.7 -10.3 9.6 -2.2 1.9 -7 6.3 -10.6 9.7 -3.7 3.4 -8.5 7.7 -10.7 9.6 -2.2 1.9 -3.8 4 -3.5 4.8 0.6 1.6 17.4 18.3 18.5 18.3 0.4 0 0.8 0.6 0.8 1.4 0 1.8 41.3 43.2 44.9 45 2.8 1.5 10.3 8.7 13.3 12.8 1 1.3 9.2 9.8 18.3 19.1 l16.5 16.7 53.1 0 c44.6 0 53.3 0.2 54.5 1.4 1.1 1.1 1.4 4.5 1.4 14 l0 12.6 -59.5 0 c-39 0 -59.5 -0.3 -59.5 -1z m-119.9 -161.8 c1.4 -0.9 5.4 -4.5 9 -7.9 12.3 -11.7 17.2 -16.3 17.6 -16.3 0.3 0 1 -0.6 1.8 -1.2 0.7 -0.7 3.1 -2.9 5.4 -4.8 2.4 -1.9 5.6 -5 7.4 -6.7 1.7 -1.8 3.7 -3.3 4.4 -3.3 0.7 0 1.8 -1.1 2.3 -2.4 0.5 -1.3 1.8 -2.7 2.9 -3.1 1.1 -0.3 3 -2 4.2 -3.6 1.2 -1.7 3.2 -3.4 4.5 -3.9 1.3 -0.5 2.4 -1.6 2.4 -2.5 0 -0.8 0.4 -1.5 0.9 -1.5 0.9 0 6.4 -4.8 15.2 -13.2 7.5 -7.3 12.9 -6.8 -76.2 -6.8 -69.8 0 -80.2 0.2 -81.5 1.5 -0.9 0.8 -1.1 1.5 -0.7 1.5 1.4 0 11.3 9.4 11.3 10.7 0 0.6 1.6 2 3.5 3.2 2.2 1.3 3.5 2.8 3.5 4.1 0 1.1 0.8 2.4 1.8 2.7 2.2 0.9 4.2 2.9 4.2 4.3 0 0.6 1.1 1.6 2.5 2.2 1.4 0.6 2.5 1.5 2.5 2 0 0.5 6.2 7 13.8 14.6 7.6 7.5 14.1 14.5 14.5 15.5 0.4 0.9 1.8 2.2 3.2 2.7 1.4 0.5 2.5 1.3 2.5 1.8 0 2 11.2 12.1 13.5 12.2 0.6 0 2.2 -0.8 3.6 -1.8z"/>
-
   <path d="M271.5 1072.8 c-0.3 -1.8 -0.5 -7.6 -0.3 -12.8 l0.3 -9.5 129.1 -0.3 c127 -0.2 129.2 -0.2 129.7 -2.2 0.5 -2.1 -2.2 -16.2 -3.4 -17 -0.7 -0.5 -1.2 -3.6 -2.8 -17 -1.6 -12.8 -3.4 -23 -4.2 -23 -0.7 0 -3.4 -15.1 -4.4 -24.5 -0.3 -3.2 -0.9 -6.2 -1.4 -6.5 -0.5 -0.3 -1.1 -2.1 -1.4 -4 -0.3 -1.9 -1.3 -7.5 -2.1 -12.5 -0.8 -4.9 -1.5 -10.4 -1.6 -12.2 0 -2.1 -0.7 -3.6 -1.9 -4.3 -2.6 -1.4 -2.5 -1.4 -6.2 2 -1.8 1.6 -4.7 3.6 -6.4 4.4 -1.6 0.8 -3.6 2.4 -4.3 3.5 -0.7 1.2 -1.9 2.1 -2.7 2.1 -0.8 0 -2.2 1.1 -3.1 2.5 -0.9 1.3 -2.4 2.7 -3.4 3 -1 0.3 -2.9 1.6 -4.4 3 -1.4 1.3 -4.2 3.6 -6.3 5.2 -2 1.5 -4.8 3.8 -6.1 5.1 -1.4 1.2 -3 2.2 -3.7 2.2 -0.7 0 -2 1.1 -2.9 2.5 -0.9 1.4 -2.2 2.5 -2.9 2.5 -0.7 0 -2.4 1.1 -3.9 2.5 -1.5 1.4 -3.1 2.5 -3.7 2.5 -0.5 0 -2 1.3 -3.3 2.8 -1.3 1.6 -4.5 4.1 -7.1 5.6 -2.6 1.6 -4.7 3.1 -4.7 3.6 0 0.4 -1.8 1.9 -4 3.4 -4.3 2.8 -6.3 4.4 -10.8 8.6 -1.5 1.4 -4.4 3.4 -6.6 4.5 -2.1 1.1 -4 2.6 -4.3 3.3 -0.3 0.7 -2.5 2.4 -5 3.9 l-4.4 2.6 -3.5 -3.9 c-1.8 -2.2 -4.3 -4.8 -5.4 -6 -1.1 -1.2 -2 -2.6 -2 -3.1 0 -0.6 -0.7 -1.6 -1.5 -2.3 -1.6 -1.4 -2.1 -6 -0.6 -6 0.5 0 2.9 -2 5.3 -4.5 2.4 -2.4 4.8 -4.5 5.5 -4.5 0.6 0 1.8 -0.8 2.5 -1.8 0.7 -1 2.9 -2.8 5 -4 2 -1.2 3.8 -2.8 4.1 -3.5 0.3 -0.6 2.2 -2.1 4.3 -3.2 2.2 -1.1 5.1 -3.1 6.6 -4.5 4.9 -4.5 6.6 -5.8 8.7 -6.5 1.1 -0.3 3.4 -1.9 5.1 -3.5 1.7 -1.6 3.9 -3.1 4.8 -3.4 0.9 -0.3 3.5 -2.2 5.7 -4.2 2.2 -2 5.2 -4.2 6.6 -4.9 1.5 -0.8 2.9 -2.1 3.2 -3 0.4 -0.8 1.3 -1.5 2 -1.5 0.8 0 3.2 -1.6 5.3 -3.6 2.2 -1.9 5.1 -4.3 6.7 -5.2 1.5 -0.9 2.7 -2 2.7 -2.4 0 -0.4 1.8 -1.7 4 -2.8 2.1 -1.1 4.4 -2.9 5 -4.1 0.6 -1.1 1.9 -2.3 2.9 -2.7 2 -0.8 8.3 -5.5 11.9 -8.9 1.2 -1.3 2.6 -2.3 3 -2.3 0.4 -0.1 2.2 -1.4 4.1 -2.9 3.1 -2.7 3.3 -3.2 2.6 -7 -0.4 -2.3 -1 -4.1 -1.5 -4.1 -0.8 0 -1.3 -3.2 -3.5 -19.9 -0.7 -5.7 -1.7 -10.6 -2.3 -11 -0.5 -0.3 -1.2 -2.4 -1.5 -4.6 -3.4 -23.7 -3.5 -23.8 -13.8 -15.5 -2.4 1.9 -5.3 4.4 -6.4 5.6 -1.1 1.1 -3.6 3.1 -5.5 4.4 -1.9 1.3 -3.9 3 -4.3 3.7 -0.4 0.7 -1.4 1.3 -2.2 1.3 -0.7 0 -2.2 1.1 -3.3 2.5 -1.1 1.4 -2.4 2.5 -3 2.5 -0.5 0 -2.3 1.5 -3.9 3.3 -3.2 3.4 -5.4 5.1 -9.1 6.7 -1.2 0.5 -2.5 1.7 -2.8 2.5 -0.4 0.9 -2.3 2.4 -4.4 3.5 -2.1 1.1 -4 2.6 -4.3 3.4 -0.4 0.9 -2.1 2.2 -3.9 2.9 -1.8 0.8 -4.9 2.8 -6.8 4.6 -1.9 1.7 -4.1 3.1 -4.8 3.1 -0.7 0 -1.5 0.7 -1.8 1.5 -0.4 0.9 -1.7 2.1 -2.9 2.8 -2.4 1.3 -8.4 6 -14.2 11.3 -1.9 1.7 -4.6 3.8 -6.1 4.5 -1.5 0.8 -3.5 2.4 -4.5 3.7 -1 1.2 -2.5 2.2 -3.2 2.2 -0.8 0 -2.2 1.1 -3 2.4 -0.9 1.3 -2.9 2.9 -4.4 3.6 -1.6 0.6 -3.8 2.2 -5 3.6 -1.1 1.3 -2.5 2.4 -3.1 2.4 -1.5 0 -10 -8.2 -10 -9.6 0 -0.7 -0.6 -1.4 -1.3 -1.7 -0.8 -0.3 -2.2 -2.2 -3.2 -4.3 -1.6 -3.4 -1.6 -3.9 -0.1 -7 0.8 -1.9 2.2 -3.4 3 -3.4 0.8 0 2.1 -0.8 2.8 -1.8 1.7 -2.3 9.4 -7.2 11.3 -7.2 0.8 0 1.5 -0.4 1.5 -0.9 0 -0.5 1.7 -1.9 3.8 -3.1 2 -1.2 4.1 -2.8 4.5 -3.6 0.4 -0.8 1.3 -1.4 2 -1.4 0.7 0 2.6 -1.3 4.2 -2.8 1.7 -1.5 4.6 -3.9 6.5 -5.2 1.9 -1.3 4.4 -3.3 5.5 -4.3 1.1 -1 3.5 -2.5 5.3 -3.4 1.7 -0.8 3.2 -2.1 3.2 -2.8 0 -0.7 1.4 -1.8 3 -2.5 1.7 -0.7 3.6 -2 4.3 -2.9 1.3 -1.7 7.2 -6.1 8.3 -6.1 0.3 0 1.5 -1.1 2.6 -2.5 1.1 -1.4 2.6 -2.5 3.4 -2.5 0.7 0 1.9 -0.9 2.6 -2.1 0.7 -1.1 3 -2.9 5.1 -4 2 -1.1 3.7 -2.4 3.7 -2.9 0 -0.9 3.2 -2.9 8.3 -5.2 1.5 -0.7 2.7 -1.8 2.7 -2.4 0 -0.6 1.2 -2 2.8 -2.9 1.5 -1 4 -3.1 5.6 -4.7 1.7 -1.5 3.5 -2.8 4.2 -2.8 0.6 0 1.9 -1.1 2.8 -2.5 0.9 -1.4 2.2 -2.5 3 -2.5 0.7 0 2.4 -1 3.8 -2.2 1.3 -1.3 4 -3.4 6 -4.8 5.2 -3.5 5.9 -5.6 4.6 -13.7 -0.6 -3.7 -1.4 -7 -1.8 -7.3 -0.3 -0.3 -1.7 -7.2 -3 -15.5 -1.3 -8.2 -2.7 -15.2 -3.1 -15.5 -0.9 -0.7 -3.9 -13.3 -3.9 -16.6 0 -1.7 -0.5 -2.4 -2 -2.4 -1.1 0 -2 0.4 -2 0.8 0 0.4 -2 2.1 -4.4 3.6 -2.5 1.5 -4.7 3.4 -5 4.2 -0.3 0.8 -1.2 1.4 -2 1.4 -0.8 0 -2.6 1.4 -4.1 3.2 -2.7 3.2 -5.4 5.2 -8.7 6.4 -1 0.3 -1.8 1 -1.8 1.5 0 0.5 -1.9 2.1 -4.2 3.6 -2.4 1.6 -5.1 3.8 -6.1 5.1 -1 1.2 -2.5 2.2 -3.2 2.2 -0.8 0 -1.9 0.9 -2.5 2 -0.6 1.1 -1.6 2 -2.3 2 -0.7 0 -2.6 1.3 -4.2 2.8 -1.7 1.6 -5 4.2 -7.5 5.8 -2.5 1.6 -5.1 3.7 -5.8 4.6 -0.7 1 -1.9 1.8 -2.7 1.8 -0.8 0 -2 0.8 -2.7 1.8 -0.7 1 -3.2 3.1 -5.5 4.7 -2.4 1.5 -4.3 3.2 -4.3 3.6 0 0.5 -0.6 0.9 -1.3 0.9 -0.8 0 -2.2 0.9 -3.2 2 -1 1.1 -2.4 2 -3.1 2 -0.7 0 -1.8 0.8 -2.3 1.8 -0.5 1 -2.7 2.7 -4.8 3.8 -2.1 1 -4.1 2.3 -4.4 2.7 -0.6 0.9 -3 2.4 -7.8 4.9 -1.3 0.7 -5.2 4.1 -8.6 7.5 -3.5 3.5 -6.7 6.3 -7.3 6.3 -1.5 0 -6.8 -5.3 -7.5 -7.5 -0.4 -1.1 -2.2 -3.8 -4.1 -6 -1.9 -2.2 -3.7 -4.7 -3.9 -5.6 -0.5 -2 2.7 -5.6 8.3 -9.4 2.5 -1.6 5.1 -3.8 5.8 -4.7 0.7 -1 2.8 -2.5 4.7 -3.4 1.9 -0.9 3.5 -2 3.5 -2.5 0 -0.5 0.6 -0.9 1.3 -0.9 0.8 0 2.2 -0.9 3.2 -2 1 -1.1 2.2 -2 2.6 -2 0.4 0 2.3 -1.3 4.1 -3 1.8 -1.6 3.6 -3 4.1 -3 0.5 0 2.2 -1.2 3.8 -2.7 6.2 -6 9.9 -8.7 14.2 -10.6 1.5 -0.6 2.7 -1.5 2.7 -1.9 0 -0.4 1.9 -2 4.3 -3.4 2.3 -1.5 4.6 -3.3 5 -4 0.4 -0.8 1.4 -1.4 2.1 -1.4 0.7 0 3.5 -2 6.2 -4.5 2.7 -2.5 5.1 -4.5 5.5 -4.5 0.3 0 1.5 -0.8 2.6 -1.7 1.1 -1 4.2 -3.6 6.8 -5.8 2.7 -2.2 6.4 -5.5 8.4 -7.2 1.9 -1.8 4.1 -3.3 4.8 -3.3 0.7 0 1.3 -0.7 1.3 -1.5 0 -1.2 -1.8 -1.5 -10.5 -1.5 -6.3 0 -10.5 -0.4 -10.5 -1 0 -0.6 -11 -1 -31 -1 l-31.1 0 0.3 -11.7 0.3 -11.8 22 -0.3 c16 -0.2 22.1 -0.6 22.7 -1.5 0.9 -1.4 1.1 -54 0.2 -58.6 l-0.6 -3.1 -22.4 0 c-16.1 0 -22.5 -0.3 -23 -1.2 -1.1 -1.8 -1.7 -16 -1 -21.2 l0.7 -4.6 53.7 0 c29.5 0 54.3 -0.4 54.9 -0.8 0.9 -0.6 1.3 -6.2 1.5 -20.2 l0.3 -19.5 10.5 -0.3 c16.6 -0.5 15 -2.6 15 20.8 0 15.3 0.3 20 1.3 20 0.6 0.1 24.6 0.1 53.2 0 28.6 0 52.6 0.4 53.3 0.8 0.9 0.6 1.2 4 1 13.3 l-0.3 12.4 -23.2 0.3 -23.3 0.2 0 29.9 c0 16.5 0.3 30.6 0.6 31.5 0.5 1.4 3.6 1.6 23.5 1.6 l22.9 0 0 12 0 12 -2.4 0 c-1.3 0 -2.7 0.6 -3 1.3 -0.5 1 -0.7 1 -1.2 0 -0.4 -1 -10.7 -1.3 -46.6 -1.3 -39.6 0 -46.2 0.2 -47.4 1.5 -1.4 1.3 -1.4 2.5 0.2 10.8 0.9 5 1.9 12.3 2 16.1 0.2 3.8 0.7 7.2 1.2 7.5 0.5 0.3 1.4 4 2.1 8.1 0.7 4.1 1.5 8.6 1.7 10 0.3 1.4 0.9 5.2 1.5 8.4 0.5 3.3 1.3 6.2 1.8 6.5 0.4 0.4 1.1 3.1 1.5 6.1 1.3 11.7 1.8 14.5 2.7 15.4 0.5 0.6 0.9 2.3 0.9 3.8 0 4.4 3.5 3.6 8.4 -1.7 8.5 -9.4 58.6 -59.3 58.6 -58.4 0 0.5 0.6 0.9 1.4 0.9 1.6 0 15.6 13.8 15.6 15.5 0 0.7 -6.3 7.5 -14.1 15.1 -17.7 17.5 -18.2 18 -22.7 23.2 -2 2.4 -8.3 9 -13.9 14.6 -5.7 5.6 -10.3 10.7 -10.3 11.3 0 0.6 -1.1 1.8 -2.5 2.7 -3.1 2.1 -3.2 5.6 -0.3 8.3 6 5.4 19.8 20.3 19.8 21.2 0 0.6 0.5 1.1 1.1 1.1 1.8 0 21.9 20.5 23.7 24.2 1 1.9 2.6 3.4 3.9 3.6 1.2 0.2 4.1 2.4 6.5 4.8 2.4 2.5 7.3 7.6 11.1 11.2 3.7 3.7 6.7 7.2 6.7 7.9 0 0.6 0.5 1.3 1.2 1.5 0.6 0.2 0 1.5 -1.5 3.1 -1.5 1.4 -2.7 3 -2.7 3.5 0 0.5 -0.8 1.2 -1.7 1.6 -2.5 0.8 -7.6 4.2 -10.8 7.4 -0.8 0.6 -2.2 1.2 -3.3 1.2 -1.9 0 -25.2 -22.5 -25.2 -24.4 0 -0.6 -1.4 -1.9 -3 -2.8 -1.7 -1 -3.3 -2.4 -3.6 -3.2 -0.9 -2.3 -25.6 -26.6 -27.1 -26.6 -0.7 0 -1.3 0.9 -1.3 2 0 1.1 0.4 2 0.8 2 0.5 0 1.7 5.1 2.6 11.3 2.2 14.7 2.5 15.7 3.6 15.7 0.6 0 1 3.1 1 7 0 3.9 0.6 10.3 1.4 14.3 0.8 4 2 10.6 2.7 14.7 0.7 4.1 1.5 7.7 1.9 8 0.6 0.5 2.9 12.6 5.3 27.5 0.6 3.9 1.4 7.2 1.8 7.5 0.4 0.3 1.6 6.1 2.6 12.9 0.9 6.8 2.3 13 3 13.7 0.7 0.7 1.3 2.5 1.3 4.1 0 1.5 0.7 6.9 1.6 11.8 0.8 5 1.9 11.7 2.5 15 0.6 3.3 1.4 6.2 1.8 6.5 0.9 0.6 2.8 13.7 2.3 16.3 -0.3 1.6 -8 1.7 -145.2 1.7 l-144.9 0 -0.6 -3.2z m251.9 -376 c0.9 -3.4 0.7 -59.1 -0.2 -60.6 -0.7 -1 -11.2 -1.2 -49.3 -1 l-48.4 0.3 -0.3 29.5 c-0.1 16.2 0 30.5 0.3 31.8 l0.5 2.2 48.4 0 48.4 0 0.6 -2.2z"/>
-
   <path d="M795.5 793.8 c-2.2 -0.5 -5.4 -1.4 -7.1 -1.9 -1.7 -0.5 -4.7 -0.9 -6.6 -0.9 -2 0 -3.8 -0.5 -4 -1 -0.2 -0.6 -3.5 -1.5 -7.3 -2 -12.3 -1.6 -21 -3.2 -21.5 -4 -0.5 -0.7 -6.4 -1.8 -27.2 -5.2 -3.8 -0.6 -6.8 -1.4 -6.8 -1.8 0 -0.4 -2.6 -1 -5.7 -1.4 -7.2 -0.8 -25.6 -4.8 -26.3 -5.7 -0.3 -0.4 -4.3 -1.1 -9 -1.7 -11.3 -1.5 -17.1 -2.8 -17.9 -3.9 -0.3 -0.6 -3.1 -1.3 -6.1 -1.8 -3 -0.4 -8.2 -1.1 -11.5 -1.6 -3.3 -0.5 -11.2 -1.4 -17.5 -2 -6.3 -0.5 -11.7 -1.4 -12 -2 -0.3 -0.5 -2.8 -1.2 -5.6 -1.5 -2.7 -0.4 -5.3 -1 -5.9 -1.4 -0.5 -0.4 -3.6 -1.1 -6.9 -1.5 -3.3 -0.4 -6.7 -1.4 -7.7 -2.4 -1.8 -1.7 -1.8 -2 -0.3 -5 0.9 -1.8 2.7 -3.7 4 -4.3 1.3 -0.6 2.6 -1.9 3 -3 0.3 -1 1.6 -2.6 3 -3.4 1.3 -0.9 2.4 -2.2 2.4 -2.9 0 -0.7 1.5 -2.5 3.3 -4 1.7 -1.4 4.7 -3.8 6.5 -5.3 3.8 -3.1 7.2 -8.2 7.2 -10.6 0 -1 1.4 -2.9 3 -4.3 1.7 -1.3 3 -2.9 3 -3.5 0 -0.5 1.2 -2.3 2.8 -3.8 1.5 -1.5 4.3 -4.6 6.2 -6.9 1.9 -2.3 4.6 -5.5 6 -7 6.2 -7.1 10.6 -12.5 11.4 -14 0.6 -0.9 2 -2.4 3.3 -3.4 1.3 -1 2.3 -2.4 2.3 -3.2 0 -0.7 1.5 -2.4 3.4 -3.9 1.9 -1.4 3.7 -3.4 4 -4.3 0.3 -1 1.9 -2.7 3.6 -3.8 1.6 -1.1 3 -2.4 3 -2.9 0 -1 0.8 -1.9 6.9 -8.3 2.3 -2.3 4.1 -4.7 4.1 -5.2 0 -0.5 1 -1.8 2.3 -2.8 1.2 -1 3 -2.9 3.9 -4.3 0.9 -1.4 3.4 -4.5 5.7 -7 2.2 -2.5 4.1 -4.9 4.1 -5.4 0 -0.4 1.1 -1.7 2.5 -2.8 1.4 -1.1 2.5 -2.5 2.5 -3.1 0 -0.7 1.2 -2.6 2.8 -4.3 5.9 -6.7 11.7 -13.7 12 -14.4 0.3 -0.7 5.4 -6.3 14.7 -16.1 1.9 -2 3.5 -4.1 3.5 -4.7 0 -0.6 0.8 -1.7 1.8 -2.4 1 -0.7 2.8 -2.8 4.1 -4.5 2.5 -3.7 6.2 -4.4 8.3 -1.5 0.7 1 3.1 3.1 5.3 4.7 2.2 1.7 5 4.2 6.3 5.8 1.3 1.5 3 2.7 3.8 2.7 0.8 0 1.4 0.6 1.4 1.4 0 0.8 0.4 1.6 1 1.8 1.4 0.5 9.8 7.7 14 12.1 1.9 2 3.9 3.7 4.4 3.7 0.4 0 2 1.2 3.5 2.8 3.1 3.1 7.2 6.7 11.6 10 5.5 4.1 9.6 7.7 13.2 11.5 2 2 3.9 3.7 4.3 3.7 0.4 0 3 2.1 5.8 4.8 2.8 2.6 7 6.3 9.3 8.2 2.4 1.9 6.1 5.2 8.3 7.2 10.9 10 14.2 12.8 14.9 12.8 0.4 0 2.1 1.6 3.8 3.5 1.7 1.9 3.4 3.5 3.9 3.5 0.7 0 5.9 4.6 15.1 13.5 2.6 2.5 5.1 4.5 5.7 4.5 0.5 0 1.7 1.1 2.6 2.5 0.9 1.4 2.1 2.5 2.8 2.5 0.6 0 3.1 2 5.7 4.4 10 9.6 14.4 13.6 14.9 13.6 0.6 0 4.7 3.8 8 7.4 1.5 1.5 3.7 3.2 5 3.7 3.2 1.3 2.7 3.7 -1.3 5.6 -1.9 0.9 -3.5 2 -3.5 2.4 0 0.4 -1.2 1.4 -2.7 2.1 -4.4 2.3 -7.6 4.2 -9.1 5.6 -0.8 0.7 -2.8 2 -4.5 2.9 -1.8 0.8 -3.6 2.2 -4 2.9 -0.4 0.8 -1.4 1.4 -2.1 1.4 -0.7 0 -2.1 0.9 -3.1 2 -1 1.1 -2.4 2 -3.2 2 -0.7 0 -1.3 0.4 -1.3 0.8 0 0.5 -2.5 2.2 -5.5 3.7 -3 1.6 -5.5 3.2 -5.5 3.5 0 0.4 -2 1.7 -4.5 2.9 -2.5 1.2 -4.5 2.6 -4.5 3.1 0 0.4 -1.7 1.5 -3.7 2.5 -7.6 3.3 -8.8 4 -11.3 6.3 -1.4 1.2 -3.3 2.2 -4.2 2.2 -1 0 -2.2 0.9 -2.8 2 -0.6 1.1 -1.7 2 -2.4 2 -0.7 0 -2.5 0.9 -3.9 2 -1.4 1.1 -3.1 2 -3.9 2 -0.7 0 -1.9 0.9 -2.6 2 -0.7 1.1 -1.8 2 -2.6 2 -0.7 0 -2.4 1 -3.8 2.3 -3 2.6 -5.4 4.3 -8.8 5.9 -1.4 0.7 -2.7 1.6 -3 1.9 -0.9 1.2 -8.1 4.9 -9.3 4.8 -0.7 -0.1 -3 -0.6 -5.2 -1.1z m-1.1 -10.4 c0.7 -1.9 -1.3 -14.6 -2.4 -15.4 -0.8 -0.5 -4.9 -13.6 -5.7 -18.5 -0.3 -1.6 -0.9 -3.2 -1.3 -3.5 -0.9 -0.6 -2.9 -7.9 -4.1 -15 -0.6 -3 -1.4 -5.7 -1.8 -6 -0.5 -0.3 -1.1 -1.8 -1.3 -3.5 -1.1 -5.9 -5.3 -21 -6 -21.3 -0.5 -0.2 -0.8 -1.1 -0.8 -2 0 -3 -5.3 -22.7 -6.3 -23.3 -0.5 -0.4 -1.3 -2.7 -1.8 -5 -1.7 -9.5 -3.2 -14.9 -4 -14.9 -0.5 0 -0.9 -1.2 -0.9 -2.8 0 -1.5 -0.9 -5.1 -1.9 -8 -1.1 -2.8 -2.2 -7 -2.6 -9.2 -0.4 -2.2 -1 -4 -1.4 -4 -0.7 0 -3.7 -11 -5.6 -20.7 -0.4 -1.8 -1 -3.3 -1.5 -3.3 -0.4 0 -1 -2.1 -1.4 -4.7 -0.3 -2.7 -1.3 -6.1 -2.1 -7.7 -0.8 -1.5 -1.5 -4.1 -1.5 -5.7 0 -1.6 -0.4 -2.9 -0.9 -2.9 -0.5 0 -1.1 -1 -1.3 -2.2 -0.4 -3.2 -2 -2.9 -6.8 1.2 -8 6.8 -9.2 8.1 -15.5 16.5 -3.1 4.1 -6.8 8.6 -9.6 11.4 -0.8 0.9 -2.6 3.2 -4 5.1 -1.3 1.9 -4.5 5.6 -7.1 8.2 -2.7 2.6 -4.8 5.2 -4.8 5.7 0 0.5 -1 1.8 -2.2 2.8 -1.3 1 -2.9 3 -3.6 4.4 -0.7 1.4 -2.9 4.3 -4.8 6.5 -7.4 8.3 -17 18.8 -19.6 21.5 -1.6 1.5 -2.8 3.2 -2.8 3.7 0 0.6 -1 1.9 -2.2 2.9 -1.3 1 -3.5 3.6 -4.9 5.8 -1.5 2.2 -3.8 5.4 -5.2 7 -1.5 1.7 -4 4.6 -5.7 6.5 -1.6 1.9 -3 4 -3 4.7 0 0.6 -1.3 2.1 -3 3.3 -1.6 1.2 -3 2.8 -3 3.5 0 0.8 -1.3 2.4 -3 3.7 -1.6 1.2 -3 2.8 -3 3.5 0 0.7 -2 3.4 -4.5 6.1 -2.5 2.6 -4.5 5.3 -4.5 5.9 0 0.7 -1.3 2.5 -3 4 -1.6 1.4 -3 3.1 -3 3.6 0 0.5 -1.8 2.7 -4 4.9 -6.3 6.3 -5.5 7.7 5.5 10.2 4.4 1 10.7 2.3 14 2.9 3.3 0.6 6.2 1.4 6.5 1.8 0.3 0.3 4.4 1.2 9.3 1.8 4.8 0.6 12.6 1.6 17.5 2.2 4.8 0.6 8.9 1.5 9.2 1.9 0.5 0.8 11.3 3.4 21.5 5.2 3.3 0.5 6.2 1.3 6.5 1.7 0.5 0.7 17.4 4 24.8 4.8 2.3 0.3 4.2 0.8 4.2 1.2 0 0.4 4.2 1.3 9.3 2 5 0.7 11 1.9 13.2 2.7 2.2 0.7 5.2 1.4 6.8 1.4 1.5 0 2.7 0.4 2.7 0.8 0 0.4 6.6 2.1 14.8 3.7 8.1 1.6 14.9 3.3 15 3.7 0.7 1.6 8 0.9 8.6 -0.8z m15.8 -4.1 c1.8 -1 3.5 -2.1 3.6 -2.6 0.2 -0.4 2.1 -1.6 4.2 -2.7 2.1 -1.1 4.4 -2.5 5.2 -3.2 0.8 -0.7 2.4 -1.9 3.6 -2.5 1.2 -0.7 3.2 -1.9 4.4 -2.5 1.2 -0.7 2.9 -1.9 3.6 -2.6 0.8 -0.7 3.5 -2.3 6.1 -3.4 2.5 -1.2 5 -2.8 5.5 -3.6 0.4 -0.8 2.3 -2 4.2 -2.8 1.9 -0.8 3.4 -1.8 3.4 -2.3 0 -0.4 2.1 -1.9 4.6 -3.2 2.6 -1.3 4.9 -2.9 5.1 -3.6 0.3 -0.7 1.1 -1.3 1.8 -1.3 0.6 0 2.4 -1 3.8 -2.2 6.2 -5.6 8 -6.8 9.3 -6.8 0.8 0 1.9 -0.9 2.6 -2 0.7 -1.1 1.9 -2 2.6 -2 1.1 0 8.7 -4.5 10.2 -6 0.3 -0.3 2.2 -1.4 4.3 -2.4 4.4 -2.3 5.1 -5.8 1.5 -7.7 -1.3 -0.6 -3.3 -2.4 -4.6 -4 -1.3 -1.6 -3 -2.9 -3.7 -2.9 -0.8 0 -2.3 -1.3 -3.5 -2.9 -1.1 -1.7 -2.9 -3.3 -4 -3.6 -1.1 -0.4 -2 -1.3 -2 -2.1 0 -0.8 -0.4 -1.4 -1 -1.4 -0.5 0 -4.1 -3.1 -7.9 -6.9 -3.9 -3.7 -8.4 -7.4 -10.1 -8.1 -1.7 -0.7 -5 -3.2 -7.2 -5.6 -2.3 -2.4 -4.5 -4.4 -5 -4.4 -0.4 0 -2.6 -1.9 -5 -4.3 -2.4 -2.4 -5.5 -5.2 -7 -6.1 -1.6 -1 -2.8 -2.3 -2.8 -2.8 0 -1.4 -9.6 -10.8 -10.9 -10.8 -0.9 0 -7.9 -6.3 -17.2 -15.4 -1.5 -1.4 -3.1 -2.6 -3.7 -2.6 -0.6 0 -2.2 -1.3 -3.5 -3 -1.4 -1.6 -2.9 -3 -3.4 -3 -1.1 0 -16.9 -14.2 -28.8 -25.7 -2.5 -2.4 -4.9 -4.3 -5.4 -4.3 -0.5 0 -2.9 -1.8 -5.3 -4 -2.3 -2.2 -5.1 -4 -6.2 -4 -1.6 0 -1.7 0.5 -1.1 4.8 0.4 2.6 1 4.9 1.4 5.2 1 0.7 6.1 18.1 6.1 20.7 0 1.2 0.5 2.3 1.1 2.5 0.6 0.2 1.5 2.4 2 4.8 0.6 2.5 1.5 6.7 2 9.5 0.6 2.7 1.4 5.2 1.9 5.5 0.4 0.3 1.5 4.1 2.5 8.5 0.9 4.4 2.2 10.3 2.8 13 0.5 2.8 1.4 5.2 1.8 5.5 0.9 0.6 2.9 8 3.5 13 1.1 8.7 2.6 17 3.3 17 0.8 0 2.6 6.1 4.3 14.8 0.6 3.4 1.5 6.2 1.9 6.2 1 0 3.5 8.1 5 16 0.7 3.6 1.6 6.7 2 7 0.8 0.6 2.4 6.3 4.1 14.8 0.5 2.8 1.3 5.2 1.7 5.2 0.4 0 1.4 3 2.1 6.6 0.8 3.6 1.7 6.7 2.2 7 0.4 0.3 0.8 1.8 0.8 3.3 0 4.6 1.8 5.2 7.2 2.4z"/>
-
   <path d="M216.5 626.3 c-0.3 -1 -2.3 -3.1 -4.4 -4.8 -5.8 -4.6 -7.4 -7.1 -6.1 -9.5 0.6 -1.1 1.7 -2 2.4 -2 1.6 0 4.2 -2.8 5 -5.6 0.5 -1.7 -1.3 -4 -9.1 -12 -5.4 -5.4 -10.8 -11.3 -12 -12.9 -1.2 -1.7 -3.3 -3.7 -4.7 -4.5 -1.4 -0.7 -2.6 -1.7 -2.6 -2.2 0 -1.6 -16 -16.8 -17.7 -16.8 -1 0 -3.6 1.8 -5.7 4 -2.2 2.2 -4.5 4 -5.2 4 -0.7 0 -2.6 -1.6 -4.1 -3.5 -1.5 -1.9 -3.2 -3.5 -3.8 -3.5 -0.5 0 -1.8 -1.2 -2.9 -2.6 l-1.8 -2.6 37.4 -37.1 c20.6 -20.5 38.7 -38.4 40.3 -39.8 1.7 -1.4 3.7 -3.3 4.5 -4.2 0.8 -0.9 4.1 -4.2 7.3 -7.3 3.1 -3.1 5.7 -5.9 5.7 -6.3 0 -0.5 1.1 -1.3 2.5 -1.9 1.4 -0.6 2.5 -1.7 2.5 -2.4 0.1 -1.6 8.8 -10.2 11.3 -11.1 0.9 -0.3 1.7 -1.1 1.7 -1.7 0 -1.5 3.3 -5 4.8 -5 0.7 0 1.5 -0.8 1.9 -1.7 0.8 -2.5 29.5 -31.3 31.1 -31.3 0.6 0 1.2 -0.5 1.2 -1.2 0 -0.6 6 -7.2 13.4 -14.5 7.4 -7.4 14.4 -14.9 15.6 -16.6 1.2 -1.8 4.2 -4.6 6.6 -6.2 2.4 -1.7 4.6 -3.7 4.9 -4.6 0.3 -0.8 3.1 -4.1 6.3 -7.2 11.9 -11.6 15.9 -15.6 23.9 -23.9 4.6 -4.7 9.9 -9.6 11.8 -10.9 1.9 -1.3 3.5 -2.7 3.5 -3.2 0 -0.4 2.4 -3.2 5.2 -6.1 14.8 -15 24.8 -25.5 24.8 -26 0 -0.8 21.2 -21.6 22 -21.6 1 0 10.8 -9 18.9 -17.4 10.1 -10.5 11.6 -12 13.7 -13.7 1 -0.9 3.3 -3.1 5 -5 3.6 -4 10.1 -9.9 10.9 -9.9 1.1 0 12.5 12.1 12.5 13.3 0 0.6 -1.4 2 -3.1 3 -1.7 0.9 -3.3 2.6 -3.6 3.7 -0.3 1.1 -0.9 2 -1.4 2 -0.5 0 1.7 2.5 4.7 5.5 3.1 3 6 5.5 6.5 5.5 0.5 0 0.9 0.7 0.9 1.5 0 0.8 0.5 1.5 1.2 1.5 0.6 0 8.5 7.4 17.6 16.5 9 9.1 16.6 16.5 16.9 16.5 0.2 0 2.2 -1.8 4.3 -4 2.1 -2.2 4.3 -4 4.9 -4 0.6 0 2.8 1.7 4.9 3.8 2 2 5 4.5 6.5 5.5 3.7 2.4 3.6 6.1 -0.2 7.8 -1.6 0.7 -3.7 2.6 -4.6 4.1 -0.9 1.5 -2.3 2.8 -3.1 2.8 -0.8 0 -1.7 0.7 -2 1.5 -0.3 0.8 -2.2 2.5 -4.2 3.7 -3.9 2.4 -11.2 9.1 -11.2 10.2 0 0.8 -18.4 19.5 -97.3 98.9 -31.6 31.7 -57.7 57.7 -58.1 57.7 -0.3 0 -4.6 4.1 -9.4 9.1 -10.6 11.2 -38.5 39.2 -43.3 43.6 -1.9 1.7 -4.8 4.6 -6.5 6.5 -1.6 1.8 -5.4 5.3 -8.4 7.8 -7 5.9 -15 13.6 -15 14.4 0 1.1 -2.7 3.6 -3.9 3.6 -0.6 0 -2.1 1.6 -3.3 3.5 -1.3 1.9 -2.7 3.5 -3.3 3.5 -0.5 0.1 -2.6 1.9 -4.5 4.2 -3.9 4.6 -7.8 8.9 -17.5 19.3 -3.6 3.9 -7.9 8.4 -9.4 10 -1.5 1.7 -4.3 4.4 -6.2 6.1 -1.9 1.7 -4.1 4 -5.1 5 -0.9 1.1 -5.5 5.7 -10.2 10.3 -4.7 4.6 -8.6 8.8 -8.6 9.2 0 1.6 -2.9 0.9 -3.5 -0.8z m7.9 -35.5 c0.3 -1.3 0.6 -6 0.6 -10.6 0 -4.6 0.7 -14.6 1.6 -22.4 0.8 -7.7 1.1 -14.5 0.7 -14.9 -0.4 -0.4 -8 -0.4 -16.8 0.2 -32.2 2 -32.4 2 -33 3.8 -0.9 2.8 2.1 7.2 9.6 14.1 13.2 12.1 24.5 23.5 25.2 25.3 0.3 0.9 1.8 2.2 3.2 2.7 1.4 0.5 2.8 1.7 3.1 2.5 1 2.4 5.1 1.9 5.8 -0.7z m17.6 -13.5 c2.2 -2.1 4 -4.4 4 -5 0 -1.6 22.5 -24.3 24 -24.3 1.4 0 8.5 -7 9.3 -9.1 0.7 -2.2 -2.6 -2.9 -9 -1.8 -2.6 0.4 -8.5 0.8 -13 0.8 -4.6 0.1 -8.3 0.5 -8.3 1 0 0.4 -1.9 1.1 -4.1 1.4 -2.3 0.3 -4.6 1 -5.2 1.6 -0.6 0.6 -1.4 7.7 -1.9 15.8 -0.4 8.2 -0.8 15.9 -0.9 17.3 -0.2 3.6 0 6 0.6 6 0.3 0 2.3 -1.7 4.5 -3.7z m-29.2 -43.9 c3.4 -0.4 6.2 -1 6.2 -1.4 0 -0.4 2.7 -1 5.9 -1.4 l5.9 -0.7 0.6 -4.2 c0.5 -3.2 2.5 -29.9 2.6 -33.9 0 -2.1 -4.3 -0.4 -7.2 2.8 -1.8 2 -6.4 6.6 -10.2 10.3 -3.7 3.6 -8.2 8.1 -10 10 -1.7 1.8 -6.1 6.3 -9.8 10 -3.8 3.6 -6.8 7.4 -6.8 8.4 0 1.7 0.7 1.8 8.3 1.3 4.5 -0.4 11 -0.9 14.5 -1.2z m49.7 -4.9 c16.7 -1.2 22.5 -1.9 22.5 -2.6 0 -0.5 2.1 -0.9 4.6 -0.9 4 0 5 -0.5 9.2 -4.5 l4.7 -4.6 0.7 -11.2 c0.3 -6.2 1 -17.8 1.4 -26 l0.7 -14.7 -10.4 0.6 c-5.7 0.4 -10.5 1.1 -10.7 1.6 -0.2 0.4 -5.3 0.8 -11.2 0.8 -13.1 0 -20.3 1.4 -22.8 4.3 -1 1.2 -2.7 2.7 -3.7 3.3 -2.1 1.2 -2.8 6.1 -4.1 29.7 -0.3 5.9 -0.9 10.7 -1.4 10.7 -1 0 -2.3 12.8 -1.4 14.2 0.5 0.7 3.5 0.8 9.3 0.3 4.7 -0.3 10.4 -0.8 12.6 -1z m72.7 -44.5 c9.8 -9.8 17.8 -18.4 17.8 -18.9 0 -0.6 0.8 -1.4 1.7 -1.9 1.5 -0.9 1.5 -1.1 0.1 -2.6 -1.7 -1.7 -5.8 -2.2 -5.8 -0.7 0 0.4 -6.2 1.1 -13.7 1.5 -7.6 0.4 -14.7 0.9 -15.9 1.2 -2 0.5 -2.1 1.4 -2.7 14.7 -0.4 8.4 -1 14.3 -1.7 14.5 -0.5 0.2 -1 2.6 -1 5.3 0 3.9 0.3 4.9 1.7 4.9 0.9 0 9.7 -8.1 19.5 -18z m-49.6 -27.9 c0.5 -0.5 5.2 -1.1 10.5 -1.3 11 -0.4 12.9 -1.5 12.9 -7.3 0 -2 0.4 -6.6 0.9 -10.3 0.5 -3.7 1.2 -10.4 1.5 -14.9 0.5 -8.2 0.5 -8.3 -1.8 -8.3 -1.3 0 -3.7 1.5 -5.8 3.8 -1.9 2 -5 5.1 -6.9 6.8 -1.9 1.7 -4.8 4.6 -6.5 6.5 -1.7 1.9 -4.6 4.8 -6.5 6.5 -1.9 1.8 -6.5 6.4 -10.2 10.3 l-6.8 7 2.8 0.7 c1.5 0.3 3.3 0.7 3.8 0.9 2.2 0.7 11.2 0.4 12.1 -0.4z m62.9 -6.3 c9.5 0.2 15 -0.3 24 -2.3 1.1 -0.3 2.8 -2.2 3.9 -4.4 1 -2.2 2.7 -4.9 3.8 -6 1.5 -1.7 2 -4.7 2.8 -17.8 0.6 -8.7 1.3 -20 1.7 -25.2 l0.6 -9.4 -12.8 0.5 c-7 0.4 -13 1 -13.4 1.6 -0.3 0.5 -6 1.2 -12.5 1.6 -12.7 0.7 -14.3 1.2 -19.3 6 -2.7 2.5 -3.3 3.8 -3.3 7.1 0 6.9 -2.3 30 -3.1 30.5 -0.4 0.3 -1 4.7 -1.4 9.9 l-0.8 9.4 9.4 -0.8 c5.2 -0.5 14.4 -0.8 20.4 -0.7z m52.1 -32.8 c1.8 0 35.4 -33.2 35.4 -35 0 -1 -2.3 -1.1 -10.7 -0.5 -6 0.5 -15 1.1 -20 1.4 l-9.3 0.6 -0.4 19.5 -0.4 19.5 2 -2.8 c1.1 -1.5 2.6 -2.7 3.4 -2.7z m-27.3 -40.6 c9.5 -0.6 12.2 -1.1 13.9 -2.6 1.9 -1.6 2 -2.1 0.8 -2.8 -1 -0.7 -1.1 -1 -0.2 -1 0.8 0 1.2 -1.5 1.2 -4.4 0 -2.4 0.4 -6.5 0.9 -9.2 0.9 -4.9 0.1 -21.7 -1.1 -22.9 -0.7 -0.7 -13.8 11.9 -13.8 13.3 0 0.4 -1.9 2 -4.3 3.5 -2.4 1.5 -5.1 4.1 -6 5.7 -1 1.6 -2.4 3.5 -3.1 4.2 -10.3 9.6 -15.6 15.3 -15.6 16.5 0 1.4 1.2 1.5 7.8 1 4.2 -0.4 13 -1 19.5 -1.3z m50.7 -4.9 c11.8 -0.9 22.4 -1.8 23.6 -2 1.1 -0.3 4.1 -2.4 6.7 -4.7 4.6 -4.2 4.7 -4.5 5.3 -11.5 0.4 -4 1 -7.3 1.4 -7.3 0.8 0 2.2 -19.1 2.4 -31.5 l0.1 -8 -9 0.4 c-4.9 0.2 -9.2 0.7 -9.5 1.1 -0.5 0.7 -3.5 1 -26.2 2.6 -6.7 0.5 -9.2 1.1 -10.5 2.6 -1 1 -2.8 2.8 -4 4 -1.3 1.2 -2.3 3.2 -2.3 4.5 0 1.3 -0.4 2.3 -0.9 2.3 -0.5 0 -1.1 5.3 -1.5 11.8 -0.4 6.4 -1 17.3 -1.4 24 -0.4 6.8 -0.5 12.6 -0.3 12.8 0.7 0.6 3 0.5 26.1 -1.1z m62.9 -39.2 c5.1 -5.1 9.7 -9.3 10.2 -9.3 0.5 0 0.9 -0.7 0.9 -1.5 0 -0.9 0.8 -1.9 1.8 -2.2 2.5 -1 15.7 -15.2 14.8 -16 -0.2 -0.2 -8.8 -0.1 -19 0.3 -21.4 0.8 -21.9 1 -23 8.9 -1 6.8 -1 7.4 -0.8 20.2 l0.2 11.3 2.8 -1.3 c1.5 -0.6 6.9 -5.3 12.1 -10.4z m-31.4 -35.6 c10.3 -1.4 10.2 -1.3 10.4 -12.9 0.1 -3.6 0.5 -6.8 1 -7 1 -0.3 3.1 -17.6 2.3 -19.5 -1 -2.8 -4.1 -0.9 -12.5 7.3 -4.8 4.7 -8.7 9 -8.7 9.5 0 0.5 -0.4 0.9 -0.8 0.9 -1.3 0 -18.2 17.2 -18.2 18.6 0 0.7 -0.3 1.9 -0.6 2.8 -0.5 1.4 0.6 1.6 8.7 1.5 5.2 0 13.4 -0.6 18.4 -1.2z m47.6 -3 c0.4 -0.5 5.3 -1.2 11 -1.6 13.9 -0.8 14 -1.6 1.5 -13.6 -5.2 -4.9 -14.9 -14.3 -21.6 -20.7 -7.8 -7.6 -12.6 -11.5 -13.5 -11.2 -1.1 0.5 -1.5 2.5 -1.6 8.3 0 4.2 -0.4 10.1 -0.9 13.1 -1.5 9.1 -3.1 26.1 -2.6 26.9 0.7 1.1 27 0 27.7 -1.2z"/>
-
   <path d="M974 603.5 c-0.7 -1.4 -1.9 -2.5 -2.6 -2.5 -0.6 0 -2.4 -1.6 -3.8 -3.5 -1.5 -1.9 -3.1 -3.5 -3.7 -3.5 -1.4 0 -41.9 -40.8 -41.9 -42.3 0 -1.2 -29.2 -30.7 -30.3 -30.7 -1 0 -24.7 -24.2 -24.7 -25.1 0 -0.5 -0.6 -0.9 -1.4 -0.9 -0.8 0 -2.4 -1.5 -3.5 -3.2 -2.5 -4.1 -56.5 -57.8 -58 -57.8 -0.6 0 -1.1 -0.6 -1.1 -1.2 -0.1 -1.4 -4.5 -6.8 -5.5 -6.8 -0.3 0 -4.6 -4 -9.4 -9 -4.9 -4.9 -9.1 -9 -9.4 -9 -0.3 0 -3.8 -3.2 -7.8 -7.1 -4.1 -3.9 -10.4 -10 -14.1 -13.6 -3.8 -3.5 -6.8 -6.8 -6.8 -7.1 0 -0.4 -1.4 -1.6 -3 -2.7 -1.6 -1.1 -3 -2.4 -3 -3 0 -0.5 -1.8 -2.3 -4 -3.8 -2.2 -1.6 -4 -3.4 -4 -4.1 0 -0.7 -1.1 -1.9 -2.5 -2.6 -1.3 -0.7 -2.7 -2.2 -3.1 -3.2 -0.3 -1 -1.9 -2.5 -3.5 -3.3 -1.6 -0.9 -2.9 -2.1 -2.9 -2.8 0 -1.4 -3.5 -4.7 -5 -4.7 -0.6 0 -1 -0.4 -1 -1 0 -0.5 -3.3 -4.4 -7.2 -8.5 -4 -4.1 -9.1 -9.5 -11.3 -12.1 -2.2 -2.5 -6 -6.5 -8.4 -8.8 -2.4 -2.2 -5.7 -5.6 -7.5 -7.5 -1.7 -1.9 -4.6 -4.8 -6.5 -6.5 -1.8 -1.7 -6.3 -6.2 -10 -10 -3.6 -3.7 -8.1 -8.2 -10 -10 -5.1 -4.7 -12.2 -11.9 -15.7 -15.7 -1.7 -1.9 -4.6 -4.8 -6.5 -6.5 -1.9 -1.7 -4.8 -4.6 -6.5 -6.5 -1.8 -1.9 -6.3 -6.4 -10 -10 -3.8 -3.7 -8.3 -8.2 -10 -10 -3.9 -4.2 -6.5 -6.3 -8.7 -7.2 -0.9 -0.3 -1.7 -1.2 -1.7 -1.9 0 -1.2 -6.1 -7.6 -20.2 -21.6 -2.1 -2 -3.8 -4.2 -3.8 -4.8 0 -0.6 -0.9 -1.4 -2 -1.7 -2.8 -0.7 -3.7 -5.3 -1.5 -7.7 1 -1.1 2.4 -2 3.2 -2 0.7 0 1.9 -1.1 2.5 -2.5 1.4 -3.2 4.1 -3.2 6.5 0 1 1.4 3.2 2.7 4.9 3.1 2.6 0.5 3.6 0 7.2 -3.8 2.3 -2.3 4.2 -4.8 4.2 -5.5 0 -0.7 0.6 -1.3 1.3 -1.3 2.1 -0.1 6.7 -4.8 6.7 -7 0 -1.3 5 -7.1 14 -16 7.7 -7.7 14 -14.3 14 -14.6 0 -0.4 -1.6 -2.1 -3.5 -4 -1.9 -1.8 -3.5 -3.9 -3.5 -4.7 0 -1.6 7.7 -9.7 9.1 -9.7 0.5 0 0.9 -0.6 0.9 -1.3 0 -0.8 1.1 -1.9 2.4 -2.5 2.2 -1 2.5 -0.8 3.5 1.9 0.5 1.6 1.5 2.9 2.1 2.9 1.4 0 3.4 2 4.3 4.3 0.3 0.9 1.2 1.7 1.8 1.7 0.7 0 12.2 11.1 25.6 24.7 39.7 40.3 61.7 62.3 70.8 70.8 4.7 4.4 8.8 9 9.1 10.3 0.3 1.2 1.2 2.2 2 2.2 0.7 0 2 1.3 2.8 2.8 0.8 1.5 2.6 3.4 3.9 4.1 1.4 0.7 2.8 2.2 3 3.2 0.3 1 1.7 2.3 3.1 2.9 1.5 0.5 2.9 1.8 3.3 2.7 0.5 1.5 12.4 13.7 18.5 19 1.2 1.1 4.4 4.3 7.1 7.1 0.6 0.8 2.2 2.3 3.5 3.5 8 7.5 12.2 11.9 12.2 12.7 0 0.6 0.5 1 1.1 1 1.2 0 18.9 17.7 18.9 18.9 0 0.4 1.1 1.4 2.5 2.1 1.4 0.7 2.5 1.9 2.5 2.6 0 0.7 0.9 1.6 2.1 1.9 1.1 0.4 2.4 1.8 2.9 3.1 0.5 1.3 1.7 2.4 2.7 2.4 1 0 8.3 6.8 16.3 15 8 8.3 35.5 36.1 61.3 62 25.7 25.8 46.7 47.2 46.7 47.6 0 0.8 35.6 36.4 36.4 36.4 0.4 0 9.4 8.8 20.1 19.5 10.6 10.7 19.8 19.5 20.4 19.5 2.6 0 1.7 2.3 -2.5 6.4 -2.5 2.5 -5 4.6 -5.4 4.6 -0.4 0 -1.5 0.9 -2.5 2 -2.1 2.4 -4.1 2.6 -4.9 0.5 -0.3 -0.8 -1 -1.5 -1.5 -1.5 -0.5 0 -9 8.1 -18.9 18 -9.9 9.9 -18.5 18 -19.1 18 -0.6 0 -1.4 0.8 -1.8 1.8 -0.3 0.9 -2.1 3.2 -4 5 -3.6 3.6 -4.2 5.7 -1.8 6.6 0.8 0.3 1.5 1.1 1.5 1.8 -0.1 1.7 -4.8 7.1 -8.2 9.3 -1.6 0.9 -2.8 2.4 -2.8 3.1 0 2.3 -3.6 1.6 -5 -1.1z m9.1 -27.5 c2.1 0 43 -42.1 42.7 -43.8 -0.3 -1.4 -3.2 -1.9 -20.3 -3.4 -11 -1 -22.9 -1.7 -26.5 -1.5 l-6.5 0.2 0.2 3.5 c0.1 1.9 0.7 8.7 1.2 15 0.5 6.3 1.3 15.7 1.7 20.8 0.4 5 1 9.2 1.5 9.2 0.4 0 1.1 0.9 1.4 2.1 l0.7 2.1 1.5 -2.1 c0.8 -1.2 1.9 -2.1 2.4 -2.1z m-17.5 -17.7 c-0.3 -4.9 -1.1 -8.9 -1.6 -9.1 -0.6 -0.2 -1 -4.5 -1 -9.7 0 -5.2 -0.5 -10.6 -1.2 -12 -1 -2.3 -1.7 -2.5 -7.2 -2.5 -3.4 0 -7.9 -0.4 -10.1 -0.9 -2.2 -0.5 -8 -1.1 -13 -1.3 -7.7 -0.3 -9 -0.1 -9.3 1.4 -0.4 2.1 39.5 42.6 42.2 42.7 1.8 0.1 1.9 -0.5 1.2 -8.6z m46.4 -39.4 c0 -0.6 -1.1 -2 -2.5 -3.1 -1.4 -1.1 -2.5 -2.4 -2.5 -3 0 -1.2 -8.5 -9.8 -9.8 -9.8 -0.5 0 -1.5 -1.2 -2.2 -2.6 -0.8 -1.4 -2.7 -3.5 -4.3 -4.6 -3 -2.1 -5.5 -4.6 -13.8 -13.6 -5 -5.5 -8.3 -7.2 -9.3 -4.7 -0.3 0.8 -0.3 2.1 -0.1 2.8 0.3 0.6 0.9 7 1.4 14.2 0.6 7.3 1.5 13.1 2.1 13.3 0.5 0.2 1 2.1 1 4.1 0 3.8 0.1 3.8 4.6 4.5 2.5 0.3 5 0.3 5.5 0 1.3 -0.8 22.9 1.8 22.9 2.8 0 0.4 1.6 0.8 3.5 0.8 1.9 0 3.5 -0.5 3.5 -1.1z m-51.6 -10.4 c-0.1 -12 -1.7 -33 -2.6 -33.6 -0.5 -0.3 -1.2 -3.2 -1.5 -6.3 -0.5 -5.1 -1.1 -6.2 -5.1 -10.1 -4.2 -4.2 -4.9 -4.5 -9.8 -4.5 -2.9 0 -5.4 -0.4 -5.6 -0.9 -0.3 -0.8 -8.1 -1.6 -34.5 -3.8 l-7.2 -0.6 0.5 9.4 c0.3 5.2 1 11.6 1.5 14.2 0.5 2.6 0.9 9.3 0.9 14.7 0 6 0.4 10 1 10 0.6 0 1 0.7 1 1.5 0 2 3.3 8.4 4.4 8.5 0.5 0 1.7 0.6 2.5 1.4 1.8 1.6 13.5 3.6 21 3.6 2.8 0 5.1 0.4 5.1 1 0 1.1 7.9 1.7 20 1.6 l8.5 -0.1 -0.1 -6z m-73.1 -24.6 c0.3 -2.2 0.1 -6.8 -0.4 -10.2 -0.5 -3.4 -0.9 -8.1 -0.9 -10.4 0 -2.4 -0.4 -4.3 -0.9 -4.3 -0.6 0 -1.1 -2.1 -1.3 -4.7 -0.4 -6.3 -2.4 -7.3 -15 -7.3 -5.4 0 -9.8 -0.4 -9.8 -0.9 0 -0.5 -2.5 -1.2 -5.5 -1.6 -5.5 -0.6 -9.5 -0.1 -9.5 1.4 0 0.8 6.8 8 25.1 26.8 17.2 17.6 17.3 17.6 18.2 11.2z m44.7 -44.4 c0 -0.8 -0.3 -1.5 -0.8 -1.5 -0.4 0 -1.3 -1.4 -2.1 -3.1 -0.7 -1.7 -2.4 -3.5 -3.7 -4.1 -1.3 -0.6 -2.6 -1.8 -2.9 -2.7 -0.3 -0.9 -2.8 -3.6 -5.6 -6.1 -2.8 -2.5 -8.4 -7.6 -12.3 -11.5 -4 -3.8 -8.4 -8 -9.9 -9.2 l-2.7 -2.3 0 6.8 c0.1 12.4 1.8 30.5 3.1 31.3 0.7 0.4 5.6 1 11.1 1.4 5.4 0.4 9.8 1.1 9.8 1.6 0 0.5 3.6 0.9 8 0.9 6.4 0 8 -0.3 8 -1.5z m-50.3 -8.7 c-0.3 -3.5 -1 -13.7 -1.6 -22.8 -0.6 -9.5 -1.5 -16.6 -2.1 -16.8 -0.5 -0.2 -1 -1.8 -1 -3.6 0 -4.1 -7.6 -12.6 -11.4 -12.6 -1.3 0 -2.6 -0.4 -2.8 -0.9 -0.3 -0.8 -25.5 -2.9 -40.8 -3.4 l-5.5 -0.2 0.1 12.9 c0.1 9.7 0.5 13 1.5 13.8 1.1 0.7 1.1 1.1 0.2 1.5 -1.5 0.5 -1.8 4.3 -0.4 4.3 0.5 0 1.2 4.4 1.6 9.8 0.7 9.9 3 16.2 6 16.2 0.7 0 1.5 0.7 1.9 1.5 0.3 0.8 1.2 1.5 2 1.5 0.8 0 1.6 0.4 1.8 0.9 0.3 0.9 24.3 2.8 41.8 3.4 4.1 0.2 7.9 0.4 8.3 0.5 0.5 0.1 0.6 -2.6 0.4 -6z m-73.2 -26 c-0.2 -2.4 -0.7 -9.7 -1 -16.3 -0.6 -11.6 -1.2 -18.5 -1.8 -19.1 -0.1 -0.2 -5.6 -0.6 -12.2 -1 -6.6 -0.4 -12.2 -1 -12.5 -1.5 -0.3 -0.4 -3.8 -1.1 -7.8 -1.4 -6.7 -0.7 -7.2 -0.6 -7.2 1.2 0 2.2 39.4 42.3 41.6 42.3 1 0 1.2 -1.1 0.9 -4.2z m45.5 -43.6 c0 -1.5 -17.6 -19.2 -19.1 -19.2 -0.5 0 -0.9 -0.9 -0.9 -2 0 -1 -0.8 -2.4 -1.8 -2.9 -1 -0.6 -3 -2.6 -4.3 -4.5 -1.3 -2 -2.9 -3.6 -3.6 -3.6 -0.6 0 -2 -1.3 -2.9 -2.9 -1 -1.7 -2.8 -3.2 -4.1 -3.6 -1.3 -0.3 -2.3 -1.2 -2.3 -2 0 -2.5 -4 -1.8 -4.1 0.8 -0.4 5.6 0.4 17.3 1.2 17.7 0.4 0.3 1.1 4.4 1.4 9 1 13.1 0.6 12.5 7.2 13.6 3.2 0.5 12 0.9 19.6 1 11.1 0 13.7 -0.2 13.7 -1.4z m-50.6 -14.2 c-0.2 -17.9 -1.6 -42 -2.4 -42 -0.4 0 -2.8 -2 -5.2 -4.3 l-4.4 -4.4 -12.3 -0.6 c-6.8 -0.3 -12.6 -0.9 -13 -1.5 -0.6 -0.9 -24.6 -2.3 -26.8 -1.5 -1.6 0.6 -1.8 14.3 -0.3 14.3 0.6 0 1 2 1 4.4 0 4.4 2.6 28.9 3.5 33.6 0.3 1.4 1.8 3.3 3.3 4.2 5.9 3.8 6.7 4.3 7.2 4.9 0.8 1.1 39.7 4.8 46.5 4.5 l3 -0.1 -0.1 -11.5z m-74 -29.8 c-0.3 -6.4 -1 -14.7 -1.6 -18.5 -0.8 -5.6 -1.3 -6.8 -3.1 -7.2 -3.5 -0.7 -24.9 -2.5 -29.9 -2.5 -2.8 0 -4.8 -0.5 -5.1 -1.2 -0.3 -0.7 -0.6 -0.3 -0.6 0.9 -0.1 1.3 0.8 2.8 1.9 3.5 1.1 0.7 2 1.7 2 2.3 0 0.6 1.1 1.9 2.5 2.9 1.4 1.1 8.5 8 15.8 15.3 7.2 7.4 14.1 14.3 15.1 15.4 1 1 2.3 1.6 2.7 1.3 0.5 -0.2 0.6 -5.7 0.3 -12.2z m46 -34.4 c-0.3 -1.3 -1.1 -2.5 -1.7 -2.7 -0.6 -0.2 -3.5 -2.7 -6.5 -5.5 -12.7 -12 -17.2 -16.8 -17.2 -18.4 0 -0.9 -3.4 -5 -7.6 -9 -8.8 -8.4 -9.8 -8.2 -8.9 1.3 0.3 3.3 0.8 11.9 1.3 19 0.4 7.2 1.1 13.6 1.5 14.3 0.6 0.8 3.9 1.2 10 1.3 5.1 0.1 11.9 0.5 15.2 0.9 3.3 0.4 7.9 0.8 10.3 0.9 4.1 0.1 4.3 0 3.6 -2.1z m-52.4 -3 l4.5 -0.3 -0.3 -6.5 c-0.1 -3.6 -0.7 -6.6 -1.2 -6.8 -0.6 -0.2 -1 -2.9 -1 -6 0 -7.5 -1.9 -26.8 -3.1 -31.5 -0.7 -2.6 -1.8 -4.1 -3.5 -4.7 -1.3 -0.5 -2.4 -1.6 -2.4 -2.4 0 -2.8 -4.5 -4 -17.4 -4.6 -8.9 -0.4 -13.1 -0.9 -13.4 -1.8 -0.3 -0.9 -3.8 -1.2 -12.5 -1.2 l-12.2 0 0.2 15.7 c0.1 8.7 0.7 17.8 1.2 20.3 0.6 2.5 1 7 1.1 10 0.1 5.3 1.6 9 3.7 9 0.6 0 2.2 1.4 3.7 3.2 2.4 3 3.4 3.3 11.9 4.5 5 0.7 14.8 1.7 21.7 2.3 7.8 0.6 12.6 1.4 12.9 2.1 0.2 0.7 0.6 0.8 1 0.1 0.3 -0.6 2.7 -1.2 5.1 -1.4z m-72.1 -33.5 c-0.2 -15.9 -1.7 -32.5 -3 -33.4 -0.8 -0.5 -5 -0.9 -9.4 -1 -4.4 0 -12 -0.4 -17 -0.8 -10.4 -0.9 -11.9 -0.7 -10.5 1.9 1.1 2.1 10 11 11 11 0.4 0 6.7 6.1 14.1 13.5 7.4 7.4 13.7 13.5 14.2 13.5 0.4 0 0.7 -2.1 0.6 -4.7z m49.1 -41.1 c0.3 -0.2 -0.1 -0.7 -0.7 -0.9 -0.7 -0.3 -1.3 -0.9 -1.3 -1.3 0 -1.3 -4.6 -6 -5.8 -6 -0.6 0 -1.6 -0.9 -2.2 -1.9 -0.5 -1.1 -2 -2.3 -3.2 -2.7 -1.3 -0.3 -8 -6.4 -15 -13.5 -7 -7.1 -13.3 -12.9 -13.9 -12.9 -1.4 0 -0.3 25.3 1.2 25.8 0.5 0.2 0.9 2.7 0.9 5.6 0 4.7 0.3 5.4 2.5 6.4 1.4 0.7 4.5 1.2 6.8 1.3 2.3 0 5.1 0.4 6.2 0.9 2 0.9 23.5 0.2 24.5 -0.8z m-52.5 -16.4 c-0.4 -7.9 -1.1 -14.4 -1.6 -14.6 -1.2 -0.5 -1.1 -3.2 0.1 -3.2 0.6 0 1 -1.3 1 -3 0 -1.6 -0.4 -3 -0.9 -3 -0.5 0 -1.3 -2.9 -1.6 -6.5 -0.4 -3.6 -0.9 -6.5 -1.1 -6.5 -1.5 0 -6.2 4.1 -17.5 15.3 -7.1 7 -13.3 12.7 -13.8 12.7 -0.6 0 -1.5 1 -2.2 2.3 -0.6 1.2 -3.5 4.5 -6.5 7.3 -5.9 5.6 -6.7 8 -3.1 9.3 1.2 0.4 11.7 1.1 23.2 1.5 12 0.4 21.1 1.1 21.3 1.6 0.2 0.6 1.1 1 1.9 1 1.3 0 1.4 -1.8 0.8 -14.2z"/>
-
- </g>
-
         </svg>
-
              <div class="brand-name-loading">八毅硬體結構</div>
-
     </div>
-
 </div>
-
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #66001a;">
-
+    
+   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #66001a;">
     <div class="container">
-
         <a class="navbar-brand" href="index.html">八毅硬體結構</a>
-
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
             <span class="navbar-toggler-icon"></span>
-
         </button>
-
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-
             <ul class="navbar-nav">
-
                 <li class="nav-item"><a class="nav-link" href="index.html">首頁</a></li>
-
                 <li class="nav-item"><a class="nav-link" href="cooperation.html">企業合作</a></li>
-
                 <li class="nav-item"><a class="nav-link" href="about.html">關於八毅</a></li>
-
             </ul>
-
         </div>
-
     </div>
-
 </nav>
 
-
-
 <header id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
     <div class="carousel-inner">
-
         <div class="carousel-item active">
-
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/MpZsLrbm/新動_新北投捷運站_3米白_進場.jpg');"></div>
-
             <div class="carousel-caption-custom">
-
                 <h1 class="hero-subtitle">戶外帳篷租賃</h1>
-
                 <p class="hero-desc">帝王帳、圓拱帳、宮廷帳、阿里山帳</p>
-
             </div>
-
         </div>
-
         
-
         <div class="carousel-item">
-
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/fLFnWQ5b/109915.jpg');"></div>
-
             <div class="carousel-caption-custom">
-
                 <h1 class="hero-subtitle">專業Truss結構</h1>
-
                 <p class="hero-desc">造型Truss、背板Truss、牌樓搭建</p>
-
             </div>
-
         </div>
-
-
 
         <div class="carousel-item">
-
             <div class="hero-bg-layer" style="background-image: url('https://i.postimg.cc/bvt1VQM6/黎國際_三重水樣啵啵_3米白進場7.jpg');"></div>
-
             <div class="carousel-caption-custom">
-
                 <h1 class="hero-subtitle">舞台搭設 & 活動周邊</h1>
-
                 <p class="hero-desc">各式舞台、桌椅、伸縮圍欄及其他設備</p>
-
             </div>
-
         </div>
-
     </div>
-
     
-
     <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="z-index: 30;">
-
         <span class="carousel-control-prev-icon"></span>
-
     </button>
-
     <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="z-index: 30;">
-
         <span class="carousel-control-next-icon"></span>
-
     </button>
-
 </header>
-
             
-
-<main class="main-wrapper py-6">
-
-    <div class="section-title-wrapper">
-
-        <span class="section-subtitle">Our Expertise</span>
-
-        <h2 class="section-title">專業服務項目</h2>
-
-        <div class="section-title-line"></div>
-
-    </div>
-
-
-
-    <div class="modern-bento">
-
-        
-
-        <div class="bento-box box-tents" onclick="openProductModal('tents')">
-
-            <img src="https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg" class="bento-img">
-
-            <div class="bento-content">
-
-                <h4>帳篷設備</h4>
-
-                <p>Marquees & Tents</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="bento-box box-truss" onclick="openProductModal('truss')">
-
-            <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="bento-img">
-
-            <div class="bento-content">
-
-                <h4>Truss 結構</h4>
-
-                <p>Professional Truss System</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="bento-box box-stage" onclick="openProductModal('stage')">
-
-            <img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="bento-img">
-
-            <div class="bento-content">
-
-                <h4>舞台架設</h4>
-
-                <p>Stage Setup</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="bento-box box-chairs" onclick="openProductModal('chairs')">
-
-            <img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="bento-img">
-
-            <div class="bento-content">
-
-                <h4>桌椅租賃</h4>
-
-                <p>Furniture Rental</p>
-
-            </div>
-
-        </div>
-
-
-
-        <div class="bento-box box-monitor" id="monitor-card">
-
-            <div id="auth-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition:0.5s;">
-
-                <h5 class="text-white mb-3">請輸入管理代碼</h5>
-
-                <input type="password" id="access-code" class="form-control mb-3 w-75 text-center" placeholder="Enter Code">
-
-                <button class="btn btn-danger w-50" onclick="checkAccess()">驗證登入</button>
-
-                <button class="btn btn-link text-white mt-2" onclick="hideAuth()">取消</button>
-
-            </div>
-
-
-
-            <div class="monitor-header">
-
-                <span class="small fw-bold" style="letter-spacing: 2px;">ALIGNMENT MONITOR 數位控管</span>
-
-                <span class="badge rounded-pill bg-danger animate-pulse px-3 py-2">LIVE</span>
-
-            </div>
-
-
-
-            <div class="ratio ratio-16x9 bg-black position-relative flex-grow-1">
-
-                <iframe id="iframe-3d" src="https://3dwarehouse.sketchup.com/embed/1b90ef55-f425-497c-a26e-444676dd14dd" allowfullscreen style="border: none;"></iframe>
-
-                <div id="progress-panel" style="position:absolute; top:0; left:0; width:100%; height:100%; background:#fff; display:none; z-index:10;">
-
-                    <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" style="width:100%; height:100%; object-fit:cover;">
-
-                    <div style="position:absolute; bottom:0; background:rgba(0,0,0,0.7); color:#fff; width:100%; padding:15px; font-size:0.95rem; font-weight: 500;">
-
-                        📍 目前進度：Truss 結構第一階段完工
-
+        <main class="main-wrapper py-5">
+    <div class="container" style="max-width: 1400px;">
+        <div class="row g-5">
+            
+            <div class="col-lg-8">
+                <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">專業服務項目</h3>
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    <div class="col" onclick="openProductModal('chairs')" style="cursor: pointer;">
+                        <div class="card h-100 border-0 shadow-sm glow-card-final">
+                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="card-img-top object-fit-cover"></div>
+                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">桌椅租賃</h6></div>
+                        </div>
                     </div>
-
-                </div>
-
-            </div>
-
-
-
-            <div class="monitor-body">
-
-                <div class="btn-group w-100 mb-3" style="gap: 15px;">
-
-                    <button id="btn-3d" class="btn btn-danger py-2 fw-bold rounded-pill" onclick="toggleMonitor('3d')" style="border-radius: 8px !important;">3D 實景</button>
-
-                    <button id="btn-real" class="btn btn-dark py-2 fw-bold rounded-pill" onclick="toggleMonitor('real')" style="border-radius: 8px !important;">LIVE 控場</button>
-
-                </div>
-
-                <ul class="list-unstyled mb-0 text-muted" style="font-size: 0.9rem;">
-
-                    <li class="mb-1"><i class="bi bi-check2-circle text-success me-2"></i>現場設備 iPad 即時連線同步中</li>
-
-                </ul>
-
-            </div>
-
+                    <div class="col" onclick="openProductModal('truss')" style="cursor: pointer;">
+                        <div class="card h-100 border-0 shadow-sm glow-card-final">
+                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="card-img-top object-fit-cover"></div>
+                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">Truss 結構</h6></div>
+                        </div>
+                    </div>
+                    <div class="col" onclick="openProductModal('tents')" style="cursor: pointer;">
+                        <div class="card h-100 border-0 shadow-sm glow-card-final">
+                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg" class="card-img-top object-fit-cover"></div>
+                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">帳篷設備</h6></div>
+                        </div>
+                    </div>
+                    <div class="col" onclick="openProductModal('stage')" style="cursor: pointer;">
+                        <div class="card h-100 border-0 shadow-sm glow-card-final">
+                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="card-img-top object-fit-cover"></div>
+                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">舞台架設</h6></div>
+                        </div>
+                    </div>
+                    <div class="col" onclick="openProductModal('others')" style="cursor: pointer;">
+                        <div class="card h-100 border-0 shadow-sm glow-card-final">
+                            <div class="ratio ratio-4x3"><img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="card-img-top object-fit-cover"></div>
+                            <div class="card-body bg-white p-3 text-center"><h6 class="fw-bold text-dark mb-0">活動周邊配件</h6></div>
+                        </div>
+                    </div>
+                </div> 
+            </div> 
+   
+       <div class="col-lg-4" id="model-container">
+    <h3 class="fw-bold mb-4" style="color: #BA2D30; border-left: 5px solid #BA2D30; padding-left: 15px;">數位控管系統</h3>
+    
+    <div class="card shadow-sm border-0 position-relative" id="monitor-card" style="overflow: hidden;">
+        <div id="auth-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:100; display:flex; flex-direction:column; justify-content:center; align-items:center; opacity:0; pointer-events:none; transition:0.5s;">
+            <h5 class="text-white mb-3">請輸入管理代碼</h5>
+            <input type="password" id="access-code" class="form-control mb-3 w-75 text-center" placeholder="Enter Code">
+            <button class="btn btn-danger w-50" onclick="checkAccess()">驗證登入</button>
+            <button class="btn btn-link text-white mt-2" onclick="hideAuth()">取消</button>
         </div>
 
-
-
-        <div class="bento-box box-others" onclick="openProductModal('others')">
-
-            <img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="bento-img">
-
-            <div class="bento-content">
-
-                <h4>活動周邊配件</h4>
-
-                <p>Event Accessories</p>
-
-            </div>
-
+        <div class="card-header bg-dark text-white py-2 d-flex justify-content-between align-items-center">
+            <span class="small fw-bold">ALIGNMENT MONITOR</span>
+            <span class="badge rounded-pill bg-danger animate-pulse">LIVE</span>
         </div>
 
+        <div class="ratio ratio-16x9 bg-black position-relative">
+            <iframe id="iframe-3d" src="https://3dwarehouse.sketchup.com/embed/1b90ef55-f425-497c-a26e-444676dd14dd" allowfullscreen style="border: none;"></iframe>
+            
+            <div id="progress-panel" style="position:absolute; top:0; left:0; width:100%; height:100%; background:#fff; display:none; z-index:10;">
+                <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" style="width:100%; height:100%; object-fit:cover;">
+                <div style="position:absolute; bottom:0; background:rgba(0,0,0,0.7); color:#fff; width:100%; padding:10px; font-size:0.8rem;">
+                    📍 目前進度：Truss 結構第一階段完工
+                </div>
+            </div>
+        </div>
 
-
+        <div class="card-body p-3">
+            <div class="btn-group w-100 mb-3">
+                <button id="btn-3d" class="btn btn-danger py-2 fw-bold" onclick="toggleMonitor('3d')">3D 實景</button>
+                <button id="btn-real" class="btn btn-dark py-2 fw-bold" onclick="toggleMonitor('real')">LIVE 控場</button>
+            </div>
+            <ul class="list-unstyled mb-0" style="font-size: 0.85rem;">
+                <li class="mb-1"><i class="bi bi-check2-circle text-danger me-2"></i>iPad 現場同步中</li>
+            </ul>
+        </div>
     </div>
-
+</div>
 </main>
 
-
-
-<section class="social-section" style="background-color: var(--text-dark) !important; color: #ffffff !important; text-align: center; padding: 6rem 0; width: 100%; margin-top: 50px; display: block;">
-
+<section class="social-section" style="background-color: #722F37 !important; color: #ffffff !important; text-align: center; padding: 3.5rem 0; width: 100%; margin-bottom: 50px; display: block;">
     <div class="container-fluid">
-
-        <h3 style="color: #ffffff !important; font-size: 2.2rem !important; font-weight: 900 !important; margin-bottom: 40px !important; letter-spacing: 3px;">
-
-            JOIN OUR NETWORK
-
+        <h3 style="color: #ffffff !important; font-size: 2.2rem !important; font-weight: 900 !important; margin-bottom: 30px !important; display: block !important; visibility: visible !important; opacity: 1 !important;">
+            加入粉絲團
         </h3>
-
         
-
-        <div class="social-icons d-flex justify-content-center align-items-center" style="gap: 40px;">
-
-            <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #ffffff !important; font-size: 3rem; text-decoration: none; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-
+        <div class="social-icons d-flex justify-content-center align-items-center" style="gap: 35px;">
+            <a href="https://line.me/R/ti/p/@998cnhao" target="_blank" rel="noopener noreferrer" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
                 <i class="bi bi-line"></i>
-
             </a>
-
-            <a href="#" style="color: #ffffff !important; font-size: 3rem; text-decoration: none; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
                 <i class="bi bi-facebook"></i>
-
             </a>
-
-            <a href="#" style="color: #ffffff !important; font-size: 3rem; text-decoration: none; transition: transform 0.3s; display: inline-block;" onmouseover="this.style.transform='scale(1.2)'" onmouseout="this.style.transform='scale(1)'">
-
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
                 <i class="bi bi-instagram"></i>
-
             </a>
-
+            <a href="#" style="color: #ffffff !important; font-size: 3.5rem; text-decoration: none; display: inline-block;">
+                <i class="bi bi-chat-dots"></i>
+            </a> 
         </div>
-
         
-
-        <div style="width: 60px; height: 1px; background: rgba(255,255,255,0.2); margin: 40px auto;"></div>
-
-        <p style="opacity: 0.5; font-size: 0.9rem; color: #ffffff !important; letter-spacing: 1px;">
-
+        <p style="margin-top: 40px; opacity: 0.8; font-size: 1rem; color: #ffffff !important;">
             &copy; 2026 八毅硬體結構 版權所有
-
         </p>
-
     </div>
-
 </section>
 
 
-
 <div class="modal fade" id="albumModal" tabindex="-1" aria-hidden="true">
-
     <div class="modal-dialog modal-xl modal-dialog-centered">
-
-        <div class="modal-content border-0 shadow-lg">
-
+        <div class="modal-content">
             <button type="button" class="btn-close custom-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
             
-
-            <div class="modal-header border-0 pb-0">
-
-                <h5 class="modal-title fw-bold">產品相簿</h5>
-
+            <div class="modal-header">
+                <h5 class="modal-title">產品相簿</h5>
             </div>
-
             
-
             <div class="modal-body pt-0">
-
                 <ul class="nav nav-tabs d-none" id="albumTabs" role="tablist" style="display: none !important;">
-
                     <li class="nav-item"><button class="nav-link active" id="tab-1" data-bs-toggle="tab" data-bs-target="#gallery-1" type="button" role="tab" aria-selected="true">桌椅</button></li>
-
                     <li class="nav-item"><button class="nav-link" id="tab-2" data-bs-toggle="tab" data-bs-target="#gallery-2" type="button" role="tab" aria-selected="false">Truss</button></li>
-
                     <li class="nav-item"><button class="nav-link" id="tab-3" data-bs-toggle="tab" data-bs-target="#gallery-3" type="button" role="tab" aria-selected="false">帳篷</button></li>
-
                     <li class="nav-item"><button class="nav-link" id="tab-4" data-bs-toggle="tab" data-bs-target="#gallery-4" type="button" role="tab" aria-selected="false">舞台</button></li>
-
                     <li class="nav-item"><button class="nav-link" id="tab-5" data-bs-toggle="tab" data-bs-target="#gallery-5" type="button" role="tab" aria-selected="false">其他</button></li>
-
                 </ul>
 
-
-
-                <div class="tab-content pt-3" id="albumTabContent">
-
-                    <div class="tab-pane fade show active" id="gallery-1" role="tabpanel"><div class="row g-4"></div></div>
-
-                    <div class="tab-pane fade" id="gallery-2" role="tabpanel"><div class="row g-4"></div></div>
-
-                    <div class="tab-pane fade" id="gallery-3" role="tabpanel"><div class="row g-4"></div></div>
-
-                    <div class="tab-pane fade" id="gallery-4" role="tabpanel"><div class="row g-4"></div></div>
-
-                    <div class="tab-pane fade" id="gallery-5" role="tabpanel"><div class="row g-4"></div></div>
-
+                <div class="tab-content pt-1" id="albumTabContent">
+                    <div class="tab-pane fade show active" id="gallery-1" role="tabpanel"><div class="row"></div></div>
+                    <div class="tab-pane fade" id="gallery-2" role="tabpanel"><div class="row"></div></div>
+                    <div class="tab-pane fade" id="gallery-3" role="tabpanel"><div class="row"></div></div>
+                    <div class="tab-pane fade" id="gallery-4" role="tabpanel"><div class="row"></div></div>
+                    <div class="tab-pane fade" id="gallery-5" role="tabpanel"><div class="row"></div></div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
-
-
 
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-
     <div class="modal-dialog modal-lg modal-dialog-centered">
-
-        <div class="modal-content border-0 shadow-lg" style="border-radius: 15px; overflow: hidden;">
-
+        <div class="modal-content">
            <button type="button" class="btn-close custom-modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
-           
-
-            <div class="modal-header border-0 bg-light">
-
+            
+            <div class="modal-header">
                 <h5 class="modal-title fw-bold" id="prod-modal-title">產品名稱</h5>
-
             </div>
-
-            <div class="modal-body p-4">
-
-                <div class="row g-4">
-
+            <div class="modal-body">
+                <div class="row">
                     <div class="col-md-4">
-
-                        <div class="list-group border-0" id="prod-list" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 10px;"></div>
-
+                        <div class="list-group" id="prod-list"></div>
                     </div>
-
                     <div class="col-md-8 text-center">
-
-                        <img id="prod-img" src="" class="img-fluid rounded mb-3" style="max-height: 350px; object-fit: contain;">
-
+                        <img id="prod-img" src="" class="img-fluid rounded mb-3" style="max-height: 300px; object-fit: contain;">
                         <h5 id="prod-name" class="fw-bold mt-2"></h5>
-
-                        <p id="prod-specs" class="text-muted text-start mt-3 bg-light p-3 rounded" style="font-size: 0.95rem; line-height: 1.6;"></p>
-
+                        <p id="prod-specs" class="text-muted text-start mt-3" style="font-size: 0.95rem; line-height: 1.6;"></p>
                     </div>
-
                 </div>
-
             </div>
-
-            <div class="modal-footer border-0">
-
-                <button type="button" class="btn btn-dark w-100 py-2 fw-bold" onclick="closeProductAndOpenAlbum()">查看相簿</button>
-
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="closeProductAndOpenAlbum()">查看相簿</button>
             </div>
-
         </div>
-
     </div>
-
 </div>
-
     
-
 <div id="imgLightbox" class="lightbox-overlay" onclick="closeLightbox()" style="display:none;"></div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-
     
-
 <script>
 
     // 1. 定義所有產品資料
+const productLibrary = {
+    'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
+        { name: '會議桌', img: 'https://i.postimg.cc/fLFnWQCg/109909_0.jpg', specs: '尺寸：W185xD60xH76.5cm<br>材質：PE桌面/鋼製腳架' },
+        { name: '黑金剛摺疊椅', img: 'https://i.postimg.cc/kGFc1xVC/日坊_林口竹林寺_黑金剛_進場.jpg', specs: '尺寸：W43.8xD50xH80cm<br>材質：PE/鋼製腳架' },
+        { name: '點心椅', img: 'https://i.postimg.cc/nzfByXft/黎國際_三重水樣啵啵_點心椅進場.jpg', specs: '尺寸：W33.3x33.3xH46.5cm<br>材質：PE' }
+    ]},
+    'truss': { title: 'Truss 結構', tab: 'tab-2', items: [
+        { name: 'Truss帳篷', img: 'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg', specs: '規格說明：客製化規格，結構穩固。' },
+        { name: '造型Truss', img: 'https://i.postimg.cc/yN9zD1bQ/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang2.jpg', specs: '規格說明：客製化造型，可包含設計圖。' },
+        { name: '牌樓Truss', img: 'https://i.postimg.cc/LXFLcJKW/黎國際_三重水樣啵啵_Trus進場2.jpg', specs: '規格說明：活動入口門面專用。' },
+        { name: '背板Truss', img: 'https://i.postimg.cc/nc22qGbp/鑫創土城_Truss_進場.jpg', specs: '規格說明：拍照背板/舞台背景專用。' }
+    ]},
+    'tents': { title: '帳篷設備', tab: 'tab-3', items: [
+        { name: '圓拱帳', img: 'https://i.postimg.cc/pdsM7FFj/109898_0.jpg', specs: '規格：12呎、15呎、20呎、24呎、30呎  以上規格x30即為cm<br> 深度統一為300cm 高度可調。頂棚顏色:紅白、白。' },
+        { name: '宮廷帳', img: 'https://i.postimg.cc/TwbQm8f5/永昌_新竹中油_3米白_進場2.jpg', specs: '規格：W600cm*D600cm 高度可調。頂棚顏色:紅白、白、透明。' },
+        { name: '屋型帳', img: 'https://i.postimg.cc/76r0F5rH/賢哥_萬華金義宮_3米6紅進場.jpg', specs: '規格：W600cm*D300cm 高度可調。頂棚顏色:紅白、白、透明。' },
+        { name: '阿里山帳', img: 'https://i.postimg.cc/zfX9nGPQ/賢哥南港高中_3米紅白_進場4.jpg', specs: '規格：W300cm*D300cm 高度可調。頂棚顏色:紅白、白。' }
+    ]},
+    'stage': { title: '舞台架設', tab: 'tab-4', items: [
+        { name: '3*6木質舞台板(展示為紅地毯，地毯可選色)', img: 'https://i.postimg.cc/fLvbNBgy/傳動_考試院_舞台進場.jpg', specs: '規格：W180cm*D90cm*H10cm。' },
+        { name: '6*6木質舞台板(展示為紅地毯，地毯可選色)', img: 'https://i.postimg.cc/fLFnWQ5b/109915.jpg', specs: '規格：W180cm*D180cm*H10cm。' },
+        { name: '一步梯', img: 'https://i.postimg.cc/qMwyTKK3/yi-bu-ti.jpg', specs: '規格：W60cm*D30*H25。' },
+        { name: '三步梯', img: 'https://i.postimg.cc/3J58dMms/永昌_橫山大山背_圓拱帳_舞台進場.jpg', specs: '規格：W60cm*D90*H75。' }
+    ]},
+    'others': { title: '活動周邊配件', tab: 'tab-5', items: [
+        { name: '伸縮圍欄', img: 'https://i.postimg.cc/5t6s4Yr5/法克市府轉運站_紅龍進場.jpg', specs: '規格：銀色立柱。' },
+        { name: '三角錐', img: 'https://i.postimg.cc/sxhFvH0X/109918_0.jpg', specs: '規格：高可見度反光條。' },
+        { name: '指示立牌', img: 'https://via.placeholder.com/300', specs: '規格：A3/A4 規格。' },
+        { name: '垃圾架', img: 'https://i.postimg.cc/d1rGJVsb/汎馬_中和國小_垃圾架_進場.jpg', specs: '規格：鐵料支架。' },
+        { name: '工業立扇', img: 'https://via.placeholder.com/300', specs: '規格：大風量，三段風速。' }
+    ]}
+};
 
-    const productLibrary = {
-
-        'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
-
-            { name: '會議桌', img: 'https://i.postimg.cc/fLFnWQCg/109909_0.jpg', specs: '尺寸：W185xD60xH76.5cm<br>材質：PE桌面/鋼製腳架' },
-
-            { name: '黑金剛摺疊椅', img: 'https://i.postimg.cc/kGFc1xVC/日坊_林口竹林寺_黑金剛_進場.jpg', specs: '尺寸：W43.8xD50xH80cm<br>材質：PE/鋼製腳架' },
-
-            { name: '點心椅', img: 'https://i.postimg.cc/nzfByXft/黎國際_三重水樣啵啵_點心椅進場.jpg', specs: '尺寸：W33.3x33.3xH46.5cm<br>材質：PE' }
-
-        ]},
-
-        'truss': { title: 'Truss 結構', tab: 'tab-2', items: [
-
-            { name: 'Truss帳篷', img: 'https://i.postimg.cc/yxPmXsGv/日坊_竹林山觀音寺_Truss帳_進場.jpg', specs: '規格說明：客製化規格，結構穩固。' },
-
-            { name: '造型Truss', img: 'https://i.postimg.cc/yN9zD1bQ/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang2.jpg', specs: '規格說明：客製化造型，可包含設計圖。' },
-
-            { name: '牌樓Truss', img: 'https://i.postimg.cc/LXFLcJKW/黎國際_三重水樣啵啵_Trus進場2.jpg', specs: '規格說明：活動入口門面專用。' },
-
-            { name: '背板Truss', img: 'https://i.postimg.cc/nc22qGbp/鑫創土城_Truss_進場.jpg', specs: '規格說明：拍照背板/舞台背景專用。' }
-
-        ]},
-
-        'tents': { title: '帳篷設備', tab: 'tab-3', items: [
-
-            { name: '圓拱帳', img: 'https://i.postimg.cc/zGNW5W9B/日坊_林口竹林寺_圓拱帳_進場.jpg', specs: '尺寸：3m x 3m (可拼接)<br>特色：頂部圓弧設計，排水佳，適合市集活動' },
-
-            { name: '帝王帳', img: 'https://i.postimg.cc/90pdtCSX/日坊_竹林山觀音寺_帝王帳_進場.jpg', specs: '尺寸：6m x 6m 或更大<br>特色：氣勢宏偉，適合大型活動主會場' },
-
-            { name: '宮廷帳', img: 'https://i.postimg.cc/k4yQy0yK/宮廷帳.jpg', specs: '尺寸：3m x 3m<br>特色：經典歐式尖頂造型，適合婚禮或質感活動' },
-
-            { name: '阿里山帳', img: 'https://i.postimg.cc/Xv9bZ8kX/阿里山帳.jpg', specs: '尺寸：3m x 3m<br>特色：台灣最常見經典帳篷，搭建快速機動性高' }
-
-        ]},
-
-        'stage': { title: '舞台架設', tab: 'tab-4', items: [
-
-            { name: '組合式舞台', img: 'https://i.postimg.cc/N0swp4LW/109886(1).jpg', specs: '尺寸：依需求客製<br>高度：可依現場地勢微調，結構穩固' },
-
-            { name: '造型舞台', img: 'https://i.postimg.cc/KzQcWd1h/造型舞台.jpg', specs: '依活動主題客製化設計，含舞台背板與地毯' }
-
-        ]},
-
-        'others': { title: '活動周邊配件', tab: 'tab-5', items: [
-
-            { name: '紅龍柱/伸縮圍欄', img: 'https://i.postimg.cc/7PGvv4fG/S-18309127.jpg', specs: '用途：動線引導、區域管制，質感不鏽鋼材質' },
-
-            { name: '活動地毯', img: 'https://i.postimg.cc/R0wS5dKp/地毯.jpg', specs: '各色展覽級地毯鋪設，提升會場質感' }
-
-        ]}
-
-    };
-
-
-
-    // 目前選中的產品類別
-
-    let currentCategory = '';
-
-
-
-    // 2. 開啟產品彈窗
-
-    function openProductModal(category) {
-
-        currentCategory = category;
-
-        const data = productLibrary[category];
-
+// 2. 開啟彈窗的函式
+    let currentTabId = '';
+    let currentProject = null;
+    let currentImgIdx = 0;
+// 確保 HTML 呼叫時是用這個函數
+function openProductModal(catKey) {
+        const data = productLibrary[catKey];
         if (!data) return;
 
+        const modalTitle = document.getElementById('prod-modal-title');
+        const listEl = document.getElementById('prod-list');
+        const prodImg = document.getElementById('prod-img');
+        const prodName = document.getElementById('prod-name');
+        const prodSpecs = document.getElementById('prod-specs');
 
-
-        document.getElementById('prod-modal-title').innerText = data.title;
-
-        const listDiv = document.getElementById('prod-list');
-
-        listDiv.innerHTML = '';
-
-
+        modalTitle.innerText = data.title;
+        currentTabId = data.tab;
+        listEl.innerHTML = '';
 
         data.items.forEach((item, index) => {
-
             const btn = document.createElement('button');
-
-            btn.className = `list-group-item list-group-item-action border-0 mb-1 rounded ${index === 0 ? 'active text-white' : ''}`;
-
-            if(index === 0) btn.style.backgroundColor = 'var(--brand-red)';
-
+            btn.className = 'list-group-item list-group-item-action';
             btn.innerText = item.name;
-
-            
-
-            btn.onclick = (e) => {
-
-                // 更新按鈕樣式
-
-                Array.from(listDiv.children).forEach(child => {
-
-                    child.classList.remove('active', 'text-white');
-
-                    child.style.backgroundColor = '';
-
-                });
-
-                btn.classList.add('active', 'text-white');
-
-                btn.style.backgroundColor = 'var(--brand-red)';
-
-                
-
-                // 更新右側內容
-
-                document.getElementById('prod-img').src = item.img;
-
-                document.getElementById('prod-name').innerText = item.name;
-
-                document.getElementById('prod-specs').innerHTML = item.specs;
-
+            btn.onclick = () => {
+                prodImg.src = item.img;
+                prodName.innerText = item.name;
+                prodSpecs.innerHTML = item.specs;
+                document.querySelectorAll('#prod-list .list-group-item').forEach(el => el.classList.remove('active'));
+                btn.classList.add('active');
             };
-
-            listDiv.appendChild(btn);
-
+            listEl.appendChild(btn);
+            if(index === 0) btn.click();
         });
 
-
-
-        // 預設載入第一個項目的資訊
-
-        if (data.items.length > 0) {
-
-            document.getElementById('prod-img').src = data.items[0].img;
-
-            document.getElementById('prod-name').innerText = data.items[0].name;
-
-            document.getElementById('prod-specs').innerHTML = data.items[0].specs;
-
-        }
-
-
-
-        const modal = new bootstrap.Modal(document.getElementById('productModal'));
-
-        modal.show();
-
+        new bootstrap.Modal(document.getElementById('productModal')).show();
     }
-
-
-
-    // 3. 關閉產品視窗並開啟相簿 Tab
 
     function closeProductAndOpenAlbum() {
-
-        const prodModalElement = document.getElementById('productModal');
-
-        const prodModal = bootstrap.Modal.getInstance(prodModalElement);
-
-        if (prodModal) prodModal.hide();
-
-        
-
+        const modal = bootstrap.Modal.getInstance(document.getElementById('productModal'));
+        if (modal) modal.hide();
         setTimeout(() => {
-
-            const albumModal = new bootstrap.Modal(document.getElementById('albumModal'));
-
+            const albumModalEl = document.getElementById('albumModal');
+            const albumModal = new bootstrap.Modal(albumModalEl);
             albumModal.show();
-
-            // 自動切換到對應的 Tab
-
-            if(currentCategory && productLibrary[currentCategory]) {
-
-                const tabId = productLibrary[currentCategory].tab;
-
-                const tabTrigger = new bootstrap.Tab(document.getElementById(tabId));
-
-                tabTrigger.show();
-
+            const tabTrigger = document.getElementById(currentTabId);
+            if (tabTrigger) {
+                new bootstrap.Tab(tabTrigger).show();
             }
-
-        }, 400); // 稍微延遲等待前一個 Modal 關閉動畫結束
-
+        }, 400);
     }
 
+let photos_Tables = [
+    "mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "153w1x21", "GhJmRp8C", 
+    "853xj94F", "fLFnWQCg",
+    "bvt1VQM6", // 水樣啵啵
+    "SN18yTbL", // 中和國小
+    "8ctvfwJ8",  // 成功對調：大都會公園 (原在 Tent，移入 Tables)
+    "KzhB61hF"
+];
 
+let photos_Truss = [
+    "3rs5P7dS", "XYgRGCxL", "x1jsZFy6", "5yMgSP24", "fTgGBXgN", "JzdQ27hr", "Nfs7G29h", 
+    "fLZJ1qm9", "c1XrZPWm", "VLh6QsvP", "76dvwX0p", "XvBct8NW", "yN9zD1bQ", "GmGmNT0x",
+    "9XsmprmS"  // 新增：內壢高中 Truss
+    // 已從此處移出：0jyxYx50 (育達高中)
+];
 
-    // 4. 監控面版權限驗證邏輯
+let photos_Tent = [
+    "P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "MKpVJkNW", "qM1cNBy1", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "NMmRQjGX", "0jJD2GYQ", "dtjpqG5F", "3J58dMms", 
+    "nr6Shx0S", "fbfb7Td9", "g0f2PShz", "kgXrChnT", "SRbz8vfm", "9QhQWz1L", "NM1sXcNv",
+    "0jyxYx50", // 成功移入：育達高中 (原在 Truss)
+    "Y23YP2XZ", // 成功對調：大都會公園 (原在 Tables，移入 Tent)
+    "TYHPBCJp", // 新增：關西東風會館 圓拱帳
+    "YqjXpCQS",  // 新增：龍潭新建場域 帝王帳
+    "VNw9PWZH", "hPxFC32W", "nc4xVc6t", "qRynD3Zy" ,"KYv3rWnZ" ,"yx7MkFq1" , "5ytshpdf" ,"xdhHfRzD" ,"XqxpC7t5" ,"N069tcQh" ,"prJmg9n5" ,"brVhD870"
+];
 
-    const authOverlay = document.getElementById('auth-overlay');
+let photos_Stage = [ 
+    "fLvbNBgy",
+    "Jhf6FcS6", // 新增：中壢運動中心 舞台
+    "fLFnWQ5b", // 新增：桃園成功路 聖誕設備/舞台
+    "ZR37z7Np", // 新增：桃園機場 舞台/帝王帳
+    "NGC9wsgK",  // 新增：龍潭永福宮 舞台
+    "KYjXfmG1",
+    "vB2rVskQ",
+    "KjwYXZpQ"
+];
 
-    function checkAccess() {
+let photos_Decor = [
+    "vBx2zgLF", 
+];
+    
+// --- 資料庫內容保持不變 (photoLibrary) ---
+const photoLibrary = {
+    "3rs5P7dS": {
+        tag: "永和國中",
+        title: "57週年校慶 Truss結構",
+        loc: "新北市永和區",
+        images: ["https://i.postimg.cc/3rs5P7dS/image.jpg"],
+        desc: ""
+    },
+    "P5dcjqhX": {
+        tag: "新北投捷運站廣場",
+        title: "捷運站市集3米帳篷佈置",
+        loc: "台北市北投區",
+        images: ["https://i.postimg.cc/P5dcjqhX/image.jpg","https://i.postimg.cc/yYm5tRqx/image.jpg","https://i.postimg.cc/3x36Tw7r/image.jpg","https://i.postimg.cc/x1972dYT/image.jpg","https://i.postimg.cc/MpZsLrbm/image.jpg","https://i.postimg.cc/SxQZPt7d/image.jpg","https://i.postimg.cc/XYN2PDcH/image.jpg"],
+        desc: ""
+    },
+    "RhzdLPZN": {
+        tag: "新竹中油",
+        title: "中油場地規劃工程 (Truss、6米帳、3米帳)",
+        loc: "新竹市東區",
+        images: ["https://i.postimg.cc/RhzdLPZN/image.jpg","https://i.postimg.cc/XJ5xFM4r/image.jpg","https://i.postimg.cc/TwbQm8f5/image.jpg","https://i.postimg.cc/kGdsvjgg/image.jpg"],
+        desc: ""
+    },
+    "XYgRGCxL": {
+        tag: "晶華酒店",
+        title: "桃園機場論壇 Truss結構",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/XYgRGCxL/image.jpg","https://i.postimg.cc/MpYCMQtP/image.jpg"],
+        desc: ""
+    },
+    "vBx2zgLF": {
+        tag: "市府轉運站",
+        title: "Partition結構",
+        loc: "台北市信義區",
+        images: ["https://i.postimg.cc/vBx2zgLF/image.jpg","https://i.postimg.cc/XJB18GKH/image.jpg"],
+        desc: ""
+    },
+    "VL8ZqNSy": {
+        tag: "大直美堤",
+        title: "美堤花園圓拱帳工程",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/VL8ZqNSy/image.jpg"],
+        desc: ""
+    },
+    "Kv2pPY16": {
+        tag: "中壢銀河廣場",
+        title: "夜間圓拱帳工程",
+        loc: "桃園市中壢區",
+        images: ["https://i.postimg.cc/Kv2pPY16/image.jpg","https://i.postimg.cc/J4LYNhsT/image.jpg","https://i.postimg.cc/L6pQtsJr/image.jpg"],
+        desc: ""
+    },
+    "x1jsZFy6": {
+        tag: "台北光點",
+        title: "blooming cafe Truss結構",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/x1jsZFy6/image.jpg"],
+        desc: ""
+    },
+    "5yMgSP24": {
+        tag: "台北福華大飯店",
+        title: "AClub15學術研討會Truss結構",
+        loc: "台北市大安區",
+        images: ["https://i.postimg.cc/5yMgSP24/image.jpg"],
+        desc: ""
+    },
+    "mk9LxTzv": {
+        tag: "台北戲棚",
+        title: "桌椅租賃",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/mk9LxTzv/image.jpg"],
+        desc: ""
+    },
+    "kGFc1xVC": {
+        tag: "林口竹林寺",
+        title: "桌椅 & 舞台佈置 (Truss)",
+        loc: "新北市林口區",
+        images: ["https://i.postimg.cc/kGFc1xVC/image.jpg","https://i.postimg.cc/J0cq6byM/image.jpg"],
+        desc: ""
+    },
+    "L6WTrsVV": {
+        tag: "瑞芳地政事務所",
+        title: "圓拱帳工程",
+        loc: "新北市瑞芳區",
+        images: ["https://i.postimg.cc/L6WTrsVV/image.jpg","https://i.postimg.cc/ZK4j9DgC/image.jpg"],
+        desc: ""
+    },
+    "MK551m2x": {
+        tag: "土城新理想團隊",
+        title: "單人沙發租賃",
+        loc: "新北市土城區",
+        images: ["https://i.postimg.cc/MK551m2x/image.jpg"],
+        desc: ""
+    },
+    "bvt1VQM6": {
+        tag: "水樣啵啵廣場",
+        title: "3米帳佈置 & Truss & 牌樓工程 & 椅子租賃",
+        loc: "新北市新莊區",
+        images: ["https://i.postimg.cc/nzfByXft/image.jpg","https://i.postimg.cc/cHGwpvy2/image.jpg","https://i.postimg.cc/LXFLcJKW/image.jpg","https://i.postimg.cc/HLybvQKF/image.jpg","https://i.postimg.cc/mrH7pQq6/image.jpg","https://i.postimg.cc/bvt1VQM6/image.jpg"],
+        desc: ""
+    },
+    "fTgGBXgN": {
+        tag: "萬豪酒店",
+        title: "Truss結構搭建",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/fTgGBXgN/image.jpg","https://i.postimg.cc/L60cNf02/image.jpg"],
+        desc: ""
+    },
+    "MKpVJkNW": {
+        tag: "湖口市場",
+        title: "圓拱帳工程",
+        loc: "新竹縣湖口鄉",
+        images: ["https://i.postimg.cc/MKpVJkNW/image.jpg","https://i.postimg.cc/153w1x28/image.jpg","https://i.postimg.cc/BQnHfWkv/image.jpg","https://i.postimg.cc/VLknPyp8/image.jpg"],
+        desc: ""
+    },
+    "JzdQ27hr": {
+        tag: "礁溪高爾夫球場",
+        title: "Truss結構架設",
+        loc: "宜蘭縣礁溪鄉",
+        images: ["https://i.postimg.cc/JzdQ27hr/image.jpg"],
+        desc: ""
+    },
+    "T29PC76C": {
+        tag: "松菸",
+        title: "黑金剛摺疊椅租賃",
+        loc: "台北市信義區",
+        images: ["https://i.postimg.cc/T29PC76C/image.jpg","https://i.postimg.cc/GpWxbMGc/image.jpg"],
+        desc: ""
+    },
+    "VLh6QsvP": {
+        tag: "林口竹林寺",
+        title: "帝王帳、Truss 舞台與圓拱帳多功能硬體工程",
+        loc: "新北市林口區",
+        images: ["https://i.postimg.cc/y8SNVq3L/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang.jpg","https://i.postimg.cc/2SB5zpL9/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang2.jpg","https://i.postimg.cc/wjsB6KRn/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang3.jpg","https://i.postimg.cc/jSJjsVJ0/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang4.jpg","https://i.postimg.cc/Wbz3Hq2Y/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang5.jpg","https://i.postimg.cc/wTMvGR6Z/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang6.jpg","https://i.postimg.cc/ncrzP9Ff/ri-fang-zhu-lin-shan-guan-yin-si-3mi-hong-bai-jin-chang7.jpg","https://i.postimg.cc/tCJTMnqH/ri-fang-zhu-lin-shan-guan-yin-si-Truss-jin-chang.jpg","https://i.postimg.cc/VLh6QsvQ/ri-fang-zhu-lin-shan-guan-yin-si-Truss-jin-chang2.jpg","https://i.postimg.cc/VLh6QsvP/ri-fang-zhu-lin-shan-guan-yin-si-Truss-zhang-jin-chang.jpg","https://i.postimg.cc/YqP9K20v/ri-fang-zhu-lin-shan-guan-yin-si-Truss-zhang-jin-chang2.jpg","https://i.postimg.cc/NfnMqGFm/ri-fang-zhu-lin-shan-guan-yin-si-yuan-gong-zhang-jin-chang3.jpg","https://i.postimg.cc/HsNxDWnJ/ri-fang-zhu-lin-shan-guan-yin-si-di-wang-zhang-jin-chang.jpg","https://i.postimg.cc/Wby3LpzZ/ri-fang-zhu-lin-shan-guan-yin-si-di-wang-zhang-jin-chang2.jpg","https://i.postimg.cc/0yJN8gKw/ri-fang-zhu-lin-shan-guan-yin-si-hui-yi-zhuo-dian-xin-yi-jin-chang.jpg","https://i.postimg.cc/L8ZsHdgj/ri-fang-zhu-lin-shan-guan-yin-si-wu-tai-jin-chang.jpg","https://i.postimg.cc/CxfKFynN/ri-fang-zhu-lin-shan-guan-yin-si-wu-tai-jin-chang2.jpg"],
+        desc: ""
+    },
+    "Nfs7G29h": {
+        tag: "竹圍國小",
+        title: "Truss結構設計",
+        loc: "新北市淡水區",
+        images: ["https://i.postimg.cc/Nfs7G29h/image.jpg","https://i.postimg.cc/28kFjLbY/image.jpg"],
+        desc: ""
+    },
+    "qM1cNBy1": {
+        tag: "木柵動物園",
+        title: "3米帳篷 & 6米宮廷帳搭建",
+        loc: "台北市文山區",
+        images: ["https://i.postimg.cc/qM1cNBy1/image.jpg","https://i.postimg.cc/QxfgFN1b/image.jpg"],
+        desc: ""
+    },
+    "SN18yTbL": {
+        tag: "中和國小",
+        title: "圓拱帳工程 & 3米帳篷 & 6米帳篷 & 桌椅紅龍",
+        loc: "新北市中和區",
+        images: ["https://i.postimg.cc/kgVSDQ7f/image.jpg","https://i.postimg.cc/153w1x20/image.jpg","https://i.postimg.cc/SN18yTbL/image.jpg"],
+        desc: ""
+    },
+    "KzhB61hF": {
+        tag: "漢來飯店",
+        title: "造型高吧桌配桌巾",
+        loc: "台北市南港區",
+        images: ["https://i.postimg.cc/V6PnxJPm/image.jpg","https://i.postimg.cc/KzhB61hF/image.jpg"],
+        desc: ""
+    },
+    "NMvm3Kvg": {
+        tag: "水樣啵啵廣場",
+        title: "桌椅租賃服務",
+        loc: "新北市新莊區",
+        images: ["https://i.postimg.cc/NMvm3Kvg/image.jpg"],
+        desc: ""
+    },
+    "8ctvfwJ8": {
+        tag: "大都會公園",
+        title: "3米帳篷 & 圓拱帳 & 桌椅工程",
+        loc: "新北市新莊區",
+        images: ["https://i.postimg.cc/2jwhtjcj/image.jpg","https://i.postimg.cc/8ctvfwJ8/image.jpg"],
+        desc: ""
+    },
+    "76r0F5rH": {
+        tag: "萬華金義宮",
+        title: "屋型帳 & 點心椅租賃",
+        loc: "台北市萬華區",
+        images: ["https://i.postimg.cc/76r0F5rH/image.jpg","https://i.postimg.cc/C1pk3RpK/image.jpg"],
+        desc: ""
+    },
+    "PJtZq0qV": {
+        tag: "華山1914文創園區",
+        title: "圓拱帳工程",
+        loc: "台北市中正區",
+        images: ["https://i.postimg.cc/PJtZq0qV/image.jpg","https://i.postimg.cc/Wz2r4x49/image.jpg"],
+        desc: ""
+    },
+    "Y23YP2XZ": {
+        tag: "大都會公園",
+        title: "夜間圓拱帳工程",
+        loc: "新北市新莊區",
+        images: ["https://i.postimg.cc/h4rTY4yF/image.jpg","https://i.postimg.cc/Y23YP2XZ/image.jpg"],
+        desc: ""
+    },
+    "153w1x21": {
+        tag: "濟安宮",
+        title: "乾淨桌椅租賃",
+        loc: "新北市樹林區",
+        images: ["https://i.postimg.cc/153w1x21/image.jpg"],
+        desc: ""
+    },
+    "YqCYBcZG": {
+        tag: "湖口市場",
+        title: "精選尺寸圓拱帳工程",
+        loc: "新竹縣湖口鄉",
+        images: ["https://i.postimg.cc/YqCYBcZG/image.jpg","https://i.postimg.cc/HskX1GRb/image.jpg"],
+        desc: ""
+    },
+    "GhJmRp8C": {
+        tag: "永慶房屋南港店",
+        title: "活動桌椅租賃",
+        loc: "台北市南港區",
+        images: ["https://i.postimg.cc/GhJmRp8C/image.jpg"],
+        desc: ""
+    },
+    "NMmRQjGX": {
+        tag: "中和國小",
+        title: "3米帳篷搭設",
+        loc: "新北市中和區",
+        images: ["https://i.postimg.cc/NMmRQjGX/image.jpg","https://i.postimg.cc/RhmKhxqn/image.jpg","https://i.postimg.cc/3NhmNQWv/image.jpg","https://i.postimg.cc/GtRGtn9k/image.jpg","https://i.postimg.cc/Y07Y0BjQ/image.jpg","https://i.postimg.cc/6QDdsvKB/image.jpg","https://i.postimg.cc/nL6v8DxV/image.jpg","https://i.postimg.cc/760SqZP5/image.jpg","https://i.postimg.cc/G2Gvbm3t/image.jpg","https://i.postimg.cc/FK2jtLvr/image.jpg"],
+        desc: ""
+    },
+    "0jJD2GYQ": {
+        tag: "湖口市場",
+        title: "專屬尺寸避開路燈圓拱帳工程",
+        loc: "新竹縣湖口鄉",
+        images: ["https://i.postimg.cc/0jJD2GYQ/image.jpg","https://i.postimg.cc/kGtKXNQD/image.jpg","https://i.postimg.cc/qRF2TD3h/image.jpg","https://i.postimg.cc/FR604CLY/image.jpg","https://i.postimg.cc/26tnD9Z3/image.jpg","https://i.postimg.cc/G2fvCgyB/image.jpg"],
+        desc: ""
+    },
+    "dtjpqG5F": {
+        tag: "湖口張公廳",
+        title: "張公廳圓拱帳工程",
+        loc: "新竹縣湖口鄉",
+        images: ["https://i.postimg.cc/dtjpqG5F/image.jpg","https://i.postimg.cc/GhxVcvXr/image.jpg","https://i.postimg.cc/7YndxSKq/image.jpg","https://i.postimg.cc/020F87VP/image.jpg"],
+        desc: ""
+    },
+    "0jyxYx50": {
+        tag: "育達高中",
+        title: "運動會 Truss 結構 & 3米紅白帳",
+        loc: "台北市松山區",
+        images: ["https://i.postimg.cc/0jyxYx50/image.jpg","https://i.postimg.cc/C5xYGYMN/image.jpg","https://i.postimg.cc/XqY3f3Nc/image.jpg","https://i.postimg.cc/0jyxYx5C/image.jpg"],
+        desc: ""
+    },
+    "3J58dMms": {
+        tag: "橫山大山背",
+        title: "防風型圓拱帳 & 舞台工程",
+        loc: "新竹縣橫山鄉",
+        images: ["https://i.postimg.cc/3J58dMms/image.jpg","https://i.postimg.cc/mZFZLZz6/image.jpg","https://i.postimg.cc/tCQqY0FQ/image.jpg","https://i.postimg.cc/9F5mr3yH/image.jpg"],
+        desc: ""
+    },
+    "fLvbNBgy": {
+        tag: "考試院",
+        title: "穩固舞台工程",
+        loc: "台北市文山區 (新店交界)",
+        images: ["https://i.postimg.cc/fLvbNBgy/image.jpg","https://i.postimg.cc/XJgvbQDp/image.jpg"],
+        desc: ""
+    },
+    "nr6Shx0S": {
+        tag: "湖口張公廳",
+        title: "歷史宗祠美觀圓拱帳搭建",
+        loc: "新竹縣湖口鄉 (張公廳)",
+        images: ["https://i.postimg.cc/nr6Shx0S/yong-chang-zhang-gong-ting-yuan-gong-zhang-jin-chang.jpg","https://i.postimg.cc/dtjpqG5F/永昌_湖口_張公廳_圓拱帳_進場.jpg","https://i.postimg.cc/020F87VP/永昌_湖口_張公廳_圓拱帳_進場4.jpg","https://i.postimg.cc/Vk4TXx69/yong-chang-zhang-gong-ting-yuan-gong-zhang-jin-chang2.jpg","https://i.postimg.cc/9Q1Sy6Md/yong-chang-zhang-gong-ting-yuan-gong-zhang-jin-chang3.jpg","https://i.postimg.cc/0yZ37TQd/yong-chang-zhang-gong-ting-yuan-gong-zhang-jin-chang4.jpg"],
+        desc: ""
+    },
+    "fbfb7Td9": {
+        tag: "新屋九斗",
+        title: "豫章堂百年宗祠圓拱帳搭建",
+        loc: "桃園市新屋區 (九斗豫章堂)",
+        images: ["https://i.postimg.cc/fbfb7Td9/yong-chang-jiu-dou-yu-zhang-tang-yuan-gong-zhang-jin-chang.jpg","https://i.postimg.cc/TPJPjYbn/yong-chang-jiu-dou-yu-zhang-tang-yuan-gong-zhang-jin-chang2.jpg"],
+        desc: ""
+    },
+    "853xj94F": {
+        tag: "內湖玉東",
+        title: "永慶房屋活動桌椅配送租賃",
+        loc: "台北市內湖區 (玉東公園)",
+        images: ["https://i.postimg.cc/853xj94F/yong-qing-fang-wu-yu-dong-gong-yuan-zhuo-yi-jin-chang.jpg"],
+        desc: ""
+    },
+    "fLZJ1qm9": {
+        tag: "黎明科大",
+        title: "校園活動 Truss 結構 & 舞台搭建",
+        loc: "新北市泰山區 (黎明技術學院)",
+        images: ["https://i.postimg.cc/fLZJ1qm9/xiao-ge-li-ming-ke-da-wu-tai-Truss-jin-chang.jpg"],
+        desc: ""
+    },
+    "fLFnWQCg": {
+        tag: "松山華固",
+        title: "永慶房屋活動桌椅 & 精緻桌巾",
+        loc: "台北市松山區 (華固名鑄)",
+        images: ["https://i.postimg.cc/fLFnWQCg/109909_0.jpg","https://i.postimg.cc/263NfSQt/109908_0.jpg","https://i.postimg.cc/263NfSQX/109907_0.jpg"],
+        desc: ""
+    },
+    "g0f2PShz": {
+        tag: "中壢青埔",
+        title: "預售屋案場 3米白色快速帳篷搭設",
+        loc: "桃園市中壢區 (國王大道接待中心)",
+        images: ["https://i.postimg.cc/g0f2PShz/xin-chuang-guo-wang-da-dao-3mi-bai-jin-chang.jpg","https://i.postimg.cc/MGhp8PBz/xin-chuang-guo-wang-da-dao-3mi-bai-jin-chang2.jpg","https://i.postimg.cc/cJVLN93H/xin-chuang-guo-wang-da-dao-3mi-bai-jin-chang3.jpg","https://i.postimg.cc/hGHtqymz/xin-chuang-guo-wang-da-dao-3mi-bai-jin-chang4.jpg","https://i.postimg.cc/zf9G1thG/xin-chuang-guo-wang-da-dao-3mi-bai-jin-chang6.jpg"],
+        desc: ""
+    },
+    "Jhf6FcS6": {
+        tag: "中壢國民運動中心",
+        title: "球場木地板室內舞台 & 紅地毯佈置",
+        loc: "桃園市中壢區",
+        images: ["https://i.postimg.cc/Jhf6FcS6/shi-chang-zhong-li-guo-min-yun-dong-zhong-xin-wu-tai-jin-chang.jpg"],
+        desc: ""
+    },
+    "fLFnWQ5b": {
+        tag: "桃園成功路三段",
+        title: "聖誕大秀舞台、Truss結構、3米帳、水冷扇、紅龍與安全硬體設備配送",
+        loc: "桃園市桃園區",
+        images: ["https://i.postimg.cc/fLFnWQ5b/109915.jpg","https://i.postimg.cc/d1XPQcnq/109914_0.jpg","https://i.postimg.cc/9FsL0BFk/xin-chuang-cheng-gong-lu-san-duan-231hao-3mi-bai-jin-chang.jpg","https://i.postimg.cc/FswTzxHF/xin-chuang-cheng-gong-lu-san-duan-231hao-san-jiao-zhui-lian-gan-jin-chang.jpg","https://i.postimg.cc/YqvXtPky/xin-chuang-cheng-gong-lu-san-duan-231hao-la-ji-jia-jin-chang.jpg","https://i.postimg.cc/m2PdTnRp/xin-chuang-cheng-gong-lu-san-duan-231hao-shui-leng-shan-jin-chang.jpg","https://i.postimg.cc/zXydqQ5x/xin-chuang-cheng-gong-lu-san-duan-231hao-shui-leng-shan-jin-chang2.jpg","https://i.postimg.cc/VLJ7zh1h/xin-chuang-cheng-gong-lu-san-duan-231hao-shui-leng-shan-jin-chang3.jpg","https://i.postimg.cc/RV2ghTVb/xin-chuang-cheng-gong-lu-san-duan-231hao-hong-long-jin-chang.jpg"],
+        desc: ""
+    },
+    "TYHPBCJp": {
+        tag: "關西東風會館",
+        title: "戶外會場連排紅白色圓拱帳進場",
+        loc: "新竹縣關西鎮",
+        images: ["https://i.postimg.cc/TYHPBCJp/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang.jpg","https://i.postimg.cc/28X5g27q/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang2.jpg","https://i.postimg.cc/MKrGgdmM/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang3.jpg","https://i.postimg.cc/NfP0Zpkr/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang4.jpg","https://i.postimg.cc/zXPf40FT/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang5.jpg","https://i.postimg.cc/qMZ7Wjx8/yong-chang-guan-xi-dong-feng-hui-guan-yuan-gong-zhang-jin-chang6.jpg"],
+        desc: ""
+    },
+    "9XsmprmS": {
+        tag: "內壢高中",
+        title: "校園場館 Truss 結構架設",
+        loc: "桃園市中壢區",
+        images: ["https://i.postimg.cc/9XsmprmS/nei-li-gao-zhong-Truss-jin-chang.jpg"],
+        desc: ""
+    },
+    "ZR37z7Np": {
+        tag: "桃園機場",
+        title: "國門戶外場地 Truss 結構舞台 & 氣勢帝王帳",
+        loc: "桃園市大園區",
+        images: ["https://i.postimg.cc/ZR37z7Np/yong-chang-tao-yuan-ji-chang-Truss-wu-tai-jin-chang-2.jpg","https://i.postimg.cc/wvJfYfNJ/yong-chang-tao-yuan-ji-chang-Truss-wu-tai-jin-chang.jpg","https://i.postimg.cc/KzLqhqTr/yong-chang-tao-yuan-ji-chang-di-wang-zhang-jin-chang.jpg","https://i.postimg.cc/63RjxjZd/yong-chang-tao-yuan-ji-chang-di-wang-zhang-jin-chang2.jpg","https://i.postimg.cc/1XQWmG0V/yong-chang-tao-yuan-ji-chang-wu-tai-jin-chang.jpg"],
+        desc: ""
+    },
+    "NGC9wsgK": {
+        tag: "龍潭永福宮",
+        title: "廟埕舞台架設 & 平整紅地毯工程",
+        loc: "桃園市龍潭區",
+        images: ["https://i.postimg.cc/NGC9wsgK/yong-chang-long-tan-yong-fu-gong-wu-tai-jin-chang.jpg","https://i.postimg.cc/L4QYM9Hn/yong-chang-long-tan-yong-fu-gong-wu-tai-jin-chang2.jpg","https://i.postimg.cc/XN1G0jVZ/yong-chang-long-tan-yong-fu-gong-wu-tai-jin-chang3.jpg","https://i.postimg.cc/KcpkyGZr/yong-chang-long-tan-yong-fu-gong-wu-tai-jin-chang4.jpg"],
+        desc: ""
+    },
+    "YqjXpCQS": {
+        tag: "龍潭新建場域",
+        title: "連排帝王帳 & 3米與6米阿里山帳結構工程",
+        loc: "桃園市龍潭區",
+        images: ["https://i.postimg.cc/YqjXpCQS/long-tan-di-wang-zhang.jpg"],
+        desc: ""
+    },
+    "c1XrZPWm": {
+        tag: "桃園皇家薇庭",
+        title: "婚宴會館室內 Truss 結構與場景佈置",
+        loc: "桃園市桃園區",
+        images: ["https://i.postimg.cc/c1XrZPWm/cj0yc-Wgzb2dta3Vv-Y2Rv-Jn-M9an-A3Jn-Q9ZCZ1PTFqb2Rx-OTM2Yz-Rk-Zz-Ama-T0w.jpg"],
+        desc: ""
+    },
+    "kgXrChnT": {
+        tag: "台北科教館",
+        title: "科教館周邊連排 3米與 6米紅白帳工程",
+        loc: "台北市士林區",
+        images: ["https://i.postimg.cc/kgXrChnT/hui-feng-he-chang-tai-bei-ke-jiao-guan-3mi-bai-jin-chang.jpg"],
+        desc: ""
+    },
+    "SRbz8vfm": {
+        tag: "北投福星公園",
+        title: "公園綠地 3米白頂快速帳篷與桌椅排列工程",
+        loc: "台北市北投區",
+        images: ["https://i.postimg.cc/SRbz8vfm/san-ming-zhi-bei-tou-fu-xing-gong-yuan-3mi-bai-jin-chang.jpg"],
+        desc: ""
+    },
+    "NM1sXcNv": {
+        tag: "北市府跨年",
+        title: "台北市政府前廣場 3米快速帳篷與維安導引紅絨柱工程",
+        loc: "台北市信義區",
+        images: ["https://i.postimg.cc/NM1sXcNv/bei-shi-fu-qian-guang-chang-3mi-bai-jin-chang.jpg","https://i.postimg.cc/PxmXDjSg/bei-shi-fu-qian-guang-chang-3mi-bai-jin-chang2.jpg","https://i.postimg.cc/pTDWjH0v/bei-shi-fu-qian-guang-chang-3mi-bai-jin-chang3.jpg","https://i.postimg.cc/MTy6BSsz/bei-shi-fu-qian-guang-chang-3mi-bai-jin-chang4.jpg","https://i.postimg.cc/Zn4TFMgJ/bei-shi-fu-qian-guang-chang-hong-long-jin-chang.jpg"],
+        desc: ""
+    },
+    "9QhQWz1L": {
+        tag: "新竹羅公廳",
+        title: "私人宗祠連排圓拱帳與配重活動硬體工程",
+        loc: "新竹縣",
+        images: ["https://i.postimg.cc/9QhQWz1L/yong-chang-luo-gong-ting-yuan-gong-zhang-jin-chang2.jpg"],
+        desc: ""
+    },
+    "KYjXfmG1": {
+        tag: "舞台結構",
+        title: "北投市場集福宮尾牙大跨距 Truss 舞台與圓拱帳工程",
+        loc: "台北市北投區",
+        images: ["https://i.postimg.cc/KYjXfmG1/xian-ge-bei-tou-shi-chang-Truss-wu-tai-de-tan-jin-chang.jpg"],
+        desc: ""
+    },
+    "VNw9PWZH": {
+        tag: "永康公園",
+        title: "大安區永康公園新春市集純白圓拱帳工程",
+        loc: "台北市大安區",
+        images: ["https://i.postimg.cc/VNw9PWZH/yong-kang-gong-yuan-yuan-gong-zhang.jpg","https://i.postimg.cc/hGn8R1Zy/yong-kang-gong-yuan-yuan-gong-zhang2.jpg"],
+        desc: ""
+    },
+    "hPxFC32W": {
+        tag: "淡水漁人碼頭路跑工程",
+        title: "路跑盛事專業 Truss 牌樓、背架舞台與全方位帳篷 (快速帳/紅白帳) 工程",
+        loc: "新北市淡水區",
+        images: ["https://i.postimg.cc/Njw3Z7ns/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-3mi-bai-jin-chang.jpg","https://i.postimg.cc/156xWYvg/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-3mi-bai-jin-chang2.jpg","https://i.postimg.cc/FHQMwg6s/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-3mi-bai-jin-chang3.jpg","https://i.postimg.cc/4xTDjb09/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-3mi-bai-jin-chang8.jpg","https://i.postimg.cc/hPxFC32W/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-Truss-pai-lou-jin-chang.jpg","https://i.postimg.cc/qMnfmZ1r/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-Truss-pai-lou-jin-chang2.jpg","https://i.postimg.cc/pX8N01st/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-Truss-bei-jia-wu-tai-jin-chang.jpg","https://i.postimg.cc/kX8rjhTD/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-Truss-lu-xian-bei-jia-jin-chang.jpg","https://i.postimg.cc/sfbd4R9b/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-yu-ren-ma-tou-3mi-bai-jiu-hu-zhan-jin-chang4.jpg","https://i.postimg.cc/FsctPnDC/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-yu-ren-ma-tou-3mi-bai-jiu-hu-zhan-jin-chang5.jpg","https://i.postimg.cc/T2BMJXqZ/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-yu-ren-ma-tou-3mi-bai-jin-chang6.jpg","https://i.postimg.cc/KcCSDyrw/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-yu-ren-ma-tou-3mi-bai-jin-chang7.jpg","https://i.postimg.cc/P5kg0z78/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-hong-bai-jin-chang.jpg","https://i.postimg.cc/3rz5FHCq/zhong-dian-ji-mi-xiao-hu-die-xiao-pi-feng-meng-jing-tan-xian-dui-lu-pao-hong-bai-jin-chang2.jpg"],
+        desc: ""
+    },
+    "XqxpC7t5": {
+        tag: "北投亞太飯店",
+        title: "飯店規格 3米白頂快速帳 & 6米帳篷組合、紅絨柱與砂袋配重工程",
+        loc: "台北市北投區",
+        images: ["https://i.postimg.cc/XqxpC7t5/xin-chuang-ya-tai-fan-dian-3mi-bai-jin-chang.jpg","https://i.postimg.cc/KjQRMvCM/xin-chuang-ya-tai-fan-dian-6mi-bai-jin-chang.jpg","https://i.postimg.cc/gj4nZk1L/xin-chuang-ya-tai-fan-dian-sha-bao-jin-chang.jpg","https://i.postimg.cc/x8gczTBb/xin-chuang-ya-tai-fan-dian-hong-rong-jin-chang.jpg"],
+        desc: ""
+    },
+    "nc4xVc6t": {
+        tag: "林口體大操場",
+        title: "操場跑道長距離圓拱帳工程",
+        loc: "桃園市龜山區",
+        images: ["https://i.postimg.cc/nc4xVc6t/hong-yi-lin-kou-ti-da-yuan-gong-zhang-jin-chang.jpg"],
+        desc: ""
+    },
+    "qRynD3Zy": {
+        tag: "永昌企業台南尾牙",
+        title: "企業尾牙大器帝王帳、3米紅白帳與用餐桌椅佈置工程",
+        loc: "台南市",
+        images: ["https://i.postimg.cc/qRynD3Zy/yong-chang-tai-nan-wei-ya-di-wang-zhang-jin-chang.jpg","https://i.postimg.cc/mDCMpH6j/yong-chang-tai-nan-wei-ya-3mi-hong-bai-jin-chang.jpg","https://i.postimg.cc/MTVR3QrF/yong-chang-tai-nan-wei-ya-3mi-hong-bai-jin-chang2.jpg","https://i.postimg.cc/G2GYgySv/yong-chang-tai-nan-wei-ya-zhuo-yi-jin-chang.jpg","https://i.postimg.cc/FR3cCLnZ/yong-chang-tai-nan-wei-ya-dian-xin-yi-jin-chang.jpg"],
+        desc: ""
+    },
+    "KYv3rWnZ": {
+        tag: "天河希望廣場圓拱帳",
+        title: "廣場中央流線型大型圓拱帳搭建工程",
+        loc: "全台服務",
+        images: ["https://i.postimg.cc/KYv3rWnZ/tian-he-xi-wang-guang-chang-yuan-gong-zhang-jin-chang-2.jpg","https://i.postimg.cc/jjdnQ1zb/tian-he-xi-wang-guang-chang-yuan-gong-zhang-jin-chang.jpg"],
+        desc: ""
+    },
+    "yx7MkFq1": {
+        tag: "基隆復興微風",
+        title: "雨港廣場多頂 3米白頂帳篷搭建與防風配重空間規劃",
+        loc: "基隆市",
+        images: ["https://i.postimg.cc/yx7MkFq1/kang-ying-ji-long-fu-xing-wei-feng.jpg","https://i.postimg.cc/MHthRvxk/kang-ying-ji-long-fu-xing-wei-feng2.jpg","https://i.postimg.cc/3N9Ppd7H/kang-ying-ji-long-fu-xing-wei-feng3.jpg","https://i.postimg.cc/sxKtSvyz/kang-ying-ji-long-fu-xing-wei-feng4.jpg","https://i.postimg.cc/D05ts8Fv/kang-ying-ji-long-fu-xing-wei-feng5.jpg"],
+        desc: ""
+    },
+    "5ytshpdf": {
+        tag: "遠雄國際金融廣場",
+        title: "指標性商辦廣場大氣圓拱帳搭建工程",
+        loc: "全台服務",
+        images: ["https://i.postimg.cc/5ytshpdf/yong-qing-yuan-xiong-guo-ji-jin-rong-guang-chang-jin-chang.jpg","https://i.postimg.cc/wMBwCF8g/yong-qing-yuan-xiong-guo-ji-jin-rong-guang-chang-jin-chang2.jpg","https://i.postimg.cc/FzKTMG5r/yong-qing-yuan-xiong-guo-ji-jin-rong-guang-chang-jin-chang3.jpg"],
+        desc: ""
+    },
+    "vB2rVskQ": {
+        tag: "北投市場舞台",
+        title: "熱鬧市場周邊專業活動舞台搭建工程",
+        loc: "台北市北投區",
+        images: ["https://i.postimg.cc/vB2rVskQ/xian-ge-bei-tou-jin-chang.jpg","https://i.postimg.cc/wv4XmpZq/xian-ge-bei-tou-jin-chang2.jpg"],
+        desc: ""
+    },
+    "xdhHfRzD": {
+        tag: "中壢仁海宮圓拱帳",
+        title: "百年宮廟前大氣圓拱帳搭建與空間規劃工程",
+        loc: "桃園市中壢區",
+        images: ["https://i.postimg.cc/xdhHfRzD/chao-yang-zhong-li-ren-hai-gong-jin-chang.jpg","https://i.postimg.cc/VNpMfRCy/chao-yang-zhong-li-ren-hai-gong-jin-chang2.jpg","https://i.postimg.cc/BvkDSgKG/chao-yang-zhong-li-ren-hai-gong-jin-chang3.jpg"],
+        desc: ""
+    },
+    "N069tcQh": {
+        tag: "板橋建築案場宮廷帳",
+        title: "工地案場大器穩固 6米宮廷帳搭建工程",
+        loc: "新北市板橋區",
+        images: ["https://i.postimg.cc/N069tcQh/xian-ge-ban-qiao-jin-chang.jpg","https://i.postimg.cc/vBG1HNmm/xian-ge-ban-qiao-jin-chang2.jpg"],
+        desc: ""
+    },
+    "KjwYXZpQ": {
+        tag: "聯邦快遞桃園航站",
+        title: "快遞航站慶典高規格活動舞台搭建與典禮紅地毯工程",
+        loc: "桃園市大園區",
+        images: ["https://i.postimg.cc/KjwYXZpQ/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang.jpg","https://i.postimg.cc/MHvGrc57/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang2.jpg","https://i.postimg.cc/brsvFGgb/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang3.jpg","https://i.postimg.cc/L5ns0qDj/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang4.jpg","https://i.postimg.cc/90rfN4bP/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang5.jpg","https://i.postimg.cc/zv6fmJ2K/xing-guang-lian-bang-kuai-di-tao-yuan-hang-zhan-jin-chang6.jpg","https://i.postimg.cc/L5wsdHQj/xin-chuang-tao-yuan-jing-guo-lu-jin-chang.jpg","https://i.postimg.cc/mkJrxbp9/xin-chuang-tao-yuan-jing-guo-lu-jin-chang2.jpg","https://i.postimg.cc/D0HzV2ps/xin-chuang-tao-yuan-jing-guo-lu-jin-chang3.jpg"],
+        desc: ""
+    },
+    "prJmg9n5": {
+        tag: "淡水濟世堂圓拱帳",
+        title: "傳統宮廟盛事外觀大器圓拱帳搭建工程",
+        loc: "新北市淡水區",
+        images: ["https://i.postimg.cc/prJmg9n5/chao-ge-dan-shui-ji-shi-tang-jin-chang.jpg","https://i.postimg.cc/C5sRWZfR/chao-ge-dan-shui-ji-shi-tang-jin-chang2.jpg","https://i.postimg.cc/Y0zvJ4mC/chao-ge-dan-shui-ji-shi-tang-jin-chang3.jpg","https://i.postimg.cc/zvFy9LRV/chao-ge-dan-shui-ji-shi-tang-jin-chang4.jpg"],
+        desc: ""
+    },
+    "brVhD870": {
+        tag: "228和平公園",
+        title: "歷史公園步道 3米白頂快速帳篷搭建與砂袋配重工程",
+        loc: "台北市中正區",
+        images: ["https://i.postimg.cc/brVhD870/shi-lang-228gong-yuan-jin-chang.jpg","https://i.postimg.cc/44WZFbYg/shi-lang-228gong-yuan-jin-chang13.jpg","https://i.postimg.cc/Xq1bG3Rk/shi-lang-228gong-yuan-jin-chang2.jpg","https://i.postimg.cc/4y2g7ZD5/shi-lang-228gong-yuan-jin-chang3.jpg","https://i.postimg.cc/4y2g7Z1/shi-lang-228gong-yuan-jin-chang7.jpg","https://i.postimg.cc/cCkSgZpX/shi-lang-228gong-yuan-jin-chang8.jpg","https://i.postimg.cc/4y2g7ZDS/shi-lang-228gong-yuan-jin-chang9.jpg"],
+        desc: ""
+    },
+    "76dvwX0p": {
+        tag: "金融中心Truss工程",
+        title: "高強度大跨距 Truss 桁架結構搭建工程",
+        loc: "全台服務",
+        images: ["https://i.postimg.cc/76dvwX0p/yin-lang-jin-rong-zhong-xin-jin-chang.jpg","https://i.postimg.cc/HxRGd3XP/yin-lang-jin-rong-zhong-xin-jin-chang2.jpg","https://i.postimg.cc/QtwLhS12/yin-lang-jin-rong-zhong-xin-jin-chang3.jpg"],
+        desc: ""
+    },
+    "XvBct8NW": {
+        tag: "花博花海廣場",
+        title: "開闊步道連排經典 3米白頂快速帳篷搭建工程",
+        loc: "台北市中山區",
+        images: ["https://i.postimg.cc/XvBct8NW/xing-ma-hua-bo-jin-chang.jpg","https://i.postimg.cc/3w0CzBr8/xing-ma-hua-bo-jin-chang2.jpg","https://i.postimg.cc/bvSH4TYq/xing-ma-hua-bo-jin-chang3.jpg","https://i.postimg.cc/TP5qB92G/xing-ma-hua-bo-jin-chang4.jpg","https://i.postimg.cc/VN0B2Rs5/xing-ma-hua-bo-jin-chang5.jpg","https://i.postimg.cc/g0Lq1Dcn/xing-ma-hua-bo-jin-chang6.jpg","https://i.postimg.cc/MGfbgDZn/xing-ma-hua-bo-jin-chang7.jpg","https://i.postimg.cc/s2G9bcfB/xing-ma-hua-bo-jin-chang8.jpg"],
+        desc: ""
+    },
+    "yN9zD1bQ": {
+        tag: "張榮發基金會造型Truss工程",
+        title: "藝文指標場館流暢視覺感造型 Truss 結構搭建工程",
+        loc: "全台服務",
+        images: ["https://i.postimg.cc/yN9zD1bQ/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang2.jpg","https://i.postimg.cc/cCLKGx7L/ao-rui-zhang-rong-fa-ji-jin-hui-jin-chang.jpg"],
+        desc: ""
+    },
+    "GmGmNT0x": {
+        tag: "長榮桂冠酒店Truss工程",
+        title: "星級酒店星級規格 Truss 桁架結構搭建工程",
+        loc: "全台服務",
+        images: ["https://i.postimg.cc/GmGmNT0x/xin-chuang-zhang-rong-gui-guan.jpg","https://i.postimg.cc/JzZzgHwq/xin-chuang-zhang-rong-gui-guan-2.jpg","https://i.postimg.cc/jSPS9nVv/xin-chuang-zhang-rong-gui-guan-3.jpg"],
+        desc: ""
+    }
+};
+    
 
-        const code = document.getElementById('access-code').value;
+// 注入佈置氣球案例 (保持原樣)
+const balloonUrls = ["https://i.postimg.cc/PrJxfRxs/1965927-0.jpg", "https://i.postimg.cc/NfFMGzMv/1981332-0.jpg", "https://i.postimg.cc/QxCtNyth/1981333-0.jpg", "https://i.postimg.cc/L68qYsxN/1981334-0.jpg", "https://i.postimg.cc/kXgV65Tw/1981335.jpg", "https://i.postimg.cc/RVZ360gd/1981336.jpg", "https://i.postimg.cc/bNwGDvmm/1981337.jpg", "https://i.postimg.cc/J4zyDhpF/1981338.jpg", "https://i.postimg.cc/J4zyDhpg/1981339.jpg", "https://i.postimg.cc/YqC4GSdZ/1981340.jpg"];
+balloonUrls.forEach((url, index) => {
+    const id = `ball_item_${index}`;
+    photoLibrary[id] = { tag: "活動佈置", title: `佈置成品 ${index + 1}`, loc: "精選案例", images: [url], desc: "八毅硬體結構精選佈置作品。" };
+    photos_Decor.push(id);
+});
 
-        if (code === '8888') { // 測試密碼
-
-            hideAuth();
-
-            alert('驗證成功，已切換至管理員模式');
-
-        } else {
-
-            alert('代碼錯誤，請重新輸入');
-
+// --- 卡片相簿連動系統 (保持原樣) ---
+function openAlbumTab(tabId) {
+    const albumModalEl = document.getElementById('albumModal');
+    let albumModal = bootstrap.Modal.getInstance(albumModalEl);
+    if (!albumModal) {
+        albumModal = new bootstrap.Modal(albumModalEl);
+    }
+    albumModal.show();
+    albumModalEl.addEventListener('shown.bs.modal', function () {
+        const tabEl = document.getElementById(tabId);
+        if (tabEl) {
+            const tab = new bootstrap.Tab(tabEl);
+            tab.show();
         }
+    }, { once: true }); 
+}
 
+// --- 相簿與燈箱功能 (保持原樣) ---
+function loadGallery(containerId, list) {
+    const rowContainer = document.querySelector(`#${containerId} .row`);
+    if (!rowContainer) return;
+    rowContainer.innerHTML = list.map(id => {
+        const item = photoLibrary[id];
+        if(!item) return ''; // 防呆
+        return `
+            <div class="col-md-4 col-lg-3 mb-4" onclick="openProjectGallery('${id}')" style="cursor:pointer;">
+                <div class="album-card">
+                    <div class="album-img-wrapper">
+                        <span class="photo-tag">${item.tag}</span>
+                        <img src="${item.images[0]}" class="album-img" loading="lazy">
+                    </div>
+                </div>
+            </div>`;
+    }).join('');
+}
+
+function openProjectGallery(projectId) {
+    currentProject = photoLibrary[projectId];
+    if (!currentProject) return;
+    currentImgIdx = 0;
+    updateLightbox();
+}
+
+// 【重點修正】僅調整燈箱結構以支援箭頭靠邊與滑動
+function updateLightbox() {
+    const lb = document.getElementById('imgLightbox');
+    if(!lb || !currentProject) return;
+    const info = currentProject;
+    const formattedDesc = info.desc.replace(/\n/g, '<br>');
+    
+    // 將箭頭直接放入 lightbox-image-side，並設定透明放大樣式
+    lb.innerHTML = `
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-image-side" id="lightbox-touch-area" style="position:relative; user-select:none;">
+                <img src="${info.images[currentImgIdx]}" id="target-img" style="pointer-events:none;">
+                
+                ${info.images.length > 1 ? `
+                    <button class="nav-btn prev" onclick="changeImage(-1)" style="position:absolute; left:10px; background:transparent; border:none; color:rgba(255,255,255,0.5); font-size:3rem; cursor:pointer; z-index:10;">❮</button>
+                    <button class="nav-btn next" onclick="changeImage(1)" style="position:absolute; right:10px; background:transparent; border:none; color:rgba(255,255,255,0.5); font-size:3rem; cursor:pointer; z-index:10;">❯</button>
+                    <div class="img-counter" style="position:absolute; bottom:10px; color:white; background:rgba(0,0,0,0.5); padding:2px 10px; border-radius:10px;"><span class="current">${currentImgIdx + 1}</span> / <span class="total">${info.images.length}</span></div>
+                ` : ''}
+            </div>
+
+            <div class="lightbox-info-side">
+                <h2 style="color: #BA2D30;">${info.title}</h2>
+                <p><i class="bi bi-geo-alt-fill me-1"></i>${info.loc}</p>
+                <hr>
+                <div class="info-body"><p>${formattedDesc}</p></div>
+                <button class="btn btn-outline-light w-100 mt-4" onclick="closeLightbox()">關閉</button>
+            </div>
+        </div>`;
+        
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // 綁定手勢與滑鼠事件
+    const touchArea = document.getElementById('lightbox-touch-area');
+    
+    // 手機觸控
+    touchArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+    touchArea.addEventListener('touchend', e => { handleSwipe(e.changedTouches[0].clientX); }, {passive: true});
+    
+    // 滑鼠拖動
+    touchArea.addEventListener('mousedown', e => { startX = e.clientX; isDragging = true; });
+    touchArea.addEventListener('mouseup', e => { if(isDragging) { handleSwipe(e.clientX); isDragging = false; } });
+}
+
+// 滑動邏輯判斷
+function handleSwipe(endX) {
+    const diff = startX - endX;
+    if (Math.abs(diff) > 50) { // 滑動超過 50px 才觸發
+        if (diff > 0) changeImage(1);  // 向左滑 -> 下一張
+        else changeImage(-1);          // 向右滑 -> 上一張
     }
+}
 
+function changeImage(step) {
+    if(!currentProject) return;
+    currentImgIdx = (currentImgIdx + step + currentProject.images.length) % currentProject.images.length;
+    document.getElementById('target-img').src = currentProject.images[currentImgIdx];
+    const counter = document.querySelector('.img-counter .current');
+    if(counter) counter.innerText = currentImgIdx + 1;
+}
 
+function closeLightbox() {  
+    document.getElementById('imgLightbox').style.display = 'none';  
+    document.body.style.overflow = 'auto';  
+}
 
-    function hideAuth() {
-
-        authOverlay.style.opacity = '0';
-
-        authOverlay.style.pointerEvents = 'none';
-
-        document.getElementById('access-code').value = '';
-
-    }
-
-
-
-    // 5. 監控面版切換 (3D / 現場實景)
-
-    function toggleMonitor(mode) {
-
-        const iframe = document.getElementById('iframe-3d');
-
-        const panel = document.getElementById('progress-panel');
-
-        const btn3d = document.getElementById('btn-3d');
-
-        const btnReal = document.getElementById('btn-real');
-
-
-
-        if (mode === '3d') {
-
-            iframe.style.display = 'block';
-
-            panel.style.display = 'none';
-
-            btn3d.classList.replace('btn-dark', 'btn-danger');
-
-            btnReal.classList.replace('btn-danger', 'btn-dark');
-
-        } else {
-
-            iframe.style.display = 'none';
-
-            panel.style.display = 'block';
-
-            btnReal.classList.replace('btn-dark', 'btn-danger');
-
-            btn3d.classList.replace('btn-danger', 'btn-dark');
-
-        }
-
-    }
-
-
-
-    // 6. 關閉 Lightbox
-
-    function closeLightbox() {
-
-        document.getElementById('imgLightbox').style.display = 'none';
-
-    }
-
-
-
-    // 7. Loading 進場動畫控制
-
-    window.addEventListener('load', () => {
-
-        setTimeout(() => {
-
-            document.getElementById('loading-screen').style.opacity = '0';
-
-            setTimeout(() => {
-
-                document.getElementById('loading-screen').style.display = 'none';
-
-                document.body.classList.remove('is-loading');
-
-            }, 800);
-
-        }, 2200); // 配合 CSS 動畫的時間
-
+// --- 最終版：頁面初始化與強制導向系統 (保持原樣) ---
+window.addEventListener('load', function() {
+    const subPages = ['about-section', 'cooperation-section']; 
+    subPages.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'none'; 
     });
 
+    const mainSections = ['heroCarousel', 'main-content']; 
+    mainSections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.style.display = 'block';
+    });
+
+    try {
+        loadGallery('gallery-1', photos_Tables);
+        loadGallery('gallery-2', photos_Truss);
+        loadGallery('gallery-3', photos_Tent);
+        loadGallery('gallery-4', photos_Stage);
+        loadGallery('gallery-5', photos_Decor);
+        console.log("✅ 相簿載入完成");
+    } catch (e) {
+        console.warn("⚠️ 相簿加載異常:", e);
+    }
+
+    const loader = document.getElementById('loading-screen');
+    if (loader) {
+        new Audio('低沉穩重的進場音.mp3').play().catch(e => {});
+        setTimeout(() => {
+            new Audio('俏皮彈出音.mp3').play().catch(e => {});
+        }, 1200);
+
+        setTimeout(() => {
+            loader.style.opacity = '0'; 
+            setTimeout(() => {
+                loader.style.display = 'none'; 
+                loader.style.zIndex = '-1';
+                document.body.classList.remove('is-loading');
+                document.body.style.overflow = 'auto'; 
+                window.scrollTo(0, 0);
+            }, 850); 
+        }, 2500); 
+    }
+});
+
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
 </script>
-
-</body>
-
+   </body>
+            <a href="https://line.me/R/ti/p/@998cnhao" class="floating-line-btn" target="_blank">
+    <i class="bi bi-line"></i>
+    <span>LINE 立即詢問</span>
+</a>
 </html>
-
-
-
- 
