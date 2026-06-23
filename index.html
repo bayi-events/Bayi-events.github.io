@@ -18,9 +18,10 @@
 <style>
     /* --- 頂級公關留白美學底層設定 --- */
     :root { 
-        --brand-red: #8B1E2B; /* 調整為更深邃的質感紅 */
+        --brand-red: #8B1E2B; /* 專屬品牌酒紅色 */
+        --brand-red-dark: #5a111b; /* 深酒紅，用於漸層 */
         --brand-gold: #c5a059;
-        --bg-light: #FAFAFA; /* 藝廊級純淨灰白 */
+        --bg-light: #FAFAFA; 
         --text-main: #111111;
         --text-muted: #666666;
     }
@@ -37,7 +38,7 @@
 
     body.is-loading { overflow: hidden !important; }
 
-    /* --- 1. 導覽列：極簡明亮風格 --- */
+    /* --- 1. 導覽列：極簡明亮風格 + 酒紅點綴 --- */
     .navbar { 
         background-color: rgba(250, 250, 250, 0.95) !important; 
         backdrop-filter: blur(15px);
@@ -52,7 +53,7 @@
     }
     .navbar-brand { 
         font-weight: 800; 
-        color: #000000 !important; 
+        color: var(--brand-red) !important; /* Logo 文字改為品牌色 */
         font-size: 1.5rem; 
         letter-spacing: 2px; 
     }
@@ -63,34 +64,37 @@
         margin-left: 20px;
         transition: color 0.3s ease;
     }
-    .nav-link:hover { color: var(--brand-red) !important; }
+    .nav-link:hover { color: var(--brand-red) !important; } /* 滑鼠懸停顯示品牌色 */
 
-    /* --- 2. 開場 Loading 動畫 (完美保留功能) --- */
+    /* --- 2. 開場 Loading 動畫 (修復：改回實際圖片 Logo) --- */
     #loading-screen {
         position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
         background: #ffffff; z-index: 9999; display: flex;
-        flex-direction: column; justify-content: flex-start; align-items: center;        
-        padding-top: 30vh; transition: opacity 0.8s ease-out;
+        flex-direction: column; justify-content: center; align-items: center;        
+        transition: opacity 0.8s ease-out;
     }
-    .logo-box { width: 220px; display: flex; flex-direction: column; align-items: center; }
-    #loading-screen .logo-box svg {
-        width: 220px !important; height: auto !important;
-        transform-origin: 30% 40%; 
-        animation: masterEntrance 1.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    .logo-box { 
+        display: flex; flex-direction: column; align-items: center; 
+        animation: masterEntrance 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
+    .logo-box img {
+        width: 180px; /* Logo 大小 */
+        height: auto;
+        margin-bottom: 20px;
     }
     .brand-name-loading { 
-        font-size: 24px; font-weight: 900; color: #000; margin-top: 15px;
-        letter-spacing: 4px; opacity: 0; animation: fadeIn 1s 1.5s forwards; 
-        text-align: center; width: 100%;
+        font-size: 26px; font-weight: 900; color: var(--brand-red);
+        letter-spacing: 4px; opacity: 0; animation: fadeIn 1s 1s forwards; 
+        text-align: center;
     }
 
-    @keyframes masterEntrance { 0% { opacity: 0; transform: scale(3); } 100% { opacity: 1; transform: scale(1); } }
+    @keyframes masterEntrance { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* --- 3. Light 標題與大量留白 (排版成這張照片的 Hero 版型) --- */
+    /* --- 3. Light 標題與大量留白 --- */
     .hero-title-section {
         max-width: 1100px;
-        margin: 180px auto 70px; /* 頂部留出極大的呼吸空間 */
+        margin: 180px auto 70px;
         padding: 0 25px;
         text-align: left;
     }
@@ -102,6 +106,9 @@
         margin-bottom: 20px;
         line-height: 1.2;
     }
+    .hero-title-section h1 span {
+        color: var(--brand-red); /* 突顯品牌色的標題 */
+    }
     .hero-title-section p {
         font-size: 1.3rem;
         color: var(--text-muted);
@@ -109,14 +116,14 @@
         max-width: 700px;
     }
 
-    /* --- 4. 藝廊級 Bento Box 網格區塊 (大小交錯排版) --- */
+    /* --- 4. 藝廊級 Bento Box 網格區塊 --- */
     .bento-grid-gallery {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: 290px;
         gap: 25px;
         max-width: 1200px;
-        margin: 0 auto 120px;
+        margin: 0 auto 80px; /* 縮小一點底部邊距，接續 FB 區塊 */
         padding: 0 25px;
     }
 
@@ -133,7 +140,7 @@
     
     .bento-item:hover {
         transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(139, 30, 43, 0.12); /* 懸停時質感陰影 */
+        box-shadow: 0 20px 40px rgba(139, 30, 43, 0.2); /* 酒紅色光影 */
     }
 
     .bento-img {
@@ -144,7 +151,6 @@
     }
     .bento-item:hover .bento-img { transform: scale(1.06); }
 
-    /* 漸層遮罩與漂浮文字 */
     .bento-overlay {
         position: absolute;
         bottom: 0; left: 0; right: 0;
@@ -157,19 +163,45 @@
     .bento-overlay p { font-size: 0.95rem; margin: 0; opacity: 0.85; letter-spacing: 1px; }
 
     /* 網格大小分配 */
-    .grid-large { grid-column: span 2; grid-row: span 2; } /* 大型作品 */
+    .grid-large { grid-column: span 2; grid-row: span 2; }
+    
+    /* 品牌色漸層卡片 */
     .grid-text-card { 
         grid-column: span 1; grid-row: span 1; 
         padding: 45px 35px; 
         display: flex; flex-direction: column; justify-content: center;
-        background: #111111; color: #fff;
+        background: linear-gradient(135deg, var(--brand-red) 0%, var(--brand-red-dark) 100%); /* 酒紅漸層底 */
+        color: #fff;
         cursor: default;
     }
-    .grid-text-card:hover { transform: none; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+    .grid-text-card:hover { transform: none; box-shadow: 0 4px 20px rgba(139, 30, 43, 0.3); }
     .grid-tall { grid-column: span 1; grid-row: span 1; }
     .grid-small { grid-column: span 1; grid-row: span 1; }
 
-    /* --- 5. RWD 響應式調整 --- */
+    /* --- 5. FB 粉絲專頁區塊 --- */
+    .fb-plugin-section {
+        max-width: 1200px;
+        margin: 0 auto 120px;
+        padding: 0 25px;
+        text-align: center;
+    }
+    .fb-plugin-section h3 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--text-main);
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+    }
+    .fb-plugin-container {
+        display: inline-block;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        background: #fff;
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* --- RWD 響應式調整 --- */
     @media (max-width: 992px) {
         .hero-title-section { margin-top: 150px; }
         .hero-title-section h1 { font-size: 2.8rem; }
@@ -184,10 +216,10 @@
         .bento-grid-gallery { grid-template-columns: 1fr; grid-auto-rows: 250px; gap: 20px; }
         .grid-large { grid-column: span 1; grid-row: span 2; }
         .grid-text-card { grid-column: span 1; padding: 35px 25px; }
-        .floating-line-btn { bottom: 25px; right: 25px; padding: 12px 20px; }
+        .fb-plugin-container iframe { width: 100% !important; max-width: 340px; } /* 手機版 FB 適應 */
     }
 
-    /* --- 6. 懸浮 LINE 立即詢問優化 --- */
+    /* --- 6. 懸浮 LINE 按鈕 --- */
     .floating-line-btn {
         position: fixed; bottom: 40px; right: 40px; z-index: 9999;
         background: #06C755; color: white !important;
@@ -199,40 +231,21 @@
     }
     .floating-line-btn i { font-size: 24px; margin-right: 12px; }
     .floating-line-btn:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(6, 199, 85, 0.5); }
-
-    /* 燈箱樣式保持不變 */
-    .album-img-wrapper { position: relative; width: 100%; aspect-ratio: 3 / 2; overflow: hidden; background: #eee;}
-    .album-img { width: 100%; height: 100%; object-fit: cover; }
 </style>
 </head>
     
 <body class="is-loading">
 
+    <!-- 修復版：改用圖片標籤的進場動畫 -->
     <div id="loading-screen">
         <div class="logo-box">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 1197">
-            <g fill="#9b4541">
-                <path d="M1201 598.5 c0 -530.1 0.2 -598.5 1.5 -598.5 2 0 2.1 20.5 1.7 667.3 -0.2 469.8 -0.4 529.7 -1.7 529.7 -1.3 0 -1.5 -67.5 -1.5 -598.5z"/>
-                <path d="M272.7 1076.3 c-3.4 -3.3 -3.8 -3.3 144.3 -3.3 144.3 0 145 0 145 2 0 2 -0.7 2 -144.3 2 -79.4 0 -144.7 -0.3 -145 -0.7z"/>
-                <path d="M589 1058.1 c0 -1.2 10 -11.3 12.5 -12.6 1.1 -0.6 2.4 -2 3 -3.3 0.5 -1.2 1.5 -2.2 2.1 -2.2 0.7 0 2.4 -1.3 3.7 -3 1.4 -1.6 2.9 -3 3.3 -3 0.4 0 2.1 -1.2 3.6 -2.7 l2.8 -2.7 0 4.2 c0 3.6 -0.6 4.8 -4.8 9 -2.7 2.7 -5.6 5.1 -6.5 5.5 -1 0.4 -2.2 1.8 -2.7 3.2 -0.5 1.4 -1.6 2.5 -2.4 2.5 -0.8 0 -2.6 1.4 -3.9 3 -2.1 2.4 -3.3 3 -6.6 3 -2.3 0 -4.1 -0.4 -4.1 -0.9z"/>
-                <path d="M654 1032.5 c0 -2.8 1.1 -4.4 6 -8.8 1.3 -1.2 3.8 -3.7 5.4 -5.4 1.6 -1.8 3.4 -3.3 3.9 -3.3 0.6 0 3.6 -2.7 6.7 -6 3.1 -3.3 6.1 -6 6.6 -6 0.4 0 3.6 -2.9 7.1 -6.5 3.4 -3.6 6.6 -6.5 6.9 -6.5 0.4 0 3.3 -2.6 6.4 -5.7 7.9 -8.1 11.3 -10.3 15.5 -10.3 1.9 0 3.5 0.2 3.5 0.5 0 0.8 -5.3 6.6 -10.4 11.4 -2.7 2.5 -6.4 6.1 -8.2 7.9 -1.8 1.7 -3.6 3.2 -3.9 3.2 -0.4 0 -2.9 2.3 -5.7 5 -2.8 2.8 -5.4 5 -5.9 5 -0.5 0 -2.3 1.6 -4 3.5 -1.8 1.9 -3.5 3.5 -3.9 3.5 -0.7 0 -8.1 6.8 -16.5 15 -2.2 2.2 -4.7 4 -5.6 4 -0.8 0 -2 0.5 -2.7 1.2 -0.9 0.9 -1.2 0.6 -1.2 -1.7z"/>
-                <path d="M395.1 1006.3 c0 -0.7 -0.9 -1.3 -2 -1.3 -1.9 0 -9.1 -7.7 -10.3 -11.1 -0.4 -1 -1.2 -1.9 -1.8 -1.9 -0.5 0 -1 -1 -1 -2.2 0.1 -2.4 5.7 -6.8 8.6 -6.8 0.8 0 1.4 -0.4 1.4 -1 0 -0.5 0.5 -1 1 -1 1.8 0 1 5.2 -1.1 6.9 -1.7 1.4 -1.9 2.1 -1 4.4 0.6 1.5 1.5 2.7 2 2.7 1.7 0 5.2 7.2 4.8 9.9 -0.2 1.4 -0.5 2 -0.6 1.4z"/>
-                <path d="M652 1001 c0 -0.5 0.3 -1 0.8 -1 0.4 0 1.8 -1.6 3.1 -3.5 1.3 -1.9 2.8 -3.5 3.4 -3.5 0.6 0 3.9 -2.9 7.4 -6.5 3.4 -3.6 6.6 -6.5 7 -6.5 0.4 0 3.1 -2.1 6 -4.8 8.7 -8 8.3 -7.8 8.3 -3.2 0 3.9 -3 9 -5.4 9 -0.5 0 -4 3 -7.7 6.8 -12.2 12.2 -14.9 14.2 -19.1 14.2 -2.1 0 -3.8 -0.4 -3.8 -1z"/>
-                <path d="M516.7 980.1 c-1 -1.7 -1.7 -5 -1.7 -7.9 0 -2.8 -0.4 -5.2 -1 -5.4 -0.9 -0.3 -6 -27.9 -6 -32.5 0 -1.3 -0.8 -3.1 -1.8 -4.1 -1.7 -1.7 -1.9 -1.7 -3.6 0.5 -0.9 1.3 -2.3 2.3 -3.1 2.3 -0.8 0 -2.2 1.1 -3.1 2.5 -0.9 1.3 -2.3 2.7 -3.2 3 -1 0.2 -3.5 2 -5.7 3.9 -2.2 2 -5.1 4.1 -6.5 4.8 -1.4 0.7 -2.8 1.7 -3.2 2.3 -0.4 0.5 -1.9 1 -3.3 1 -2.1 0.1 -2.5 -0.4 -2.5 -2.7 0 -2.1 0.9 -3.2 4.3 -5.2 2.3 -1.4 4.8 -3.4 5.5 -4.6 0.7 -1.1 1.9 -2 2.7 -2 0.8 0 2 -0.9 2.7 -2.1 0.7 -1.1 2.7 -2.7 4.3 -3.5 1.7 -0.8 4.6 -2.8 6.4 -4.4 5.6 -5.1 14.1 -3.8 14.1 2.3 0.1 1.8 0.8 7.3 1.6 12.2 0.8 5 1.8 10.6 2.1 12.5 0.3 1.9 0.9 3.7 1.4 4.1 0.5 0.3 1.3 4.8 1.9 10 1.7 16.2 1.2 18.9 -2.3 13z"/>
-                <path d="M423 955.9 c0.6 -1.1 2.5 -2.8 4.1 -3.8 1.7 -1 3.7 -2.8 4.5 -4 0.8 -1.1 2.1 -2.1 2.9 -2.1 0.7 0 2.2 -1.1 3.3 -2.5 1.1 -1.4 2.3 -2.5 2.6 -2.5 0.9 0 6.5 -4 10.1 -7.2 1.6 -1.6 3.5 -2.8 4.1 -2.8 0.5 0 2 -1.3 3.2 -3 1.3 -1.6 2.9 -3 3.7 -3 0.8 0 1.8 -0.6 2.2 -1.3 0.4 -0.6 2.7 -2.5 5.1 -4.1 2.3 -1.6 4.2 -3.2 4.2 -3.6 0 -0.5 2 -1.8 4.5 -3 2.5 -1.2 4.8 -2.7 5.3 -3.4 0.4 -0.7 2.3 -2.3 4.2 -3.6 1.9 -1.3 4.1 -3.2 4.8 -4.2 0.7 -1 1.9 -1.8 2.6 -1.8 0.7 0 2.1 -0.9 3.1 -2 2 -2.2 1.8 -7.6 -0.9 -19.5 -0.9 -3.8 -1.6 -8.5 -1.6 -10.2 0 -1.8 -0.4 -3.3 -0.9 -3.3 -0.5 0 -1.2 -2.4 -1.6 -5.2 -0.6 -5.7 -1.6 -10.9 -3.6 -20 -1.3 -6 -2.8 -7.2 -5.1 -4 -2.1 2.7 -7.5 6.2 -9.8 6.2 -1.1 0 -2 0.5 -2 1 0 0.6 -0.4 1 -1 1 -1.1 0 -1.4 -6 -0.2 -6 0.4 0 2.7 -1.8 5.2 -4 5.1 -4.5 7 -5.3 12.6 -4.8 l3.9 0.3 1.3 8 c0.7 4.4 1.6 9.8 1.9 12 0.3 2.2 1 4.3 1.5 4.6 0.5 0.3 1.3 3.9 1.9 8 1.8 14.4 3.2 22.4 4.2 23 0.5 0.4 1.2 3.7 1.4 7.3 0.6 6.7 0.6 6.7 -2.8 9.6 -1.9 1.6 -3.7 2.9 -4.1 3 -0.4 0 -1.8 1 -3 2.3 -3.6 3.4 -9.9 8.1 -11.9 8.9 -1 0.4 -2.3 1.6 -2.9 2.7 -0.6 1.2 -2.9 3 -5 4.1 -2.2 1.1 -4 2.4 -4 2.8 0 0.4 -1.2 1.5 -2.7 2.4 -1.6 0.9 -4.5 3.3 -6.7 5.2 -2.1 2 -4.5 3.6 -5.3 3.6 -0.7 0 -1.6 0.7 -2 1.5 -0.3 0.9 -1.7 2.2 -3.2 3 -1.4 0.7 -4.4 3 -6.6 4.9 -2.2 2 -5 3.9 -6.2 4.2 -1.3 0.4 -2.3 1 -2.3 1.5 0 1.7 -7.6 5.9 -10.8 5.9 -3 0 -3.2 -0.2 -2.2 -2.1z"/>
-                <path d="M584.5 941.3 c-2.2 -2.4 -2.3 -2.9 -0.8 -3.2 0.9 -0.2 2.2 -0.8 2.9 -1.5 3.8 -3.6 5.8 -4.6 8.9 -4.6 3.3 0 3.3 0.1 2.1 2.5 -1.6 3 -8.1 9.5 -9.5 9.5 -0.6 0 -2.2 -1.2 -3.6 -2.7z"/>
-                <path d="M735.5 921.7 c-3.7 -2.7 -9.5 -8.8 -9.5 -9.9 0 -0.5 -1.1 -1.3 -2.5 -1.8 -1.4 -0.5 -2.8 -1.8 -3.2 -2.7 -0.4 -1 -6.9 -8 -14.5 -15.5 -7.6 -7.6 -13.8 -14.1 -13.8 -14.6 0 -0.5 -1.1 -1.4 -2.5 -2 -1.4 -0.6 -2.5 -1.6 -2.5 -2.2 0 -1.4 -2 -3.4 -4.2 -4.3 -1.4 -0.5 -1.8 -1.8 -1.8 -5.4 l0.1 -4.8 2.4 2.8 c1.3 1.5 2.7 2.7 3.1 2.7 0.9 0 -0.8 -1.7 29.4 28.5 20.6 20.6 25.9 25.4 27.6 25 1.2 -0.2 4.9 -3.1 8.2 -6.2 11.2 -10.7 15.3 -14.3 16.2 -14.3 0.6 0 1 -0.7 1 -1.5 0 -0.8 0.5 -1.5 1.1 -1.5 0.6 0 3 -1.9 5.4 -4.2 2.4 -2.4 6.2 -5.9 8.6 -7.8 2.3 -1.9 6.4 -5.6 9.1 -8.2 2.7 -2.6 6.5 -5.9 8.4 -7.3 1.9 -1.5 4.5 -3.6 5.8 -4.8 1.3 -1.2 4.5 -4 7 -6.2 2.5 -2.2 5.8 -5.2 7.2 -6.7 1.5 -1.6 3.3 -2.8 4.1 -2.8 0.7 0 1.6 -0.7 1.9 -1.5 1 -2.6 2.4 -1.6 2.4 1.8 0 2.5 -0.9 4 -4.1 6.7 -2.2 1.9 -6.1 5.4 -8.5 7.8 -2.5 2.3 -4.9 4.2 -5.4 4.2 -0.6 0 -1 0.7 -1 1.5 0 0.9 -1.1 2 -2.4 2.5 -1.3 0.5 -3.3 2.2 -4.5 3.9 -1.2 1.6 -3.1 3.3 -4.2 3.6 -1.1 0.4 -2.4 1.8 -2.9 3.1 -0.5 1.3 -1.6 2.4 -2.3 2.4 -0.7 0 -2.7 1.5 -4.4 3.3 -1.8 1.7 -5 4.8 -7.4 6.7 -2.3 1.9 -4.7 4.1 -5.4 4.8 -0.8 0.6 -1.5 1.2 -1.8 1.2 -0.4 0 -5.3 4.6 -17.6 16.3 -3.6 3.4 -7.6 7 -9 7.9 -3.6 2.5 -9.9 2.2 -13.6 -0.5z"/>
-                <path d="M574.6 899.8 c-0.9 -1.2 -1.6 -4 -1.6 -6.1 l0 -3.9 3 2.5 c1.6 1.4 3.3 2.7 3.7 2.9 0.4 0.1 1.8 1.8 3.1 3.6 l2.3 3.2 -4.5 0 c-3.5 0 -4.8 -0.5 -6 -2.2z"/>
-                <path d="M365.7 890.6 c1 -1.3 2.9 -3.1 4.3 -3.9 1.4 -0.9 4.3 -3.2 6.5 -5.1 2.2 -2 4.5 -3.6 5.1 -3.6 0.5 0 2 -1.3 3.2 -3 1.3 -1.6 2.8 -3 3.5 -3 0.8 0 2.8 -1.3 4.5 -2.8 1.7 -1.6 4.4 -3.5 5.9 -4.3 1.5 -0.8 3.8 -2.6 5.1 -4.1 1.3 -1.6 2.9 -2.8 3.6 -2.8 0.7 0 2.8 -1.4 4.7 -3.1 1.9 -1.7 4.5 -4.1 5.9 -5.3 1.4 -1.3 4 -3.1 5.9 -4.2 3.2 -1.9 4.3 -2.7 12.6 -9.9 2.2 -1.9 4.5 -3.5 5.1 -3.5 0.7 0 1.9 -1.1 2.8 -2.5 0.9 -1.4 2.2 -2.5 2.9 -2.5 1.2 0 5.8 -3.5 11.2 -8.5 2.8 -2.5 5.4 -4.2 8.2 -5.4 1.2 -0.6 2.5 -1.6 3 -2.3 1.3 -2.3 7 -5.8 9.1 -5.8 1.1 0 2.3 -0.6 2.5 -1.2 0.3 -0.7 0.6 0.2 0.6 1.9 0.1 2.5 -0.5 3.7 -2.6 5 -1.5 1 -3.8 2.8 -5.2 4.1 -1.3 1.2 -3 2.2 -3.7 2.2 -0.8 0 -2.1 1.1 -3 2.5 -0.9 1.4 -2.2 2.5 -2.8 2.5 -0.7 0 -2.5 1.3 -4.2 2.8 -1.6 1.6 -4.1 3.7 -5.6 4.7 -1.6 0.9 -2.8 2.3 -2.8 2.9 0 0.6 -1.2 1.7 -2.7 2.4 -5.1 2.3 -8.3 4.3 -8.3 5.2 0 0.5 -1.7 1.8 -3.7 2.9 -2.1 1.1 -4.4 2.9 -5.1 4 -0.7 1.2 -1.9 2.1 -2.6 2.1 -0.8 0 -2.3 1.1 -3.4 2.5 -1.1 1.4 -2.3 2.5 -2.6 2.5 -1.1 0 -7 4.4 -8.3 6.1 -0.7 0.9 -2.6 2.2 -4.3 2.9 -1.6 0.7 -3 1.8 -3 2.5 0 0.7 -1.5 2 -3.2 2.8 -1.8 0.9 -4.2 2.4 -5.3 3.4 -1.1 1 -3.6 3 -5.5 4.3 -1.9 1.3 -4.8 3.7 -6.5 5.2 -1.6 1.5 -3.5 2.8 -4.2 2.8 -0.7 0 -1.6 0.6 -2 1.4 -0.4 0.8 -2.5 2.4 -4.5 3.6 -2.1 1.2 -3.8 2.6 -3.8 3.1 0 0.5 -2 0.9 -4.5 0.9 l-4.6 0 1.8 -2.4z"/>
-                <path d="M844 862.4 c0 -3.8 2.2 -6.4 13.1 -15.4 2.3 -1.9 5.8 -5.1 7.8 -7 2.1 -1.9 5.9 -5.3 8.5 -7.5 2.6 -2.2 6.6 -5.7 8.9 -7.7 2.3 -2.1 4.6 -3.8 5 -3.8 0.5 0 2 -1.3 3.4 -3 1.7 -2.1 3.4 -3 5.4 -3 4.1 0 3.7 2.1 -1.3 6.9 -13.4 12.8 -20.3 19.1 -21 19.1 -0.4 0 -0.8 0.7 -0.8 1.5 0 0.9 -1 2 -2.2 2.5 -1.3 0.5 -3.7 2.2 -5.4 3.7 -1.7 1.5 -5.5 4.8 -8.4 7.3 -3 2.5 -6.7 5.7 -8.4 7.3 -4 3.5 -4.6 3.4 -4.6 -0.9z"/>
-                <path d="M347 825.7 c0 -2.6 7.7 -11.2 12 -13.5 6.6 -3.5 8 -4.4 8 -5.3 0 -0.5 1.8 -0.9 4 -0.9 2.2 0 4 0.2 4 0.4 0 1.1 -5.6 6.6 -6.7 6.6 -0.7 0 -2.2 1.4 -3.5 3 -1.2 1.7 -2.7 3 -3.2 3 -0.6 0 -2.3 1 -3.6 2.3 -5.1 4.5 -6.5 5.5 -8.7 6.1 -1.9 0.6 -2.3 0.4 -2.3 -1.7z"/>
-                <path d="M509 820.2 c0 -1.5 -0.4 -3.2 -0.9 -3.7 -0.9 -1 -1.4 -3.8 -2.7 -15.5 -0.4 -3 -1.1 -5.7 -1.5 -6.1 -0.5 -0.3 -1.4 -3.4 -1.9 -7 -0.6 -3.5 -1.5 -8.6 -1.9 -11.4 -0.5 -2.7 -1.2 -7.1 -1.6 -9.7 -0.4 -2.7 -1.1 -4.8 -1.5 -4.8 -1.2 0 -2.1 -8.3 -1.4 -12.8 0.4 -2.6 1.2 -4.2 2 -4.2 0.8 0 1.4 0.6 1.4 1.4 0 0.8 0.4 1.6 0.9 1.8 0.8 0.2 4.1 18.2 5.8 31.1 0.3 2 0.9 3.7 1.3 3.7 0.8 0 1 1.1 3.1 15.5 1.4 9.8 3 16.7 4.2 18 0.7 0.8 1.9 0.1 4.1 -2.3 1.7 -1.9 4.2 -4.4 5.5 -5.5 5 -4.6 24.1 -23.8 24.1 -24.4 0 -0.3 6.5 -7.1 14.4 -15 15 -14.9 18.2 -16.8 20.6 -12.4 0.5 1.1 2.6 2.9 4.5 4.1 1.9 1.2 3.5 2.6 3.5 3.1 0 0.5 1.6 2.5 3.5 4.5 1.9 1.9 3.5 4.1 3.5 4.9 0 1.9 -9.3 11.1 -11.9 11.8 -1.8 0.4 -2.1 0.1 -2.1 -2.3 0 -1.9 1.1 -3.7 3.5 -5.9 1.9 -1.7 3.5 -3.2 3.5 -3.4 0 -0.5 -6.9 -7.6 -9.7 -10 -2 -1.8 -2.4 -1.5 -27.9 24.2 -14.3 14.3 -27.8 28.1 -30 30.6 -3.9 4.2 -4.5 4.5 -9.3 4.5 -4.9 0 -5.1 -0.1 -5.1 -2.8z"/>
-            </g>
-            </svg>
+            <!-- 請確保你的目錄下有 logo.png，如果檔名不同請更改 src -->
+            <img src="logo.png" alt="八毅硬體結構 Logo" onerror="this.style.display='none'">
             <div class="brand-name-loading">八毅硬體結構</div>
         </div>
     </div>
     
+    <!-- 導覽列 -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
             <a class="navbar-brand" href="index.html">八毅硬體結構</a>
@@ -249,13 +262,16 @@
         </div>
     </nav>
 
+    <!-- 首圖區 (加入品牌色點綴) -->
     <div class="hero-title-section">
-        <h1>為您打造完美活動現場</h1>
+        <h1>為您打造<span>完美活動現場</span></h1>
         <p>專業活動硬體服務，包含帳篷搭建、Truss結構、舞台出租，深耕蘆洲、五股在地服務。</p>
     </div>
 
+    <!-- 網格區塊 -->
     <div class="bento-grid-gallery">
         
+        <!-- 卡片 1 -->
         <div class="bento-item grid-large" onclick="openProductModal('tents')">
             <img src="https://i.postimg.cc/pdsM7FFj/109898_0.jpg" class="bento-img" alt="帳篷設備">
             <div class="bento-overlay">
@@ -264,14 +280,16 @@
             </div>
         </div>
 
+        <!-- 卡片 2: 品牌酒紅色漸層宣言卡 -->
         <div class="bento-item grid-text-card">
-            <h6 style="color: var(--brand-red); font-weight:700; letter-spacing:2px; margin-bottom:10px;">PROFESSIONAL</h6>
+            <h6 style="color: rgba(255,255,255,0.7); font-weight:700; letter-spacing:2px; margin-bottom:10px;">PROFESSIONAL</h6>
             <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:15px; letter-spacing:1px;">極致的<br>硬體工藝</h2>
-            <p style="opacity:0.8; font-size:0.9rem; line-height:1.6; margin:0;">
+            <p style="opacity:0.9; font-size:0.9rem; line-height:1.6; margin:0;">
                 從結構安全到視覺美感，我們致力於提供最乾淨、安全的活動硬體，專為高端活動與企業量身打造。
             </p>
         </div>
 
+        <!-- 卡片 3 -->
         <div class="bento-item grid-tall" onclick="openProductModal('truss')">
             <img src="https://i.postimg.cc/HLybvQKF/黎國際_三重水樣啵啵_Truss進場.jpg" class="bento-img" alt="Truss 結構">
             <div class="bento-overlay">
@@ -280,6 +298,7 @@
             </div>
         </div>
 
+        <!-- 卡片 4 -->
         <div class="bento-item grid-small" onclick="openProductModal('stage')">
             <img src="https://i.postimg.cc/N0swp4LW/109886(1).jpg" class="bento-img" alt="舞台架設">
             <div class="bento-overlay">
@@ -288,6 +307,7 @@
             </div>
         </div>
 
+        <!-- 卡片 5 -->
         <div class="bento-item grid-small" onclick="openProductModal('chairs')">
             <img src="https://i.postimg.cc/KzhB61hF/黎國際_漢來飯店_高8桌_進場.jpg" class="bento-img" alt="桌椅租賃">
             <div class="bento-overlay">
@@ -296,6 +316,7 @@
             </div>
         </div>
 
+        <!-- 卡片 6 -->
         <div class="bento-item grid-small" onclick="openProductModal('others')">
             <img src="https://i.postimg.cc/7PGvv4fG/S-18309127.jpg" class="bento-img" alt="活動周邊">
             <div class="bento-overlay">
@@ -306,16 +327,29 @@
 
     </div>
 
+    <!-- 加回：FB 粉絲專頁區塊，套用圓角與陰影融入設計 -->
+    <div class="fb-plugin-section">
+        <h3>關注最新動態</h3>
+        <div class="fb-plugin-container">
+            <!-- 這裡放入你的 Facebook iframe 程式碼 -->
+            <!-- 備註：請將下方 src 連結內的網址換成你們實際的粉絲團網址 -->
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FBayiEventHardware&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </div>
+
+    <!-- 底部版權 -->
     <div style="text-align: center; margin-bottom: 80px; color: var(--text-muted); font-size: 0.9rem;">
         &copy; 2026 八毅硬體結構 版權所有
     </div>
 
+    <!-- 懸浮 LINE 按鈕 -->
     <a href="https://line.me/R/ti/p/@998cnhao" class="floating-line-btn" target="_blank">
         <i class="bi bi-line"></i>
         <span>LINE 預約諮詢</span>
     </a>
 
 
+<!-- === 產品彈窗與相簿邏輯區塊 === -->
 <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content" style="border-radius:15px; border:none; box-shadow:0 20px 40px rgba(0,0,0,0.1);">
@@ -372,7 +406,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
 <script>
-// --- 原有的所有產品資料庫陣列保持不動 (為保持簡潔省略展示，原樣保留在 JS 區塊) ---
 const productLibrary = {
     'chairs': { title: '桌椅租賃', tab: 'tab-1', items: [
         { name: '會議桌', img: 'https://i.postimg.cc/fLFnWQCg/109909_0.jpg', specs: '尺寸：W185xD60xH76.5cm<br>材質：PE桌面/鋼製腳架' },
@@ -401,7 +434,6 @@ const productLibrary = {
     ]}
 };
 
-// --- 原有的所有彈窗邏輯與相簿連動 JS 保持不動 ---
 let currentTabId = '';
 function openProductModal(catKey) {
     const data = productLibrary[catKey];
@@ -439,7 +471,7 @@ function closeProductAndOpenAlbum() {
     }, 400);
 }
 
-// 保留動畫控制腳本
+// 動畫控制腳本
 window.addEventListener('load', function() {
     const loader = document.getElementById('loading-screen');
     if (loader) {
@@ -450,7 +482,7 @@ window.addEventListener('load', function() {
                 document.body.classList.remove('is-loading');
                 document.body.style.overflow = 'auto'; 
             }, 850); 
-        }, 2000); 
+        }, 1500); // 縮短一點等待時間，讓體驗更順暢
     }
 });
 </script>
