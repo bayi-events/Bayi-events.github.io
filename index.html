@@ -551,52 +551,47 @@
     }
 
   document.addEventListener('DOMContentLoaded', () => {
-      // 確保延遲一點點時間再渲染，讓 Bootstrap 載入完成
-      setTimeout(() => {
-        renderGalleryTabs();
-      }, 500);
+    // 1. 初始化圖庫渲染
+    setTimeout(() => {
+      renderGalleryTabs();
+    }, 500);
 
-      // 其餘程式碼保持不變...
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
-      }, { threshold: 0.14 });
-      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-      
-      // ...後面燈箱與載入畫面的程式碼...
+    // 2. 滾動觸發動畫觀察器
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { 
+        if (entry.isIntersecting) entry.target.classList.add('in-view'); 
+      });
+    }, { threshold: 0.14 });
+    
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // 3. 燈箱關閉事件綁定
+    const closeBtn = document.querySelector('.custom-modal-close');
+    const lightbox = document.getElementById('imgLightbox');
+    closeBtn?.addEventListener('click', closeLightbox);
+    lightbox?.addEventListener('click', (e) => { 
+      if (e.target === lightbox) closeLightbox(); 
     });
-
-      // 滾動觸發動畫
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
-      }, { threshold: 0.14 });
-      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-      // 綁定燈箱關閉事件
-      const closeBtn = document.querySelector('.custom-modal-close');
-      const lightbox = document.getElementById('imgLightbox');
-      closeBtn?.addEventListener('click', closeLightbox);
-      lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+    document.addEventListener('keydown', e => { 
+      if (e.key === 'Escape') closeLightbox(); 
     });
+  });
 
-    // 載入畫面保護
-    const MIN_LOAD_TIME = 2600; 
-    const startTime = Date.now();
-    window.addEventListener('load', () => {
-      const elapsed = Date.now() - startTime;
-      const delay = Math.max(0, MIN_LOAD_TIME - elapsed);
-      setTimeout(() => {
-        const loader = document.getElementById('loading-screen');
-        if (loader) {
-          loader.style.opacity = '0';
-          loader.style.transform = 'scale(.99)';
-          setTimeout(() => {
-            loader.style.display = 'none';
-            document.body.classList.remove('is-loading');
-          }, 650);
-        }
-      }, delay);
-    });
-  </script>
-</body>
-</html>
+  // 4. 載入畫面保護 (放在 DOMContentLoaded 外面)
+  const MIN_LOAD_TIME = 2600; 
+  const startTime = Date.now();
+  window.addEventListener('load', () => {
+    const elapsed = Date.now() - startTime;
+    const delay = Math.max(0, MIN_LOAD_TIME - elapsed);
+    setTimeout(() => {
+      const loader = document.getElementById('loading-screen');
+      if (loader) {
+        loader.style.opacity = '0';
+        loader.style.transform = 'scale(.99)';
+        setTimeout(() => {
+          loader.style.display = 'none';
+          document.body.classList.remove('is-loading');
+        }, 650);
+      }
+    }, delay);
+  });
