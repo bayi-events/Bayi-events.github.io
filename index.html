@@ -508,28 +508,24 @@
           return;
         }
 
-        let html = '<div class="gallery-wrap" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; width: 100%;">';
+        // 這是你剛剛那段代碼的正確擺放位置
+        let html = '<div class="gallery-wrap" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; width: 100%; padding-bottom: 50px;">';
+        
         photos.forEach((photo, index) => {
-          let tileClass = "gallery-tile";
-          let inlineStyle = "display: block; width: 100%; min-height: 280px; height: 280px; position: relative;"; // 強制給予實體高度防止消失
-          
-          if (index % 5 === 0) {
-            tileClass += " large";
-            inlineStyle = "display: block; width: 100%; min-height: 380px; height: 380px; position: relative;";
-          } else if (index % 5 === 1) {
-            tileClass += " tall";
-            inlineStyle = "display: block; width: 100%; min-height: 380px; height: 380px; position: relative;";
-          }
-
-          html += `
-            <div class="${tileClass}" style="${inlineStyle}" onclick="openLightbox('${photo.src}', '${photo.title}')">
-              <div class="album-img-wrapper" style="width: 100%; height: 100%;">
-                <span class="photo-tag" style="z-index: 5;">${photo.title}</span>
-                <img src="${photo.src}" alt="${photo.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
-              </div>
-            </div>
-          `;
+            let tileClass = "gallery-tile";
+            // 手機版與電腦版通用的樣式保護，確保圖片不會塌陷
+            let inlineStyle = "display: block; width: 100%; min-height: 250px; position: relative; margin-bottom: 10px;";
+            
+            html += `
+                <div class="${tileClass}" style="${inlineStyle}" onclick="openLightbox('${photo.src}', '${photo.title}')">
+                    <div class="album-img-wrapper" style="width: 100%; height: 100%; position: relative;">
+                        <span class="photo-tag" style="z-index: 5; position: absolute; top: 10px; left: 10px;">${photo.title}</span>
+                        <img src="${photo.src}" alt="${photo.title}" loading="lazy" style="width: 100%; height: 250px; object-fit: cover; display: block;" />
+                    </div>
+                </div>
+            `;
         });
+        
         html += '</div>';
         container.innerHTML = html;
       });
