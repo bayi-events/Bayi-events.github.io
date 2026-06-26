@@ -125,10 +125,24 @@
     }
     @media (max-width: 768px){
       .scrolling-ticker-wrapper { display: none !important; }
-      .gallery-wrap { display: flex !important; flex-direction: column !important; gap: 18px !important; }
-      .gallery-tile, .gallery-tile.large, .gallery-tile.tall { grid-column: span 12 !important; width: 100% !important; min-height: 250px !important; display: block !important; }
+      
+      /* ⚡ 新增：解決手機版看不知道專業服務與相片的問題 ⚡ */
+      /* 在手機版強制讓所有進場動畫區塊直接 100% 顯現，不等待 JS 觸發 */
+      .fade-up {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      
+      /* 強制手機版照片顯示模式 */
+      .gallery-wrap { display: flex !important; flex-direction: column !important; gap: 16px !important; }
+      .gallery-tile, .gallery-tile.large, .gallery-tile.tall { width: 100% !important; height: 260px !important; grid-column: span 12 !important; display: block !important; margin-bottom: 10px; }
+      
       .custom-tabs .nav-link { width: 100% !important; text-align: center !important; }
       .carousel-caption-custom { width: 88% !important; padding-left: 30px !important; text-align: left !important; left: 50% !important; transform: translateX(-50%) !important; }
+      
+      /* 手機版統計區塊也改為兩欄 */
+      .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
     }
   </style>
 </head>
