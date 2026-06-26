@@ -129,6 +129,50 @@
     @keyframes masterEntrance{0%{opacity:0;transform:scale(1.1) translateY(12px)}100%{opacity:1;transform:scale(1) translateY(0)}}
     @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
+    /* 🛠️ 手機版專屬 RWD 完美修復：當螢幕寬度小於 768px 時自動生效 */
+@media (max-width: 768px) {
+    /* 1. 調整主視覺文字區域的容器，確保不吃邊、不爆版 */
+    .hero-content, 
+    .banner-text,
+    main .container,
+    header .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        box-sizing: border-box !important;
+        text-align: left !important; /* 配合你原本的帥氣左對齊 */
+    }
+
+    /* 2. 讓「專業活動佈置」大標題在手機上自動縮小，絕對不跑出去 */
+    .hero-content h1,
+    .banner-text h1,
+    main h1 {
+        font-size: min(2.2rem, 8.5vw) !important; /* 智慧型動態字體，隨螢幕縮小 */
+        line-height: 1.3 !important;
+        white-space: normal !important; /* 允許在手機上自然斷行 */
+        word-break: break-all !important;
+    }
+
+    /* 3. 調整上面的小英文字 MODERN STRUCTURE • EVENT EXPERIENCE */
+    .hero-content p,
+    .banner-text p {
+        font-size: 0.8rem !important;
+        letter-spacing: 0.05em !important;
+    }
+
+    /* 4. 讓底下的「帳篷 / Truss / 桌椅 / 舞台」按鈕膠囊在手機上完美收納 */
+    .hero-content .btn,
+    .hero-content .badge,
+    .hero-content div[style*="border"] {
+        font-size: 0.85rem !important;
+        padding: 6px 14px !important;
+        max-width: 100% !important;
+        white-space: nowrap !important; /* 讓這串服務關鍵字乖乖躺在同一行 */
+        display: inline-block !important;
+    }
+}
+    
     /* 社群按鈕質感動畫 */
     .social-icon-item {
         display: flex;
