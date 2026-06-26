@@ -577,11 +577,7 @@
     });
   </script>
 </body>
-  // 修正 renderGalleryTabs 中的 HTML 產生部分
-    let html = '<div class="gallery-wrap" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 18px; width: 100%;">';
-    photos.forEach((photo, index) => {
-        // ... (保持原本邏輯)
-        html += `
+ 
             <div class="${tileClass}" style="display: block; width: 100%; min-height: 250px; position: relative;" onclick="openLightbox('${photo.src}', '${photo.title}')">
               <div class="album-img-wrapper" style="width: 100%; height: 100%;">
                 <span class="photo-tag" style="z-index: 5;">${photo.title}</span>
