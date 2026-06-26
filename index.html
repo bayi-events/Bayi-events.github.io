@@ -125,10 +125,15 @@
     }
     @media (max-width: 768px){
       .scrolling-ticker-wrapper { display: none !important; }
+      
+      /* 強制讓分頁內容在手機版顯示，並移除 Bootstrap 的隱藏屬性 */
+      .tab-pane { display: block !important; opacity: 1 !important; }
+      .tab-content > .tab-pane { display: none; }
+      .tab-content > .tab-pane.active { display: block !important; }
+      
       .gallery-wrap { display: flex !important; flex-direction: column !important; gap: 18px !important; }
-      .gallery-tile, .gallery-tile.large, .gallery-tile.tall { grid-column: span 12 !important; width: 100% !important; min-height: 250px !important; display: block !important; }
-      .custom-tabs .nav-link { width: 100% !important; text-align: center !important; }
-      .carousel-caption-custom { width: 88% !important; padding-left: 30px !important; text-align: left !important; left: 50% !important; transform: translateX(-50%) !important; }
+      .gallery-tile { width: 100% !important; min-height: 250px !important; display: block !important; margin-bottom: 15px !important; }
+      .custom-tabs .nav-link { width: 100% !important; text-align: center !important; margin-bottom: 5px !important; }
     }
   </style>
 </head>
@@ -545,9 +550,20 @@
       document.getElementById('lightboxImage').src = '';
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      // 確保一開始就正確渲染照片
-      renderGalleryTabs();
+  document.addEventListener('DOMContentLoaded', () => {
+      // 確保延遲一點點時間再渲染，讓 Bootstrap 載入完成
+      setTimeout(() => {
+        renderGalleryTabs();
+      }, 500);
+
+      // 其餘程式碼保持不變...
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
+      }, { threshold: 0.14 });
+      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+      
+      // ...後面燈箱與載入畫面的程式碼...
+    });
 
       // 滾動觸發動畫
       const io = new IntersectionObserver((entries) => {
