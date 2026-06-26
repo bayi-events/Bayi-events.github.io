@@ -154,9 +154,11 @@
       .story-grid{grid-template-columns:1fr}
     }
     
+
+   /* 手機行動裝置專屬終極優化 (768px 以下) */
     /* 手機行動裝置專屬終極優化 (768px 以下) */
     @media (max-width: 768px){
-      /* 1. 照片動態網格強制作法：解除所有覆蓋，徹底還原滿版 12 欄 */
+      /* 1. 照片動態網格強制作法 */
       .gallery-wrap { display: flex !important; flex-direction: column !important; gap: 18px !important; }
       .gallery-tile, 
       .gallery-tile.large, 
@@ -172,40 +174,42 @@
       .lightbox-info-side{flex:0 0 auto;width:100%;max-height:40%;border-left:none;border-top:1px solid rgba(255,255,255,.08);padding:24px}
       .custom-tabs .nav-link { width: 100% !important; text-align: center !important; }
 
-      /* 3. 主視覺大標題修復：強制拉回正中央，限制字體百分之百防撞牆 */
-      .carousel-caption-custom{
+      /* 3. Premium 區塊 (往左移) */
+      .floating-badge {
+          left: 10px !important; 
+          right: auto !important;
+          max-width: 85% !important;
+      }
+
+      /* 4. 主標題區塊 (整合調整：往右偏移、左對齊) */
+      .carousel-caption-custom {
           width: 88% !important;
           max-width: 88% !important;
-          padding: 0 !important;
+          padding-left: 30px !important; /* 往右偏移 */
+          text-align: left !important;   /* 改為靠左，確保偏移生效 */
           bottom: 15% !important;
           left: 50% !important;
           transform: translateX(-50%) !important;
       }
+      
       .carousel-caption-custom h1 {
-          font-size: min(2.1rem, 9vw) !important; /* 動態計算字級，絕不爆版 */
+          font-size: min(2.1rem, 9vw) !important;
           line-height: 1.35 !important;
-          white-space: normal !important; /* 強制准許換行 */
+          white-space: normal !important;
           word-break: break-all !important;
           margin-bottom: 18px !important;
           display: block !important;
           width: 100% !important;
       }
 
-      /* 4. 英文字級微調 */
-      .hero-eyebrow {
-          font-size: 0.72rem !important;
-          letter-spacing: 0.12em !important;
-          margin-bottom: 12px !important;
-      }
-
-      /* 5. 修正「帳篷 / Truss / 桌椅 / 舞台」按鈕膠囊 */
-      .hero-desc {
-          font-size: 0.78rem !important;
-          padding: 8px 16px !important;
-          white-space: normal !important; /* 空間不夠時允許在膠囊內換行 */
+      /* 5. 小項目微調 */
+      .hero-eyebrow { font-size: 0.72rem !important; letter-spacing: 0.12em !important; margin-bottom: 12px !important; }
+      .hero-desc { 
+          font-size: 0.78rem !important; 
+          padding: 8px 16px !important; 
+          white-space: normal !important; 
           display: inline-flex !important;
           text-align: center !important;
-          max-width: 100% !important;
           line-height: 1.4 !important;
       }
     }
