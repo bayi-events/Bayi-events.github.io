@@ -125,15 +125,10 @@
     }
     @media (max-width: 768px){
       .scrolling-ticker-wrapper { display: none !important; }
-      
-      /* 強制讓分頁內容在手機版顯示，並移除 Bootstrap 的隱藏屬性 */
-      .tab-pane { display: block !important; opacity: 1 !important; }
-      .tab-content > .tab-pane { display: none; }
-      .tab-content > .tab-pane.active { display: block !important; }
-      
       .gallery-wrap { display: flex !important; flex-direction: column !important; gap: 18px !important; }
-      .gallery-tile { width: 100% !important; min-height: 250px !important; display: block !important; margin-bottom: 15px !important; }
-      .custom-tabs .nav-link { width: 100% !important; text-align: center !important; margin-bottom: 5px !important; }
+      .gallery-tile, .gallery-tile.large, .gallery-tile.tall { grid-column: span 12 !important; width: 100% !important; min-height: 250px !important; display: block !important; }
+      .custom-tabs .nav-link { width: 100% !important; text-align: center !important; }
+      .carousel-caption-custom { width: 88% !important; padding-left: 30px !important; text-align: left !important; left: 50% !important; transform: translateX(-50%) !important; }
     }
   </style>
 </head>
@@ -550,47 +545,42 @@
       document.getElementById('lightboxImage').src = '';
     }
 
-  document.addEventListener('DOMContentLoaded', () => {
-  // 1. 先執行渲染 (移到最前面)
-  renderGalleryTabs();
+    document.addEventListener('DOMContentLoaded', () => {
+      // 確保一開始就正確渲染照片
+      renderGalleryTabs();
 
-  // 2. [關鍵] 手動強制初始化所有 Bootstrap 的 Tab 元件
-  var triggerTabList = [].slice.call(document.querySelectorAll('#gallery-tabs button'));
-  triggerTabList.forEach(function (triggerEl) {
-    var tabTrigger = new bootstrap.Tab(triggerEl);
-    triggerEl.addEventListener('click', function (event) {
-      event.preventDefault();
-      tabTrigger.show();
+      // 滾動觸發動畫
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
+      }, { threshold: 0.14 });
+      document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+      // 綁定燈箱關閉事件
+      const closeBtn = document.querySelector('.custom-modal-close');
+      const lightbox = document.getElementById('imgLightbox');
+      closeBtn?.addEventListener('click', closeLightbox);
+      lightbox?.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
     });
-  });
 
-  // 3. 滾動觸發動畫觀察器
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { 
-      if (entry.isIntersecting) entry.target.classList.add('in-view'); 
+    // 載入畫面保護
+    const MIN_LOAD_TIME = 2600; 
+    const startTime = Date.now();
+    window.addEventListener('load', () => {
+      const elapsed = Date.now() - startTime;
+      const delay = Math.max(0, MIN_LOAD_TIME - elapsed);
+      setTimeout(() => {
+        const loader = document.getElementById('loading-screen');
+        if (loader) {
+          loader.style.opacity = '0';
+          loader.style.transform = 'scale(.99)';
+          setTimeout(() => {
+            loader.style.display = 'none';
+            document.body.classList.remove('is-loading');
+          }, 650);
+        }
+      }, delay);
     });
-  }, { threshold: 0.14 });
-  
-  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-
-  // 4. 燈箱事件綁定... (維持原樣)
-});
-
-  // 4. 載入畫面保護 (放在 DOMContentLoaded 外面)
-  const MIN_LOAD_TIME = 2600; 
-  const startTime = Date.now();
-  window.addEventListener('load', () => {
-    const elapsed = Date.now() - startTime;
-    const delay = Math.max(0, MIN_LOAD_TIME - elapsed);
-    setTimeout(() => {
-      const loader = document.getElementById('loading-screen');
-      if (loader) {
-        loader.style.opacity = '0';
-        loader.style.transform = 'scale(.99)';
-        setTimeout(() => {
-          loader.style.display = 'none';
-          document.body.classList.remove('is-loading');
-        }, 650);
-      }
-    }, delay);
-  });
+  </script>
+</body>
+</html>
