@@ -196,9 +196,90 @@
     .album-img-wrapper::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.05) 35%, rgba(0,0,0,.45) 100%);pointer-events:none;}
 
     /* 活動跑馬燈 (新增功能) */
-    .scrolling-ticker-wrapper { position: fixed; right: 0; top: 25%; width: 150px; height: 50vh; overflow: hidden; z-index: 999; pointer-events: none; }
-    .scrolling-ticker { animation: scrollUp 25s linear infinite; }
-    .ticker-item { padding: 12px 15px; font-size: 0.8rem; color: var(--brand-red); font-weight: 700; text-align: right; border-right: 2px solid var(--brand-red); background: rgba(255,255,255,0.7); margin-bottom: 5px; }
+  /* ==========================================
+       右側近期活動拉拉門 (側邊抽屜設計)
+       ========================================== */
+    .side-ticker-panel {
+        position: fixed;
+        right: 0;
+        top: 25%; /* 保持原本的高度 */
+        z-index: 9999;
+        display: flex;
+        align-items: flex-start;
+        transform: translateX(0); /* 展開位置 */
+        transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* 收合時：往右推，把內容藏起來，只留拉環在外面 */
+    .side-ticker-panel.closed {
+        transform: translateX(100%); 
+    }
+
+    /* 凸在旁邊的拉環按鈕 */
+    .side-ticker-btn {
+        position: absolute;
+        left: -42px; /* 往左凸出去 */
+        top: 0;
+        width: 42px;
+        background: var(--brand-red); /* 你的品牌紅 */
+        color: #fff;
+        border: none;
+        padding: 16px 8px;
+        border-radius: 12px 0 0 12px; /* 左邊圓角 */
+        cursor: pointer;
+        box-shadow: -4px 4px 15px rgba(0,0,0,0.15);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        font-weight: 700;
+        font-size: 0.9rem;
+    }
+
+    /* 箭頭旋轉動畫 */
+    .side-ticker-btn .toggle-icon {
+        font-size: 1.2rem;
+        transition: transform 0.4s ease;
+    }
+    /* 展開狀態下，箭頭轉向右邊 */
+    .side-ticker-panel:not(.closed) .toggle-icon {
+        transform: rotate(180deg); 
+    }
+
+    /* 滑出來的內容本體 */
+    .side-ticker-content {
+        width: 160px; /* 面板寬度 */
+        height: 35vh; /* 面板高度 */
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-left: 2px solid var(--brand-red);
+        box-shadow: -5px 10px 25px rgba(0,0,0,0.1);
+        overflow: hidden; /* 把跑出界面的字切掉 */
+    }
+
+    /* 跑馬燈動畫 */
+    .scrolling-ticker {
+        animation: scrollUp 15s linear infinite;
+    }
+    /* 💡 新增：滑鼠移上去時暫停滾動，方便閱讀！ */
+    .side-ticker-content:hover .scrolling-ticker {
+        animation-play-state: paused;
+    }
+
+    .ticker-item {
+        padding: 14px 15px;
+        font-size: 0.85rem;
+        color: var(--brand-red);
+        font-weight: 700;
+        text-align: right;
+        border-bottom: 1px solid rgba(0,0,0,0.06); /* 分隔線改在下方 */
+        margin-bottom: 0;
+    }
+
+    /* 手機版設定：如果手機上覺得太擠，可以讓它隱藏；如果要保留，把這三行刪掉即可 */
+    @media (max-width: 768px) {
+        .side-ticker-panel { display: none !important; }
+    }
     @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
     /* 單圖放大的燈箱 */
@@ -412,11 +493,22 @@
   </div>
 </nav>
 
-    <div class="scrolling-ticker-wrapper">
-  <div class="scrolling-ticker">
-    <div class="ticker-item">2026 鴻海股東會</div>
-    <div class="ticker-item">2025 桃園機場第三航廈上樑</div>
+    <div id="sideTickerPanel" class="side-ticker-panel closed">
+  
+  <button id="sideTickerBtn" class="side-ticker-btn" title="近期活動">
+    <i class="bi bi-chevron-left toggle-icon"></i>
+    <span style="writing-mode: vertical-lr; letter-spacing: 2px;">近期活動</span>
+  </button>
+  
+  <div class="side-ticker-content">
+    <div class="scrolling-ticker">
+      <div class="ticker-item">2026 鴻海股東會</div>
+      <div class="ticker-item">2025 桃園機場第三航廈上樑</div>
+      <div class="ticker-item">2026 鴻海股東會</div>
+      <div class="ticker-item">2025 桃園機場第三航廈上樑</div>
+    </div>
   </div>
+  
 </div>
     
   <main id="home">
@@ -734,7 +826,25 @@
             },
         },
     }); // 👈 記得 Fancybox 的設定要在這裡完整關閉
+      
+// ==========================================
+    //  修復：點擊空白處自動收合手機版選單 (漢堡選單)
+    // ==========================================
+    document.addEventListener('click', (e) => {
+        // 抓取你的漢堡按鈕與選單區塊 (這裡假設你使用的是 Bootstrap 預設的 class)
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const navbarCollapse = document.querySelector('.navbar-collapse');
 
+        // 確認選單存在，且目前是「展開」的狀態 (帶有 'show' class)
+        if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+            // 如果使用者點擊的地方，不是「選單裡面」，也不是「漢堡按鈕本身」
+            if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target)) {
+                // 模擬點擊漢堡按鈕，讓它自己收回去
+                navbarToggler.click(); 
+            }
+        }
+    });
+      
     // 3. 綁定 Hero 區塊的展開/收合按鈕 (獨立放在 Fancybox 下方)
     const toggleBtn = document.getElementById('heroToggleBtn');
     const heroSection = document.getElementById('heroCarousel');
@@ -750,6 +860,17 @@
                 icon.classList.remove('bi-arrows-angle-contract');
                 icon.classList.add('bi-arrows-angle-expand');
             }
+        });
+    }
+      // ==========================================
+    //  綁定側邊近期活動拉門
+    // ==========================================
+    const sideTickerBtn = document.getElementById('sideTickerBtn');
+    const sideTickerPanel = document.getElementById('sideTickerPanel');
+
+    if (sideTickerBtn && sideTickerPanel) {
+        sideTickerBtn.addEventListener('click', () => {
+            sideTickerPanel.classList.toggle('closed');
         });
     }
 
