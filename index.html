@@ -431,25 +431,16 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+
   <script>
+    // 阻擋頁面重整時自動跳轉位置
     if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
     window.scrollTo(0, 0);
 
-    Fancybox.bind('[data-fancybox]', {
-        groupAll: false,
-        Toolbar: {
-            display: {
-                left: ["infobar"],
-                middle: ["zoomIn", "zoomOut", "toggle1to1"],
-                right: ["slideshow", "thumbs", "close"],
-            },
-        },
-    });
-
     // ==========================================
-    // 原始圖庫資料
+    // 原始圖庫資料 (統一在這裡宣告一次即可)
     // ==========================================
-
     const photoLibrary = {
         "3rs5P7dS": { title: "57週年校慶", images: ["https://i.postimg.cc/3rs5P7dS/image.jpg"] },
         "P5dcjqhX": { title: "北投捷運站市集", images: ["https://i.postimg.cc/P5dcjqhX/image.jpg","https://i.postimg.cc/yYm5tRqx/image.jpg","https://i.postimg.cc/3x36Tw7r/image.jpg","https://i.postimg.cc/x1972dYT/image.jpg","https://i.postimg.cc/MpZsLrbm/image.jpg"] },
@@ -527,139 +518,101 @@
         "GmGmNT0x": { title: "星級規格 Truss 桁架結構", images: ["https://i.postimg.cc/GmGmNT0x/xin-chuang-zhang-rong-gui-guan.jpg"] }
     };
 
-    let photos_Tables = ["mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "153w1x21", "GhJmRp8C", "853xj94F", "fLFnWQCg", "bvt1VQM6", "SN18yTbL", "8ctvfwJ8", "KzhB61hF"];
-    let photos_Truss = ["3rs5P7dS", "XYgRGCxL", "x1jsZFy6", "5yMgSP24", "fTgGBXgN", "JzdQ27hr", "Nfs7G29h", "fLZJ1qm9", "c1XrZPWm", "VLh6QsvP", "76dvwX0p", "XvBct8NW", "yN9zD1bQ", "GmGmNT0x", "9XsmprmS"];
-    let photos_Tent = ["P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "MKpVJkNW", "qM1cNBy1", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "NMmRQjGX", "0jJD2GYQ", "dtjpqG5F", "3J58dMms", "nr6Shx0S", "fbfb7Td9", "g0f2PShz", "kgXrChnT", "SRbz8vfm", "9QhQWz1L", "NM1sXcNv", "0jyxYx50", "Y23YP2XZ", "TYHPBCJp", "YqjXpCQS", "VNw9PWZH", "hPxFC32W", "nc4xVc6t", "qRynD3Zy" ,"KYv3rWnZ" ,"yx7MkFq1" , "5ytshpdf" ,"xdhHfRzD" ,"XqxpC7t5" ,"N069tcQh" ,"prJmg9n5" ,"brVhD870"];
-    let photos_Stage = ["fLvbNBgy", "Jhf6FcS6", "fLFnWQ5b", "ZR37z7Np", "NGC9wsgK", "KYjXfmG1", "vB2rVskQ", "KjwYXZpQ"];
-    let photos_Decor = ["vBx2zgLF"];
-    
-    // 1. 初始化 Fancybox (啟用相簿與工具列)
-    Fancybox.bind('[data-fancybox]', {
-      Hash: false,
-      Toolbar: {
-        display: {
-          left: ["infobar"],
-          middle: ["zoomIn", "zoomOut", "toggle1to1"],
-          right: ["slideshow", "thumbs", "close"],
-        },
-      },
-    });
+    // ==========================================
+    // 陣列資料 (使用 const 宣告，且只留這份有資料的)
+    // ==========================================
+    const photos_Tables = ["mk9LxTzv", "kGFc1xVC", "MK551m2x", "NMvm3Kvg", "T29PC76C", "153w1x21", "GhJmRp8C", "853xj94F", "fLFnWQCg", "bvt1VQM6", "SN18yTbL", "8ctvfwJ8", "KzhB61hF"];
+    const photos_Truss = ["3rs5P7dS", "XYgRGCxL", "x1jsZFy6", "5yMgSP24", "fTgGBXgN", "JzdQ27hr", "Nfs7G29h", "fLZJ1qm9", "c1XrZPWm", "VLh6QsvP", "76dvwX0p", "XvBct8NW", "yN9zD1bQ", "GmGmNT0x", "9XsmprmS"];
+    const photos_Tent = ["P5dcjqhX", "RhzdLPZN", "VL8ZqNSy", "Kv2pPY16", "L6WTrsVV", "MKpVJkNW", "qM1cNBy1", "76r0F5rH", "PJtZq0qV", "YqCYBcZG", "NMmRQjGX", "0jJD2GYQ", "dtjpqG5F", "3J58dMms", "nr6Shx0S", "fbfb7Td9", "g0f2PShz", "kgXrChnT", "SRbz8vfm", "9QhQWz1L", "NM1sXcNv", "0jyxYx50", "Y23YP2XZ", "TYHPBCJp", "YqjXpCQS", "VNw9PWZH", "hPxFC32W", "nc4xVc6t", "qRynD3Zy" ,"KYv3rWnZ" ,"yx7MkFq1" , "5ytshpdf" ,"xdhHfRzD" ,"XqxpC7t5" ,"N069tcQh" ,"prJmg9n5" ,"brVhD870"];
+    const photos_Stage = ["fLvbNBgy", "Jhf6FcS6", "fLFnWQ5b", "ZR37z7Np", "NGC9wsgK", "KYjXfmG1", "vB2rVskQ", "KjwYXZpQ"];
+    const photos_Decor = ["vBx2zgLF"];
 
-    // 2. 你的資料庫 (請確保這裡的資料與你原本定義的一樣)
-    const photoLibrary = {
-        "P5dcjqhX": { title: "北投捷運站市集", images: ["https://i.postimg.cc/P5dcjqhX/image.jpg","https://i.postimg.cc/yYm5tRqx/image.jpg","https://i.postimg.cc/3x36Tw7r/image.jpg","https://i.postimg.cc/x1972dYT/image.jpg","https://i.postimg.cc/MpZsLrbm/image.jpg"] },
-        // ... (把你原本的其他專案資料填在這裡)
-    };
+    // ==========================================
+    // 渲染圖庫網格的核心函數 (整併成一個，修復了 categories 未定義的問題)
+    // ==========================================
+    function renderGalleryTabs() {
+        const categories = [
+            { id: 'tab-Tent', keys: photos_Tent },
+            { id: 'tab-Truss', keys: photos_Truss },
+            { id: 'tab-Stage', keys: photos_Stage },
+            { id: 'tab-Tables', keys: photos_Tables },
+            { id: 'tab-Decor', keys: photos_Decor }
+        ];
 
-    let photos_Tent = ["P5dcjqhX"]; // 你的陣列清單
-    let photos_Truss = []; // 你的陣列清單
-    let photos_Stage = []; 
-    let photos_Tables = [];
-    let photos_Decor = [];
+        categories.forEach(cat => {
+            const container = document.getElementById(cat.id);
+            if (!container) return;
+            
+            let html = '<div class="gallery-wrap">';
+            
+            cat.keys.forEach(key => {
+                const project = photoLibrary[key];
+                if (!project) return;
+                
+                let coverImg = project.images[0];
+                let photoCount = project.images.length;
+                let badgeHtml = photoCount > 1 ? `<div class="album-badge"><i class="bi bi-images"></i> +${photoCount - 1}</div>` : '';
 
-    // 3. 取得「群組化」的專案資料
-    function getProjectData(keysArray) {
-      return keysArray.map(key => {
-        if (photoLibrary[key] && photoLibrary[key].images) {
-          return { id: key, title: photoLibrary[key].title, images: photoLibrary[key].images };
-        }
-        return null;
-      }).filter(item => item !== null && item.images.length > 0);
+                // 建立可視的封面圖，並加入 Fancybox 屬性
+                html += `
+                <a href="${coverImg}" data-fancybox="gallery-${key}" data-caption="${project.title}" class="gallery-tile">
+                    <div class="album-img-wrapper" style="width:100%; height:100%; position:relative;">
+                        <span class="photo-tag">${project.title}</span>
+                        ${badgeHtml}
+                        <img src="${coverImg}" alt="${project.title}" loading="lazy" />
+                    </div>
+                </a>
+                `;
+
+                // 將該相簿剩下的圖加入隱藏連結，讓 Fancybox 讀取
+                for(let i = 1; i < photoCount; i++) {
+                    html += `<a href="${project.images[i]}" data-fancybox="gallery-${key}" data-caption="${project.title} (${i+1}/${photoCount})" style="display:none;"></a>`;
+                }
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        });
     }
 
-    // 4. 渲染圖庫網格
-   function renderGalleryTabs() {
-  const categories = [
-    { id: 'tab-Tent', keys: photos_Tent },
-    { id: 'tab-Truss', keys: photos_Truss },
-    { id: 'tab-Stage', keys: photos_Stage },
-    { id: 'tab-Tables', keys: photos_Tables },
-    { id: 'tab-Decor', keys: photos_Decor }
-  ];
+    // ==========================================
+    // 頁面載入完成後執行的主流程
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. 先把圖庫的 HTML 渲染出來
+        renderGalleryTabs();
 
-  categories.forEach(cat => {
-    const container = document.getElementById(cat.id);
-    if (!container) return;
-    
-    let html = '<div class="gallery-wrap">';
-    
-    cat.keys.forEach(key => {
-      const project = photoLibrary[key];
-      if (!project) return;
-      
-      let coverImg = project.images[0];
-      let photoCount = project.images.length;
-      let badgeHtml = photoCount > 1 ? `<div class="album-badge"><i class="bi bi-images"></i> +${photoCount - 1}</div>` : '';
+        // 2. 圖庫渲染完成後，綁定 Fancybox (統一在這裡綁定一次即可)
+        Fancybox.bind('[data-fancybox]', {
+            groupAll: false,
+            Hash: false,
+            Toolbar: {
+                display: {
+                    left: ["infobar"],
+                    middle: ["zoomIn", "zoomOut", "toggle1to1"],
+                    right: ["slideshow", "thumbs", "close"],
+                },
+            },
+        });
 
-      // 建立可視的封面圖，並加入 Fancybox 屬性
-      html += `
-        <a href="${coverImg}" data-fancybox="gallery-${key}" data-caption="${project.title}" class="gallery-tile">
-            <div class="album-img-wrapper" style="width:100%; height:100%; position:relative;">
-                <span class="photo-tag">${project.title}</span>
-                ${badgeHtml}
-                <img src="${coverImg}" alt="${project.title}" loading="lazy" />
-            </div>
-        </a>
-      `;
-
-      // 將該相簿剩下的圖加入隱藏連結，讓 Fancybox 讀取
-      for(let i = 1; i < photoCount; i++) {
-        html += `<a href="${project.images[i]}" data-fancybox="gallery-${key}" data-caption="${project.title} (${i+1}/${photoCount})" style="display:none;"></a>`;
-      }
-    });
-    
-    html += '</div>';
-    container.innerHTML = html;
-  });
-}
-    // 5. 頁面載入後的執行邏輯
-  function renderGalleryTabs() {
-    categories.forEach(cat => {
-      const container = document.getElementById(cat.id);
-      if (!container) return;
-      
-      let html = '<div class="gallery-wrap">';
-      cat.keys.forEach(key => {
-        const project = photoLibrary[key];
-        if (!project) return;
+        // 3. 設定滾動動畫觀察器
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) entry.target.classList.add('in-view'); 
+            });
+        }, { threshold: 0.14 });
+        document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
         
-        let coverImg = project.images[0];
-        let photoCount = project.images.length;
-        let badgeHtml = photoCount > 1 ? `<div class="album-badge"><i class="bi bi-images"></i> +${photoCount - 1}</div>` : '';
-
-        html += `
-          <a href="${coverImg}" data-fancybox="gallery-${key}" data-caption="${project.title}" class="gallery-tile">
-            <div class="album-img-wrapper">
-              <span class="photo-tag">${project.title}</span>
-              ${badgeHtml}
-              <img src="${coverImg}" alt="${project.title}" loading="lazy" />
-            </div>
-          </a>
-        `;
-        // 加入相簿內其餘照片 (隱藏連結供 Fancybox 讀取)
-        for(let i = 1; i < photoCount; i++) {
-          html += `<a href="${project.images[i]}" data-fancybox="gallery-${key}" data-caption="${project.title} (${i+1}/${photoCount})" style="display:none;"></a>`;
-        }
-      });
-      html += '</div>';
-      container.innerHTML = html;
+        // 4. 移除 Loading 畫面
+        setTimeout(() => { 
+            document.body.classList.remove('is-loading'); 
+            document.getElementById('loading-screen').style.opacity = '0'; 
+            // 延遲後將其隱藏以防擋住點擊
+            setTimeout(() => {
+                document.getElementById('loading-screen').style.display = 'none';
+            }, 650);
+        }, 1500);
     });
-  }
-
-  // 5. 啟動與觀察器
-  document.addEventListener('DOMContentLoaded', () => {
-    renderGalleryTabs();
-    Fancybox.bind('[data-fancybox]', { Hash: false });
-
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('in-view'); });
-    }, { threshold: 0.14 });
-    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-    
-    // 移除 Loading 畫面
-    setTimeout(() => { document.body.classList.remove('is-loading'); document.getElementById('loading-screen').style.opacity = '0'; }, 1500);
-  });
-</script>
-    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  </script>
 </body>
 </html>
