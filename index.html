@@ -249,9 +249,14 @@
       .gallery-tile, .gallery-tile.large, .gallery-tile.tall{grid-column:span 6}
       .story-grid{grid-template-columns:1fr}
     }
-    @media (max-width: 768px){
-  .scrolling-ticker-wrapper { display: none !important; }
-  
+    @media (max-width: 768px) {
+        .hero-box-left {
+            width: 90%;
+            left: 5%;
+            /* 👇 關鍵修改：讓說明框改從「上方」往下算，徹底避開底部標題 */
+            top: 22%; 
+            bottom: auto; 
+        }
   /* --- 修正 1：強制顯示進場動畫 (保留剛剛的修復) --- */
   .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
   
@@ -289,7 +294,26 @@
     grid-column: span 2 !important; 
     height: 220px !important; 
   }
-  
+  /* 手機版排版優化：安全錯開上下空間 *
+        
+        .hero-box-right {
+            width: 90%;
+            left: 5%; /* 讓它也靠左對齊，手機上看起來比較整齊 */
+            right: auto;
+            bottom: 110px; /* 留空間給最底部的紅色展開按鈕 */
+            text-align: left;
+        }
+        
+        .hero-box-right h1 {
+            text-align: left !important;
+            /* 手機版大標題可以稍微縮小一點點，避免壓迫感 */
+            font-size: clamp(2.2rem, 8vw, 3rem) !important; 
+        }
+        
+        .hero-box-right .hero-eyebrow {
+            justify-content: flex-start;
+        }
+    }
   .carousel-caption-custom { width: 88% !important; padding-left: 30px !important; text-align: left !important; left: 50% !important; transform: translateX(-50%) !important; }
   .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
 }
