@@ -86,32 +86,26 @@
     }
 
     /* 3. 畫面中央下方的展開/收合箭頭按鈕 */
-    .hero-toggle-btn {
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        z-index: 50;
-        background: rgba(10, 10, 12, 0.4);
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #fff;
-        border-radius: 50%;
-        width: 54px;
-        height: 54px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        cursor: pointer;
-        backdrop-filter: blur(8px);
-        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-    }
-    .hero-toggle-btn:hover {
-        background: var(--brand-red);
-        border-color: var(--brand-red);
-        transform: translateX(-50%) scale(1.1);
-    }
+    /* 修改按鈕位置到左上角 */
+.hero-toggle-btn-top {
+    position: absolute;
+    top: 80px; /* 避開 navbar */
+    left: 20px;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s ease;
+}
+.hero-toggle-btn-top:hover { background: var(--brand-red); }
 
     /* 4. 左側與右側的資訊區塊排版 (預設隱藏並縮小) */
     .hero-box-left {
@@ -278,126 +272,97 @@
 
     /* 手機版設定：如果手機上覺得太擠，可以讓它隱藏；如果要保留，把這三行刪掉即可 */
     @media (max-width: 768px) {
-        .side-ticker-panel { display: none !important; }
-    }
-    @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
-
-    /* 單圖放大的燈箱 */
-    #imgLightbox{position:fixed;inset:0;background:rgba(10,10,12,.98);display:none;align-items:center;justify-content:center;z-index:100000}
-    .lightbox-content{display:flex;width:min(92vw,1500px);height:min(88vh,900px);background:#141416;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 30px 60px rgba(0,0,0,.5)}
-    .lightbox-image-side{flex:1;display:flex;align-items:center;justify-content:center;background:#000;position:relative}
-    .lightbox-image-side img{max-width:100%;max-height:100%;object-fit:contain}
-    .lightbox-info-side{flex:0 0 380px;padding:40px 30px;background:#1c1c1e;color:#f5f5f7;overflow-y:auto;border-left:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
-    .custom-modal-close{position:absolute!important;top:20px!important;right:20px!important;z-index:1090!important;background-color:rgba(255,255,255,.1)!important;border:none!important;border-radius:50%!important;width:40px!important;height:40px!important;display:flex!important;align-items:center;justify-content:center;color:#fff!important; cursor: pointer; transition:var(--transition);}
-    .custom-modal-close::before{content:'✕';font-size:16px;font-weight:700}
-    .custom-modal-close:hover{background-color:var(--brand-red)!important;transform:rotate(90deg);}
-
-    .social-section{background:linear-gradient(135deg, #420F16 0%, #220508 100%)!important;color:#fff!important;text-align:center;padding:5.5rem 0;}
-    .floating-line-btn{position:fixed;bottom:30px;right:30px;z-index:9999;background:linear-gradient(135deg, #06C755 0%, #05B34B 100%);color:#fff!important;padding:14px 22px;border-radius:999px;text-decoration:none!important;display:flex;align-items:center;font-weight:700;box-shadow:0 10px 30px rgba(6,199,85,.3);transition:var(--transition)}
-    .floating-line-btn:hover{transform:scale(1.05) translateY(-3px)!important;}
-
-    .fade-up{opacity:0;transform:translateY(28px);transition:opacity .9s ease, transform .9s ease}
-    .fade-up.in-view{opacity:1;transform:translateY(0)}
-    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
-    .stat-card{padding:20px 18px;border-radius:20px;background:rgba(255,255,255,.72);border:1px solid rgba(0,0,0,.06)}
-    
-    @keyframes masterEntrance{0%{opacity:0;transform:scale(1.1) translateY(12px)}100%{opacity:1;transform:scale(1) translateY(0)}}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-.album-badge {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    background: rgba(139, 38, 53, 0.9); /* 你的品牌紅 */
-    color: #fff;
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 999px;
-    z-index: 5;
-    backdrop-filter: blur(4px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-    /* 社群按鈕質感動畫 */
-    .social-icon-item { display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; color: rgba(255, 255, 255, 0.8) !important; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 50%; font-size: 1.35rem; text-decoration: none !important; transition: all 0.4s cubic-bezier(.22, 1, .36, 1); }
-    .social-icon-item:hover { color: #fff !important; background: var(--brand-red, #8B2635); border-color: var(--brand-red, #8B2635); transform: translateY(-5px) scale(1.05); box-shadow: 0 10px 25px rgba(139, 38, 53, 0.4); }
-
-    /* 響應式優化 */
-    @media (max-width: 1200px){
-      .gallery-tile, .gallery-tile.large, .gallery-tile.tall{grid-column:span 6}
-      .story-grid{grid-template-columns:1fr}
-    }
-    @media (max-width: 768px) {
+        /* 1. Hero 區塊的優化 */
         .hero-box-left {
             width: 90%;
             left: 5%;
-            /* 👇 關鍵修改：讓說明框改從「上方」往下算，徹底避開底部標題 */
             top: 22%; 
             bottom: auto; 
         }
-  /* --- 修正 1：強制顯示進場動畫 (保留剛剛的修復) --- */
-  .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
-  
-  /* --- 修正 2：讓頁籤可以左右滑動，不要疊成一大坨 --- */
-  .custom-tabs { 
-    display: flex; 
-    flex-wrap: nowrap !important; /* 強制不換行 */
-    overflow-x: auto; /* 超出螢幕時出現滾動條 */
-    -webkit-overflow-scrolling: touch; /* iOS 滑動順暢設定 */
-    padding-bottom: 10px; /* 留一點空間給捲軸 */
-    justify-content: flex-start !important;
-  }
-  .custom-tabs .nav-link { 
-    width: auto !important; /* 解除 100% 寬度限制 */
-    white-space: nowrap; /* 文字不換行 */
-    flex-shrink: 0; /* 防止按鈕被擠壓變形 */
-  }
-
-  /* --- 修正 3：相片區塊改為活潑的「兩欄式網格」 --- */
-  .gallery-wrap { 
-    display: grid !important; 
-    grid-template-columns: repeat(2, 1fr) !important; /* 手機版切成兩欄 */
-    gap: 12px !important; 
-  }
-  /* 一般照片佔據 1 欄 */
-  .gallery-tile { 
-    width: 100% !important; 
-    height: 180px !important; /* 高度縮小一點，比例比較好看 */
-    grid-column: span 1 !important; 
-    display: block !important;
-    margin-bottom: 0 !important;
-  }
-  /* 如果有特別標註 .large 或 .tall 的照片，讓它佔滿 2 欄，創造視覺變化 */
-  .gallery-tile.large, .gallery-tile.tall { 
-    grid-column: span 2 !important; 
-    height: 220px !important; 
-  }
-  /* 手機版排版優化：安全錯開上下空間 *
         
         .hero-box-right {
             width: 90%;
-            left: 5%; /* 讓它也靠左對齊，手機上看起來比較整齊 */
+            left: 5%;
             right: auto;
-            bottom: 110px; /* 留空間給最底部的紅色展開按鈕 */
+            bottom: 110px;
             text-align: left;
         }
         
         .hero-box-right h1 {
             text-align: left !important;
-            /* 手機版大標題可以稍微縮小一點點，避免壓迫感 */
             font-size: clamp(2.2rem, 8vw, 3rem) !important; 
         }
         
         .hero-box-right .hero-eyebrow {
             justify-content: flex-start;
         }
+
+        /* 2. 近期活動：手機版改為底部固定抽屜 */
+        .side-ticker-panel {
+            top: auto;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            flex-direction: column-reverse;
+            transform: translateY(calc(100% - 50px));
+        }
+
+        .side-ticker-panel:not(.closed) {
+            transform: translateY(0);
+        }
+
+        .side-ticker-btn {
+            position: relative;
+            left: 0;
+            width: 100%;
+            border-radius: 12px 12px 0 0;
+            flex-direction: row;
+            justify-content: center;
+        }
+
+        .side-ticker-content {
+            width: 100%;
+            height: 25vh;
+            border-left: none;
+            border-top: 2px solid var(--brand-red);
+        }
+
+        /* 3. 強制顯示進場動畫 */
+        .fade-up { opacity: 1 !important; transform: none !important; transition: none !important; }
+        
+        /* 4. 頁籤左右滑動 */
+        .custom-tabs { 
+            display: flex; 
+            flex-wrap: nowrap !important; 
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch; 
+            padding-bottom: 10px; 
+            justify-content: flex-start !important;
+        }
+        .custom-tabs .nav-link { 
+            width: auto !important; 
+            white-space: nowrap; 
+            flex-shrink: 0; 
+        }
+
+        /* 5. 相片網格兩欄式 */
+        .gallery-wrap { 
+            display: grid !important; 
+            grid-template-columns: repeat(2, 1fr) !important; 
+            gap: 12px !important; 
+        }
+        .gallery-tile { 
+            width: 100% !important; 
+            height: 180px !important; 
+            grid-column: span 1 !important; 
+        }
+        .gallery-tile.large, .gallery-tile.tall { 
+            grid-column: span 2 !important; 
+            height: 220px !important; 
+        }
+        
+        .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
     }
-  .carousel-caption-custom { width: 88% !important; padding-left: 30px !important; text-align: left !important; left: 50% !important; transform: translateX(-50%) !important; }
-  .stats-row { grid-template-columns: repeat(2, 1fr) !important; }
-}
   </style>
 </head>
   
@@ -513,10 +478,9 @@
     
   <main id="home">
     <section id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
-      <button id="heroToggleBtn" class="hero-toggle-btn" title="顯示/隱藏資訊">
-        <i class="bi bi-arrows-angle-expand"></i>
-      </button>
-
+      <button id="heroToggleBtn" class="hero-toggle-btn-top" title="展開資訊">
+    <i class="bi bi-info-circle"></i> </button>
+      
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="hero-bg-layer" style="background-image:url('https://i.postimg.cc/cJ4VQLby/xian-ge-nan-gang-gao-zhong-3mi-hong-bai-jin-chang5.jpg')"></div>
@@ -862,17 +826,24 @@
             }
         });
     }
-      // ==========================================
-    //  綁定側邊近期活動拉門
-    // ==========================================
-    const sideTickerBtn = document.getElementById('sideTickerBtn');
-    const sideTickerPanel = document.getElementById('sideTickerPanel');
+      /
+    // 綁定側邊近期活動拉門的開關邏輯
+const sideTickerBtn = document.getElementById('sideTickerBtn');
+const sideTickerPanel = document.getElementById('sideTickerPanel');
+const tickerIcon = sideTickerBtn.querySelector('.toggle-icon');
 
-    if (sideTickerBtn && sideTickerPanel) {
-        sideTickerBtn.addEventListener('click', () => {
-            sideTickerPanel.classList.toggle('closed');
-        });
-    }
+if (sideTickerBtn && sideTickerPanel) {
+    sideTickerBtn.addEventListener('click', () => {
+        sideTickerPanel.classList.toggle('closed');
+        
+        // 切換圖示方向 (手機版箭頭方向邏輯)
+        if (sideTickerPanel.classList.contains('closed')) {
+            tickerIcon.style.transform = 'rotate(0deg)';
+        } else {
+            tickerIcon.style.transform = window.innerWidth <= 768 ? 'rotate(90deg)' : 'rotate(180deg)';
+        }
+    });
+}
 
     // 4. 設定滾動動畫觀察器
     const io = new IntersectionObserver((entries) => {
