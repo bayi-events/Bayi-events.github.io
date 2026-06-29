@@ -67,7 +67,116 @@
     .story-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:stretch}
     .story-panel{padding:34px;border-radius:24px;background:var(--card-bg);border:1px solid var(--line);box-shadow:var(--shadow)}
     .intro-block h2{font-size:clamp(2rem,3.6vw,3.6rem);line-height:1.05;margin:0 0 14px;font-weight:800}
+/* ==========================================
+       Hero 滿版沉浸式優化 & 一左一右互動開關設計
+       ========================================== */
 
+    /* 1. 恢復原圖色調 (強制隱藏原本的黑色漸層遮罩) */
+    .hero-bg-layer::after {
+        display: none !important;
+    }
+
+    /* 2. 漸進式放大動畫 (創造身歷其境感) */
+    .hero-bg-layer {
+        animation: immersiveZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes immersiveZoom {
+        0% { transform: scale(1); }
+        100% { transform: scale(1.15); }
+    }
+
+    /* 3. 畫面中央下方的展開/收合箭頭按鈕 */
+    .hero-toggle-btn {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        background: rgba(10, 10, 12, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .hero-toggle-btn:hover {
+        background: var(--brand-red);
+        border-color: var(--brand-red);
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    /* 4. 左側與右側的資訊區塊排版 (預設隱藏並縮小) */
+    .hero-box-left {
+        position: absolute;
+        left: 4%;
+        bottom: 100px;
+        z-index: 11;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-40px) scale(0.9);
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        width: min(420px, 42%);
+    }
+
+    .hero-box-right {
+        position: absolute;
+        right: 4%;
+        bottom: 100px;
+        z-index: 11;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(40px) scale(0.9);
+        transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        text-align: right;
+        width: min(500px, 42%);
+    }
+
+    /* 因為移除了黑色遮罩，替文字加上強烈的背後陰影確保閱讀性 */
+    .hero-box-right h1 {
+        text-align: right !important;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.85), 0 0 40px rgba(0,0,0,0.6) !important;
+    }
+    .hero-box-right .hero-eyebrow {
+        justify-content: flex-end;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+    }
+
+    /* 5. 點擊按鈕展開後的狀態 (.hero-expanded) */
+    .hero-expanded .hero-box-left,
+    .hero-expanded .hero-box-right {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(0) scale(1);
+    }
+
+    /* 手機版排版優化：展開時改成安全的上下疊放 */
+    @media (max-width: 768px) {
+        .hero-box-left {
+            width: 90%;
+            left: 5%;
+            bottom: 220px; /* 左說明排在上方 */
+        }
+        .hero-box-right {
+            width: 90%;
+            right: 5%;
+            bottom: 100px; /* 右標題排在下方 */
+            text-align: left;
+        }
+        .hero-box-right h1 {
+            text-align: left !important;
+        }
+        .hero-box-right .hero-eyebrow {
+            justify-content: flex-start;
+        }
+    }
     /* 頁籤設計 */
     .custom-tabs { gap: 10px; margin-bottom: 30px !important; flex-wrap: wrap; }
     .custom-tabs .nav-link { color: var(--text-muted) !important; border-radius: 999px; padding: 12px 26px; font-weight: 700; background: rgba(0,0,0,.04); transition: var(--transition); border: 1px solid transparent; margin: 0; }
@@ -288,18 +397,25 @@
     
   <main id="home">
     <section id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <button id="heroToggleBtn" class="hero-toggle-btn" title="顯示/隱藏資訊">
+        <i class="bi bi-arrows-angle-expand"></i>
+      </button>
+
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="hero-bg-layer" style="background-image:url('https://i.postimg.cc/cJ4VQLby/xian-ge-nan-gang-gao-zhong-3mi-hong-bai-jin-chang5.jpg')"></div>
-          <div class="carousel-caption-custom fade-up in-view">
+          
+          <div class="floating-badge hero-box-left">
+            <div class="title" style="font-weight: 800; margin-bottom: 5px;">Premium Event Structure</div>
+            <div class="sub" style="font-size: 0.9rem; opacity: 0.9;">從帳篷搭建、Truss結構、桌椅佈置，提供更精準、乾淨、沉浸式的現場呈現。</div>
+          </div>
+
+          <div class="hero-box-right">
             <div class="hero-eyebrow">Modern Structure • Event Experience</div>
-            <h1>專業活動佈置</h1>
+            <h1 style="font-size: clamp(2.4rem, 5vw, 4.5rem); font-weight: 800; color: #fff; letter-spacing: 0.05em; margin-bottom: 16px;">專業活動佈置</h1>
             <div class="hero-desc"><span>帳篷 / Truss / 桌椅 / 舞台 </span></div>
           </div>
-          <div class="floating-badge">
-            <div class="title">Premium Event Structure</div>
-            <div class="sub">從帳篷搭建、Truss結構、桌椅佈置，提供更精準、乾淨、沉浸式的現場呈現。</div>
-          </div>
+
         </div>
       </div>
     </section>
@@ -579,40 +695,58 @@
     // 頁面載入完成後執行的主流程
     // ==========================================
     document.addEventListener('DOMContentLoaded', () => {
-        // 1. 先把圖庫的 HTML 渲染出來
-        renderGalleryTabs();
+    // 1. 先把圖庫的 HTML 渲染出來
+    renderGalleryTabs();
 
-        // 2. 圖庫渲染完成後，綁定 Fancybox (統一在這裡綁定一次即可)
-        Fancybox.bind('[data-fancybox]', {
-            groupAll: false,
-            Hash: false,
-            Toolbar: {
-                display: {
-                    left: ["infobar"],
-                    middle: ["zoomIn", "zoomOut", "toggle1to1"],
-                    right: ["slideshow", "thumbs", "close"],
-                },
+    // 2. 圖庫渲染完成後，綁定 Fancybox (統一在這裡綁定一次即可)
+    Fancybox.bind('[data-fancybox]', {
+        groupAll: false,
+        Hash: false,
+        Toolbar: {
+            display: {
+                left: ["infobar"],
+                middle: ["zoomIn", "zoomOut", "toggle1to1"],
+                right: ["slideshow", "thumbs", "close"],
             },
-        });
+        },
+    }); // 👈 記得 Fancybox 的設定要在這裡完整關閉
 
-        // 3. 設定滾動動畫觀察器
-        const io = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { 
-                if (entry.isIntersecting) entry.target.classList.add('in-view'); 
-            });
-        }, { threshold: 0.14 });
-        document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-        
-        // 4. 移除 Loading 畫面
-        setTimeout(() => { 
-            document.body.classList.remove('is-loading'); 
-            document.getElementById('loading-screen').style.opacity = '0'; 
-            // 延遲後將其隱藏以防擋住點擊
-            setTimeout(() => {
-                document.getElementById('loading-screen').style.display = 'none';
-            }, 650);
-        }, 1500);
-    });
+    // 3. 綁定 Hero 區塊的展開/收合按鈕 (獨立放在 Fancybox 下方)
+    const toggleBtn = document.getElementById('heroToggleBtn');
+    const heroSection = document.getElementById('heroCarousel');
+    if (toggleBtn && heroSection) {
+        toggleBtn.addEventListener('click', () => {
+            heroSection.classList.toggle('hero-expanded');
+            const icon = toggleBtn.querySelector('i');
+            // 切換箭頭圖示 (展開 / 收合)
+            if (heroSection.classList.contains('hero-expanded')) {
+                icon.classList.remove('bi-arrows-angle-expand');
+                icon.classList.add('bi-arrows-angle-contract');
+            } else {
+                icon.classList.remove('bi-arrows-angle-contract');
+                icon.classList.add('bi-arrows-angle-expand');
+            }
+        });
+    }
+
+    // 4. 設定滾動動畫觀察器
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) entry.target.classList.add('in-view'); 
+        });
+    }, { threshold: 0.14 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+    
+    // 5. 移除 Loading 畫面
+    setTimeout(() => { 
+        document.body.classList.remove('is-loading'); 
+        document.getElementById('loading-screen').style.opacity = '0'; 
+        // 延遲後將其隱藏以防擋住點擊
+        setTimeout(() => {
+            document.getElementById('loading-screen').style.display = 'none';
+        }, 650);
+    }, 1500);
+});
   </script>
 </body>
 </html>
