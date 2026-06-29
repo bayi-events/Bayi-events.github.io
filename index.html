@@ -137,7 +137,36 @@
         visibility: visible;
         transform: translateX(0) scale(1);
     }
-
+/* ==========================================
+       Key Facts 數據區塊專屬設計
+       ========================================== */
+    .stats-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 讓四個項目變成 2x2 的田字網格 */
+        gap: 28px 16px; /* 上下與左右的間距 */
+        margin-top: 24px;
+    }
+    
+    .stat-card {
+        display: flex;
+        flex-direction: column;
+        gap: 8px; /* 數字和文字之間的距離 */
+    }
+    
+    .stat-card .num {
+        font-size: 2.8rem; /* 數字放大，增強視覺張力 */
+        font-weight: 800; 
+        color: var(--brand-red); /* 套用你的品牌紅色 */
+        line-height: 1;
+        letter-spacing: -0.02em;
+    }
+    
+    .stat-card .label {
+        font-size: 0.95rem;
+        color: var(--text-muted); /* 使用較柔和的次要文字顏色 */
+        font-weight: 600;
+        line-height: 1.5;
+    }
     @media (max-width: 768px) {
         .hero-box-left { width: 90%; left: 5%; bottom: 220px; }
         .hero-box-right { width: 90%; right: 5%; bottom: 100px; text-align: left; }
