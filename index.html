@@ -771,14 +771,11 @@
         });
     }
 
-    // ==========================================
-    // 頁面載入完成後執行的主流程
-    // ==========================================
-    document.addEventListener('DOMContentLoaded', () => {
+   document.addEventListener('DOMContentLoaded', () => {
     // 1. 先把圖庫的 HTML 渲染出來
     renderGalleryTabs();
 
-    // 2. 圖庫渲染完成後，綁定 Fancybox (統一在這裡綁定一次即可)
+    // 2. 圖庫渲染完成後，綁定 Fancybox
     Fancybox.bind('[data-fancybox]', {
         groupAll: false,
         Hash: false,
@@ -789,34 +786,26 @@
                 right: ["slideshow", "thumbs", "close"],
             },
         },
-    }); // 👈 記得 Fancybox 的設定要在這裡完整關閉
-      
-// ==========================================
-    //  修復：點擊空白處自動收合手機版選單 (漢堡選單)
-    // ==========================================
+    });
+
+    // 3. 修復：點擊空白處自動收合手機版選單
     document.addEventListener('click', (e) => {
-        // 抓取你的漢堡按鈕與選單區塊 (這裡假設你使用的是 Bootstrap 預設的 class)
         const navbarToggler = document.querySelector('.navbar-toggler');
         const navbarCollapse = document.querySelector('.navbar-collapse');
-
-        // 確認選單存在，且目前是「展開」的狀態 (帶有 'show' class)
         if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-            // 如果使用者點擊的地方，不是「選單裡面」，也不是「漢堡按鈕本身」
             if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target)) {
-                // 模擬點擊漢堡按鈕，讓它自己收回去
                 navbarToggler.click(); 
             }
         }
     });
-      
-    // 3. 綁定 Hero 區塊的展開/收合按鈕 (獨立放在 Fancybox 下方)
+
+    // 4. 綁定 Hero 區塊的展開/收合按鈕
     const toggleBtn = document.getElementById('heroToggleBtn');
     const heroSection = document.getElementById('heroCarousel');
     if (toggleBtn && heroSection) {
         toggleBtn.addEventListener('click', () => {
             heroSection.classList.toggle('hero-expanded');
             const icon = toggleBtn.querySelector('i');
-            // 切換箭頭圖示 (展開 / 收合)
             if (heroSection.classList.contains('hero-expanded')) {
                 icon.classList.remove('bi-arrows-angle-expand');
                 icon.classList.add('bi-arrows-angle-contract');
@@ -826,41 +815,40 @@
             }
         });
     }
-      /
-    // 綁定側邊近期活動拉門的開關邏輯
-const sideTickerBtn = document.getElementById('sideTickerBtn');
-const sideTickerPanel = document.getElementById('sideTickerPanel');
-const tickerIcon = sideTickerBtn.querySelector('.toggle-icon');
 
-if (sideTickerBtn && sideTickerPanel) {
-    sideTickerBtn.addEventListener('click', () => {
-        sideTickerPanel.classList.toggle('closed');
-        
-        // 切換圖示方向 (手機版箭頭方向邏輯)
-        if (sideTickerPanel.classList.contains('closed')) {
-            tickerIcon.style.transform = 'rotate(0deg)';
-        } else {
-            tickerIcon.style.transform = window.innerWidth <= 768 ? 'rotate(90deg)' : 'rotate(180deg)';
-        }
-    });
-}
+    // 5. 綁定側邊近期活動拉門的開關邏輯
+    const sideTickerBtn = document.getElementById('sideTickerBtn');
+    const sideTickerPanel = document.getElementById('sideTickerPanel');
+    if (sideTickerBtn && sideTickerPanel) {
+        const tickerIcon = sideTickerBtn.querySelector('.toggle-icon');
+        sideTickerBtn.addEventListener('click', () => {
+            sideTickerPanel.classList.toggle('closed');
+            if (sideTickerPanel.classList.contains('closed')) {
+                tickerIcon.style.transform = 'rotate(0deg)';
+            } else {
+                tickerIcon.style.transform = window.innerWidth <= 768 ? 'rotate(90deg)' : 'rotate(180deg)';
+            }
+        });
+    }
 
-    // 4. 設定滾動動畫觀察器
+    // 6. 設定滾動動畫觀察器
     const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => { 
             if (entry.isIntersecting) entry.target.classList.add('in-view'); 
         });
     }, { threshold: 0.14 });
     document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
-    
-    // 5. 移除 Loading 畫面
+
+    // 7. 移除 Loading 畫面
     setTimeout(() => { 
         document.body.classList.remove('is-loading'); 
-        document.getElementById('loading-screen').style.opacity = '0'; 
-        // 延遲後將其隱藏以防擋住點擊
-        setTimeout(() => {
-            document.getElementById('loading-screen').style.display = 'none';
-        }, 650);
+        const loading = document.getElementById('loading-screen');
+        if (loading) {
+            loading.style.opacity = '0'; 
+            setTimeout(() => {
+                loading.style.display = 'none';
+            }, 650);
+        }
     }, 1500);
 });
   </script>
