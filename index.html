@@ -196,13 +196,12 @@
     .album-img-wrapper::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.05) 35%, rgba(0,0,0,.45) 100%);pointer-events:none;}
 
     /* 活動跑馬燈與按鈕 (修復完整版) */
-  /* 1. 活動紀實按鈕：用旋轉讓它變成直向，不影響內容 */
-/* 1. 直立的按鈕 (利用旋轉，不影響內容) */
+/* 1. 按鈕：設定為絕對定位，旋轉只針對自己 */
 #ticker-toggle-btn {
   position: fixed;
   top: 50%;
-  right: -30px; /* 初始偏移 */
-  transform: translateY(-50%) rotate(-90deg); /* 旋轉 -90 度 */
+  right: -30px; 
+  transform: translateY(-50%) rotate(-90deg);
   z-index: 10000;
   background-color: var(--brand-red);
   color: #fff;
@@ -216,43 +215,44 @@
   white-space: nowrap;
 }
 
-/* 2. 跑馬燈容器 (恢復橫向) */
+/* 2. 容器：明確宣告這是一個正常的橫向區塊，不要繼承任何旋轉 */
 .scrolling-ticker-wrapper {
   position: fixed;
   top: 50%;
-  right: 40px; 
+  right: 45px; 
   transform: translateY(-50%);
-  width: 260px; /* 拉寬一點，讓內文正常顯示 */
+  width: 260px;
   height: 400px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.85);
   border-radius: 12px;
   z-index: 9999;
-  display: none; 
+  display: none;
   padding: 15px;
+  /* 確保沒有寫到任何 writing-mode 或 rotate */
 }
+
 .scrolling-ticker-wrapper.show {
   display: block;
 }
 
-/* 3. 內文：確保是正常的橫向排列 */
+/* 3. 跑馬燈內容：確保由下往上捲動 */
 .scrolling-ticker {
   display: flex;
   flex-direction: column;
-  /* 移除原本的 writing-mode，讓文字恢復正常橫向 */
-  animation: scrollUp 40s linear infinite;
+  animation: scrollUp 120s linear infinite;
 }
 
 .ticker-item {
   color: #fff;
-  padding: 8px 0;
+  padding: 10px 0;
   font-size: 0.95rem;
   font-weight: 600;
-  white-space: nowrap; /* 確保不換行 */
+  white-space: nowrap;
 }
 
 @keyframes scrollUp { 
-  0% { transform: translateY(0); } 
+  0% { transform: translateY(0%); } 
   100% { transform: translateY(-50%); } 
 }
     @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
@@ -485,8 +485,8 @@
   </div>
 </nav>
 
-    <button id="ticker-toggle-btn">顯示活動紀實</button>
-    <div id="ticker-container" class="scrolling-ticker-wrapper">
+   <button id="ticker-toggle-btn">顯示活動紀實</button>
+<div id="ticker-container" class="scrolling-ticker-wrapper">
   <div class="scrolling-ticker">
     <div class="ticker-item">2026 鴻海股東會</div>
     <div class="ticker-item">2025 北市府跨年演唱會</div>
