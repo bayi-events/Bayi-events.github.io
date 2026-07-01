@@ -201,17 +201,22 @@
 #ticker-toggle-btn {
   position: fixed;
   top: 50%;
-  right: -25px; /* 根據旋轉後寬度微調 */
-  transform: translateY(-50%) rotate(-90deg);
+  right: 0;
+  transform: translateY(-50%);
   z-index: 10000;
   background-color: var(--brand-red);
   color: #fff;
-  padding: 12px 20px;
+  padding: 20px 8px; /* 上下留寬，左右窄 */
   border: none;
-  border-radius: 8px 8px 0 0;
+  border-radius: 8px 0 0 8px; /* 右側直角，左側圓角 */
   cursor: pointer;
-  font-weight: 800;
+  
+  /* 關鍵設定：讓文字由上而下排列 */
+  writing-mode: vertical-rl; 
+  text-orientation: upright; /* 確保中文字是正向的 */
   letter-spacing: 2px;
+  
+  font-weight: 800;
   box-shadow: -2px 0 10px rgba(0,0,0,0.2);
   white-space: nowrap;
 }
