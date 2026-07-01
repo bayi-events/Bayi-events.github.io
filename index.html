@@ -412,6 +412,8 @@
   </div>
 </nav>
 
+    <button id="ticker-toggle-btn">活動紀實</button>
+    <div id="ticker-container"
     <div class="scrolling-ticker-wrapper">
   <div class="scrolling-ticker">
     <div class="ticker-item">2026 鴻海股東會</div>
@@ -825,6 +827,23 @@
         });
     }
 
+      document.addEventListener('DOMContentLoaded', function() {
+          const toggleBtn = document.getElementById('ticker-toggle-btn');
+          const tickerContainer = document.getElementById('ticker-container');
+
+          toggleBtn.addEventListener('click', function() {
+            // 切換跑馬燈的 'show' class
+            tickerContainer.classList.toggle('show');
+            
+            // 變更按鈕文字
+            if (tickerContainer.classList.contains('show')) {
+              toggleBtn.textContent = '隱藏活動紀實';
+            } else {
+              toggleBtn.textContent = '顯示活動紀實';
+            }
+          });
+        });
+      
     // 4. 設定滾動動畫觀察器
     const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => { 
