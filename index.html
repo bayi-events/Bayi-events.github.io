@@ -196,59 +196,55 @@
     .album-img-wrapper::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, transparent 0%, rgba(0,0,0,.05) 35%, rgba(0,0,0,.45) 100%);pointer-events:none;}
 
     /* 活動跑馬燈與按鈕 (修復完整版) */
-   #ticker-toggle-btn {
+  /* 1. 活動紀實按鈕：用旋轉讓它變成直向，不影響內容 */
+#ticker-toggle-btn {
   position: fixed;
   top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 9998;
+  right: -25px; /* 因為旋轉後寬度會變，這裡需要微調 */
+  transform: translateY(-50%) rotate(-90deg); /* 旋轉 -90 度 */
+  z-index: 10000;
   background-color: var(--brand-red);
   color: #fff;
-  padding: 20px 10px;
+  padding: 12px 20px;
   border: none;
-  border-radius: 8px 0 0 8px; /* 左側圓角 */
+  border-radius: 8px 8px 0 0;
   cursor: pointer;
-  writing-mode: vertical-rl; /* 強制文字直向 */
-  text-orientation: upright;
-  letter-spacing: 3px;
   font-weight: 800;
+  letter-spacing: 2px;
   box-shadow: -2px 0 10px rgba(0,0,0,0.2);
-  transition: var(--transition);
-}
-#ticker-toggle-btn:hover {
-  background-color: #54131c;
+  white-space: nowrap;
 }
 
-/* 3. 跑馬燈容器 (對齊右側中間) */
+/* 2. 跑馬燈內容：恢復原本的橫向設定 */
 .scrolling-ticker-wrapper {
   position: fixed;
   top: 50%;
-  right: 40px; /* 在按鈕的左邊 */
+  right: 60px; /* 按鈕旋轉後的寬度範圍外 */
   transform: translateY(-50%);
-  width: 180px;
-  height: 60vh;
+  width: 250px; /* 寬度稍微拉寬，讓橫向文字好閱讀 */
+  height: 300px; /* 高度限制 */
   overflow: hidden;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.85);
   border-radius: 12px;
-  z-index: 9997;
+  z-index: 9999;
   display: none; /* 預設隱藏 */
-  writing-mode: vertical-rl; /* 內容也變直向 */
-  padding: 10px;
 }
 .scrolling-ticker-wrapper.show {
   display: block;
 }
+
+/* 確保內部是橫向 */
 .scrolling-ticker {
   display: flex;
-  flex-direction: column;
-  height: 100%;
+  flex-direction: column; /* 保持原本垂直流動 */
+  animation: scrollUp 40s linear infinite;
 }
+
 .ticker-item {
   color: #fff;
+  padding: 10px 15px;
   font-size: 0.9rem;
-  padding: 10px;
-  font-weight: 600;
-  white-space: nowrap;
+  white-space: nowrap; /* 強制文字橫向單行 */
 }
     @keyframes scrollUp { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
 
