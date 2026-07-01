@@ -85,39 +85,33 @@
         100% { transform: scale(1.15); }
     }
 
-    /* 預設狀態：收起來，只露出邊緣與金邊 */
-#ticker-toggle-btn {
-  position: fixed;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  z-index: 10000;
-  
-  /* 視覺樣式 */
-  background: #1a1a1a;
-  border: 2px solid gold; /* 金邊 */
-  border-right: none;
-  border-radius: 12px 0 0 12px;
-  
-  /* 排版 */
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  color: gold;
-  padding: 20px 8px;
-  cursor: pointer;
-  
-  /* 動畫效果 */
-  width: 30px; /* 寬度收起來 */
-  transition: width 0.3s ease, background 0.3s;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-/* 滑鼠經過：變寬，露出文字 */
-#ticker-toggle-btn:hover {
-  width: 120px;
-  background: #333;
-}
+    /* 3. 畫面中央下方的展開/收合箭頭按鈕 */
+    .hero-toggle-btn {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 50;
+        background: rgba(10, 10, 12, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: #fff;
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: pointer;
+        backdrop-filter: blur(8px);
+        transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .hero-toggle-btn:hover {
+        background: var(--brand-red);
+        border-color: var(--brand-red);
+        transform: translateX(-50%) scale(1.1);
+    }
 
     /* 4. 左側與右側的資訊區塊排版 (預設隱藏並縮小) */
     .hero-box-left {
@@ -181,26 +175,8 @@
         }
         .hero-box-right .hero-eyebrow {
             justify-content: flex-start;
-          
-  #ticker-toggle-btn {
-    /* 取消側邊定位 */
-    position: fixed;
-    top: auto;
-    bottom: 20px;
-    right: 20px;
-    
-    /* 改成圓形懸浮按鈕 */
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    writing-mode: horizontal-tb; /* 恢復文字正常橫向 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  }
-}
+        }
+    }
     /* 頁籤設計 */
     .custom-tabs { gap: 10px; margin-bottom: 30px !important; flex-wrap: wrap; }
     .custom-tabs .nav-link { color: var(--text-muted) !important; border-radius: 999px; padding: 12px 26px; font-weight: 700; background: rgba(0,0,0,.04); transition: var(--transition); border: 1px solid transparent; margin: 0; }
