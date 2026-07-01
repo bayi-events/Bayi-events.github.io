@@ -875,22 +875,20 @@
         });
     }
 
-      document.addEventListener('DOMContentLoaded', function() {
-          const toggleBtn = document.getElementById('ticker-toggle-btn');
-          const tickerContainer = document.getElementById('ticker-container');
-
-          toggleBtn.addEventListener('click', function() {
-            // 切換跑馬燈的 'show' class
-            tickerContainer.classList.toggle('show');
-            
-            // 變更按鈕文字
-            if (tickerContainer.classList.contains('show')) {
-              toggleBtn.textContent = '隱藏活動紀實';
-            } else {
-              toggleBtn.textContent = '顯示活動紀實';
-            }
-          });
-        });
+     // 綁定活動紀實按鈕
+    const tickerToggleBtn = document.getElementById('ticker-toggle-btn');
+    const tickerContainer = document.getElementById('ticker-container');
+    
+    if (tickerToggleBtn && tickerContainer) {
+      tickerToggleBtn.addEventListener('click', function() {
+        tickerContainer.classList.toggle('show');
+        if (tickerContainer.classList.contains('show')) {
+          tickerToggleBtn.textContent = '隱藏活動紀實';
+        } else {
+          tickerToggleBtn.textContent = '顯示活動紀實';
+        }
+      });
+    }
       
     // 4. 設定滾動動畫觀察器
     const io = new IntersectionObserver((entries) => {
